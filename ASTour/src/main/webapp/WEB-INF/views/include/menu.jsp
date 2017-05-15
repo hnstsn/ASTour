@@ -63,6 +63,13 @@ $(document).ready(function() {
 });
 </script>
 
+<!-- AST(CSW) : 회원가입 창 popup으로 -->
+<script>
+	function signin_popup() {
+		window.open("${path}/member/memberJoin.do", "회원가입", "width=600, height=700, left=200, top=100");
+	}
+</script>
+
 <!-- Top Bar -->
 <header id="topHead">
 	<div class="container">
@@ -74,8 +81,9 @@ $(document).ready(function() {
 		<div class="before_login">
 			<!-- SIGN IN -->
 	 		<div class="pull-right nav signin-dd">
-				<a id="quick_sign_in" href="page-signin.html" data-toggle="dropdown">
-					<i class="fa fa-child"></i><span class="hidden-xs"> Sign In</span>
+				<a id="quick_sign_in" onClick="signin_popup()" data-toggle="dropdown">
+					<i class="fa fa-child"></i>
+						<span class="hidden-xs"> Sign In</span>
 				</a>
 			</div>
 			<!-- /SIGN IN -->
@@ -102,7 +110,7 @@ $(document).ready(function() {
 	                     
 	                     <!-- submit button -->
 	                     <span class="input-group-btn">
-	                     	<input type="button" class="btn btn-primary" id="loginBtn" value="Log In" />
+	                     	<input type="button" class="btn btn-success" id="loginBtn" value="Log In" />
 	                     </span>
 	                     <br />
 	                     

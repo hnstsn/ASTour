@@ -26,5 +26,10 @@ public class MemberCtrl {
 		// 일치하지 않으면  false 리턴
 		return false;
 	}
+	
+	@RequestMapping("memberJoin.do")
+	public String memberJoin() {
+		return "member/joinMember";
+	}
 
 }
