@@ -46,6 +46,13 @@
 <script type="text/javascript" src="${path}/resources/assets/plugins/modernizr.min.js"></script>
 
 
+<!-- BLOG CSS -->
+<link href="${path}/resources/assets/css/blog.css" rel="stylesheet" type="text/css" />
+<link href="${path}/resources/assets/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="${path}/resources/assets/css/layout-responsive.css" rel="stylesheet" type="text/css" />
+<link href="${path}/resources/assets/css/color_scheme/orange.css" rel="stylesheet" type="text/css" />
+
+
 <!-- JAVASCRIPT FILES -->
 <script type="text/javascript" src="${path}/resources/assets/plugins/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="${path}/resources/assets/plugins/jquery.easing.1.3.js"></script>
