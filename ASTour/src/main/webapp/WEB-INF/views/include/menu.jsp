@@ -155,7 +155,7 @@ $(document).ready(function() {
 						</a>
 					</li>
 					<li class="dropdown mega-menu-item mega-menu-fullwidth">
-						<a class="dropdown-toggle" href="#">
+						<a class="dropdown-toggle" href="${path}/initAttr">
 							추천명소
 						</a>
 					</li>
@@ -168,6 +168,7 @@ $(document).ready(function() {
 							<li><a href="magazine-category.html">정보수정</a></li>
 						</ul>
 					</li>
+					
 					<li class="dropdown">
 						<a class="dropdown-toggle" href="#">
 							고객센터
