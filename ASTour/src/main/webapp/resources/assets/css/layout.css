@@ -1222,8 +1222,8 @@ span.js_loader {
 /** 07. Contact
  **************************************************************** **/
 #gmap {
-	width:100%;
-	height:400px;
+	/* width:100%; */
+	height:800px;
 	display:block;
 
 
@@ -1238,8 +1238,8 @@ span.js_loader {
 	z-index:1;
 }
 #gmap_default {
-	width:100%;
-	height:400px;
+	/* width:100%; */
+	height:800px;
 	display:block;
 }
 

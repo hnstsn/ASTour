@@ -158,7 +158,7 @@ $(document).ready(function() {
 			<nav class="nav-main mega-menu">
 				<ul class="nav nav-pills nav-main scroll-menu" id="topMain">
 					<li class="dropdown mega-menu-item mega-menu-two-columns">
-						<a class="dropdown-toggle" href="#">
+						<a class="dropdown-toggle" href="${path}/locationSelect">
 							지역선택
 						</a>
 					</li>
