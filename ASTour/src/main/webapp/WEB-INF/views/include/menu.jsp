@@ -178,7 +178,7 @@ $(document).ready(function() {
 					</li>
 					
 					<li class="dropdown">
-						<a class="dropdown-toggle" href="#">
+						<a class="dropdown-toggle" href="${path}/faq">
 							고객센터
 						</a>
 					</li>
