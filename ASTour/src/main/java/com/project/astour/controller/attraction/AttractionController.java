@@ -12,6 +12,7 @@ public class AttractionController {
 	
 	@RequestMapping("initAttr")
 	public String init() {
+		
 		return "attraction/joinattraction";
 	}
 	

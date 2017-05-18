@@ -83,7 +83,9 @@
 									<small class="styleColor">${mem.sname1 }</small>
 									<p>${mem.sname1 }</p>
 									<div class="text-center">
+			  						<a href="${path}/initDetails">
 			  						<button type="button" class="btn btn-success">상세보기</button>
+			  						</a>
 									</div>
 								</div>
 							</div>
@@ -100,122 +102,15 @@
 									<small class="styleColor">문화</small>
 									<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
 									<div class="text-center">
+			  						<a href="${path}/initDetails">
 			  						<button type="button" class="btn btn-success">상세보기</button>
+			  						</a>
 									</div>
 								</div>
 							</div>
 						</li>
 			
-						<li class="isotope-item col-md-3 culture"><!-- item 2 -->
-							<div class="item-box fixed-box">
-								<figure>
-									<img class="img-responsive" src="image/culture/2.jpg" width="263" height="263" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>독립문</h4>
-									<small class="styleColor">문화</small>
-									<p>This is a short text - the content remains the same!</p>
-									<div class="text-center">
-										<button type="button" class="btn btn-success">상세보기</button>
-									</div>
-								</div>
-							</div>
-						</li>
-			
-						<li class="isotope-item col-md-3 culture"><!-- item 4 -->
-							<div class="item-box fixed-box">
-								<figure>
-									<img class="img-responsive" src="image/culture/3.jpg" width="263" height="263" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>숭례문</h4>
-									<small class="styleColor">문화</small>
-									<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-									<div class="text-center">
-										<button type="button" class="btn btn-success">상세보기</button>
-									</div>
-								</div>
-							</div>
-						</li>
-			
-						<li class="isotope-item col-md-3 event"><!-- item 5 -->
-							<div class="item-box fixed-box">
-								<figure>
-									<img class="img-responsive" src="image/culture/4.jpg" width="263" height="263" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>행사</h4>
-									<small class="styleColor">행사</small>
-									<p>장소</p>
-									<div class="text-center">
-										<button type="button" class="btn btn-success">상세보기</button>
-									</div>
-								</div>
-							</div>
-						</li>
-			
-						<li class="isotope-item col-md-3 event"><!-- item 6 -->
-							<div class="item-box fixed-box">
-								<figure>
-									<img class="img-responsive" src="image/culture/5.jpg" width="263" height="263" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>John Doe</h4>
-									<small class="styleColor">행사</small>
-									<p>This is a short text - the content remains the same!</p>
-									<div class="text-center">
-										<button type="button" class="btn btn-success">상세보기</button>
-									</div>
-								</div>
-							</div>
-						</li>
-			
-						<li class="isotope-item col-md-3 event"><!-- item 7 -->
-							<div class="item-box fixed-box">
-								<figure>
-									<img class="img-responsive" src="image/culture/6.jpg" width="263" height="263" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>John Doe</h4>
-									<small class="styleColor">행사</small>
-									<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-									<div class="text-center">
-										<button type="button" class="btn btn-success">상세보기</button>
-									</div>
-								</div>
-							</div>
-						</li>
-			
-						<li class="isotope-item col-md-3 event"><!-- item 8 -->
-							<div class="item-box fixed-box">
-								<figure>
-									<img class="img-responsive" src="image/culture/7.jpg" width="263" height="263" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>John Doe</h4>
-									<small class="styleColor">행사</small>
-									<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-									<div class="text-center">
-										<button type="button" class="btn btn-success">상세보기</button>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li class="isotope-item col-md-3 event"><!-- item 8 -->
-							<div class="item-box fixed-box">
-								<figure>
-									<img class="img-responsive" src="image/culture/8.jpg" width="263" height="263" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>John Doe</h4>
-									<small class="styleColor">행사</small>
-									<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
-									<div class="text-center">
-										<button type="button" class="btn btn-success">상세보기</button>
-									</div>
-								</div>
-							</div>
-						</li>
+						
 					</ul>
 				</div><!-- /.masonry-container -->
 		</div>
