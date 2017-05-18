@@ -168,12 +168,12 @@ $(document).ready(function() {
 						</a>
 					</li>
 					<li class="dropdown">
-						<a class="dropdown-toggle" href="#">
+						<a class="dropdown-toggle">
 							<b>마이페이지</b> <i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="magazine-home.html">SNS</a></li>
-							<li><a href="magazine-category.html">정보수정</a></li>
+							<li><a href="${path}/snsView">SNS</a></li>
+							<li><a href="#">정보수정</a></li>
 						</ul>
 					</li>
 					
