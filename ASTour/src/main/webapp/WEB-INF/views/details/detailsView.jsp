@@ -59,24 +59,22 @@
 			<!-- PAGE TITLE -->
 			<header id="page-title">
 				<div class="container">
-					<h1>Atropos Shop</h1>
-
-					<ul class="breadcrumb">
-						<li><a href="index.html">Home</a></li>
-						<li class="active">Shop</li>
-					</ul>
+					<h1>상세보기</h1>
 				</div>
 			</header>
 
 			<section class="container">
+
 				<div class="row">
 					<div class="col-sm-6 col-md-6">
 						<div class="owl-carousel controlls-over product-image"
 							data-plugin-options='{"items": 1, "singleItem": true, "navigation": true, "pagination": true, "transitionStyle":"fadeUp"}'>
+
 							<div>
 								<img alt="" class="img-responsive"
-									src="${path}/resources/image/culture/1.jpg">
+									src="${path}/resources/image/culture/${list[0].AIMAGE }">
 							</div>
+
 						</div>
 					</div>
 
@@ -89,14 +87,16 @@
 							<input type="hidden" name="action" value="cart_add" /> <input
 								type="hidden" name="product_id" value="1" />
 
-							<h2 class="product-title">제목</h2>
+							<h2 class="product-title">${list[0].ATITLE }</h2>
 
 
 							<!-- product description -->
 							<div class="desc">
-								<h2 class="page-header">주소</h2>
-								<h2 class="page-header">문의</h2>
-								<h2 class="page-header">홈페이지<a href="https://www.naver.com/">주소</a></h2>
+								<h3>주소 : ${list[0].AADDRESS }</h3>
+								<h3>문의 : ${list[0].ATEL }</h3>
+								<h2>
+									홈페이지: <a href="${list[0].AHOMEPAGE }">${list[0].AHOMEPAGE }</a>
+								</h2>
 							</div>
 							<!-- /product description -->
 						</form>
@@ -106,14 +106,14 @@
 
 				<hr />
 				<div style="text-align: center;">
-				<p>개요</p>
+					<p>${list[0].ACONTENT }</p>
 				</div>
-				
+
 				<hr />
 				<div style="text-align: center;">
-				<button type="button" class="btn btn-success">리뷰 보기</button>
+					<button type="button" class="btn btn-success">리뷰 보기</button>
 				</div>
-				
+
 			</section>
 		</div>
 	</div>

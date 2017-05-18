@@ -4,10 +4,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+
 <mapper namespace="attractionmap">
 	<select id="attractionselect"
 		resultType="com.project.astour.model.dto.attraction.attraction_tbl">
 		SELECT *FROM attraction_tbl
+	</select>
+	
+	<select id="detailsselect"
+		resultType="com.project.astour.model.dto.attraction.attraction_tbl">
+		SELECT *FROM attraction_tbl WHERE ATITLE=#{ATITLE }
 	</select>
 
 </mapper>

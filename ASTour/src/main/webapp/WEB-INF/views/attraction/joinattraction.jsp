@@ -36,7 +36,6 @@
 			location.href="initDetails?name="+loc;
 		});
 	});
-	
 </script>
 
 </head>
@@ -68,18 +67,18 @@
 			<ul class="sort-destination isotope" data-sort-id="isotope-list">
 				<!-- 수정 -->
 				<c:forEach var="attraction" items="${list}">
-					<li class="isotope-item col-md-3 ${attraction.SACTION }">
+					<li class="isotope-item col-md-3 ${attraction.AACTION }">
 						<!-- item 1 -->
 						<div class="item-box fixed-box">
 							<figure> <img class="img-responsive"
-								src="${path}/resources/image/culture/${attraction.SIMAGE }"
+								src="${path}/resources/image/culture/${attraction.AIMAGE }"
 								width="263" height="263" alt=""> </figure>
 							<div class="item-box-desc">
-								<h4>${attraction.SNAME }</h4>
-								<small class="styleColor">${attraction.SNAME2 }</small>
-								<p>${attraction.SCONTENTS }</p>
+								<h4>${attraction.ATITLE }</h4>
+								<small class="styleColor">${attraction.ASORT }</small>
+								<p>${attraction.ACONTENTS }</p>
 								<div class="text-center">
-									<a href="${path}/initDetails?name=${attraction.SNAME }">
+									<a href="${path}/initDetails?name=${attraction.ATITLE }">
 										<button type="button" class="btn btn-success">상세보기</button>
 									</a>
 								</div>
