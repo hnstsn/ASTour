@@ -6,6 +6,7 @@
 
 	<mappers>
 		<mapper resource="mappers/snsMapper.xml"></mapper>
+		<mapper resource="mappers/memberMapper.xml"></mapper>
 	</mappers>
 
 </configuration>
