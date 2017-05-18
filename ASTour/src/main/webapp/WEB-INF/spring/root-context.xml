@@ -15,8 +15,8 @@
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
 		<!-- 연결문자열에 log4jdbc가 추가됨 -->
 		<property name="url" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:orcl" />
-		<property name="username" value="hnstsn" />
-		<property name="password" value="hnstsn" />
+		<property name="username" value="astour" />
+		<property name="password" value="astour1234" />
 	</bean>
 	
 	<!-- 아파치 DBCP 설정 -->
