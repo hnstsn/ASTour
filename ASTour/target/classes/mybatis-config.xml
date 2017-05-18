@@ -6,7 +6,10 @@
 
 	<mappers>
 		<mapper resource="mappers/snsMapper.xml"></mapper>
+		<mapper resource="mappers/attractionMapper.xml"></mapper>
 	</mappers>
-
+	
 </configuration>
 
+
+	
