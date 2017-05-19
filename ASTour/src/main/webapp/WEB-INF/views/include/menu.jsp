@@ -150,7 +150,7 @@ $(document).ready(function() {
 		<!-- Logo text or image -->
 		<!-- AST(CSW) : Logo를 클릭하면 처음 Main page인 home.jsp로 이동 -->
 		<a class="logo" href="${path}">
-			<img src="resources/assets/images/logo.png" alt="Atropos" />
+			<img src="resources/assets/images/mainlogo.png" alt="Atropos" />
 		</a>
 
 		<!-- Top Nav -->
