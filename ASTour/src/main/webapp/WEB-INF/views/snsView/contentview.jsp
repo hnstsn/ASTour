@@ -11,13 +11,14 @@
 <meta name="description" content="" />
 <meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
 <!-- mobile settings -->
-<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+<meta name="viewport"
+	content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 <%@ include file="../include/bootstap_collect.jsp"%>
 <!-- Morenizr -->
 <script type="text/javascript" src="assets/plugins/modernizr.min.js"></script>
 </head>
 <body>
-
+	<%@ include file="../include/menu.jsp"%>
 	<!-- WRAPPER -->
 	<div id="wrapper">
 
@@ -26,12 +27,7 @@
 			<!-- PAGE TITLE -->
 			<header id="page-title">
 				<div class="container">
-					<h1>Atropos Blog</h1>
-
-					<ul class="breadcrumb">
-						<li><a href="index.html">Home</a></li>
-						<li class="active">Blog</li>
-					</ul>
+					<h1>황성빈님의 블로그</h1>
 				</div>
 			</header>
 
@@ -42,7 +38,7 @@
 
 						<!-- article title -->
 						<header class="blog-post">
-							<h1>${title }</h1>
+							<h1>${list[0].rv_title }</h1>
 							<small class="fsize13"> <a href="blog.html"
 								class="label label-default light"><i
 									class="fa fa-dot-circle-o"></i> Business</a> <a href="#comments"
@@ -57,7 +53,7 @@
 							data-plugin-options='{"items": 1, "singleItem": true, "navigation": true, "pagination": true, "autoPlay": true, "transitionStyle":"fadeUp"}'>
 							<!-- transitionStyle: fade, backSlide, goDown, fadeUp,  -->
 							<div class="item">
-								<img src="assets/images/demo/screens/scr3.jpg"
+								<img src="resources/assets/images/rvimg/${list[0].rv_img }"
 									class="img-responsive" alt="img" />
 							</div>
 							<div class="item">
@@ -69,85 +65,9 @@
 
 						<!-- article content -->
 						<article>
-							<p class="dropcap">
-								Aliquam fringilla, sapien eget scelerisque placerat, lorem
-								libero cursus lorem, sed sodales lorem libero eu sapien. Nunc
-								mattis feugiat justo vel faucibus. Nulla consequat feugiat
-								malesuada. Ut justo nulla, <strong>facilisis vel
-									molestie id</strong>, dictum ut arcu. Nunc ipsum nulla, eleifend non
-								blandit quis, luctus quis orci. Cras blandit turpis mattis nulla
-								ultrices interdum. Mauris pretium pretium dictum. Nunc commodo,
-								felis sed dictum bibendum, risus justo iaculis dui, nec euismod
-								orci sem eget neque. Donec in metus metus, vitae eleifend lorem.
-								Ut vestibulum gravida venenatis. Vestibulum ante ipsum primis in
-								faucibus orci luctus et ultrices posuere cubilia Curae;
-								Pellentesque suscipit tincidunt magna non mollis. Fusce tempus
-								tincidunt nisi, in luctus elit pellentesque quis. Sed velit mi,
-								ullamcorper ut tempor ut, mattis eu lacus. Morbi rhoncus aliquet
-								tellus, id accumsan enim sollicitudin vitae.
-							</p>
-							<p>
-								Vivamus <a href="#">magna justo</a>, lacinia eget consectetur
-								sed, convallis at tellus. Cras ultricies ligula sed magna dictum
-								porta. Curabitur aliquet quam id dui posuere blandit. Sed
-								porttitor lectus nibh. Vestibulum ante ipsum primis in faucibus
-								orci luctus et ultrices posuere cubilia Curae; Donec velit
-								neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
-								Nulla porttitor accumsan tincidunt.
-							</p>
-
-							<!-- BLOCKQUOTE -->
-							<blockquote>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									Integer posuere erat a ante.</p>
-								<cite>Source Title</cite>
-							</blockquote>
-
-							<p>Vivamus magna justo, lacinia eget consectetur sed,
-								convallis at tellus.Quisque velit nisi, pretium ut lacinia in,
-								elementum id enim. Sed porttitor lectus nibh. Vestibulum ac diam
-								sit amet quam vehicula elementum sed sit amet dui. Donec rutrum
-								congue leo eget malesuada. Lorem ipsum dolor sit amet,
-								consectetur adipiscing elit. Curabitur non nulla sit amet nisl
-								tempus convallis quis ac lectus. Vivamus magna justo, lacinia
-								eget consectetur sed, convallis at tellus. Pellentesque in ipsum
-								id orci porta dapibus. Nulla quis lorem ut libero malesuada
-								feugiat. Curabitur arcu erat, accumsan id imperdiet et,
-								porttitor at sem.</p>
-							<p>Proin eget tortor risus. Cras ultricies ligula sed magna
-								dictum porta. Pellentesque in ipsum id orci porta dapibus. Lorem
-								ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-								porttitor accumsan tincidunt. Lorem ipsum dolor sit amet,
-								consectetur adipiscing elit.</p>
+							<p class="dropcap">${list[0].rv_content }</p>
 						</article>
-
 						<hr />
-
-						<!-- SOCIAL -->
-						<p class="socials">
-							<a href="#" class="rounded-icon social fa fa-facebook">
-								<!-- facebook -->
-							</a> <a href="#" class="rounded-icon social fa fa-twitter">
-								<!-- twitter -->
-							</a> <a href="#" class="rounded-icon social fa fa-google-plus">
-								<!-- google plus -->
-							</a> <a href="#" class="rounded-icon social fa fa-pinterest">
-								<!-- pinterest -->
-							</a> <a href="#" class="rounded-icon social fa fa-linkedin">
-								<!-- linkedin -->
-							</a>
-						</p>
-
-						<!-- TAGS -->
-						<p class="fsize16">
-							Tags: <a class="label label-default light" href="#"><i
-								class="fa fa-tags"></i> Business</a> <a
-								class="label label-default light" href="#"><i
-								class="fa fa-tags"></i> Design</a> <a
-								class="label label-default light" href="#"><i
-								class="fa fa-tags"></i> Technology</a>
-						</p>
-
 
 						<div class="divider">
 							<!-- divider -->
@@ -156,7 +76,7 @@
 
 						<!-- COMMENTS -->
 						<div id="comments">
-							<h2>3 Comments</h2>
+							<h2>3 댓글</h2>
 
 							<!-- comment item -->
 							<div class="comment">
@@ -212,23 +132,6 @@
 									Pellentesque in ipsum id orci porta dapibus. Lorem ipsum dolor
 									sit amet, consectetur adipiscing elit.
 
-									<!-- comment reply -->
-									<div class="media">
-
-										<!-- user-avatar -->
-										<span class="user-avatar"> <img class="media-object"
-											src="assets/images/avatar.png" width="64" height="64" alt="">
-										</span>
-
-										<div class="media-body">
-											<h4 class="media-heading bold">Peter Doe</h4>
-											<small class="block">June 29, 2014 - 11:23</small> Proin eget
-											tortor risus. Cras ultricies ligula sed magna dictum porta.
-											Pellentesque in ipsum id orci porta dapibus. Lorem ipsum
-											dolor sit amet, consectetur adipiscing elit.
-										</div>
-									</div>
-
 								</div>
 							</div>
 
@@ -276,19 +179,6 @@
 									<br />
 
 									<!-- code info -->
-									<div class="col-md-12 font300 fsize14">
-										<p>Allowed HTML tags: &lt;a href=&quot;&quot;
-											title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt;
-											&lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote
-											cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del
-											datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q
-											cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt;</p>
-										<p>
-											Inappropriate and irrelevant comments will be removed at an
-											admin's discretion.<br /> Your email is used for
-											verification purposes only, it will never be shared.
-										</p>
-									</div>
 
 									<!-- btn -->
 									<div class="col-md-12">
@@ -296,22 +186,7 @@
 											<button class="btn btn-primary">Post Comment</button>
 										</p>
 									</div>
-
-									<!-- subscribe -->
-									<div class="col-md-12 fsize16">
-										<p>
-											<input type="checkbox" name="subscribe_comments"
-												id="subscribe_comments" value="subscribe" /> <label
-												for="subscribe_comments">Notify me of follow-up
-												comments by email.</label> <br /> <input type="checkbox"
-												name="subscribe_blog" id="subscribe_blog" value="subscribe" />
-											<label for="subscribe_blog">Notify me of new posts by
-												email.</label>
-										</p>
-									</div>
-
 								</div>
-
 							</form>
 							<!-- /COMMENT FORM -->
 						</div>
