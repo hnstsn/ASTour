@@ -33,11 +33,6 @@
 			<header id="page-title">
 				<div class="container">
 					<h1>황성빈님의 블로그</h1>
-
-					<ul class="breadcrumb">
-						<li><a href="index.html">Home</a></li>
-						<li class="active">Blog</li>
-					</ul>
 				</div>
 			</header>
 			<!-- / AST : 페이지 타이틀 -->
@@ -140,7 +135,7 @@
 								<!-- AST : 타임라인 타이틀  -->
 								<div class="item-title">
 									<h2>
-										<a href="${path }/contentview?title=${mem.rv_title }">${mem.rv_title }</a>
+										<a href="${path }/contentview?rv_title=${mem.rv_title }">${mem.rv_title }</a>
 									</h2>
 									<a href="blog.html" class="label label-default light"><i
 										class="fa fa-dot-circle-o"></i> Business</a> <a
@@ -163,7 +158,7 @@
 								<!-- / AST : 타임라인 내용  -->
 
 								<!-- AST : 게시글 더보기 -->
-								<a href="${path }/contentview?title=${mem.rv_title }" class="btn btn-xs"><i
+								<a href="${path }/contentview?rv_title=${mem.rv_title }" class="btn btn-xs"><i
 									class="fa fa-sign-out"></i> READ MORE</a>
 								<!-- / AST : 게시글 더보기 -->
 							</div>

@@ -10,4 +10,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT *FROM snstable
 	</select>
    
+   <select id="timelineview"
+		resultType="com.project.astour.model.dto.sns.tbl_snsVO">
+		SELECT *FROM snstable WHERE rv_title=#{rv_title }
+	</select>
+	
 </mapper>
