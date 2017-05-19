@@ -97,10 +97,19 @@
 								<h2>
 									홈페이지: <a href="${list[0].AHOMEPAGE }">${list[0].AHOMEPAGE }</a>
 								</h2>
+								
 							</div>
+							
 							<!-- /product description -->
 						</form>
 						<!-- product detail -->
+						<div style="margin-top: 10%" align="center">
+							<form action="${path }/reViewList" method="post">
+									<input type="hidden" name="review_AIMAGE" value="${list[0].AIMAGE }"> 
+									<input type="hidden" name="review_ATITLE" value="${list[0].ATITLE }"> 
+									<input type="submit" class="btn btn-success" value="관련리뷰보기">
+							</form>
+						</div>
 					</div>
 				</div>
 
@@ -108,11 +117,13 @@
 				<div>
 					<h4>${list[0].ACONTENT }</h4>
 				</div>
+				
+				
+				
 
 				<hr />
-				<div style="text-align: center;">
-					<button type="button" class="btn btn-success">리뷰 보기</button>
-				</div>
+
+
 
 			</section>
 		</div>

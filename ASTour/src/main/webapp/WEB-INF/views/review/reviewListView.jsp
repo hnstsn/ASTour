@@ -31,7 +31,7 @@
 
 <script type="text/javascript">
 
-	//전체
+	/* //전체
 	$(document).ready(function() {
 		$("#loc_change").click(function() {
 			var loc = $("#loc_txt").val();
@@ -59,7 +59,7 @@
 		$("#loc_asort2").click(function() {
 			location.href="${path}/selectAsort?loc=행사";
 		});
-	});
+	}); */
 	
 </script>
 
@@ -74,7 +74,7 @@
 		<!-- PAGE TITLE -->
 		<header id="page-title">
 		<div class="container" style="margin-left: 20%; margin-right: 20%">
-			<h1>추천장소 & 행사</h1>
+			<h1>${title } 리뷰목록</h1>
 		</div>
 		</header>
 
@@ -82,38 +82,75 @@
 
 			style="margin-left: 20%; margin-right: 20%">
 			<!-- data-option-value="*".culture .event class="active" 빼버림 -->
-			<li ><a id="loc_all" href="#">전체</a></li>
-			<li ><a id="loc_asort1" href="#">명소</a></li>
-			<li ><a id="loc_asort2" href="#">행사</a></li>
-			<li><input style="visibility: hidden;" value="간격" type="submit"></li>
-			<li ><input class="form-control" id="loc_txt" type="text"></li>
-			<li ><a id="loc_change" class="btn-primary">검색</a></li>
+			<li ><a href="#">최신순</a></li>
+			<li ><a href="#">평점순</a></li>
+			<li ><a href="#">조회순</a></li>
 		</ul>
 
 		<div class="row" style="margin-left: 20%; margin-right: 20%">
 			<ul class="sort-destination isotope" data-sort-id="isotope-list">
 				<!-- 수정 -->
-				<c:forEach var="attraction" items="${list}">
-					<li class="isotope-item col-md-3 ${attraction.AACTION } ${attraction.ATITLE }">
+				<%-- <c:forEach var="attraction" items="${list}"> --%>
+					<li class="isotope-item col-md-3">
 						<!-- item 1 -->
 						<div class="item-box fixed-box">
 							<figure> <img class="img-responsive"
-								src="${path}/resources/image/culture/${attraction.AIMAGE }"
+								src="${path}/resources/image/culture/${image }"
 								width="263" height="263" alt=""> </figure>
 							<div class="item-box-desc">
-								<h4>${attraction.ATITLE }</h4>
-								<small class="styleColor">${attraction.ASORT }</small>
-								<p>${attraction.ACONTENTS }</p>
+								<h4>${atitle }</h4>
+								<small class="styleColor">내용1</small>
+								<p>내용2</p>
 								<div class="text-center">
-									<form action="${path}/initDetails?name=${attraction.ATITLE }">
-										<input type="hidden" name="name" value="${attraction.ATITLE }">
-										<input type="submit" class="btn btn-success" value="버튼" />
+									<form action="#">
+										<input type="hidden" name="name" value="${atitle }">
+										<input type="submit" class="btn btn-success" value="상세보기" />
 									</form>
 								</div>
 							</div>
 						</div>
 					</li>
-				</c:forEach>
+					
+					<li class="isotope-item col-md-3">
+						<!-- item 1 -->
+						<div class="item-box fixed-box">
+							<figure> <img class="img-responsive"
+								src="${path}/resources/image/culture/${image }"
+								width="263" height="263" alt=""> </figure>
+							<div class="item-box-desc">
+								<h4>${atitle }</h4>
+								<small class="styleColor">내용1</small>
+								<p>내용2</p>
+								<div class="text-center">
+									<form action="#">
+										<input type="hidden" name="name" value="${atitle }">
+										<input type="submit" class="btn btn-success" value="상세보기" />
+									</form>
+								</div>
+							</div>
+						</div>
+					</li>
+					
+					<li class="isotope-item col-md-3">
+						<!-- item 1 -->
+						<div class="item-box fixed-box">
+							<figure> <img class="img-responsive"
+								src="${path}/resources/image/culture/${image }"
+								width="263" height="263" alt=""> </figure>
+							<div class="item-box-desc">
+								<h4>${atitle }</h4>
+								<small class="styleColor">내용1</small>
+								<p>내용2</p>
+								<div class="text-center">
+									<form action="#">
+										<input type="hidden" name="name" value="${atitle }">
+										<input type="submit" class="btn btn-success" value="상세보기" />
+									</form>
+								</div>
+							</div>
+						</div>
+					</li>
+				<%-- </c:forEach> --%>
 				<!-- 수정끝 -->
 			</ul>
 		</div>
