@@ -25,7 +25,14 @@ public class DetailsController {
 
 		List<attraction_tbl> detailsList = detailsSeration.detailsList(ATITLE);
 		model.addAttribute("list", detailsList);
-
-		return "details/detailsView";
+		try {
+			System.out.println(detailsList.get(0));
+			return "details/detailsView";
+		} catch (Exception e) {
+			System.out.println("예외처리");
+			return "attraction/exceptionView";
+		}
 	}
+	
+	
 }

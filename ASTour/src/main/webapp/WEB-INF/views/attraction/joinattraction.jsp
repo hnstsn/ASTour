@@ -6,6 +6,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
@@ -30,12 +31,36 @@
 
 <script type="text/javascript">
 
+	//전체
 	$(document).ready(function() {
-		$("#search_loc").click(function() {
+		$("#loc_change").click(function() {
 			var loc = $("#loc_txt").val();
-			location.href="initDetails?name="+loc;
+			
+			location.href="${path}/selectAttr?loc="+loc;
+		
 		});
 	});
+	
+	//검색
+	$(document).ready(function() {
+		$("#loc_all").click(function() {
+			location.href="${path}/initAttr";
+		});
+	});
+	
+	//명소 검색
+	$(document).ready(function() {
+		$("#loc_asort1").click(function() {
+			location.href="${path}/selectAsort?loc=명소";
+		});
+	});
+	//행사 검색
+	$(document).ready(function() {
+		$("#loc_asort2").click(function() {
+			location.href="${path}/selectAsort?loc=행사";
+		});
+	});
+	
 </script>
 
 </head>
@@ -54,21 +79,22 @@
 		</header>
 
 		<ul class="nav nav-pills isotope-filter isotope-filter"
-			data-sort-id="isotope-list" data-option-key="filter"
+
 			style="margin-left: 20%; margin-right: 20%">
-			<li data-option-value="*" class="active"><a href="#">전체</a></li>
-			<li data-option-value=".culture"><a href="#">추천장소</a></li>
-			<li data-option-value=".event"><a href="#">행사</a></li>
-			<li><input class="form-control" id="loc_txt" type="text"></li>
-			<li data-option-value=""><a
-				href="${path}/initDetails?name=${attraction.SNAME }" id="search_loc">검색</a></li>
+			<!-- data-option-value="*".culture .event class="active" 빼버림 -->
+			<li ><a id="loc_all" href="#">전체</a></li>
+			<li ><a id="loc_asort1" href="#">명소</a></li>
+			<li ><a id="loc_asort2" href="#">행사</a></li>
+			<li><input style="visibility: hidden;" value="간격" type="submit"></li>
+			<li ><input class="form-control" id="loc_txt" type="text"></li>
+			<li ><a id="loc_change">검색</a></li>
 		</ul>
 
 		<div class="row" style="margin-left: 20%; margin-right: 20%">
 			<ul class="sort-destination isotope" data-sort-id="isotope-list">
 				<!-- 수정 -->
 				<c:forEach var="attraction" items="${list}">
-					<li class="isotope-item col-md-3 ${attraction.AACTION }">
+					<li class="isotope-item col-md-3 ${attraction.AACTION } ${attraction.ATITLE }">
 						<!-- item 1 -->
 						<div class="item-box fixed-box">
 							<figure> <img class="img-responsive"
