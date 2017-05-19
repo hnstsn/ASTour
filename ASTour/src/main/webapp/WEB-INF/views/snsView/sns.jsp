@@ -11,12 +11,12 @@
 <meta name="description" content="" />
 <meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
 <!-- mobile settings -->
-<meta name="viewport"
-	content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
-
+<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 <%@ include file="../include/bootstap_collect.jsp"%>
 <!-- Morenizr -->
 <script type="text/javascript" src="assets/plugins/modernizr.min.js"></script>
+
+
 </head>
 <body>
 	<!-- AST : menu부분을 위한 jsp page -->
@@ -81,8 +81,14 @@
 
 							<h4>프로필</h4>
 							<div class="container">
+							
+							<!--  AST : 프로필 사진 클릭시 확대 -->
+							<a href="resources/assets/images/prof.png" target=_blank>
 								<img src="resources/assets/images/prof.png" class="img-circle"
-									alt="Cinque Terre" width="200" height="160">
+									alt="Cinque Terre" width="200" height="160">		
+							</a>
+							<!--  / AST : 프로필 사진 클릭시 확대 -->
+							
 							</div>
 						</div>
 						<!-- / AST : 개인 프로필  -->
@@ -134,7 +140,7 @@
 								<!-- AST : 타임라인 타이틀  -->
 								<div class="item-title">
 									<h2>
-										<a href="blog-post.html">${mem.rv_title }</a>
+										<a href="${path }/contentview?title=${mem.rv_title }">${mem.rv_title }</a>
 									</h2>
 									<a href="blog.html" class="label label-default light"><i
 										class="fa fa-dot-circle-o"></i> Business</a> <a
@@ -147,7 +153,7 @@
 
 								<!-- AST : 타임라인 이미지  -->
 								<figure>
-									<img src="assets/images/demo/blog.jpg" class="img-responsive"
+									<img src="resources/assets/images/rvimg/${mem.rv_img }" class="img-responsive"
 										alt="img" />
 								</figure>
 								<!-- / AST : 타임라인 이미지  -->
@@ -157,14 +163,14 @@
 								<!-- / AST : 타임라인 내용  -->
 
 								<!-- AST : 게시글 더보기 -->
-								<a href="blog-post.html" class="btn btn-xs"><i
+								<a href="${path }/contentview?title=${mem.rv_title }" class="btn btn-xs"><i
 									class="fa fa-sign-out"></i> READ MORE</a>
 								<!-- / AST : 게시글 더보기 -->
 							</div>
 						</c:forEach>
 						<!-- / AST : 타임라인 게시물  -->
 
-
+						<input type=submit value="글쓰기">
 						<!-- AST : 페이지 넘기기 -->
 						<div class="text-center">
 							<ul class="pagination">

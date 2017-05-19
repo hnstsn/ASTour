@@ -35,7 +35,7 @@
 				<li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
 	
 					<!-- COVER IMAGE -->
-					<img src="resources/assets/images/demo/revolution_slider/sliderbg.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+					<img src="resources/assets/images/demo/revolution_slider/mainimg1.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
 	
 					<!-- LAYER NR. 1 -->
 					<div class="tp-caption lightgrey_divider skewfromrightshort customout"
@@ -62,7 +62,7 @@
 						data-easing="Power4.easeOut"
 						data-endspeed="500"
 						data-endeasing="Power4.easeIn"
-						style="z-index: 3"><img src="resources/assets/images/demo/revolution_slider/desktop_slider_2.png" alt="">
+						style="z-index: 3"><img src="resources/assets/images/demo/revolution_slider/mainimg1.1.png" alt="">
 					</div>
 	
 					<!-- LAYER NR. 2 -->
@@ -90,7 +90,7 @@
 						data-endspeed="500"
 						data-endeasing="Power4.easeIn"
 						data-captionhidden="off"
-						style="z-index: 4">Powerful
+						style="z-index: 4">설악산
 					</div>
 	
 					<!-- LAYER NR. 4 -->
@@ -104,7 +104,7 @@
 						data-endspeed="500"
 						data-endeasing="Power4.easeIn"
 						data-captionhidden="off"
-						style="z-index: 7">Multipurpose
+						style="z-index: 7">벚꽃축제
 					</div>
 	
 					<!-- LAYER NR. 5 -->
@@ -120,9 +120,9 @@
 						data-endeasing="Power4.easeIn"
 						data-captionhidden="off"
 						style="z-index: 8">
-						Atropos Multipurpose Template, now offering you<br /> 
-						over 110 html pages fully customizable and very<br /> 
-						easy to use! <strong>Lifetime free update!</strong><br />
+						설악산 벚꽃축제 어쩌고저쩌고 나불나불 샬라샬라샬라 얄리얄리 얄라숑<br /> 
+						어쩌고저쩌고 나불나불 샬라샬라샬라 얄리얄리 얄라숑<br /> 
+						<strong>설악산 짱짱맨!</strong><br />
 						<a href="index-more.html">Read more...</a>
 					</div>
 	
@@ -137,7 +137,7 @@
 						data-endspeed="500"
 						data-endeasing="Power4.easeIn"
 						data-captionhidden="off"
-						style="z-index: 10">110+
+						style="z-index: 10">ㅎㅎㅎㅎ
 					</div>
 	
 					<!-- LAYER NR. 7 -->
@@ -151,7 +151,7 @@
 						data-endspeed="500"
 						data-endeasing="Power4.easeIn"
 						data-captionhidden="off"
-						style="z-index: 11">Html Pages
+						style="z-index: 11">ㅎㅎㅎㅎ
 					</div>
 	
 					<div class="tp-caption medium_bold_orange skewfromleftshort customout start font300"
@@ -164,8 +164,8 @@
 						data-endspeed="500"
 						data-endeasing="Power4.easeIn"
 						data-captionhidden="off"
-						style="z-index: 13;">Fully <strong>Responsive</strong>
-					</div>
+						style="z-index: 13;">ㅎㅎㅎ<strong>ㅎㅎ</strong>
+					</div> 
 	
 					<!-- LAYER NR. 8 -->
 					<div class="tp-caption medium_bg_orange skewfromleftshort customout"
@@ -178,7 +178,7 @@
 						data-endspeed="500"
 						data-endeasing="Power4.easeIn"
 						data-captionhidden="off"
-						style="z-index: 21">Customizable Pages
+						style="z-index: 21">ㅎㅎㅎㅎ
 					</div>
 	
 				</li>

@@ -5,7 +5,14 @@ public class tbl_snsVO {
 	private int rv_id;
 	private String rv_title;
 	private String rv_content;
+	private String rv_img;
 	
+	public String getRv_img() {
+		return rv_img;
+	}
+	public void setRv_img(String rv_img) {
+		this.rv_img = rv_img;
+	}
 	public int getRv_id() {
 		return rv_id;
 	}
