@@ -105,8 +105,8 @@
 				</div>
 
 				<hr />
-				<div style="text-align: center;">
-					<p>${list[0].ACONTENT }</p>
+				<div>
+					<h4>${list[0].ACONTENT }</h4>
 				</div>
 
 				<hr />

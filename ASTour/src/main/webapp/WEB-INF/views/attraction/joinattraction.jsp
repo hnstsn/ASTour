@@ -48,13 +48,14 @@
 
 		<!-- PAGE TITLE -->
 		<header id="page-title">
-		<div class="container"  style="margin-left: 20%; margin-right: 20%">
+		<div class="container" style="margin-left: 20%; margin-right: 20%">
 			<h1>추천장소 & 행사</h1>
 		</div>
 		</header>
 
 		<ul class="nav nav-pills isotope-filter isotope-filter"
-			data-sort-id="isotope-list" data-option-key="filter" style="margin-left: 20%; margin-right: 20%">
+			data-sort-id="isotope-list" data-option-key="filter"
+			style="margin-left: 20%; margin-right: 20%">
 			<li data-option-value="*" class="active"><a href="#">전체</a></li>
 			<li data-option-value=".culture"><a href="#">추천장소</a></li>
 			<li data-option-value=".event"><a href="#">행사</a></li>
@@ -78,16 +79,16 @@
 								<small class="styleColor">${attraction.ASORT }</small>
 								<p>${attraction.ACONTENTS }</p>
 								<div class="text-center">
-									<a href="${path}/initDetails?name=${attraction.ATITLE }">
-										<button type="button" class="btn btn-success">상세보기</button>
-									</a>
+									<form action="${path}/initDetails?name=${attraction.ATITLE }">
+										<input type="hidden" name="name" value="${attraction.ATITLE }">
+										<input type="submit" class="btn btn-success" value="버튼" />
+									</form>
 								</div>
 							</div>
 						</div>
 					</li>
 				</c:forEach>
 				<!-- 수정끝 -->
-
 			</ul>
 		</div>
 		<!-- /.masonry-container -->
