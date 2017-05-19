@@ -66,7 +66,7 @@ $(document).ready(function() {
 <!-- AST(CSW) : 회원가입 창 popup으로 -->
 <script>
 	function signin_popup() {
-		window.open("${path}/member/memberJoin.do", "회원가입", "width=600, height=700, left=200, top=100");
+		window.open("${path}/member/insertJoin.do", "회원가입", "width=600, height=700, left=200, top=100");
 	}
 </script>
 

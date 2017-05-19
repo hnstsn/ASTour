@@ -11,6 +11,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(mid) FROM ASTMember WHERE mid=#{mid}
 	</select>
 	
+	<!-- 회원가입 -->
+	<insert id="joinMember">
+		INSERT INTO astmember (mpk, mid, mpw, mname, mphone) 
+		VALUES (mem_seq.nextval, #{mid}, #{mpw}, #{mname}, #{mphone})
+	</insert>
+	
 </mapper>
 
 

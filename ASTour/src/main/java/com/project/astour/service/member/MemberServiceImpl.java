@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.project.astour.model.dao.member.MemberDAO;
+import com.project.astour.model.dto.member.MemberVO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -18,6 +19,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public boolean idCheck(String mid) {
 		return (mdao.idCheck(mid) == 0) ? true : false;
+	}
+
+	@Override
+	public void joinMember(MemberVO vo) {
+		System.out.println("회원가입 서비스");
+		mdao.joinMember(vo);
 	}
 
 }

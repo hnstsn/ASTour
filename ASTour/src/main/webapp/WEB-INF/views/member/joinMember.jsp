@@ -204,7 +204,10 @@ $(document).ready(function() {
 		}
 		//조건에 충족되니 회원가입ㄱㄱ//
 		if (id_check && pw_check && mname_check && mphone_check) {
-			alert("회원가입 되게 ");
+			document.joinForm.action="${path}/member/memberJoin.do";
+			document.joinForm.submit();
+			alert("ASTour에 회원이 되신 것을 환영합니다.\n로그인 해주세요.");
+			window.close();
 		}
 	});
 	

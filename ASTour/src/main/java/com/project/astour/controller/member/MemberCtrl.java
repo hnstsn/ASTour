@@ -5,10 +5,12 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.astour.model.dto.member.MemberVO;
 import com.project.astour.service.member.MemberService;
 
 @Controller
@@ -45,9 +47,18 @@ public class MemberCtrl {
 	}
 	
 	// 회원가입 창 띄워주기
-	@RequestMapping("memberJoin.do")
-	public String memberJoin() {
+	@RequestMapping("insertJoin.do")
+	public String insertJoin() {
 		return "member/joinMember";
+	}
+	
+	@RequestMapping("memberJoin.do")
+	public void memberJoin(@ModelAttribute MemberVO vo) {
+		logger.info("회원가입 - memberJoin()");
+		System.out.println(vo.getMid());
+		System.out.println(vo.getMname());
+		System.out.println(vo.getMphone());
+		mService.joinMember(vo);
 	}
 
 }
