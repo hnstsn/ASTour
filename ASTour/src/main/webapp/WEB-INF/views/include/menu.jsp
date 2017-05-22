@@ -36,21 +36,6 @@ $(document).ready(function() {
 			else {
 				// 다 입력했으면 ajax로 처리
 				$.ajax({
-					type: "post",
-					url: "${path}/member/loginCheck.do",
-					data: "mid="+mid+"&mpw="+mpw,
-					success: function(result) {
-						// result가  true이면
-						if (result) {
-							alert("로그인 하였습니다.");
-							$(".before_login").hide();
-							$(".after_login").show();
-						} else
-							// false를 리턴 받았을 경우
-							alert("아이디 혹은 비밀번호가 틀렸습니다.");
-					}
-				});
-
 	               type: "post",
 	               url: "${path}/member/loginCheck.do",
 	               data: "mid="+mid+"&mpw="+mpw,
