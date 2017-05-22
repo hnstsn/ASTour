@@ -41,9 +41,7 @@
    $(document).ready(function() {
       $("#loc_change").click(function() {
          var loc = $("#loc_txt").val();
-         alert("검색");
          location.href="${path}/selectAttr?loc="+loc;
-      
       });
    });
    
@@ -103,7 +101,7 @@
                         <div class="text-center">
                            <form action="${path}/initDetails?name=${attraction.ATITLE }">
                               <input type="hidden" name="name" value="${attraction.ATITLE }">
-                              <input type="submit" class="btn btn-success" value="버튼" />
+                              <input type="submit" class="btn btn-success" value="상세보기" />
                            </form>
                         </div>
                      </div>
