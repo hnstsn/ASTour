@@ -12,6 +12,8 @@ public class attraction_tbl {
 	private String ACONTENTS;
 	private String ACONTENT;
 	
+	private double ALATITUDE;
+	private double ALOGITUDE;
 	
 	public int getATTPK() { return ATTPK; }
 	public void setATTPK(int aTTPK) { ATTPK = aTTPK; }
@@ -33,5 +35,18 @@ public class attraction_tbl {
 	public void setACONTENTS(String aCONTENTS) { ACONTENTS = aCONTENTS; }
 	public String getACONTENT() { return ACONTENT; }
 	public void setACONTENT(String aCONTENT) { ACONTENT = aCONTENT; }
+	
+	public double getALATITUDE() {
+		return ALATITUDE;
+	}
+	public void setALATITUDE(double aLATITUDE) {
+		ALATITUDE = aLATITUDE;
+	}
+	public double getALOGITUDE() {
+		return ALOGITUDE;
+	}
+	public void setALOGITUDE(double aLOGITUDE) {
+		ALOGITUDE = aLOGITUDE;
+	}
 	
 }
