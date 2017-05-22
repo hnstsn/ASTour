@@ -34,4 +34,12 @@ public class SnsController {
 		return "snsView/contentview";
 		
 	}
+	
+
+	@RequestMapping("write")
+	public String init(){
+		return "snsView/write";
+	}
+
+
 }
