@@ -37,7 +37,7 @@ $(document).ready(function() {
 			else {
 				$.ajax({
 					type: "post",
-					url: "${path}/member/loginCheck",
+					url: "${path}/member/loginCheck.do",
 					data: "mid="+mid+"&mpw="+mpw,
 					success: function(result) {
 						// result가  true이면
@@ -97,7 +97,7 @@ $(document).ready(function() {
 				<div class="dropdown-menu" role="menu" aria-labelledby="quick_sign_in">
             
 	               <h4>Log In</h4>
-	               <form method="post" name="login_form"v role="form">
+	               <form method="post" name="login_form" role="form">
 	
 	                  <div class="form-group"><!-- email -->
 	                     <input type="email" id="mid" class="form-control" placeholder="ID(email)">
@@ -150,7 +150,7 @@ $(document).ready(function() {
 		<!-- Logo text or image -->
 		<!-- AST(CSW) : Logo를 클릭하면 처음 Main page인 home.jsp로 이동 -->
 		<a class="logo" href="${path}">
-			<img src="resources/assets/images/mainlogo.png" alt="Atropos" />
+			<img src="${path }/resources/assets/images/mainlogo.png" alt="Atropos" />
 		</a>
 
 		<!-- Top Nav -->
@@ -172,7 +172,7 @@ $(document).ready(function() {
 							<b>마이페이지</b> <i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="${path}/snsView">SNS</a></li>
+							<li><a href="${path}/sns/snsView.do">SNS</a></li>
 							<li><a href="#">정보수정</a></li>
 						</ul>
 					</li>

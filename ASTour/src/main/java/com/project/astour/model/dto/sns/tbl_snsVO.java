@@ -2,34 +2,55 @@ package com.project.astour.model.dto.sns;
 
 public class tbl_snsVO {
 	
-	private int rv_id;
-	private String rv_title;
-	private String rv_content;
-	private String rv_img;
+	private int spk;
+	private String stitle;
+	private String scontent;
+	private String sfile;
+	private String sfile2;
+	private String spath;
+	private int mpk;
 	
-	public String getRv_img() {
-		return rv_img;
+	public int getSpk() {
+		return spk;
 	}
-	public void setRv_img(String rv_img) {
-		this.rv_img = rv_img;
+	public void setSpk(int spk) {
+		this.spk = spk;
 	}
-	public int getRv_id() {
-		return rv_id;
+	public String getStitle() {
+		return stitle;
 	}
-	public void setRv_id(int rv_id) {
-		this.rv_id = rv_id;
+	public void setStitle(String stitle) {
+		this.stitle = stitle;
 	}
-	public String getRv_title() {
-		return rv_title;
+	public String getScontent() {
+		return scontent;
 	}
-	public void setRv_title(String rv_title) {
-		this.rv_title = rv_title;
+	public void setScontent(String scontent) {
+		this.scontent = scontent;
 	}
-	public String getRv_content() {
-		return rv_content;
+	public String getSfile() {
+		return sfile;
 	}
-	public void setRv_content(String rv_content) {
-		this.rv_content = rv_content;
+	public void setSfile(String sfile) {
+		this.sfile = sfile;
+	}
+	public String getSfile2() {
+		return sfile2;
+	}
+	public void setSfile2(String sfile2) {
+		this.sfile2 = sfile2;
+	}
+	public String getSpath() {
+		return spath;
+	}
+	public void setSpath(String spath) {
+		this.spath = spath;
+	}
+	public int getMpk() {
+		return mpk;
+	}
+	public void setMpk(int mpk) {
+		this.mpk = mpk;
 	}
 	
 	
