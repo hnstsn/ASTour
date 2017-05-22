@@ -22,6 +22,14 @@ public class SnsController {
 	
 	@Inject
 	TimelineService timelineService;
+	
+	@RequestMapping("initSns.do")
+	public String initSns(Model model) {
+		List<tbl_snsVO> snsList = snsService.snsList();
+		model.addAttribute("list", snsList);
+		model.addAttribute("curPage", "snsView/sns.jsp");
+		return "snsView/sns";
+	}
 
 	
 	@RequestMapping("contentview.do")

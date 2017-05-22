@@ -24,13 +24,6 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	// 추천명소 페이지 이동시 초기화면을 위한 service
-	@Inject
-	AttractionService attrService;
-	// 마이 페이지 - Sns
-	@Inject
-	SnsService snsService;
-	
 	@RequestMapping(value = "/")
 	public String home(Model model) {
 		logger.info("처음 main화면인 home.jsp 이동 Home Controller");
@@ -43,27 +36,22 @@ public class HomeController {
 			@RequestParam(defaultValue="0", value="cpage") int cpage) {
 //		 메인 페이지 전환
 		if (cpage == 0) {
-			//model.addAttribute("curPage", "main.jsp");
 			return "redirect:/";
 //		 지역선택 페이지 전환
 		} else if (cpage == 10) {
-			model.addAttribute("curPage", "map/locationSelectV.jsp");
+			return "redirect:/locationSelect";
 //		추천명소 페이지 전환 
 		} else if (cpage == 20) {
-			List<attraction_tbl> attrList = attrService.attractionList();
-			model.addAttribute("list", attrList);
-			model.addAttribute("curPage", "attraction/joinattraction.jsp");
+			return "redirect:/initAttr";
 //		마이페이지 - SNS 페이지 전환
 		} else if (cpage == 30) {
-			List<tbl_snsVO> snsList = snsService.snsList();
-			model.addAttribute("list", snsList);
-			model.addAttribute("curPage", "snsView/sns.jsp");
+			return "redirect:/sns/initSns.do";
 //		마이페이지 - 정보수정 페이지 전환
 		} else if (cpage == 40) {
-			model.addAttribute("curPage", "map/locationSelectV.jsp");
+			return "redirect:/";
 //		고객선터 페이지 전환
 		} else if (cpage == 50) {
-			model.addAttribute("curPage", "faq/faqV.jsp");
+			return "redirect:/faq";
 		}
 		return "home";
 	}
