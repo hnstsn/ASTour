@@ -34,6 +34,21 @@ $(document).ready(function() {
 			else {
 				// 다 입력했으면 ajax로 처리
 				$.ajax({
+					type: "post",
+					url: "${path}/member/loginCheck.do",
+					data: "mid="+mid+"&mpw="+mpw,
+					success: function(result) {
+						// result가  true이면
+						if (result) {
+							alert("로그인 하였습니다.");
+							$(".before_login").hide();
+							$(".after_login").show();
+						} else
+							// false를 리턴 받았을 경우
+							alert("아이디 혹은 비밀번호가 틀렸습니다.");
+					}
+				});
+
 	               type: "post",
 	               url: "${path}/member/loginCheck.do",
 	               data: "mid="+mid+"&mpw="+mpw,
@@ -73,51 +88,78 @@ $(document).ready(function() {
 	 	<c:choose>
 	 		<c:when test="${sessionScope.member == null}">
 	 		<!-- 로그인 상태일 때 -->
-	 			<div class="before_login">
-					<!-- SIGN IN -->
-			 		<div class="pull-right nav signin-dd">
-						<a id="quick_sign_in" onClick="signin_popup()" data-toggle="dropdown">
-							<i class="fa fa-child"></i>
-								<span class="hidden-xs"> Sign In</span>
-						</a>
-					</div>
-					<!-- /SIGN IN -->
-				
-					<!-- LOG IN -->
-					<div class="pull-right nav signin-dd">
-						<a id="quick_sign_in" class="log_in" data-toggle="dropdown">
-							<i class="fa fa-smile-o"></i><span class="hidden-xs"> Log In</span>
-						</a>
-						
-						<div class="dropdown-menu" role="menu" aria-labelledby="quick_sign_in">
-		            
-			               <h4>Log In</h4>
-			               <form method="post" name="login_form" role="form">
-			
-			                  <div class="form-group"><!-- email -->
-			                     <input type="email" id="mid" name="mid" class="form-control" placeholder="ID(email)">
-			                  </div>
-			
-			                  <div class="input-group">
-			
-			                     <!-- password -->
-			                     <input type="password" id="mpw" name="mpw" class="form-control" placeholder="Password">
-			                     
-			                     <!-- submit button -->
-			                     <span class="input-group-btn">
-			                     	<input type="button" class="btn btn-success" id="loginBtn" value="Log In" />
-			                     </span>
-			                     <br />
-			                     
-			                  </div>
-			
-			               </form>
-			
-			            </div>
-						
-					</div>
-					<!-- /LOG IN -->
+ 			<div class="before_login">
+ 			
+				<!-- SIGN IN -->
+		 		<div class="pull-right nav signin-dd">
+					<a id="quick_sign_in" onClick="signin_popup()" data-toggle="dropdown">
+						<i class="fa fa-child"></i>
+							<span class="hidden-xs"> Sign In</span>
+					</a>
 				</div>
+				<!-- /SIGN IN -->
+				
+				<div class="dropdown-menu" role="menu" aria-labelledby="quick_sign_in">
+            
+	               <h4>Log In</h4>
+	               <form method="post" name="login_form" role="form">
+	
+	                  <div class="form-group"><!-- email -->
+	                     <input type="email" id="mid" class="form-control" placeholder="ID(email)">
+	                  </div>
+	
+	                  <div class="input-group">
+	
+	                     <!-- password -->
+	                     <input type="password" id="mpw" class="form-control" placeholder="Password">
+	                     
+	                     <!-- submit button -->
+	                     <span class="input-group-btn">
+	                     	<input type="button" class="btn btn-success" id="loginBtn" value="Log In" />
+	                     </span>
+	                     <br />
+	                     
+	                  </div>
+	
+	               </form>
+	
+	            </div>
+				
+				<!-- /LOG IN -->
+				<!-- LOG IN -->
+				<div class="pull-right nav signin-dd">
+					<a id="quick_sign_in" class="log_in" data-toggle="dropdown">
+						<i class="fa fa-smile-o"></i><span class="hidden-xs"> Log In</span>
+					</a>
+					
+					<div class="dropdown-menu" role="menu" aria-labelledby="quick_sign_in">
+	            
+		               <h4>Log In</h4>
+		               <form method="post" name="login_form" role="form">
+		
+		                  <div class="form-group"><!-- email -->
+		                     <input type="email" id="mid" name="mid" class="form-control" placeholder="ID(email)">
+		                  </div>
+		
+		                  <div class="input-group">
+		
+		                     <!-- password -->
+		                     <input type="password" id="mpw" name="mpw" class="form-control" placeholder="Password">
+		                     
+		                     <!-- submit button -->
+		                     <span class="input-group-btn">
+		                     	<input type="button" class="btn btn-success" id="loginBtn" value="Log In" />
+		                     </span>
+		                     <br />
+		                     
+		                  </div>
+		
+		               </form>
+		            </div>
+					
+				</div>
+				<!-- /LOG IN -->
+			</div>
 	 		</c:when>
 	 		<c:otherwise>
 	 		<!-- 로그아웃 상태일 때 -->
@@ -136,6 +178,7 @@ $(document).ready(function() {
 					</div>
 				</div>
 	 		</c:otherwise>
+	 		
 	 	</c:choose>
 		
 	</div>
@@ -153,8 +196,13 @@ $(document).ready(function() {
 
 		<!-- Logo text or image -->
 		<!-- AST(CSW) : Logo를 클릭하면 처음 Main page인 home.jsp로 이동 -->
+<<<<<<< HEAD
 		<a class="logo" href="${path}/chgPage.do?cpage=0">
 			<img src="resources/assets/images/mainlogo.png" alt="Atropos" />
+=======
+		<a class="logo" href="${path}">
+			<img src="${path }/resources/assets/images/mainlogo.png" alt="Atropos" />
+>>>>>>> branch 'master' of https://github.com/hnstsn/ASTour.git
 		</a>
 
 		<!-- Top Nav -->
@@ -176,8 +224,13 @@ $(document).ready(function() {
 							<b>마이페이지</b> <i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
+<<<<<<< HEAD
 							<li><a href="${path}/chgPage.do?cpage=30">SNS</a></li>
 							<li><a href="${path}/chgPage.do?cpage=40">정보수정</a></li>
+=======
+							<li><a href="${path}/sns/snsView.do">SNS</a></li>
+							<li><a href="#">정보수정</a></li>
+>>>>>>> branch 'master' of https://github.com/hnstsn/ASTour.git
 						</ul>
 					</li>
 					

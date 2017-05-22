@@ -38,7 +38,7 @@
 
 						<!-- article title -->
 						<header class="blog-post">
-							<h1>${list[0].rv_title }</h1>
+							<h1>${list[0].stitle }</h1>
 							<small class="fsize13"> <a href="blog.html"
 								class="label label-default light"><i
 									class="fa fa-dot-circle-o"></i> Business</a> <a href="#comments"
@@ -53,7 +53,7 @@
 							data-plugin-options='{"items": 1, "singleItem": true, "navigation": true, "pagination": true, "autoPlay": true, "transitionStyle":"fadeUp"}'>
 							<!-- transitionStyle: fade, backSlide, goDown, fadeUp,  -->
 							<div class="item">
-								<img src="resources/assets/images/rvimg/${list[0].rv_img }"
+								<img src="${path }/${list[0].spath}${list[0].sfile}"
 									class="img-responsive" alt="img" />
 							</div>
 							<div class="item">
@@ -65,7 +65,7 @@
 
 						<!-- article content -->
 						<article>
-							<p class="dropcap">${list[0].rv_content }</p>
+							<p class="dropcap">${list[0].scontent }</p>
 						</article>
 						<hr />
 
