@@ -16,40 +16,41 @@ import com.project.astour.service.details.DetailsSeration;
 @Controller
 public class AttractionController {
 
-	@Inject
-	AttractionService attractionService;
-	
-	@Inject
-	DetailsSeration detailsSeration;
+   @Inject
+   AttractionService attractionService;
+   
+   @Inject
+   DetailsSeration detailsSeration;
 
-	@RequestMapping("selectAttr")
-	public String selectAttr(@RequestParam(value="loc") String loc,
-			Model model){
-		System.out.println(loc);
-		List<attraction_tbl> attractionList = attractionService.attractionAtitle(loc);
-		model.addAttribute("list", attractionList);
-		return "attraction/joinattraction";
-	}
+   @RequestMapping("selectAttr")
+   public String selectAttr(@RequestParam(value="loc") String loc,
+         Model model){
+      System.out.println(loc);
+      List<attraction_tbl> attractionList = attractionService.attractionAtitle(loc);
+      model.addAttribute("list", attractionList);
+      model.addAttribute("curPage", "attraction/joinattraction.jsp");
+      return "home";
+   }
 
-	@RequestMapping("selectAsort")
-	public String selectAsort(@RequestParam(value="loc") String loc,
-			Model model){
-		System.out.println(loc);
-		List<attraction_tbl> attractionList = attractionService.attractionAsort(loc);
-		model.addAttribute("list", attractionList);
-		return "attraction/joinattraction";
-	}
+   @RequestMapping("selectAsort")
+   public String selectAsort(@RequestParam(value="loc") String loc,
+         Model model){
+      System.out.println(loc);
+      List<attraction_tbl> attractionList = attractionService.attractionAsort(loc);
+      model.addAttribute("list", attractionList);
+      return "attraction/joinattraction";
+   }
 
-	//상세보기
-	@RequestMapping("initDetails")
-	public String init(Model model,
-			@RequestParam(value="name") String ATITLE) {
+   //상세보기
+   @RequestMapping("initDetails")
+   public String init(Model model,
+         @RequestParam(value="name") String ATITLE) {
 
-		List<attraction_tbl> detailsList = detailsSeration.detailsList(ATITLE);
-		model.addAttribute("list", detailsList);
-		System.out.println(detailsList.get(0));
-		return "attraction/detailsView";
+      List<attraction_tbl> detailsList = detailsSeration.detailsList(ATITLE);
+      model.addAttribute("list", detailsList);
+      System.out.println(detailsList.get(0));
+      return "attraction/detailsView";
 
-	}
+   }
 
 }
