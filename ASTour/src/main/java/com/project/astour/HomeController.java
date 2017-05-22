@@ -32,28 +32,24 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/chgPage.do")
-	public String chgPage(Model model,
-			@RequestParam(defaultValue="0", value="cpage") int cpage) {
-//		 메인 페이지 전환
-		if (cpage == 0) {
-			return "redirect:/";
+	public String chgPage(Model model, @RequestParam int cpage) {
 //		 지역선택 페이지 전환
-		} else if (cpage == 10) {
+		if (cpage == 10)
 			return "redirect:/locationSelect";
 //		추천명소 페이지 전환 
-		} else if (cpage == 20) {
+		else if (cpage == 20)
 			return "redirect:/initAttr";
 //		마이페이지 - SNS 페이지 전환
-		} else if (cpage == 30) {
+		else if (cpage == 30)
 			return "redirect:/sns/initSns.do";
 //		마이페이지 - 정보수정 페이지 전환
-		} else if (cpage == 40) {
+		else if (cpage == 40)
 			return "redirect:/";
 //		고객선터 페이지 전환
-		} else if (cpage == 50) {
+		else if (cpage == 50)
 			return "redirect:/faq";
-		}
-		return "home";
+//		기본 main로
+		return "redirect:/";
 	}
 	
 }
