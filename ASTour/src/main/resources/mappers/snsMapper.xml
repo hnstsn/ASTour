@@ -7,12 +7,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="sns">
 
 	<select id="snsList" resultType="com.project.astour.model.dto.sns.tbl_snsVO">
-		SELECT *FROM snstable
+		SELECT *FROM sns_tbl
 	</select>
    
-   <select id="timelineview"
+   <select id="contentview"
 		resultType="com.project.astour.model.dto.sns.tbl_snsVO">
-		SELECT *FROM snstable WHERE rv_title=#{rv_title }
+		SELECT *FROM sns_tbl WHERE spk =#{spk }
 	</select>
 	
 </mapper>

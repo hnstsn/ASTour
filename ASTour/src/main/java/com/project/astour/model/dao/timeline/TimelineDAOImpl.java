@@ -16,8 +16,8 @@ public class TimelineDAOImpl implements TimelineDAO{
 	SqlSession sqlSession;
 
 	@Override
-	public List<tbl_snsVO> timelineList(String rv_title) {
-		return sqlSession.selectList("sns.timelineview",rv_title);
+	public List<tbl_snsVO> contentView(int spk) {
+		return sqlSession.selectList("sns.contentview",spk);
 
 	}
 

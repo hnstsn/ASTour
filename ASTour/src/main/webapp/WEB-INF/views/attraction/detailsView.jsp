@@ -87,7 +87,6 @@
 
 							<h2 class="product-title">${list[0].ATITLE }</h2>
 
-
 							<!-- product description -->
 							<div class="desc">
 								<h3>주소 : ${list[0].AADDRESS }</h3>

@@ -16,8 +16,8 @@ public class TimelineServiceImpl implements TimelineService{
 	TimelineDAO timelineDao;
 	
 	@Override
-	public List<tbl_snsVO> timelineList(String rv_title) {
-		return timelineDao.timelineList(rv_title);
+	public List<tbl_snsVO> contentView(int spk) {
+		return timelineDao.contentView(spk);
 	}
 	
 	

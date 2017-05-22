@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, java.text.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,8 +79,8 @@
 							<div class="container">
 							
 							<!--  AST : 프로필 사진 클릭시 확대 -->
-							<a href="resources/assets/images/prof.png" target=_blank>
-								<img src="resources/assets/images/prof.png" class="img-circle"
+							<a href="${path }/resources/assets/images/prof.png" target=_blank>
+								<img src="${path }/resources/assets/images/prof.png" class="img-circle"
 									alt="Cinque Terre" width="200" height="160">		
 							</a>
 							<!--  / AST : 프로필 사진 클릭시 확대 -->
@@ -104,24 +105,6 @@
 						</div>
 						<!-- / AST : 골라보기 목록  -->
 
-						<!-- AST : 최근 게시물  -->
-						<div class="widget">
-							<h4>최근 올린 게시물</h4>
-							<ul>
-								<li><a href="blog-post.html"><i class="fa fa-sign-out"></i>
-										This is a Gallery Post</a> <small>23 June 2013 / 12:43</small></li>
-								<li><a href="blog-post.html"><i class="fa fa-sign-out"></i>
-										Blog Post With Text Only</a> <small>23 June 2013 / 12:43</small></li>
-								<li><a href="blog-post.html"><i class="fa fa-sign-out"></i>
-										This is an Audio Post</a> <small>23 June 2013 / 12:43</small></li>
-								<li><a href="blog-post.html"><i class="fa fa-sign-out"></i>
-										This is a Video Post</a> <small>23 June 2013 / 12:43</small></li>
-								<li><a href="blog-post.html"><i class="fa fa-sign-out"></i>
-										An awsome post</a> <small>23 June 2013 / 12:43</small></li>
-							</ul>
-						</div>
-						<!-- / AST : 최근 게시물  -->
-
 					</div>
 					<!-- / AST : 프로필 또는 그 외 전체 틀   -->
 					
@@ -129,13 +112,13 @@
 					<div class="col-md-9">
 					
 						<!-- AST : 타임라인 게시물  -->
-						<c:forEach var="mem" items="${list }">
+						<c:forEach var="sns" items="${list }">
 							<div class="item">
 							
 								<!-- AST : 타임라인 타이틀  -->
 								<div class="item-title">
 									<h2>
-										<a href="${path }/contentview?rv_title=${mem.rv_title }">${mem.rv_title }</a>
+										<a href="${path}/sns/contentview.do?spk=${sns.spk}">${sns.stitle }</a>
 									</h2>
 									<a href="blog.html" class="label label-default light"><i
 										class="fa fa-dot-circle-o"></i> Business</a> <a
@@ -148,24 +131,20 @@
 
 								<!-- AST : 타임라인 이미지  -->
 								<figure>
-									<img src="resources/assets/images/rvimg/${mem.rv_img }" class="img-responsive"
+									<img src="${path }/${sns.spath}${sns.sfile}" class="img-responsive"
 										alt="img" />
 								</figure>
 								<!-- / AST : 타임라인 이미지  -->
 
 								<!-- AST : 타임라인 내용  -->
-								<p>${mem.rv_content }</p>
+								<p>${sns.scontent }</p>
 								<!-- / AST : 타임라인 내용  -->
-
-								<!-- AST : 게시글 더보기 -->
-								<a href="${path }/contentview?rv_title=${mem.rv_title }" class="btn btn-xs"><i
-									class="fa fa-sign-out"></i> READ MORE</a>
-								<!-- / AST : 게시글 더보기 -->
 							</div>
 						</c:forEach>
 						<!-- / AST : 타임라인 게시물  -->
-
+						<form action="${path }/write">
 						<input type=submit value="글쓰기">
+						</form>
 						<!-- AST : 페이지 넘기기 -->
 						<div class="text-center">
 							<ul class="pagination">

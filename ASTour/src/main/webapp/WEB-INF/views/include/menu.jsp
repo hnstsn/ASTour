@@ -36,6 +36,21 @@ $(document).ready(function() {
 			else {
 				// 다 입력했으면 ajax로 처리
 				$.ajax({
+					type: "post",
+					url: "${path}/member/loginCheck.do",
+					data: "mid="+mid+"&mpw="+mpw,
+					success: function(result) {
+						// result가  true이면
+						if (result) {
+							alert("로그인 하였습니다.");
+							$(".before_login").hide();
+							$(".after_login").show();
+						} else
+							// false를 리턴 받았을 경우
+							alert("아이디 혹은 비밀번호가 틀렸습니다.");
+					}
+				});
+
 	               type: "post",
 	               url: "${path}/member/loginCheck.do",
 	               data: "mid="+mid+"&mpw="+mpw,
@@ -74,7 +89,6 @@ $(document).ready(function() {
 	 	-->
 	 	<c:choose>
 	 		<c:when test="${sessionScope.member == null}">
-	 		<!-- 로그아웃 상태일 때 -->
 				<!-- SIGN IN -->
 		 		<div class="pull-right nav signin-dd">
 					<a id="quick_sign_in" onClick="signin_popup()" data-toggle="dropdown">
@@ -136,6 +150,7 @@ $(document).ready(function() {
 					</div>
 				</div>
 	 		</c:otherwise>
+	 		
 	 	</c:choose>
 		
 	</div>
@@ -154,7 +169,7 @@ $(document).ready(function() {
 		<!-- Logo text or image -->
 		<!-- AST(CSW) : Logo를 클릭하면 처음 Main page인 home.jsp로 이동 -->
 		<a class="logo" href="${path}">
-			<img src="resources/assets/images/mainlogo.png" alt="Atropos" />
+			<img src="${path }/resources/assets/images/mainlogo.png" alt="Atropos" />
 		</a>
 
 		<!-- Top Nav -->
