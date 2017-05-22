@@ -26,31 +26,8 @@
 	content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 
 </head>
-	<!-- STYLESWITCHER - REMOVE ON PRODUCTION/DEVELOPMENT -->
-<!-- <div id="switcher">
-		<div class="content-switcher">
-			<h4>STYLE OPTIONS</h4>
-
-			<p>10 Predefined Color Schemes</p>
-
-			<p>CHOOSE YOUR COLOR SKIN</p>
-			<label><input class="dark_switch" type="radio"
-				name="color_skin" id="is_light" value="light" checked="checked" />
-				Light</label> <label><input class="dark_switch" type="radio"
-				name="color_skin" id="is_dark" value="dark" /> Dark</label>
-			<hr />
-
-			<p>CHOOSE YOUR LAYOUT STYLE</p>
-			<label><input class="boxed_switch" type="radio"
-				name="layout_style" id="is_wide" value="wide" checked="checked" />
-				Wide</label> <label><input class="boxed_switch" type="radio"
-				name="layout_style" id="is_boxed" value="boxed" /> Boxed</label>
-			<p>Patterns for Boxed Version</p>
-
-		</div>
-	</div>
- -->
- <jsp:include page="../include/menu.jsp" />
+	
+<%--  <jsp:include page="../include/menu.jsp" /> --%>
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<div id="shop">
@@ -114,14 +91,7 @@
 				<div>
 					<h4>${list[0].ACONTENT }</h4>
 				</div>
-				
-				
-				
-
 				<hr />
-
-
-
 			</section>
 		</div>
 	</div>

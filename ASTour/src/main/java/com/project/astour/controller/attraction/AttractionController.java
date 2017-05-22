@@ -22,6 +22,7 @@ public class AttractionController {
    @Inject
    DetailsSeration detailsSeration;
 
+   //검색
    @RequestMapping("selectAttr")
    public String selectAttr(@RequestParam(value="loc") String loc,
          Model model){
@@ -32,25 +33,25 @@ public class AttractionController {
       return "home";
    }
 
+   //명소,행사검색
    @RequestMapping("selectAsort")
    public String selectAsort(@RequestParam(value="loc") String loc,
          Model model){
       System.out.println(loc);
       List<attraction_tbl> attractionList = attractionService.attractionAsort(loc);
       model.addAttribute("list", attractionList);
-      return "attraction/joinattraction";
+      model.addAttribute("curPage", "attraction/joinattraction.jsp");
+      return "home";
    }
 
    //상세보기
    @RequestMapping("initDetails")
    public String init(Model model,
          @RequestParam(value="name") String ATITLE) {
-
       List<attraction_tbl> detailsList = detailsSeration.detailsList(ATITLE);
       model.addAttribute("list", detailsList);
-      System.out.println(detailsList.get(0));
-      return "attraction/detailsView";
-
+      model.addAttribute("curPage","attraction/detailsView.jsp");
+      return "home";
    }
 
 }

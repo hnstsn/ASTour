@@ -18,7 +18,6 @@
 
 <head>
 <meta charset="utf-8" />
-<title>Atropos - Responsive Multipurpose</title>
 <meta name="keywords" content="HTML5,CSS3,Template" />
 <meta name="description" content="" />
 <meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
@@ -65,8 +64,6 @@
 
 </head>
 <body>
-	<!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
-	<%@ include file="../include/menu.jsp"%>
 
 	<!-- WRAPPER -->
 	<div id="wrapper">
@@ -158,20 +155,6 @@
 	</div>
 	<!-- /WRAPPER -->
 
-
-
-	<!-- FOOTER -->
-	<footer> <!-- copyright , scrollTo Top -->
-	<div class="footer-bar">
-		<div class="container">
-			<span class="copyright">Copyright &copy; Your Company, LLC .
-				All Rights Reserved.</span> <a class="toTop" href="#topNav">BACK TO TOP
-				<i class="fa fa-arrow-circle-up"></i>
-			</a>
-		</div>
-	</div>
-	<!-- copyright , scrollTo Top --> </footer>
-	<!-- /FOOTER -->
 </body>
 </html>
 
