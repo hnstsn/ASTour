@@ -13,6 +13,13 @@ public class MemberDAOImpl implements MemberDAO {
 	@Inject
 	private SqlSession sqlSession;
 
+	// 로그인 체크
+	@Override
+	public MemberVO loginCheck(MemberVO vo) {
+		return sqlSession.selectOne("member.loginCheck", vo);
+	}
+	
+
 	// 아이디 중복 체크 함수
 	@Override
 	public int idCheck(String mid) {
@@ -22,12 +29,7 @@ public class MemberDAOImpl implements MemberDAO {
 	// 회원가입
 	@Override
 	public void joinMember(MemberVO vo) {
-		System.out.println("회원가입 dao");
-		System.out.println(vo.getMid());
-		System.out.println(vo.getMname());
-		System.out.println(vo.getMphone());
 		sqlSession.insert("member.joinMember", vo);
 	}
-
 
 }

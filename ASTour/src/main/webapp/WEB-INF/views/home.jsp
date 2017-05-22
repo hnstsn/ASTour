@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,7 +17,7 @@
 	<%@ include file="include/bootstap_collect.jsp" %>
 
 </head>
-<body><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
+<body><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="${path}/resources/images/boxed_background/1.jpg"  -->
 
 	<!-- AST : menu부분을 위한 jsp page -->
 	<%@ include file="include/menu.jsp" %>
@@ -35,7 +34,7 @@
 				<li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
 	
 					<!-- COVER IMAGE -->
-					<img src="resources/assets/images/demo/revolution_slider/mainimg1.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+					<img src="${path}/resources/assets/images/demo/revolution_slider/mainimg1.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
 	
 					<!-- LAYER NR. 1 -->
 					<div class="tp-caption lightgrey_divider skewfromrightshort customout"
@@ -62,7 +61,7 @@
 						data-easing="Power4.easeOut"
 						data-endspeed="500"
 						data-endeasing="Power4.easeIn"
-						style="z-index: 3"><img src="resources/assets/images/demo/revolution_slider/mainimg1.1.png" alt="">
+						style="z-index: 3"><img src="${path}/resources/assets/images/demo/revolution_slider/mainimg1.1.png" alt="">
 					</div>
 	
 					<!-- LAYER NR. 2 -->
@@ -76,7 +75,7 @@
 						data-easing="Elastic.easeInOut"
 						data-endspeed="500"
 						data-endeasing="Power1.easeIn"
-						style="z-index: 3"><img src="resources/assets/images/demo/revolution_slider/slider_run.png" alt="">
+						style="z-index: 3"><img src="${path}/resources/assets/images/demo/revolution_slider/slider_run.png" alt="">
 					</div>
 	
 					<!-- LAYER NR. 3 -->
@@ -187,7 +186,7 @@
 				<li data-transition="3dcurtain-vertical" data-slotamount="14"  data-masterspeed="300" data-delay="10000">
 	
 					<!-- COVER IMAGE -->
-					<img src="resources/assets/images/demo/revolution_slider/slider7.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" />
+					<img src="${path}/resources/assets/images/demo/revolution_slider/slider7.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" />
 	
 					<div class="tp-caption lft boxshadow" 
 						data-x="70" 
@@ -260,7 +259,7 @@
 				<li data-transition="incube-horizontal" data-slotamount="5" data-masterspeed="700" >
 	
 					<!-- COVER IMAGE -->
-					<img src="resources/assets/images/demo/revolution_slider/church_parallax.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+					<img src="${path}/resources/assets/images/demo/revolution_slider/church_parallax.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
 	
 					<div class="tp-caption large_text sft"
 						data-x="center"
@@ -298,7 +297,7 @@
 				<!-- SLIDE  -->
 				<li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-delay="13000" >
 					<!-- MAIN IMAGE -->
-					<img src="resources/assets/images/demo/revolution_slider/text_slider.jpg"  alt="newslide2014_1"  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+					<img src="${path}/resources/assets/images/demo/revolution_slider/text_slider.jpg"  alt="newslide2014_1"  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
 					<!-- LAYERS -->
 			
 					<!-- LAYER NR. 1 -->
@@ -447,7 +446,7 @@
 				<li data-transition="boxslide" data-slotamount="5" data-link="https://wrapbootstrap.com/theme/atropos-responsive-website-template-WB05SR527" data-target="_blank" data-slideindex="back">
 	
 					<!-- COVER IMAGE -->
-					<img src="resources/assets/images/demo/revolution_slider/5378467111_e8b9e98f8f_o.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" />
+					<img src="${path}/resources/assets/images/demo/revolution_slider/5378467111_e8b9e98f8f_o.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" />
 	
 					<div class="tp-caption very_large_text lfl stl"
 						data-x="right" data-hoffset="-30"
@@ -476,7 +475,7 @@
 						data-speed="600"
 						data-start="1100"
 						data-easing="easeOutExpo">
-						<img src="resources/assets/images/demo/portfolio/slider/1.jpg" width="140" height="140" alt="Image 2">
+						<img src="${path}/resources/assets/images/demo/portfolio/slider/1.jpg" width="140" height="140" alt="Image 2">
 					</div>
 	
 					<div class="tp-caption randomrotate"
@@ -485,7 +484,7 @@
 						data-speed="600"
 						data-start="1200"
 						data-easing="easeOutExpo">
-						<img src="resources/assets/images/demo/portfolio/slider/2.jpg" width="140" height="140" alt="Image 3">
+						<img src="${path}/resources/assets/images/demo/portfolio/slider/2.jpg" width="140" height="140" alt="Image 3">
 					</div>
 	
 					<div class="tp-caption randomrotate"
@@ -494,7 +493,7 @@
 						data-speed="600"
 						data-start="1300"
 						data-easing="easeOutExpo">
-						<img src="resources/assets/images/demo/portfolio/slider/3.jpg" width="140" height="140" alt="Image 4">
+						<img src="${path}/resources/assets/images/demo/portfolio/slider/3.jpg" width="140" height="140" alt="Image 4">
 					</div>
 	
 					<div class="tp-caption randomrotate"
@@ -503,7 +502,7 @@
 						data-speed="300"
 						data-start="1400"
 						data-easing="easeOutExpo">
-						<img src="resources/assets/images/demo/portfolio/slider/4.jpg" width="140" height="140" alt="Image 5">
+						<img src="${path}/resources/assets/images/demo/portfolio/slider/4.jpg" width="140" height="140" alt="Image 5">
 					</div>
 	
 					<div class="tp-caption randomrotate"
@@ -512,7 +511,7 @@
 						data-speed="600"
 						data-start="1500"
 						data-easing="easeOutExpo">
-						<img src="resources/assets/images/demo/portfolio/slider/5.jpg" width="140" height="140" alt="Image 6">
+						<img src="${path}/resources/assets/images/demo/portfolio/slider/5.jpg" width="140" height="140" alt="Image 6">
 					</div>
 	
 					<div class="tp-caption randomrotate"
@@ -521,7 +520,7 @@
 						data-speed="300"
 						data-start="1600"
 						data-easing="easeOutExpo">
-						<img src="resources/assets/images/demo/portfolio/slider/6.jpg" width="140" height="140" alt="Image 7">
+						<img src="${path}/resources/assets/images/demo/portfolio/slider/6.jpg" width="140" height="140" alt="Image 7">
 					</div>
 	
 					<div class="tp-caption randomrotate"
@@ -530,7 +529,7 @@
 						data-speed="300"
 						data-start="1700"
 						data-easing="easeOutExpo">
-						<img src="resources/assets/images/demo/portfolio/slider/7.jpg" width="140" height="140" alt="Image 8">
+						<img src="${path}/resources/assets/images/demo/portfolio/slider/7.jpg" width="140" height="140" alt="Image 8">
 					</div>
 	
 					<div class="tp-caption randomrotate"
@@ -539,7 +538,7 @@
 						data-speed="300"
 						data-start="1800"
 						data-easing="easeOutExpo">
-						<img src="resources/assets/images/demo/portfolio/slider/8.jpg" width="140" height="140" alt="Image 9">
+						<img src="${path}/resources/assets/images/demo/portfolio/slider/8.jpg" width="140" height="140" alt="Image 9">
 					</div>
 	
 					<div class="tp-caption randomrotate"
@@ -548,7 +547,7 @@
 						data-speed="300"
 						data-start="1900"
 						data-easing="easeOutExpo">
-						<img src="resources/assets/images/demo/portfolio/slider/5.jpg" width="140" height="140" alt="Image 10">
+						<img src="${path}/resources/assets/images/demo/portfolio/slider/5.jpg" width="140" height="140" alt="Image 10">
 					</div>
 	
 					<div class="tp-caption randomrotate"
@@ -557,7 +556,7 @@
 						data-speed="300"
 						data-start="2000"
 						data-easing="easeOutExpo">
-						<img src="resources/assets/images/demo/portfolio/slider/4.jpg" width="140" height="140" alt="Image 11">
+						<img src="${path}/resources/assets/images/demo/portfolio/slider/4.jpg" width="140" height="140" alt="Image 11">
 					</div>
 	
 					<div class="tp-caption randomrotate"
@@ -566,7 +565,7 @@
 						data-speed="300"
 						data-start="2100"
 						data-easing="easeOutExpo">
-						<img src="resources/assets/images/demo/portfolio/slider/3.jpg" width="140" height="140" alt="Image 12">
+						<img src="${path}/resources/assets/images/demo/portfolio/slider/3.jpg" width="140" height="140" alt="Image 12">
 					</div>
 	
 					<div class="tp-caption randomrotate"
@@ -575,7 +574,7 @@
 						data-speed="300"
 						data-start="2200"
 						data-easing="easeOutExpo">
-						<img src="resources/assets/images/demo/portfolio/slider/2.jpg" width="140" height="140" alt="Image 13">
+						<img src="${path}/resources/assets/images/demo/portfolio/slider/2.jpg" width="140" height="140" alt="Image 13">
 					</div>
 				</li>
 	
@@ -583,7 +582,7 @@
 				<li data-transition="3dcurtain-vertical" ddata-slotamount="15" data-masterspeed="300" data-delay="9400">
 	
 					<!-- COVER IMAGE -->
-					<img src="resources/assets/images/demo/revolution_slider/sliderbg.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+					<img src="${path}/resources/assets/images/demo/revolution_slider/sliderbg.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
 	
 					<div class="tp-caption large_bold_grey lfl stl"
 						data-x="18"
@@ -608,7 +607,7 @@
 						data-speed="600"
 						data-start="1100"
 						data-easing="easeOutExpo" data-end="3100" data-endspeed="600" data-endeasing="easeInSine">
-						<a href="shop-product-full-width.html"><img src="resources/assets/images/demo/shop/slider/1.jpg" alt="Image 1"></a>
+						<a href="shop-product-full-width.html"><img src="${path}/resources/assets/images/demo/shop/slider/1.jpg" alt="Image 1"></a>
 					</div>
 	
 					<div class="tp-caption medium_bg_darkblue sft stb"
@@ -633,7 +632,7 @@
 						data-speed="600"
 						data-start="3600"
 						data-easing="easeOutExpo" data-end="5600" data-endspeed="600" data-endeasing="easeInSine">
-						<a href="shop-product-full-width.html"><img src="resources/assets/images/demo/shop/slider/5.jpg" alt="Image 2"></a>
+						<a href="shop-product-full-width.html"><img src="${path}/resources/assets/images/demo/shop/slider/5.jpg" alt="Image 2"></a>
 					</div>
 	
 					<div class="tp-caption medium_bg_darkblue sft stb"
@@ -658,7 +657,7 @@
 						data-speed="600"
 						data-start="6100"
 						data-easing="easeOutExpo" data-end="8100" data-endspeed="300" data-endeasing="easeInSine">
-						<a href="shop-product-full-width.html"><img src="resources/assets/images/demo/shop/slider/9.jpg" alt="Image 3"></a>
+						<a href="shop-product-full-width.html"><img src="${path}/resources/assets/images/demo/shop/slider/9.jpg" alt="Image 3"></a>
 					</div>
 	
 					<div class="tp-caption medium_bg_darkblue sft stb"
@@ -683,7 +682,7 @@
 				<li data-transition="curtain-2" data-slotamount="5" data-masterspeed="700">
 	
 					<!-- COVER IMAGE -->
-					<img src="resources/assets/images/demo/revolution_slider/slider7.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+					<img src="${path}/resources/assets/images/demo/revolution_slider/slider7.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
 	
 					<div class="tp-caption large_text sft"
 						data-x="center"
@@ -709,7 +708,7 @@
 						data-start="1700" 
 						data-easing="easeOutBack">
 						<a class="fsize20" href="shop-product-full-width.html">
-							<img class="block hover-scale" src="resources/assets/images/demo/shop/7.jpg" width="200" height="200" alt="" />
+							<img class="block hover-scale" src="${path}/resources/assets/images/demo/shop/7.jpg" width="200" height="200" alt="" />
 							<strong>$ 32.00</strong>
 						</a>
 					</div>
@@ -721,7 +720,7 @@
 						data-start="2000" 
 						data-easing="easeOutBack">
 						<a class="fsize20" href="shop-product-full-width.html">
-							<img class="block hover-scale" src="resources/assets/images/demo/shop/5.jpg" width="200" height="200" alt="" />
+							<img class="block hover-scale" src="${path}/resources/assets/images/demo/shop/5.jpg" width="200" height="200" alt="" />
 							<strong>$ 45.87</strong>
 						</a>
 					</div>
@@ -733,7 +732,7 @@
 						data-start="2300" 
 						data-easing="easeOutBack">
 						<a class="fsize20" href="shop-product-full-width.html">
-							<img class="block hover-scale" src="resources/assets/images/demo/shop/1.jpg" width="200" height="200" alt="" />
+							<img class="block hover-scale" src="${path}/resources/assets/images/demo/shop/1.jpg" width="200" height="200" alt="" />
 							<strong>$ 64.00</strong>
 						</a>
 					</div>
@@ -741,7 +740,7 @@
 	
 				<!-- SLIDER -->
 				<li data-transition="fade" data-slotamount="7" data-masterspeed="300" >
-					<img src="resources/assets/images/dummy.png"  alt="church1" data-lazyload="assets/images/demo/home/church_1.jpg" data-fullwidthcentering="on">
+					<img src="${path}/resources/assets/images/dummy.png"  alt="church1" data-lazyload="${path}/resources/images/demo/home/church_1.jpg" data-fullwidthcentering="on">
 					<div class="tp-caption medium_text lft"
 					data-x="90" 
 					data-y="180"
@@ -839,14 +838,14 @@
 					<li class="isotope-item col-sm-6 col-md-4 development"><!-- item -->
 						<div class="item-box">
 							<figure>
-								<a class="item-hover lightbox" href="assets/images/demo/portfolio/scouter.jpg" data-plugin-options='{"type":"image"}'>
+								<a class="item-hover lightbox" href="${path}/resources/images/demo/portfolio/scouter.jpg" data-plugin-options='{"type":"image"}'>
 									<span class="overlay color2"></span>
 									<span class="inner">
 										<span class="block fa fa-plus fsize20"></span>
 										<strong>VIEW</strong> IMAGE 
 									</span>
 								</a>
-								<img class="img-responsive" src="resources/assets/images/demo/portfolio/scouter-600x403.jpg" width="260" height="260" alt="">
+								<img class="img-responsive" src="${path}/resources/assets/images/demo/portfolio/scouter-600x403.jpg" width="260" height="260" alt="">
 							</figure>
 							<div class="item-box-desc">
 								<h4>관리자제공 - 메인페이지 하단에 3개의 이미지부분은 명소 top3</h4>
@@ -865,7 +864,7 @@
 										<strong>VIEW</strong> VIDEO
 									</span>
 								</a>
-								<img class="img-responsive" src="resources/assets/images/demo/portfolio/black-kitty-600x403.jpg" width="260" height="260" alt="">
+								<img class="img-responsive" src="${path}/resources/assets/images/demo/portfolio/black-kitty-600x403.jpg" width="260" height="260" alt="">
 							</figure>
 							<div class="item-box-desc">
 								<h4>Video</h4>
@@ -884,7 +883,7 @@
 										<strong>PROJECT</strong> DETAIL
 									</span>
 								</a>
-								<img class="img-responsive" src="resources/assets/images/demo/portfolio/merchant2-600x403.jpg" width="260" height="260" alt="">
+								<img class="img-responsive" src="${path}/resources/assets/images/demo/portfolio/merchant2-600x403.jpg" width="260" height="260" alt="">
 							</figure>
 							<div class="item-box-desc">
 								<h4>Detailed Project</h4>
@@ -956,7 +955,7 @@
 					<!-- FOOTER LOGO -->
 					<div class="column logo col-md-4 text-center">
 						<div class="logo-content">
-							<img class="animate_fade_in" src="resources/assets/images/logo_footer.png" width="200" alt="" />
+							<img class="animate_fade_in" src="${path}/resources/assets/images/logo_footer.png" width="200" alt="" />
 							<h4>ATROPOS TEMPLATE</h4>
 						</div>											
 					</div>

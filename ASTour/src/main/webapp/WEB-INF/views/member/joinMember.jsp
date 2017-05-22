@@ -8,7 +8,7 @@
 <!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
 <head>
 	<meta charset="utf-8" />
-	<title>Atropos - Responsive Multipurpose</title>
+	<title>ASTour 회원가입창</title>
 	<meta name="keywords" content="HTML5,CSS3,Template" />
 	<meta name="description" content="" />
 	<meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
@@ -85,6 +85,8 @@ $(document).ready(function() {
 					} else {
 						alert("사용할 수 없는 아이디 입니다.");
 						$("#mid").val('');
+						$("#idChkRst").html("사용할 수 없는 아이디입니다");
+						$("#idChkRst").css("color", "red");
 					}
 				}
 			});

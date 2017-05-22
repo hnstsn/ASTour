@@ -15,5 +15,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="com.project.astour.model.dto.attraction.attraction_tbl">
 		SELECT *FROM attraction_tbl WHERE ATITLE=#{ATITLE }
 	</select>
+	
+	<select id="attractionATITLE"
+		resultType="com.project.astour.model.dto.attraction.attraction_tbl">
+		SELECT *FROM attraction_tbl WHERE ATITLE LIKE #{ATITLE }
+	</select>
+	
+	<select id="attractionASORT"
+		resultType="com.project.astour.model.dto.attraction.attraction_tbl">
+		SELECT *FROM attraction_tbl WHERE ASORT = #{ATITLE }
+	</select>
 
 </mapper>

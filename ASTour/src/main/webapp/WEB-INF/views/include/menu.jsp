@@ -9,32 +9,30 @@
  * 로그아웃하면 처음화면처럼 로그인과 회원가입이 보여진다. 
  */
 $(document).ready(function() {
-	// 초기화면  setting
-  	$(".before_login").show();
-	$(".after_login").hide();
-	
  	// 로그인 버튼을 누르면	 
  	$("#loginBtn").click(function() {
- 		// 새창으로 띄우자 아래것들 다 가지고 새로운 jsp에서 활용해야 된다.
  		var mid=$("#mid").val();
 		var mpw = $("#mpw").val();
 		
 		// 아이디를 입력하지 않았으면
-		if (mid == '')
+		if (mid == '') {
 			alert("id를 입력하세요");
+			return false;
 		// @가 빠져있으면
-		else if (mid.indexOf("@") == -1)
+		} else if (mid.indexOf("@") == -1) {
 			alert("@가 없습니다.");
+			return false;
 		// @뒤에 입력된 것이 없으면
-		else if (mid.indexOf("@") == mid.length-1)
+		} else if (mid.indexOf("@") == mid.length-1) {
 			alert("@뒤에 입력하세요");
+			return false;
 		// 아이디 체크 조건이 다 충족됐으면
-		else {
+		} else {
 			// 비밀번호를 입력하지 않았으면
 			if (mpw == '')
 				alert("password를 입력하세요");
-			// 아이디와 비밀번호 모두 입력했을 경우 ajax로 로그인 됐는지 안됐는지 알려준다.
 			else {
+				// 다 입력했으면 ajax로 처리
 				$.ajax({
 					type: "post",
 					url: "${path}/member/loginCheck.do",
@@ -50,16 +48,25 @@ $(document).ready(function() {
 							alert("아이디 혹은 비밀번호가 틀렸습니다.");
 					}
 				});
+
+	               type: "post",
+	               url: "${path}/member/loginCheck.do",
+	               data: "mid="+mid+"&mpw="+mpw,
+	               success: function(result) {
+	                  // result가  true이면
+	                  if (result) {
+	                     alert("로그인 되었습니다.");
+	                     // 초기화면으로 보내준다. result 받아온거까지 실행되고 화면 전환이 안되기 때문
+	                     location.href="${path}";
+	                  } else
+	                     alert("아이디 혹은 비밀번호가 틀렸습니다.");
+	               }
+	            });
 			}
 		}
 		
 	});
  	
-	// 로그아웃을 누르면 -> 나중에 컨트롤러 가서 session 해제해줘야 한다.
- 	$(".log_out").click(function() {
-		$(".before_login").show();
- 		$(".after_login").hide();
-	});   
 });
 </script>
 
@@ -78,21 +85,18 @@ $(document).ready(function() {
 			login, sign in div와  log out div로 나눠놓음
 			before_login	    after_login
 	 	-->
-		<div class="before_login">
-			<!-- SIGN IN -->
-	 		<div class="pull-right nav signin-dd">
-				<a id="quick_sign_in" onClick="signin_popup()" data-toggle="dropdown">
-					<i class="fa fa-child"></i>
-						<span class="hidden-xs"> Sign In</span>
-				</a>
-			</div>
-			<!-- /SIGN IN -->
-		
-			<!-- LOG IN -->
-			<div class="pull-right nav signin-dd">
-				<a id="quick_sign_in" class="log_in" data-toggle="dropdown">
-					<i class="fa fa-smile-o"></i><span class="hidden-xs"> Log In</span>
-				</a>
+	 	<c:choose>
+	 		<c:when test="${sessionScope.member == null}">
+	 		<!-- 로그인 상태일 때 -->
+	 			<div class="before_login">
+					<!-- SIGN IN -->
+			 		<div class="pull-right nav signin-dd">
+						<a id="quick_sign_in" onClick="signin_popup()" data-toggle="dropdown">
+							<i class="fa fa-child"></i>
+								<span class="hidden-xs"> Sign In</span>
+						</a>
+					</div>
+					<!-- /SIGN IN -->
 				
 				<div class="dropdown-menu" role="menu" aria-labelledby="quick_sign_in">
             
@@ -123,17 +127,62 @@ $(document).ready(function() {
 			</div>
 			<!-- /LOG IN -->
 		</div>
-		
-		<div class="after_login">
-			<!-- LOG OUT -->
-			<div class="pull-right nav signin-dd">
-				<a id="quick_sign_in" class="log_out" href="#" data-toggle="dropdown">
-					<i class="fa fa-meh-o"></i><span class="hidden-xs"> Log Out</span>
-				</a>
-			</div>
-			<!-- /LOG OUT -->
-		</div>
+				<!-- LOG IN -->
+					<div class="pull-right nav signin-dd">
+						<a id="quick_sign_in" class="log_in" data-toggle="dropdown">
+							<i class="fa fa-smile-o"></i><span class="hidden-xs"> Log In</span>
+						</a>
+						
+						<div class="dropdown-menu" role="menu" aria-labelledby="quick_sign_in">
+		            
+			               <h4>Log In</h4>
+			               <form method="post" name="login_form" role="form">
+			
+			                  <div class="form-group"><!-- email -->
+			                     <input type="email" id="mid" name="mid" class="form-control" placeholder="ID(email)">
+			                  </div>
+			
+			                  <div class="input-group">
+			
+			                     <!-- password -->
+			                     <input type="password" id="mpw" name="mpw" class="form-control" placeholder="Password">
+			                     
+			                     <!-- submit button -->
+			                     <span class="input-group-btn">
+			                     	<input type="button" class="btn btn-success" id="loginBtn" value="Log In" />
+			                     </span>
+			                     <br />
+			                     
+			                  </div>
+			
+			               </form>
+			
+			            </div>
+						
+					</div>
+					<!-- /LOG IN -->
+				</div>
+	 		</c:when>
+	 		<c:otherwise>
+	 		<!-- 로그아웃 상태일 때 -->
+	 			<div class="after_login">
+					<!-- LOG OUT -->
+					<div class="pull-right nav signin-dd">
+						<a id="quick_sign_in" class="log_out" href="${path}/member/logout.do">
+							<i class="fa fa-meh-o"></i><span class="hidden-xs"> Log Out</span>
+						</a>
+					</div>
+					<!-- /LOG OUT -->
+					<div class="pull-right nav signin-dd">
+						<a id="quick_sign_in" class="log_out">
+							<span class="hidden-xs"> ${sessionScope.member.mname}님 로그인 중</span>
+						</a>
+					</div>
+				</div>
+	 		</c:otherwise>
+	 	</c:choose>
 
+		
 	</div>
 </header>
 <!-- /Top Bar -->
