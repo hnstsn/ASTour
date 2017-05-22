@@ -1,13 +1,13 @@
 package com.project.astour.controller.member;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.astour.model.dto.member.MemberVO;
@@ -25,15 +25,19 @@ public class MemberCtrl {
 	// AST(CSW) : 로그인 체크 
 	@RequestMapping("loginCheck.do")
 	@ResponseBody
-	public boolean login(@RequestParam String mid, @RequestParam String mpw) {
+	public boolean login(@ModelAttribute MemberVO vo, HttpSession session) {
 		logger.info("로그인 확인 컨트롤러 왔음~~~~~~~~~");
-		logger.info("넘어온 아이디 : " + mid + ", 넘어온 pw : " + mpw);
-		// 아이디와 비밀번호는 나중에 DB에서 가져와 확인해야 한다.
-		// 아이디와 비밀번호가 일치하면  true 리턴
-		if (mid.equals("abc@abc.com") && mpw.equals("1234"))
-			return true;
-		// 일치하지 않으면  false 리턴
-		return false;
+		MemberVO member = mService.loginCheck(vo, session);
+		// member 객체가 존재하면 로그인에 성공했다는 것.
+		// 객체가 존재하지 않으면 로그인에 실패했다는 것.
+		return (member != null) ? true : false;
+	}
+	
+	// 로그아웃
+	@RequestMapping("logout.do")
+	public String logout(HttpSession session) {
+		mService.logout(session);
+		return "redirect:/";
 	}
 	
 	// 아이디 중복 체크
@@ -55,9 +59,6 @@ public class MemberCtrl {
 	@RequestMapping("memberJoin.do")
 	public void memberJoin(@ModelAttribute MemberVO vo) {
 		logger.info("회원가입 - memberJoin()");
-		System.out.println(vo.getMid());
-		System.out.println(vo.getMname());
-		System.out.println(vo.getMphone());
 		mService.joinMember(vo);
 	}
 

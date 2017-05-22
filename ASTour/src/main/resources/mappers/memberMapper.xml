@@ -6,6 +6,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 <mapper namespace="member">
 
+	<!-- 로그인체크 -->
+	<select id="loginCheck" resultType="com.project.astour.model.dto.member.MemberVO">
+		SELECT * FROM ASTMember WHERE mid=#{mid} AND mpw=#{mpw}
+	</select>
+	
 	<!-- 아이디 중복 체크 -->
 	<select id="idCheck" resultType="int">
 		SELECT COUNT(mid) FROM ASTMember WHERE mid=#{mid}
@@ -18,18 +23,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

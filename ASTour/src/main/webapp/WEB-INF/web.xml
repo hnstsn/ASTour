@@ -44,5 +44,10 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern> <!-- 모든 패턴 -->
 	</filter-mapping>
+	
+	<!-- 세션 유지 시간 30분 -->
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
 
 </web-app>
