@@ -153,7 +153,7 @@ $(document).ready(function() {
 
 		<!-- Logo text or image -->
 		<!-- AST(CSW) : Logo를 클릭하면 처음 Main page인 home.jsp로 이동 -->
-		<a class="logo" href="${path}">
+		<a class="logo" href="${path}/chgPage.do?cpage=0">
 			<img src="resources/assets/images/mainlogo.png" alt="Atropos" />
 		</a>
 
@@ -162,12 +162,12 @@ $(document).ready(function() {
 			<nav class="nav-main mega-menu">
 				<ul class="nav nav-pills nav-main scroll-menu" id="topMain">
 					<li class="dropdown mega-menu-item mega-menu-two-columns">
-						<a class="dropdown-toggle" href="${path}/locationSelect">
+						<a class="dropdown-toggle" href="${path}/chgPage.do?cpage=10">
 							지역선택
 						</a>
 					</li>
 					<li class="dropdown mega-menu-item mega-menu-fullwidth">
-						<a class="dropdown-toggle" href="${path}/initAttr">
+						<a class="dropdown-toggle" href="${path}/chgPage.do?cpage=20">
 							추천명소
 						</a>
 					</li>
@@ -176,13 +176,13 @@ $(document).ready(function() {
 							<b>마이페이지</b> <i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="${path}/snsView">SNS</a></li>
-							<li><a href="#">정보수정</a></li>
+							<li><a href="${path}/chgPage.do?cpage=30">SNS</a></li>
+							<li><a href="${path}/chgPage.do?cpage=40">정보수정</a></li>
 						</ul>
 					</li>
 					
 					<li class="dropdown">
-						<a class="dropdown-toggle" href="${path}/faq">
+						<a class="dropdown-toggle" href="${path}/chgPage.do?cpage=50">
 							고객센터
 						</a>
 					</li>

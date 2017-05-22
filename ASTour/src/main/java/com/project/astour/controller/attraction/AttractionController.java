@@ -18,9 +18,11 @@ public class AttractionController {
 
 	@Inject
 	AttractionService attractionService;
+	
 	@Inject
 	DetailsSeration detailsSeration;
 
+	// 삭제 할 것. HomeCotroller에서 처리
 	@RequestMapping("initAttr")
 	public String init(Model model) {
 		List<attraction_tbl> attractionList = attractionService.attractionList();
