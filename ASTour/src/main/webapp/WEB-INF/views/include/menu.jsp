@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
+<!-- AST : bootstrap을 위한 것들을 모아놓은  jsp page -->
+<%@ include file="../include/bootstap_collect.jsp" %>
 <script>
 /* AST(CSW)
  * 처음화면은 로그인, 회원가입과 로그인은 보여지고 로그아웃은 보여지지 않는다.
@@ -72,52 +74,50 @@ $(document).ready(function() {
 	 	-->
 	 	<c:choose>
 	 		<c:when test="${sessionScope.member == null}">
-	 		<!-- 로그인 상태일 때 -->
-	 			<div class="before_login">
-					<!-- SIGN IN -->
-			 		<div class="pull-right nav signin-dd">
-						<a id="quick_sign_in" onClick="signin_popup()" data-toggle="dropdown">
-							<i class="fa fa-child"></i>
-								<span class="hidden-xs"> Sign In</span>
-						</a>
-					</div>
-					<!-- /SIGN IN -->
-				
-					<!-- LOG IN -->
-					<div class="pull-right nav signin-dd">
-						<a id="quick_sign_in" class="log_in" data-toggle="dropdown">
-							<i class="fa fa-smile-o"></i><span class="hidden-xs"> Log In</span>
-						</a>
-						
-						<div class="dropdown-menu" role="menu" aria-labelledby="quick_sign_in">
-		            
-			               <h4>Log In</h4>
-			               <form method="post" name="login_form" role="form">
-			
-			                  <div class="form-group"><!-- email -->
-			                     <input type="email" id="mid" name="mid" class="form-control" placeholder="ID(email)">
-			                  </div>
-			
-			                  <div class="input-group">
-			
-			                     <!-- password -->
-			                     <input type="password" id="mpw" name="mpw" class="form-control" placeholder="Password">
-			                     
-			                     <!-- submit button -->
-			                     <span class="input-group-btn">
-			                     	<input type="button" class="btn btn-success" id="loginBtn" value="Log In" />
-			                     </span>
-			                     <br />
-			                     
-			                  </div>
-			
-			               </form>
-			
-			            </div>
-						
-					</div>
-					<!-- /LOG IN -->
+	 		<!-- 로그아웃 상태일 때 -->
+				<!-- SIGN IN -->
+		 		<div class="pull-right nav signin-dd">
+					<a id="quick_sign_in" onClick="signin_popup()" data-toggle="dropdown">
+						<i class="fa fa-child"></i>
+							<span class="hidden-xs"> Sign In</span>
+					</a>
 				</div>
+				<!-- /SIGN IN -->
+			
+				<!-- LOG IN -->
+				<div class="pull-right nav signin-dd">
+					<a id="quick_sign_in" data-toggle="dropdown">
+						<i class="fa fa-smile-o"></i><span class="hidden-xs"> Log In</span>
+					</a>
+					
+					<div class="dropdown-menu" role="menu" aria-labelledby="quick_sign_in">
+	            
+		               <h4>Log In</h4>
+		               <form method="post" name="login_form" role="form">
+		
+		                  <div class="form-group"><!-- email -->
+		                     <input type="email" id="mid" name="mid" class="form-control" placeholder="ID(email)">
+		                  </div>
+		
+		                  <div class="input-group">
+		
+		                     <!-- password -->
+		                     <input type="password" id="mpw" name="mpw" class="form-control" placeholder="Password">
+		                     
+		                     <!-- submit button -->
+		                     <span class="input-group-btn">
+		                     	<input type="button" class="btn btn-success" id="loginBtn" value="Log In" />
+		                     </span>
+		                     <br />
+		                     
+		                  </div>
+		
+		               </form>
+		
+		            </div>
+					
+				</div>
+				<!-- /LOG IN -->
 	 		</c:when>
 	 		<c:otherwise>
 	 		<!-- 로그아웃 상태일 때 -->
@@ -153,7 +153,7 @@ $(document).ready(function() {
 
 		<!-- Logo text or image -->
 		<!-- AST(CSW) : Logo를 클릭하면 처음 Main page인 home.jsp로 이동 -->
-		<a class="logo" href="${path}/chgPage.do?cpage=0">
+		<a class="logo" href="${path}">
 			<img src="resources/assets/images/mainlogo.png" alt="Atropos" />
 		</a>
 

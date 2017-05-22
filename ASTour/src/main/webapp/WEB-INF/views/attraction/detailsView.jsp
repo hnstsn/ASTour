@@ -17,7 +17,6 @@
 <head>
 <%@ include file="../include/bootstap_collect.jsp"%>
 <meta charset="utf-8" />
-<title>Atropos - Responsive Multipurpose</title>
 <meta name="keywords" content="HTML5,CSS3,Template" />
 <meta name="description" content="" />
 <meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
@@ -27,10 +26,8 @@
 	content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 
 </head>
-<body>
-	<%@ include file="../include/menu.jsp"%>
 	<!-- STYLESWITCHER - REMOVE ON PRODUCTION/DEVELOPMENT -->
-	<div id="switcher">
+<!-- <div id="switcher">
 		<div class="content-switcher">
 			<h4>STYLE OPTIONS</h4>
 
@@ -52,7 +49,8 @@
 
 		</div>
 	</div>
-
+ -->
+ <jsp:include page="../include/menu.jsp" />
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<div id="shop">
@@ -130,20 +128,4 @@
 	</div>
 	<!-- /WRAPPER -->
 
-	<!-- FOOTER -->
-	<footer>
-		<!-- copyright , scrollTo Top -->
-		<div class="footer-bar">
-			<div class="container">
-				<span class="copyright">Copyright &copy; Your Company, LLC .
-					All Rights Reserved.</span> <a class="toTop" href="#topNav">BACK TO
-					TOP <i class="fa fa-arrow-circle-up"></i>
-				</a>
-			</div>
-		</div>
-		<!-- copyright , scrollTo Top -->
-	</footer>
-	<!-- /FOOTER -->
-
-</body>
 </html>

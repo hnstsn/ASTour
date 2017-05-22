@@ -24,7 +24,7 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	// 관광명소 페이지 이동시 초기화면을 위한 service
+	// 추천명소 페이지 이동시 초기화면을 위한 service
 	@Inject
 	AttractionService attrService;
 	// 마이 페이지 - Sns
@@ -43,11 +43,11 @@ public class HomeController {
 			@RequestParam(defaultValue="0", value="cpage") int cpage) {
 //		 메인 페이지 전환
 		if (cpage == 0) {
-			model.addAttribute("curPage", "main.jsp");
+			//model.addAttribute("curPage", "main.jsp");
+			return "redirect:/";
 //		 지역선택 페이지 전환
 		} else if (cpage == 10) {
 			model.addAttribute("curPage", "map/locationSelectV.jsp");
-		
 //		추천명소 페이지 전환 
 		} else if (cpage == 20) {
 			List<attraction_tbl> attrList = attrService.attractionList();
