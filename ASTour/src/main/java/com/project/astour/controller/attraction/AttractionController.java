@@ -22,14 +22,6 @@ public class AttractionController {
 	@Inject
 	DetailsSeration detailsSeration;
 
-	// 삭제 할 것. HomeCotroller에서 처리
-	@RequestMapping("initAttr")
-	public String init(Model model) {
-		List<attraction_tbl> attractionList = attractionService.attractionList();
-		model.addAttribute("list", attractionList);
-		return "attraction/joinattraction";
-	}
-
 	@RequestMapping("selectAttr")
 	public String selectAttr(@RequestParam(value="loc") String loc,
 			Model model){

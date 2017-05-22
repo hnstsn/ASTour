@@ -17,11 +17,4 @@ public class SnsController {
 	@Inject
 	SnsService snsService;
 
-	@RequestMapping("snsView")
-	public String SnsController(Model model) {
-		
-		List<tbl_snsVO> snsList = snsService.snsList();
-		model.addAttribute("list", snsList);
-		return "snsView/sns";
-	}
 }
