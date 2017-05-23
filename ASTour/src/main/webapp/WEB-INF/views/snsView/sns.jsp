@@ -125,7 +125,7 @@
 										href="blog-post.html#comments"
 										class="scrollTo label label-default light"><i
 										class="fa fa-comment-o"></i> 3 Comments</a> <span
-										class="label label-default light">June 29, 2014</span>
+										class="label label-default light">${sns.sdate }</span>
 								</div>
 								<!-- / AST : 타임라인 타이틀  -->
 
@@ -142,7 +142,7 @@
 							</div>
 						</c:forEach>
 						<!-- / AST : 타임라인 게시물  -->
-						<form action="${path }/write">
+						<form action="${path }/sns/writeview.do">
 						<input type=submit value="글쓰기">
 						</form>
 						<!-- AST : 페이지 넘기기 -->

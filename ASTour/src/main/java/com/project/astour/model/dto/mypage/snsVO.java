@@ -1,36 +1,21 @@
 package com.project.astour.model.dto.mypage;
 
+import java.util.Date;
+
 public class snsVO {
 	
-	private int spk;
-	private String stitle;
-	private String scontent;
-	private String date;
-	private String sfile;
-	private String sfile2;
-	private String spath;
-	private int mpk;
-	private String stag;
-	private int ssort;
+	private int spk; // 
+	private String stitle; // 제목
+	private String scontent; // 내용
+	private Date sdate; // 날짜 시간
+	private String sfile; // 이름
+	private String sfile2; // 이름2
+	private String spath; // 경로
+	private int mpk; // 작성자???????? 승완이형한테 물어보셈요!
+	private String stag; // 장소태그
+	private int ssort; // 리뷰/내게시물 구분
 	
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
-	public String getStag() {
-		return stag;
-	}
-	public void setStag(String stag) {
-		this.stag = stag;
-	}
-	public int getSsort() {
-		return ssort;
-	}
-	public void setSsort(int ssort) {
-		this.ssort = ssort;
-	}
+	
 	public int getSpk() {
 		return spk;
 	}
@@ -48,6 +33,12 @@ public class snsVO {
 	}
 	public void setScontent(String scontent) {
 		this.scontent = scontent;
+	}
+	public Date getSdate() {
+		return sdate;
+	}
+	public void setSdate(Date sdate) {
+		this.sdate = sdate;
 	}
 	public String getSfile() {
 		return sfile;
@@ -73,7 +64,18 @@ public class snsVO {
 	public void setMpk(int mpk) {
 		this.mpk = mpk;
 	}
+	public String getStag() {
+		return stag;
+	}
+	public void setStag(String stag) {
+		this.stag = stag;
+	}
+	public int getSsort() {
+		return ssort;
+	}
+	public void setSsort(int ssort) {
+		this.ssort = ssort;
+	}
 	
 	
-
 }
