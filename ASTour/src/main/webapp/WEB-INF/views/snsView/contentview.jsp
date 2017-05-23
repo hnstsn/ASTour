@@ -18,7 +18,6 @@
 <script type="text/javascript" src="assets/plugins/modernizr.min.js"></script>
 </head>
 <body>
-	<%@ include file="../include/menu.jsp"%>
 	<!-- WRAPPER -->
 	<div id="wrapper">
 
@@ -34,7 +33,7 @@
 			<section class="container">
 
 				<div class="row">
-					<div class="left col-md-9">
+					<div class="left col-md-12">
 
 						<!-- article title -->
 						<header class="blog-post">

@@ -71,82 +71,43 @@
 		<!-- PAGE TITLE -->
 		<header id="page-title">
 		<div class="container" style="margin-left: 20%; margin-right: 20%">
-			<h1>${title } 리뷰목록</h1>
+			<h1>${title }리뷰목록</h1>
 		</div>
 		</header>
 
 		<ul class="nav nav-pills isotope-filter isotope-filter"
-
 			style="margin-left: 20%; margin-right: 20%">
 			<!-- data-option-value="*".culture .event class="active" 빼버림 -->
-			<li ><a href="#">최신순</a></li>
-			<li ><a href="#">평점순</a></li>
-			<li ><a href="#">조회순</a></li>
+			<li><a href="#">최신순</a></li>
+			<li><a href="#">평점순</a></li>
+			<li><a href="#">조회순</a></li>
 		</ul>
 
 		<div class="row" style="margin-left: 20%; margin-right: 20%">
 			<ul class="sort-destination isotope" data-sort-id="isotope-list">
 				<!-- 수정 -->
 				<%-- <c:forEach var="attraction" items="${list}"> --%>
-					<li class="isotope-item col-md-3">
-						<!-- item 1 -->
-						<div class="item-box fixed-box">
-							<figure> <img class="img-responsive"
-								src="${path}/resources/image/culture/${image }"
-								width="263" height="263" alt=""> </figure>
-							<div class="item-box-desc">
-								<h4>${atitle }</h4>
-								<small class="styleColor">내용1</small>
-								<p>내용2</p>
-								<div class="text-center">
-									<form action="#">
-										<input type="hidden" name="name" value="${atitle }">
-										<input type="submit" class="btn btn-success" value="상세보기" />
-									</form>
-								</div>
-							</div>
+
+				<li class="isotope-item col-sm-6 col-md-4 design">
+					<!-- item 3 -->
+					<div class="item-box">
+						<figure> <a class="item-hover"
+							href="portfolio-single-full-slider.html"> 
+							<span class="overlay color2"></span> 
+							<span class="inner">
+							 <span	class="block fa fa-plus fsize20"></span>
+							 <strong>review</strong>example
+							 </span>
+						</a> <img class="img-responsive"
+							src="${path}/resources/image/culture/${image }"
+							width="260" height="260" alt=""> </figure>
+						<div class="item-box-desc">
+							<h4>${title }</h4>
+							<small class="styleColor">작성자</small>
 						</div>
-					</li>
-					
-					<li class="isotope-item col-md-3">
-						<!-- item 1 -->
-						<div class="item-box fixed-box">
-							<figure> <img class="img-responsive"
-								src="${path}/resources/image/culture/${image }"
-								width="263" height="263" alt=""> </figure>
-							<div class="item-box-desc">
-								<h4>${atitle }</h4>
-								<small class="styleColor">내용1</small>
-								<p>내용2</p>
-								<div class="text-center">
-									<form action="#">
-										<input type="hidden" name="name" value="${atitle }">
-										<input type="submit" class="btn btn-success" value="상세보기" />
-									</form>
-								</div>
-							</div>
-						</div>
-					</li>
-					
-					<li class="isotope-item col-md-3">
-						<!-- item 1 -->
-						<div class="item-box fixed-box">
-							<figure> <img class="img-responsive"
-								src="${path}/resources/image/culture/${image }"
-								width="263" height="263" alt=""> </figure>
-							<div class="item-box-desc">
-								<h4>${atitle }</h4>
-								<small class="styleColor">내용1</small>
-								<p>내용2</p>
-								<div class="text-center">
-									<form action="#">
-										<input type="hidden" name="name" value="${atitle }">
-										<input type="submit" class="btn btn-success" value="상세보기" />
-									</form>
-								</div>
-							</div>
-						</div>
-					</li>
+					</div>
+				</li>
+				
 				<%-- </c:forEach> --%>
 				<!-- 수정끝 -->
 			</ul>

@@ -25,5 +25,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="com.project.astour.model.dto.attraction.attraction_tbl">
 		SELECT *FROM attraction_tbl WHERE ASORT = #{ATITLE }
 	</select>
+	
+	<select id="reviewattraction"
+		resultType="com.project.astour.model.dto.attraction.attraction_tbl">
+		SELECT *FROM sns_tbl WHERE stag =#{stag }
+	</select>
 
 </mapper>

@@ -3,7 +3,10 @@ package com.project.astour.controller.mypage;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -58,6 +61,8 @@ public class SnsController {
 	@RequestMapping("insert.do")
 	public String initinsert(Model model,
 			@ModelAttribute snsVO vo){
+		
+		
 		writeservice.insertcontent(vo);
 		List<snsVO> snsList = snsService.snsList();
 		model.addAttribute("list", snsList);

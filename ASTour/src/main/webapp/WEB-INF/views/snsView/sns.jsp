@@ -20,8 +20,6 @@
 
 </head>
 <body>
-	<!-- AST : menu부분을 위한 jsp page -->
-	<%@ include file="../include/menu.jsp"%>
 
 	<span id="header_shadow"></span>
 	
