@@ -41,29 +41,26 @@
    $(document).ready(function() {
       $("#loc_change").click(function() {
          var loc = $("#loc_txt").val();
-         alert("검색");
-         location.href="${path}/selectAttr?loc="+loc;
-      
+         location.href="${path}/attraction/selectAttr.do?loc="+loc;
       });
    });
    
    //명소 검색
    $(document).ready(function() {
       $("#loc_asort1").click(function() {
-         location.href="${path}/selectAsort?loc=명소";
+         location.href="${path}/attraction/selectAsort.do?loc=명소";
       });
    });
    //행사 검색
    $(document).ready(function() {
       $("#loc_asort2").click(function() {
-         location.href="${path}/selectAsort?loc=행사";
+         location.href="${path}/attraction/selectAsort.do?loc=행사";
       });
    });
    
 </script>
 
 </head>
-
    <!-- WRAPPER -->
    <div id="wrapper">
 
@@ -103,7 +100,7 @@
                         <div class="text-center">
                            <form action="${path}/initDetails?name=${attraction.ATITLE }">
                               <input type="hidden" name="name" value="${attraction.ATITLE }">
-                              <input type="submit" class="btn btn-success" value="버튼" />
+                              <input type="submit" class="btn btn-success" value="상세보기" />
                            </form>
                         </div>
                      </div>

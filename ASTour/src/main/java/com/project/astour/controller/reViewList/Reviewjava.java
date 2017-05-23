@@ -8,6 +8,5 @@ public class Reviewjava {
 	public void setReview_AIMAGE(String review_AIMAGE) { this.review_AIMAGE = review_AIMAGE; }
 	public String getReview_ATITLE() { return review_ATITLE; }
 	public void setReview_ATITLE(String review_ATITLE) { this.review_ATITLE = review_ATITLE; }
-	
-	
+
 }

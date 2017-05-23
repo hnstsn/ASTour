@@ -22,6 +22,14 @@ public class SnsController {
 	
 	@Inject
 	TimelineService timelineService;
+	
+	@RequestMapping("initSns.do")
+	public String initSns(Model model) {
+		List<tbl_snsVO> snsList = snsService.snsList();
+		model.addAttribute("list", snsList);
+		model.addAttribute("curPage", "snsView/sns.jsp");
+		return "home";
+	}
 
 	
 	@RequestMapping("contentview.do")
@@ -30,8 +38,8 @@ public class SnsController {
 		
 		List<tbl_snsVO> contentView = timelineService.contentView(spk);
 		model.addAttribute("list", contentView);
-				
-		return "snsView/contentview";
+		model.addAttribute("curPage", "snsView/contentview.jsp");
+		return "home";
 		
 	}
 	

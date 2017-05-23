@@ -97,13 +97,9 @@
                
                   <div class="col-md-2 col-sm-6 col-xs-6">
                      <label>기타1</label> <select class="form-control" name="re_baths">
-                        <option value="0">Any</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                     
+                     <c:forEach var="map" items="${mapInfo}">
+                     <p>${map.ATITLE}</p>
+                     </c:forEach>
                      </select>
                   </div>
 

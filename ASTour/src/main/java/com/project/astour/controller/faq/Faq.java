@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class Faq {
 	
 	
-	
-	
 	@RequestMapping("faq")
 	public String locaSelect() {
 		System.out.println("리퀘스트 매핑");
