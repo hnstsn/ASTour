@@ -11,7 +11,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM attraction_tbl
 	</select>
 	
+	<select id="sigun"
+		resultType="com.project.astour.model.dto.map.sigunVO">
+		SELECT * FROM SIGUN
+	</select>
 	
+	<select id="gunList"
+		resultType="com.project.astour.model.dto.map.sigunVO">
+		SELECT gun FROM SIGUN WHERE si = #{name}	
+	</select>
 	
-
 </mapper>

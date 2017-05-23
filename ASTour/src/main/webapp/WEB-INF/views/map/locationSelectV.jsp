@@ -48,6 +48,30 @@
 		.custom_zoomcontrol span img {width:15px;height:39px;padding:12px 0;border:none;}             
 		.custom_zoomcontrol span:first-child{border-bottom:1px solid #bfbfbf;}   
    </style>
+   <script>
+  
+   	// AST: 선택한 지역의 다음 지역select를 바꿉니다
+   	$(document).ready(function(){
+   		$("#siSelect").change(function (){
+			var name = $("#siSelect option:selected").val();
+			$("#gunSelect").html("");
+			
+   			$.ajax({
+   				url:"${path}/test222",
+   				type : "post",
+   				data : "name="+name,
+   				dataType : 'json',
+   				success : function(Data){
+   					console.log(Data);
+   					for(var i=0; i<Data.length; i++){
+   						$("#gunSelect").append("<option value="+Data[i].gun+">"+Data[i].gun+"</option>");
+   					}
+   				}
+   			});
+   		})
+   	});
+   	
+   </script>
 </head>
 
 <body>
@@ -65,20 +89,32 @@
                <div class="form-group">
 
                   <div class="col-md-4 col-sm-6 col-xs-12">
-                     <label>지역</label> <select class="form-control" name="re_location">
-                        <option value="0">모두</option>
-                        <option value="1">서울</option>
-                        <option value="2">부산</option>
-                        
+                     <label>지역</label> <select id="siSelect" class="form-control"
+                      name="re_location">
+                        <option name="name" value="0">모두</option>
+                        <option name="name"  value="서울">서울</option>
+                        <option name="name"  value="부산">부산</option>
+                        <option value="대구">대구</option>
+                        <option value="인천">인천</option>
+                        <option value="광주">광주</option>
+                        <option value="대전">대전</option>
+                        <option value="울산">울산</option>
+                        <option value="세종">세종</option>
+                        <option value="강원">강원</option>
+                        <option value="경기">경기</option>
+                        <option value="경남">경남</option>
+                        <option value="경북">경북</option>
+                        <option value="전남">전남</option>
+                        <option value="전북">전북</option>
+                        <option value="제주">제주</option>
+                        <option value="충남">충남</option>
+                        <option value="충북">충북</option>
                      </select>
                   </div>
+                  
                   <div class="col-md-3 col-sm-6 col-xs-12">
-                     <label>지역세부</label> <select class="form-control" name="re_type">
-                        <option value="0">모두</option>
-                        <option value="1">Apartment</option>
-                        <option value="2">Villa</option>
-                        <option value="3">Family House</option>
-                        <option value="4">Condo</option>
+                     <label>지역세부</label> <select id="gunSelect" class="form-control" name="re_type">
+                     <option></option>
                      
                      </select>
                   </div>
@@ -96,10 +132,8 @@
                <div class="form-group">
                
                   <div class="col-md-2 col-sm-6 col-xs-6">
-                     <label>${mapInfo[0].ATITLE }</label> <select class="form-control" name="re_baths">
-                     <%-- <c:forEach var="map" items="${mapInfo}">
-                     <p>${map.ATITLE}</p>
-                     </c:forEach> --%>
+                     <label>기타1</label> <select class="form-control" name="re_baths">
+                    	<option value="0">${mapInfo[0].ATITLE}</option>
                      </select>
                   </div>
 
@@ -295,7 +329,7 @@
          '                <div class="ellipsis">주소1</div>' +
          '                <div class="jibun ellipsis">주소2</div>' +
          '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a>'+  
-         '             <a href="http://www.kakaocorp.com/main" target="_blank" class="link">상세보기</a></div>' +
+         '             <a href="${path}/attraction/initDetails.do?name=독립문" target="_blank" class="link">상세보기</a></div>' +
          '            </div>' +
          '        </div>' +
          '    </div>' +

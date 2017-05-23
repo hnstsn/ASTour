@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.astour.model.dao.map.MapDAO;
 import com.project.astour.model.dto.attraction.attraction_tbl;
+import com.project.astour.model.dto.map.sigunVO;
 
 @Service
 public class MapServiceImpl implements MapService{
@@ -21,6 +22,19 @@ public class MapServiceImpl implements MapService{
 		
 		return mapDAO.attractionList();
 	}
+
+	@Override
+	public List<sigunVO> sigunList() {
+		
+		return mapDAO.sigunList();
+	}
+
+	@Override
+	public List<sigunVO> gunList(String name) {
+		
+		return mapDAO.gunList(name);
+	}
+	
 	
 	
 
