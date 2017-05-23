@@ -98,7 +98,7 @@
                         <small class="styleColor">${attraction.ASORT }</small>
                         <p>${attraction.ACONTENTS }</p>
                         <div class="text-center">
-                           <form action="${path}/initDetails?name=${attraction.ATITLE }">
+                           <form action="${path}/attraction/initDetails.do?name=${attraction.ATITLE }">
                               <input type="hidden" name="name" value="${attraction.ATITLE }">
                               <input type="submit" class="btn btn-success" value="상세보기" />
                            </form>
