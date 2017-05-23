@@ -38,7 +38,7 @@ public class HomeController {
 			return "redirect:/locationSelect";
 //		추천명소 페이지 전환 
 		else if (cpage == 20)
-			return "redirect:/initAttr";
+			return "redirect:/attraction/initAttr.do";
 //		마이페이지 - SNS 페이지 전환
 		else if (cpage == 30)
 			return "redirect:/sns/initSns.do";

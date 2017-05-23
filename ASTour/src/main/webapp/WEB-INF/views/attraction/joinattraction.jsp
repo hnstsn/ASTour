@@ -61,6 +61,7 @@
 </script>
 
 </head>
+   <%@ include file="../include/menu.jsp"%>
 
    <!-- WRAPPER -->
    <div id="wrapper">
