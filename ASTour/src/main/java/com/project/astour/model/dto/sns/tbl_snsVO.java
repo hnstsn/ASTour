@@ -5,11 +5,32 @@ public class tbl_snsVO {
 	private int spk;
 	private String stitle;
 	private String scontent;
+	private String date;
 	private String sfile;
 	private String sfile2;
 	private String spath;
 	private int mpk;
+	private String stag;
+	private int ssort;
 	
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public String getStag() {
+		return stag;
+	}
+	public void setStag(String stag) {
+		this.stag = stag;
+	}
+	public int getSsort() {
+		return ssort;
+	}
+	public void setSsort(int ssort) {
+		this.ssort = ssort;
+	}
 	public int getSpk() {
 		return spk;
 	}

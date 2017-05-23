@@ -37,7 +37,8 @@ public class SnsController {
 	
 
 	@RequestMapping("write")
-	public String init(){
+	public String init(Model model
+			){
 		return "snsView/write";
 	}
 
