@@ -31,7 +31,7 @@ public class AttractionController {
 		List<attraction_tbl> attractionList = attractionService.attractionList();
 		model.addAttribute("list", attractionList);
 		model.addAttribute("curPage", "attraction/joinattraction.jsp");
-		return "attraction/joinattraction";
+		return "home";
 	}
 
    //검색

@@ -28,7 +28,6 @@
 
 	<!-- FOOTER -->
 	<footer>
-
 		<!-- copyright , scrollTo Top -->
 		<div class="footer-bar">
 			<div class="container">

@@ -28,7 +28,7 @@ public class SnsController {
 		List<tbl_snsVO> snsList = snsService.snsList();
 		model.addAttribute("list", snsList);
 		model.addAttribute("curPage", "snsView/sns.jsp");
-		return "snsView/sns";
+		return "home";
 	}
 
 	
@@ -38,8 +38,8 @@ public class SnsController {
 		
 		List<tbl_snsVO> contentView = timelineService.contentView(spk);
 		model.addAttribute("list", contentView);
-				
-		return "snsView/contentview";
+		model.addAttribute("curPage", "snsView/contentview.jsp");
+		return "home";
 		
 	}
 	
