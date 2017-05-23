@@ -41,27 +41,29 @@
    $(document).ready(function() {
       $("#loc_change").click(function() {
          var loc = $("#loc_txt").val();
-         location.href="${path}/selectAttr?loc="+loc;
+         location.href="${path}/attraction/selectAttr.do?loc="+loc;
       });
    });
    
    //명소 검색
    $(document).ready(function() {
       $("#loc_asort1").click(function() {
-         location.href="${path}/selectAsort?loc=명소";
+         location.href="${path}/attraction/selectAsort.do?loc=명소";
       });
    });
    //행사 검색
    $(document).ready(function() {
       $("#loc_asort2").click(function() {
-         location.href="${path}/selectAsort?loc=행사";
+         location.href="${path}/attraction/selectAsort.do?loc=행사";
       });
    });
    
 </script>
 
 </head>
-   <%@ include file="../include/menu.jsp"%>
+   	<!-- AST : menu부분을 위한 jsp page -->
+	<%-- <jsp:include page="../include/menu.jsp" /> --%>
+	
 
    <!-- WRAPPER -->
    <div id="wrapper">
