@@ -19,6 +19,7 @@ import com.project.astour.service.sns.SnsService;
 /**
  * Handles requests for the application home page.
  */
+//수정해야함
 @Controller
 public class HomeController {
 	
