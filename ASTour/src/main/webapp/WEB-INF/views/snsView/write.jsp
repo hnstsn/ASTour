@@ -81,7 +81,7 @@
 							<div class="form-group">
 								<div class="col-md-12">
 									<label>이미지사진</label> <input type="file" value=""
-										class="form-control" name="contact_image" id="contact_image">
+										class="form-control" name="sfile" id="sfile">
 								</div>
 							</div>
 						</div>

@@ -47,7 +47,7 @@
 
 							<div>
 								<img alt="" class="img-responsive"
-									src="${path}/resources/image/culture/${list[0].AIMAGE }">
+									src="${path}/resources/image/culture/${list[0].aimage }">
 							</div>
 
 						</div>
@@ -62,14 +62,14 @@
 							<input type="hidden" name="action" value="cart_add" /> <input
 								type="hidden" name="product_id" value="1" />
 
-							<h2 class="product-title">${list[0].ATITLE }</h2>
+							<h2 class="product-title">${list[0].atitle }</h2>
 
 							<!-- product description -->
 							<div class="desc">
-								<h3>주소 : ${list[0].AADDRESS }</h3>
-								<h3>문의 : ${list[0].ATEL }</h3>
+								<h3>주소 : ${list[0].acity } ${list[0].agu } ${list[0].aaddress }</h3>
+								<h3>문의 : ${list[0].atel }</h3>
 								<h2>
-									홈페이지: <a href="${list[0].AHOMEPAGE }">${list[0].AHOMEPAGE }</a>
+									홈페이지: <a href="${list[0].ahomepage }">${list[0].ahomepage }</a>
 								</h2>
 								
 							</div>
@@ -79,8 +79,8 @@
 						<!-- product detail -->
 						<div style="margin-top: 10%" align="center">
 							<form action="${path }/reViewList" method="post">
-									<input type="hidden" name="review_AIMAGE" value="${list[0].AIMAGE }"> 
-									<input type="hidden" name="review_ATITLE" value="${list[0].ATITLE }"> 
+									<input type="hidden" name="review_AIMAGE" value="${list[0].aimage }"> 
+									<input type="hidden" name="review_ATITLE" value="${list[0].atitle }"> 
 									<input type="submit" class="btn btn-success" value="관련리뷰보기">
 							</form>
 						</div>
@@ -89,7 +89,7 @@
 
 				<hr />
 				<div>
-					<h4>${list[0].ACONTENT }</h4>
+					<h4>${list[0].acontent }</h4>
 				</div>
 				<hr />
 			</section>

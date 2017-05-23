@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.astour.model.dto.attraction.attraction_tbl;
+import com.project.astour.model.dto.mypage.snsVO;
 
 @Repository
 public class AttractionDAOImpl implements AttractionDAO{
@@ -28,9 +29,17 @@ public class AttractionDAOImpl implements AttractionDAO{
 	}
 	
 	//행사,명소 구별
+	@Override
 	public List<attraction_tbl> attractionAsort(
 			@RequestParam(value="ASORT") String ASORT){
 		return sqlSession.selectList("attractionmap.attractionASORT",ASORT);
 	}
+	
+	@Override
+	public List<snsVO> reviewattraction(
+			@RequestParam(value="title") String title){
+		return sqlSession.selectList("attractionmap.reviewattraction",title);
+	}
+	
 
 }

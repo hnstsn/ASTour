@@ -1,52 +1,69 @@
 package com.project.astour.model.dto.attraction;
 
+
+/*CREATE TABLE attraction_tbl(
+		  attpk       NUMBER PRIMARY KEY, --기본키
+		  atitle      VARCHAR2(30),       --제목(행사명)
+		  asort       VARCHAR2(4),        --행사OR명소 구분자
+		  aimage      VARCHAR2(20),       --이미지명
+		  ahomepage   VARCHAR2(50),       --인터넷주소
+		  acity       VARCHAR2(20),       --시
+		  agu         VARCHAR2(20),       --구  
+		  aaddress    VARCHAR2(70),       --상세주소
+		  atel        VARCHAR2(20),       --문의전화
+		  aaction     VARCHAR2(20),       --이벤트 (삭제 예정!)
+		  aintro      VARCHAR2(500),      --소개
+		  acontent    VARCHAR2(4000),     --실내용
+		  alatitude   number,             -- 위도
+			alogitude   number              -- 경도
+		);*/
+
 public class attraction_tbl {
-	private int ATTPK;
-	private String ATITLE;
-	private String ASORT;
-	private String AIMAGE;
-	private String AHOMEPAGE;
-	private String AADDRESS;
-	private String ATEL;
-	private String AACTION;
-	private String ACONTENTS;
-	private String ACONTENT;
-	
-	private double ALATITUDE;
-	private double ALOGITUDE;
-	
-	public int getATTPK() { return ATTPK; }
-	public void setATTPK(int aTTPK) { ATTPK = aTTPK; }
-	public String getATITLE() { return ATITLE; }
-	public void setATITLE(String aTITLE) { ATITLE = aTITLE; }
-	public String getASORT() { return ASORT; }
-	public void setASORT(String aSORT) { ASORT = aSORT; }
-	public String getAIMAGE() { return AIMAGE; }
-	public void setAIMAGE(String aIMAGE) { AIMAGE = aIMAGE; }
-	public String getAHOMEPAGE() { return AHOMEPAGE; }
-	public void setAHOMEPAGE(String aHOMEPAGE) { AHOMEPAGE = aHOMEPAGE; }
-	public String getAADDRESS() { return AADDRESS; }
-	public void setAADDRESS(String aADDRESS) { AADDRESS = aADDRESS; }
-	public String getATEL() { return ATEL; }
-	public void setATEL(String aTEL) { ATEL = aTEL; }
-	public String getAACTION() { return AACTION; }
-	public void setAACTION(String aACTION) { AACTION = aACTION; }
-	public String getACONTENTS() { return ACONTENTS; }
-	public void setACONTENTS(String aCONTENTS) { ACONTENTS = aCONTENTS; }
-	public String getACONTENT() { return ACONTENT; }
-	public void setACONTENT(String aCONTENT) { ACONTENT = aCONTENT; }
-	
-	public double getALATITUDE() {
-		return ALATITUDE;
-	}
-	public void setALATITUDE(double aLATITUDE) {
-		ALATITUDE = aLATITUDE;
-	}
-	public double getALOGITUDE() {
-		return ALOGITUDE;
-	}
-	public void setALOGITUDE(double aLOGITUDE) {
-		ALOGITUDE = aLOGITUDE;
-	}
-	
+
+	int attpk;         	//pk
+	String atitle;     	//제목
+	String asort;     	//행사or명소
+	String aimage;    	//이미지명
+	String ahomepage; 	//인터넷주소
+	String acity;  		//시	
+	String agu;        	//구
+	String aaddress;  	//상세주소
+	String atel;  		//문의전화
+	String aintro;  	//소개
+	String acontent; 	//실내용
+	double alatitude;	//위도
+	double	alogitude; 	//경도
+
+
+	public int getAttpk() { return attpk; }
+	public void setAttpk(int attpk) { this.attpk = attpk; }
+	public String getAtitle() { return atitle; }
+	public void setAtitle(String atitle) { this.atitle = atitle; }
+	public String getAsort() { return asort; }
+	public void setAsort(String asort) { this.asort = asort; }
+	public String getAimage() { return aimage; }
+	public void setAimage(String aimage) { this.aimage = aimage; }
+	public String getAhomepage() { return ahomepage; }
+	public void setAhomepage(String ahomepage) { this.ahomepage = ahomepage; }
+	public String getAcity() { return acity; }
+	public void setAcity(String acity) { this.acity = acity; }
+	public String getAgu() { return agu; }
+	public void setAgu(String agu) { this.agu = agu; }
+	public String getAaddress() { return aaddress; }
+	public void setAaddress(String aaddress) { this.aaddress = aaddress; }
+	public String getAtel() { return atel; }
+	public void setAtel(String atel) { this.atel = atel; }
+	public String getAintro() { return aintro; }
+	public void setAintro(String aintro) { this.aintro = aintro; }
+	public String getAcontent() { return acontent; }
+	public void setAcontent(String acontent) { this.acontent = acontent; }
+	public double getAlatitude() { return alatitude; }
+	public void setAlatitude(double alatitude) { this.alatitude = alatitude; }
+	public double getAlogitude() { return alogitude; }
+	public void setAlogitude(double alogitude) { this.alogitude = alogitude; }
+
+
+
+
+
 }

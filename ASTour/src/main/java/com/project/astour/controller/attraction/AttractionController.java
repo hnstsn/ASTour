@@ -57,7 +57,7 @@ public class AttractionController {
    }
 
    //상세보기
-   @RequestMapping("initDetails")
+   @RequestMapping("initDetails.do")
    public String init(Model model,
          @RequestParam(value="name") String ATITLE) {
       List<attraction_tbl> detailsList = detailsSeration.detailsList(ATITLE);

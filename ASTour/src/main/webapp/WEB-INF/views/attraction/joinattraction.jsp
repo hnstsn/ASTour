@@ -87,19 +87,19 @@
          <ul class="sort-destination isotope" data-sort-id="isotope-list">
             <!-- 수정 -->
             <c:forEach var="attraction" items="${list}">
-               <li class="isotope-item col-md-3 ${attraction.AACTION } ${attraction.ATITLE }">
+               <li class="isotope-item col-md-3">
                   <!-- item 1 -->
                   <div class="item-box fixed-box">
                      <figure> <img class="img-responsive"
-                        src="${path}/resources/image/culture/${attraction.AIMAGE }"
+                        src="${path}/resources/image/culture/${attraction.aimage }"
                         width="263" height="263" alt=""> </figure>
                      <div class="item-box-desc">
-                        <h4>${attraction.ATITLE }</h4>
-                        <small class="styleColor">${attraction.ASORT }</small>
-                        <p>${attraction.ACONTENTS }</p>
+                        <h5>${attraction.atitle }</h5>
+                        <small class="styleColor">${attraction.asort }</small>
+                        <p>${attraction.aintro }</p>
                         <div class="text-center">
-                           <form action="${path}/initDetails?name=${attraction.ATITLE }">
-                              <input type="hidden" name="name" value="${attraction.ATITLE }">
+                           <form action="${path}/attraction/initDetails.do?name=${attraction.atitle }">
+                              <input type="hidden" name="name" value="${attraction.atitle }">
                               <input type="submit" class="btn btn-success" value="상세보기" />
                            </form>
                         </div>
