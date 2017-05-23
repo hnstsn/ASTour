@@ -1,6 +1,6 @@
-package com.project.astour.model.dto.sns;
+package com.project.astour.model.dto.mypage;
 
-public class tbl_snsVO {
+public class snsVO {
 	
 	private int spk;
 	private String stitle;

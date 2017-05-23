@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.project.astour.model.dto.sns.tbl_snsVO;
+import com.project.astour.model.dto.mypage.snsVO;
 
 @Repository
 public class TimelineDAOImpl implements TimelineDAO{
@@ -16,7 +16,7 @@ public class TimelineDAOImpl implements TimelineDAO{
 	SqlSession sqlSession;
 
 	@Override
-	public List<tbl_snsVO> contentView(int spk) {
+	public List<snsVO> contentView(int spk) {
 		return sqlSession.selectList("sns.contentview",spk);
 
 	}

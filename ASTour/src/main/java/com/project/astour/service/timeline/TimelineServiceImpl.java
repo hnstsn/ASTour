@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.project.astour.model.dao.timeline.TimelineDAO;
-import com.project.astour.model.dto.sns.tbl_snsVO;
+import com.project.astour.model.dto.mypage.snsVO;
 
 @Service
 public class TimelineServiceImpl implements TimelineService{
@@ -16,7 +16,7 @@ public class TimelineServiceImpl implements TimelineService{
 	TimelineDAO timelineDao;
 	
 	@Override
-	public List<tbl_snsVO> contentView(int spk) {
+	public List<snsVO> contentView(int spk) {
 		return timelineDao.contentView(spk);
 	}
 	
