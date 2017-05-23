@@ -1,4 +1,4 @@
-package com.project.astour.model.dao.sns;
+package com.project.astour.model.dao.mypage;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.project.astour.model.dto.sns.tbl_snsVO;
+import com.project.astour.model.dto.mypage.snsVO;
 
 @Repository
 public class SnsDAOImpl implements SnsDAO {
@@ -16,7 +16,7 @@ public class SnsDAOImpl implements SnsDAO {
 	SqlSession sqlSession;
 	
 	@Override
-	public List<tbl_snsVO> snsList() {
+	public List<snsVO> snsList() {
 		return sqlSession.selectList("sns.snsList"); 
 	}
 }

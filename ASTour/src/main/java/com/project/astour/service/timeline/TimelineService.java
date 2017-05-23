@@ -4,13 +4,12 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.project.astour.model.dto.attraction.attraction_tbl;
-import com.project.astour.model.dto.sns.tbl_snsVO;
+import com.project.astour.model.dto.mypage.snsVO;
 
 public interface TimelineService {
 
 	
-	public List<tbl_snsVO> contentView(@RequestParam(value="spk") int spk);
+	public List<snsVO> contentView(@RequestParam(value="spk") int spk);
 
 	
 }

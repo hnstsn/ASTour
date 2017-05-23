@@ -1,4 +1,4 @@
-package com.project.astour.controller.sns;
+package com.project.astour.controller.mypage;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.project.astour.model.dto.sns.tbl_snsVO;
-import com.project.astour.service.sns.SnsService;
+import com.project.astour.model.dto.mypage.snsVO;
+import com.project.astour.service.mypage.SnsService;
 import com.project.astour.service.timeline.TimelineService;
 
 @Controller
@@ -25,7 +25,7 @@ public class SnsController {
 	
 	@RequestMapping("initSns.do")
 	public String initSns(Model model) {
-		List<tbl_snsVO> snsList = snsService.snsList();
+		List<snsVO> snsList = snsService.snsList();
 		model.addAttribute("list", snsList);
 		model.addAttribute("curPage", "snsView/sns.jsp");
 		return "home";
@@ -36,7 +36,7 @@ public class SnsController {
 	public String BlogContent(Model model,
 			@RequestParam(value="spk") int spk) {
 		
-		List<tbl_snsVO> contentView = timelineService.contentView(spk);
+		List<snsVO> contentView = timelineService.contentView(spk);
 		model.addAttribute("list", contentView);
 		model.addAttribute("curPage", "snsView/contentview.jsp");
 		return "home";
@@ -45,7 +45,8 @@ public class SnsController {
 	
 
 	@RequestMapping("write")
-	public String init(){
+	public String init(Model model
+			){
 		return "snsView/write";
 	}
 

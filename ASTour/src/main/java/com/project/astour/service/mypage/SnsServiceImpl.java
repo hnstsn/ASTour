@@ -1,4 +1,4 @@
-package com.project.astour.service.sns;
+package com.project.astour.service.mypage;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.project.astour.model.dao.sns.SnsDAO;
-import com.project.astour.model.dto.sns.tbl_snsVO;
+import com.project.astour.model.dao.mypage.SnsDAO;
+import com.project.astour.model.dto.mypage.snsVO;
 
 @Service
 public class SnsServiceImpl implements SnsService {
@@ -16,7 +16,7 @@ public class SnsServiceImpl implements SnsService {
 	SnsDAO snsDao;
 		
 	@Override
-	public List<tbl_snsVO> snsList() {
+	public List<snsVO> snsList() {
 		return snsDao.snsList();
 	}
 }

@@ -1,20 +1,11 @@
 package com.project.astour;
 
-import java.util.List;
-
-import javax.inject.Inject;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.project.astour.model.dto.attraction.attraction_tbl;
-import com.project.astour.model.dto.sns.tbl_snsVO;
-import com.project.astour.service.attraction.AttractionService;
-import com.project.astour.service.sns.SnsService;
 
 /**
  * Handles requests for the application home page.
