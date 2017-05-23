@@ -96,10 +96,10 @@
                <div class="form-group">
                
                   <div class="col-md-2 col-sm-6 col-xs-6">
-                     <label>기타1</label> <select class="form-control" name="re_baths">
-                     <c:forEach var="map" items="${mapInfo}">
+                     <label>${mapInfo[0].ATITLE }</label> <select class="form-control" name="re_baths">
+                     <%-- <c:forEach var="map" items="${mapInfo}">
                      <p>${map.ATITLE}</p>
-                     </c:forEach>
+                     </c:forEach> --%>
                      </select>
                   </div>
 
