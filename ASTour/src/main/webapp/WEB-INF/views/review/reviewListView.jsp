@@ -108,6 +108,27 @@
 					</div>
 				</li>
 				
+				<c:forEach var="attraction" items="${list}">
+				<li class="isotope-item col-sm-6 col-md-4 design">
+					<!-- item 3 -->
+					<div class="item-box">
+						<figure> <a class="item-hover"
+							href="portfolio-single-full-slider.html"> 
+							<span class="overlay color2"></span> 
+							<span class="inner">
+							 <span	class="block fa fa-plus fsize20"></span>
+							 <strong>review</strong>${title }
+							 </span>
+						</a> <img class="img-responsive"
+							src="${path}/resources/image/culture/${image }"
+							width="260" height="260" alt=""> </figure>
+						<div class="item-box-desc">
+							<h4>${title }</h4>
+							<small class="styleColor">작성자</small>
+						</div>
+					</div>
+				</li>
+				</c:forEach>
 				<%-- </c:forEach> --%>
 				<!-- 수정끝 -->
 			</ul>

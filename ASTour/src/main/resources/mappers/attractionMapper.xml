@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="reviewattraction"
 		resultType="com.project.astour.model.dto.attraction.attraction_tbl">
-		SELECT *FROM sns_tbl WHERE stag =#{stag }
+		SELECT *FROM sns_tbl WHERE stag =#{title }
 	</select>
 
 </mapper>

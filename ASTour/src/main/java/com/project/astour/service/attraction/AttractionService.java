@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.astour.model.dto.attraction.attraction_tbl;
+import com.project.astour.model.dto.mypage.snsVO;
 
 @Service
 public interface AttractionService {
@@ -13,4 +14,5 @@ public interface AttractionService {
 	public List<attraction_tbl> attractionList();
 	public List<attraction_tbl> attractionAtitle(String ATITLE);
 	public List<attraction_tbl> attractionAsort(String ASORT);
+	public List<snsVO> reviewattraction(String title);
 }

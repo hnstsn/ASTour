@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.astour.model.dao.attraction.AttractionDAO;
 import com.project.astour.model.dto.attraction.attraction_tbl;
+import com.project.astour.model.dto.mypage.snsVO;
 
 @Service
 public class AttractionServiceImpl implements AttractionService{
@@ -30,9 +31,16 @@ public class AttractionServiceImpl implements AttractionService{
 	}
 	
 	//명소,행사
+	@Override
 	public List<attraction_tbl> attractionAsort(
 			@RequestParam(value="ASORT") String ASORT){
 		return attractionDao.attractionAsort(ASORT);
+	}
+	
+	@Override
+	public List<snsVO> reviewattraction(
+			@RequestParam(value="title") String title){
+		return attractionDao.reviewattraction(title);
 	}
 	
 }
