@@ -32,7 +32,7 @@
        .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
        .info .link {color: #5085BB;} 
        
-		   /* AST : 지도크기 조절하는 +,- 스타일을 정의한다. */       
+	/* AST : 지도크기 조절하는 +,-창의 스타일을 정의한다. */       
 		 html, body {width:100%;height:100%;margin:0;padding:0;}
 		.map_wrap {position:relative;overflow:hidden;width:100%;height:800px;}
 		.radius_border{border:1px solid #919191;border-radius:5px;}     
@@ -48,16 +48,22 @@
 		.custom_zoomcontrol span img {width:15px;height:39px;padding:12px 0;border:none;}             
 		.custom_zoomcontrol span:first-child{border-bottom:1px solid #bfbfbf;}   
    </style>
+   
+   <!--다음맵 api 키 인증  -->
+   <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=3e0a1d6ea303156f75ac023290071948"></script>
+   <!--다음맵 추가 라이브러리 불러오기  -->
+   <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=3e0a1d6ea303156f75ac023290071948&libraries=services,clusterer,drawing"></script>
+ 
    <script>
   
-   	// AST: 선택한 지역의 다음 지역select를 바꿉니다
+   	// AST: 선택한 지역의 세부지역select를 바꿉니다
    	$(document).ready(function(){
    		$("#siSelect").change(function (){
 			var name = $("#siSelect option:selected").val();
-			$("#gunSelect").html("");
-			
+			//지역이바뀌니 초기화
+			$("#gunSelect").html("<option value=''>모두</option>");
    			$.ajax({
-   				url:"${path}/test222",
+   				url:"${path}/selectBox",
    				type : "post",
    				data : "name="+name,
    				dataType : 'json',
@@ -68,15 +74,117 @@
    					}
    				}
    			});
-   		})
-   	});
+   		});
+   	   	
+   		
+   		// AST : 위치 검색 버튼 클릭시 마커 변경
+   		// 마커배열 전역변수로
+   		var markers; 
+   		// 오버레이 전역변수
+   		var overlays;
+   		// 위치, 콘텐츠 배열 전역변수로
+   		var positions;
+   		//이전 마커 수
+   		var beforeSize = 0;
+   		// AST : 버튼 클릭시 시작
+   		$("#searchBtn").click(function(){
+   			
+				 for(var i=0; i<beforeSize; i++){
+				// AST : 기존 마커들을 삭제한다.
+					markers[i].setMap(null);
+				}
+   			 
+   			
+   			//like 쓰기위해 % 직접 넣음
+ 		   var selectedSi = $("#siSelect option:selected").val()+"%";
+ 		   var selectedGun = $("#gunSelect option:selected").val()+"%";
+ 		   var selectedEvent= "%"+$("#eventSelect option:selected").val()+"%";
+ 		   var selectedAttraction = "%"+$("#attractionName").val()+"%";
+ 		   
+ 		  $.ajax({
+ 				url:"${path}/searchLocation",
+ 				type : "post",
+ 				data : {"acity": selectedSi, "agu": selectedGun,
+ 						"asort": selectedEvent,"atitle": selectedAttraction},
+ 				dataType : 'json',
+ 				success : function(data){
+ 					console.log(data);
+ 					beforeSize=data.length;
+ 					positions = new Array();
+ 					markers = new Array();
+ 					overlays = new Array();
+ 					
+ 					for(var i=0; i<data.length; i++){
+ 						//위치, 오버레이컨텐츠 설정
+ 						var position = {
+ 								content: '<div class="wrap">' +
+ 						         '    <div class="info">' +
+ 						         '        <div class="title">' +
+ 						         '           경복궁' +
+ 						         '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+ 						         '        </div>' +
+ 						         '        <div class="body">' +
+ 						         '            <div class="img">' +
+ 						         '                <img src="https://lh4.googleusercontent.com/proxy/fBbACHhSGHYVwVIHQIbMBAuf80D0PBmn0xbL8evKS_cjHUP6os0YAD-P1Teg2eDAearjZWHz5oOtpHgadRHGynkAh8Q_djH7LBWh8_BOEyNy7WLWm76BQv4Luc93ZwjwW9X85hTJNwHxxLRRPHlMsMvqgddLiQ=w408-h251-k-no" width="73" height="70">' +
+ 						         '           </div>' +
+ 						         '            <div class="desc">' +
+ 						         '                <div class="ellipsis">주소1</div>' +
+ 						         '                <div class="jibun ellipsis">주소2</div>' +
+ 						         '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a>'+  
+ 						         '             <a href="#" target="_blank" class="link">상세보기</a></div>' +
+ 						         '            </div>' +
+ 						         '        </div>' +
+ 						         '    </div>' +
+ 						         '</div>',
+ 								latlng: new daum.maps.LatLng(data[i].alatitude, data[i].alongitude)
+ 						}
+ 						
+ 						positions.push(position);
+ 						//마커 설정
+ 						var marker = new daum.maps.Marker({
+ 					         position : positions[i].latlng
+ 					      });
+ 						//지도에 표시
+ 						marker.setMap(map);
+ 						//배열로 푸시
+ 						markers.push(marker);
+ 						
+ 						//오버레이 설정
+ 					   var overlay2 = new daum.maps.CustomOverlay({
+ 					         content : position.content,
+ 					         map : map,
+ 					         position : position.latlng,
+ 					        
+ 					      });
+ 						// 배열로 푸시
+ 						overlays.push(overlay);
+						
+ 					/*daum.maps.event.addListener(markers[i], 'click', function() {
+ 				         
+ 				         overlays[i].setMap(map);
+ 				         markerClick = true;
+ 				      }); */
+ 					  
+ 					 daum.maps.event.addListener(marker, 'click', makeOverListener(overlay2));
+ 					  //daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+ 					
+ 					}
+ 				}
+ 			});
+ 	   	});
+      });
+   		
+   	function makeOverListener(overlay2) {
+   	    return function() {
+   	        overlay2.setMap(map);
+   	    };
+   	}
+	
    	
    </script>
 </head>
 
 <body>
-   <!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="resources/assets/images/boxed_background/1.jpg"  -->
-
    <!-- WRAPPER -->
    <div id="wrapper">
 
@@ -84,14 +192,14 @@
       <section class="container re-filterbox no-top" style="margin-top: 100px;">
          <!-- add "styleBackground" class for colored box -->
 
-         <form id="re-filter" action="realestate-list.html" method="get">
+         <div id="re-filter">
             <div class="row">
                <div class="form-group">
 
                   <div class="col-md-4 col-sm-6 col-xs-12">
                      <label>지역</label> <select id="siSelect" class="form-control"
                       name="re_location">
-                        <option name="name" value="0">모두</option>
+                        <option name="name" value="">모두</option>
                         <option name="name"  value="서울">서울</option>
                         <option name="name"  value="부산">부산</option>
                         <option value="대구">대구</option>
@@ -107,22 +215,22 @@
                         <option value="전남">전남</option>
                         <option value="전북">전북</option>
                         <option value="제주">제주</option>
-                        <option value="충남">충남</option>
-                        <option value="충북">충북</option>
+                        <option value="충청남도">충남</option>
+                        <option value="충청북도">충북</option>
                      </select>
                   </div>
                   
                   <div class="col-md-3 col-sm-6 col-xs-12">
                      <label>지역세부</label> <select id="gunSelect" class="form-control" name="re_type">
-                     <option></option>
+                     <option value="">모두</option>
                      
                      </select>
                   </div>
                   <div class="col-md-3 col-sm-6 col-xs-12">
-                     <label>이벤트</label> <select class="form-control" name="re_status">
-                        <option value="0">모두</option>
-                        <option value="1">하는중</option>
-                        <option value="2">예정</option>
+                     <label>행사</label> <select id="eventSelect" class="form-control" name="re_status">
+                        <option value="">모두</option>
+                        <option value="행사">행사</option>
+                        <option value="명소">일반</option>
                      </select>
                   </div>
                </div>
@@ -130,57 +238,42 @@
 
             <div class="row">
                <div class="form-group">
-               
                   <div class="col-md-2 col-sm-6 col-xs-6">
-                     <label>기타1</label> <select class="form-control" name="re_baths">
-                    	<option value="0">${mapInfo[0].ATITLE}</option>
+                     <label>기타1</label> <select id="test02" class="form-control" name="re_baths">
+                    	<option value="0">미완</option>
                      </select>
                   </div>
 
                   <div class="col-md-2 col-sm-6 col-xs-6">
-                     <label>기타2</label> <select class="form-control"
-                        name="re_price_to">
-                        <option value="0">Any</option>
-                        <option value="1000">$1000</option>
-                        <option value="2000">$2000</option>
-                        <option value="3000">$3000</option>
-                        <option value="5000">$5000</option>
-                     
+                     <label>기타2</label> <select class="form-control" name="re_price_to">
+                        <option value="0">미완</option>
                      </select>
                   </div>
                   
                   <div class="col-md-2 col-sm-6 col-xs-12">
-                     <label>관광지명</label> <input type="text"
+                     <label>관광지명</label> <input type="text" id="attractionName"
                         class="form-control" name="re_id" />
                      </div>
 
                   <div class="col-md-4 col-sm-12 col-xs-12">
                      <label>&nbsp;</label>
-                     <button class="btn btn-primary fullwidth">해당위치로 검색</button>
+                     <button id = "searchBtn" class="btn btn-primary fullwidth">해당위치로 검색</button>
                   </div>
                </div>
             </div>
 
-         </form>
+         </div>
 
 
       </section>
       <!-- /FILTER BOX -->
       
-      
       <!-- 구분하는 줄 긋기  -->
-      <div class="divider"><!-- divider -->
-               <i class="fa fa-leaf"></i>
-            </div>
-
+	      <div class="divider">
+	      	<i class="fa fa-leaf"></i>
+	      </div>
 
       <!-- PAGE TITLE -->
-
-
-      <!--
-      class="nopadding" 
-      margin-left: 300px; margin-right: 300px;  -->
-
 
       <section class="container">
          <div class="row">
@@ -207,9 +300,6 @@
                   <li><a href="shortcodes-callouts.html"><i
                         class="fa fa-circle-o"></i> Callouts</a></li>
                   <li>
-                     
-                     
-                  
                   
                   </li>
                   <li><a href="shortcodes-tooltips-and-popover.html"><i
@@ -221,8 +311,6 @@
             </div>
             <!--내코끝  -->
 
-
-
             <div class="col-md-9">
                <div class="map_wrap">
                    <div id="gmap" sytle="width: 100%; height: 700px; position:relative; overflow:visible;"></div>
@@ -233,13 +321,8 @@
                   
                </div> 
             </div>
-            <!--api 키 인증  -->
-            <script type="text/javascript"
-               src="//apis.daum.net/maps/maps3.js?apikey=3e0a1d6ea303156f75ac023290071948"></script>
-            <!--추가 라이브러리 불러오기  -->
-            <script type="text/javascript"
-               src="//apis.daum.net/maps/maps3.js?apikey=3e0a1d6ea303156f75ac023290071948&libraries=services,clusterer,drawing"></script>
-            <script>
+            
+	<script>
       var mapContainer = document.getElementById('gmap'), // 지도를 표시할 div 
          mapOption = {
             center : new daum.maps.LatLng(37.579634, 126.976955), // 지도의 중심좌표
@@ -248,6 +331,8 @@
    
       var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
    
+      // AST : 기본 마커 생성
+      
       // 마커가 표시될 위치입니다 
       var markerPosition = new daum.maps.LatLng(37.579634, 126.976955);
    
@@ -263,7 +348,7 @@
       // marker.setMap(null);    
    
    
-      // 이미지 바꾼 마커
+      // AST : 이미지 바꾼 마커
       // 마커가 표시될 위치입니다 
       var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
          imageSize = new daum.maps.Size(64, 69), // 마커이미지의 크기입니다
@@ -284,7 +369,7 @@
       // 마커가 지도 위에 표시되도록 설정합니다
       marker2.setMap(map);
 
-      
+      // AST : 지도 클릭 이벤트
       //마커가 클릭된 상태이면 지도클릭이벤트를 막는다.
       var markerClick=false;
       
@@ -313,7 +398,9 @@
             }
          });
    
-   
+   		
+      
+      // AST : 마커 클릭 이벤트 - 커스텀창
          //커스텀 오버레이
          var content = '<div class="wrap">' +
          '    <div class="info">' +
@@ -329,7 +416,7 @@
          '                <div class="ellipsis">주소1</div>' +
          '                <div class="jibun ellipsis">주소2</div>' +
          '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a>'+  
-         '             <a href="${path}/attraction/initDetails.do?name=독립문" target="_blank" class="link">상세보기</a></div>' +
+         '             <a href="#" target="_blank" class="link">상세보기</a></div>' +
          '            </div>' +
          '        </div>' +
          '    </div>' +
@@ -359,6 +446,8 @@
       //시작할때는 오버레이를 꺼둔다
       overlay.setMap(null);
       
+      
+      // AST : 확대, 축소 
       // 지도 확대, 축소 컨트롤에서 확대 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
       function zoomIn() {
           map.setLevel(map.getLevel() - 1);

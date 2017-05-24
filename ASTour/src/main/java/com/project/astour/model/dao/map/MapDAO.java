@@ -10,4 +10,5 @@ public interface MapDAO {
 	public List<attraction_tbl> attractionList();
 	public List<sigunVO> sigunList();
 	public List<sigunVO> gunList(String name);
+	public List<attraction_tbl> searchLocation(attraction_tbl vo);
 }

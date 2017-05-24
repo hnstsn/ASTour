@@ -32,7 +32,7 @@ public class attraction_tbl {
 	String aintro;  	//소개
 	String acontent; 	//실내용
 	double alatitude;	//위도
-	double	alogitude; 	//경도
+	double alongitude; 	//경도
 
 
 	public int getAttpk() { return attpk; }
@@ -59,8 +59,9 @@ public class attraction_tbl {
 	public void setAcontent(String acontent) { this.acontent = acontent; }
 	public double getAlatitude() { return alatitude; }
 	public void setAlatitude(double alatitude) { this.alatitude = alatitude; }
-	public double getAlogitude() { return alogitude; }
-	public void setAlogitude(double alogitude) { this.alogitude = alogitude; }
+	public double getAlongitude() { return alongitude; }
+	public void setAlongitude(double alongitude) { this.alongitude = alongitude; }
+	
 
 
 

@@ -34,6 +34,12 @@ public class MapServiceImpl implements MapService{
 		
 		return mapDAO.gunList(name);
 	}
+
+	@Override
+	public List<attraction_tbl> searchLocation(attraction_tbl vo) {
+	
+		return mapDAO.searchLocation(vo);
+	}
 	
 	
 	
