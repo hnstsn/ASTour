@@ -32,16 +32,18 @@ public class SnsController {
 	
 	@Inject
 	TimelineService timelineService;
+	//기존 mpk 식별하기위함 
 	int mp=0;
 	//처음화면
 	@RequestMapping("initSns.do")
 	public String initSns(Model model,@RequestParam(value="mpk") int mpk) {
+		//초기 mpk 저장
 		mp=mpk;
 		List<snsVO> snsList = snsService.snsList(mpk);
 		List<MemberVO> memList = snsService.memList(mpk);
-		
 		model.addAttribute("memList", memList);
 		model.addAttribute("list", snsList);
+		model.addAttribute("mpk",mpk);
 		model.addAttribute("curPage", "snsView/sns.jsp");
 		return "home";
 	}
@@ -98,22 +100,32 @@ public class SnsController {
 			@RequestParam(value="mpk") int mpk){
 		
 		List<snsVO> snsList = snsService.snsList(mpk);
-		List<MemberVO> memList = snsService.memList(mp);
-		
+		List<MemberVO> memList = snsService.memList(mpk);
 		model.addAttribute("memList", memList);
 		model.addAttribute("list", snsList);
+		model.addAttribute("mpk",mp);
+		model.addAttribute("curPage", "snsView/sns.jsp");
+		return "home";
+	}
+	
+	//전체검색 해야함
+	@RequestMapping("snsSelect.do")
+	public String snsSelect(Model model,
+			@RequestParam(value="mpk") int mpk){
 		
-		System.out.println("확인:"+mpk);
+		List<snsVO> snsList = snsService.snsList(mpk);
+		List<MemberVO> memList = snsService.memList(mpk);
+		model.addAttribute("memList", memList);
+		model.addAttribute("list", snsList);
+		model.addAttribute("mpk",mp);
 		model.addAttribute("curPage", "snsView/sns.jsp");
 		return "home";
 	}
 	
 	//aaaaaaaa
-
 	@RequestMapping("contentview.do")
 	public String BlogContent(Model model,
 			@RequestParam(value="spk") int spk) {
-		
 		List<snsVO> contentView = timelineService.contentView(spk);
 		model.addAttribute("list", contentView);
 		model.addAttribute("curPage", "snsView/contentview.jsp");

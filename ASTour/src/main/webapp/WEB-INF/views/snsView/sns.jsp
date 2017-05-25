@@ -91,13 +91,14 @@
 						<div class="widget">
 
 							<h4>게시물 보기</h4>
-
 							<ul class="nav nav-list">
-								<li><a href="${path }/sns/writeview.do?mpk=${memList[0].mpk }">
-								<i class="fa fa-circle-o"></i> 글쓰기</a></li>
-							
+								<li><a href="${path }/sns/snsSelect.do?mpk=${memList[0].mpk}"><i class="fa fa-circle-o"></i> 전체 보기</a></li>
 								<li><a href="#"><i class="fa fa-circle-o"></i> 리뷰 게시물</a></li>
 								<li><a href="#"><i class="fa fa-circle-o"></i> 나의 게시물</a></li>
+								<c:if test="${mpk eq memList[0].mpk }">
+									<li><a href="${path }/sns/writeview.do?mpk=${mpk }">
+									<i class="fa fa-circle-o"></i> 글쓰기</a></li>
+								</c:if>
 							</ul>
 
 						</div>
