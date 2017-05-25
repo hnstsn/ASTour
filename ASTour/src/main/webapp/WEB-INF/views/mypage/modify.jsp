@@ -13,6 +13,7 @@
 	<meta name="description" content="" />
 	<meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
 	<%@ include file="../include/bootstap_collect.jsp" %>
+	<%@ include file="../include/sessionCheck.jsp" %>
 <script>
 //현재 비밀번호가 맞는지 확인하는 함수
 function pwIsCor() {

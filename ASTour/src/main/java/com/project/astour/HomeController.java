@@ -44,6 +44,10 @@ public class HomeController {
 		} else if (cpage == 40) {
 //			회원정보 수정 페이지로 이동하는데 로그인한 사람의 정보를 넘겨주기 위해 세션에서 값을 받는다.
 			MemberVO member = (MemberVO) session.getAttribute("member");
+			if (member == null) {
+				System.out.println("없음");
+				return "include/sessionCheck";
+			}
 			int mpk = member.getMpk();
 			return "redirect:/modify/getPriInfo.do?mpk=" + mpk;
 //		고객선터 페이지 전환
