@@ -7,7 +7,7 @@
 <!--[if IE 9]>         <html class="ie ie9"> <![endif]-->
 <!--[if gt IE 9]><!-->
 <html>
-<!--<![endif]-->
+
 <head>
 <meta charset="utf-8" />
 
@@ -16,21 +16,22 @@
    <%@ include file="../include/bootstap_collect.jsp" %>
 
    <style>
-   /*  AST : 마커클릭후의 오버레이의 스타일을 정의한다   */
-      .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
-       .wrap * {padding: 0;margin: 0;}
-       .wrap .info {width: 500px;height: 300px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
-       .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
-       .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
-       .info .close {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
-       .info .close:hover {cursor: pointer;}
-       .info .body {position: relative;overflow: hidden;}
-       .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
-       .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
-       .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
-       .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
-       .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
-       .info .link {color: #5085BB;} 
+   /*  AST : 마커클릭후의 오버레이의 스타일을 정의한다   - 부트스트랩과 겹치면 안됨*/
+    .wrap {position: absolute;left: 0;bottom: 40px;width: 288px;height: 132px;margin-left: -144px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap * {padding: 0;margin: 0;}
+    .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+    .info .title {padding: 5px 0 0 10px;height: 30px;background: #faa;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+    .info .customClose {position: absolute;top: 10px;right: 10px;color: #888;width: 17px;height: 17px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/overlay_close.png');}
+    .info .customClose:hover {cursor: pointer;}
+    .info .body {position: relative;overflow: hidden;}
+    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+    .desc .jibun {font-size: 11px;color: #888;margin-top: 6px;margin-bottom: 3px}
+	.desc .overLink{margin-top:6px;}
+    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+    .info:after {content: '';position: absolute;margin-left: -12px;left: 50%;bottom: 0;width: 22px;height: 12px;background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+    .info .link {color: #5085BB;}
        
 	/* AST : 지도크기 조절하는 +,-창의 스타일을 정의한다. */       
 		 html, body {width:100%;height:100%;margin:0;padding:0;}
@@ -129,13 +130,13 @@
  						         '    <div class="info">' +
  						         '        <div class="title">' +
  						         			atitle+
- 						         '            <div class="close" onclick="closeOverlay('+i+')" title="닫기"></div>' +
+ 						         '            <div class="customClose" onclick="closeOverlay('+i+')" title="닫기"></div>' +
  						         '        </div>' +
  						         '        <div class="body">' +
  						         '            <div class="img">' +
  						         '                <img src="'+
  						         					aimage+
- 						         '					" width="73" height="70">' +
+ 						         '					" width="80" height="75">' +
  						         '           </div>' +
  						         '            <div class="desc">' +
  						         '                <div class="jibun ellipsis">'+
@@ -144,7 +145,7 @@
  						         '                <div class="ellipsis">'+
  						         					aaddress2+
  						         '			      </div>' +
- 						         '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a>'+  
+ 						         '                <div class="overLink"><a href="https://github.com/hnstsn/ASTour" target="_blank" class="link">홈페이지</a>'+  
  						         '             	  <a href="'+
  						         					detailView+
  						         '					"	target="_blank" class="link">상세보기</a></div>' +
@@ -277,12 +278,13 @@
 	      </div>
 
       <!-- PAGE TITLE -->
-
-      <section class="container">
+		
+	  <!-- AST : 지도 크기 변경은 section의 width , padding , margin 조절  -->	
+      <section class="container" style="width: 85%; ">
          <div class="row">
 
-            <!-- AST : 왼쪽 바 넣을까?  -->
-           <!--  <div class="col-md-3">
+            <!-- AST : 왼쪽 바  -->
+         	 <!-- <div class="col-md-2">
 
                <ul class="nav nav-list">
                   <li><a href="shortcodes-rows.html"><i
@@ -317,7 +319,7 @@
 			<!-- AST : 맵이 들어갈 곳, col-md-숫자 변경으로 조절 -->
             <div class="col-md-12">
                <div class="map_wrap">
-                   <div id="gmap" sytle="width: 100%; height: 700px; position:relative; overflow:visible;"></div>
+                   <div id="gmap" style="width: 100%; height: 700px; position:relative; overflow:visible;"></div>
                    <div class="custom_zoomcontrol radius_border"> 
                        <span onclick="zoomIn()"><img height="39px" src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></span>  
                        <span onclick="zoomOut()"><img src="http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
