@@ -273,7 +273,7 @@
       <!-- /FILTER BOX -->
       
       <!-- 구분하는 줄 긋기  -->
-	      <div class="divider">
+	      <div id="seco1" class="divider">
 	      	<i class="fa fa-leaf"></i>
 	      </div>
 
@@ -445,6 +445,7 @@
       
       // AST : 오버레이 설정 함수
       function markerMaker(markersArr, overlaysArr){
+    	  document.getElementById("searchBtn").scrollIntoView();
     	  console.log(markersArr);
     	  console.log(overlaysArr);
     	  overlays2 = overlaysArr;
