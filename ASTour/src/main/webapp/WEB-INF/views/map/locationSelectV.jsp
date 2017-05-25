@@ -60,7 +60,7 @@
    	$(document).ready(function(){
    		$("#siSelect").change(function (){
 			var name = $("#siSelect option:selected").val();
-			//지역이바뀌니 초기화
+			// AST : 지역이바뀌니 초기화
 			$("#gunSelect").html("<option value=''>모두</option>");
    			$.ajax({
    				url:"${path}/selectBox",
@@ -79,23 +79,24 @@
    		
    		// AST : 위치 검색 버튼 클릭시 마커 변경
    		// 마커배열 전역변수로
-   		var markers; 
+   		var markerArr; 
    		// 오버레이 전역변수
-   		var overlays;
+   		var overlayArr;
    		// 위치, 콘텐츠 배열 전역변수로
    		var positions;
    		//이전 마커 수
    		var beforeSize = 0;
-   		// AST : 버튼 클릭시 시작
+   		// AST : '해당 위치로~' 버튼 클릭시 시작
    		$("#searchBtn").click(function(){
-   			
-				 for(var i=0; i<beforeSize; i++){
-				// AST : 기존 마커들을 삭제한다.
-					markers[i].setMap(null);
+
+   				for(var i=0; i<beforeSize; i++){
+				// AST : 기존 마커와 오버레이들을 삭제한다.
+					markerArr[i].setMap(null);
+				 	overlayArr[i].setMap(null);
 				}
    			 
    			
-   			//like 쓰기위해 % 직접 넣음
+   			// AST : like 쓰기위해 % 직접 넣음
  		   var selectedSi = $("#siSelect option:selected").val()+"%";
  		   var selectedGun = $("#gunSelect option:selected").val()+"%";
  		   var selectedEvent= "%"+$("#eventSelect option:selected").val()+"%";
@@ -111,27 +112,42 @@
  					console.log(data);
  					beforeSize=data.length;
  					positions = new Array();
- 					markers = new Array();
- 					overlays = new Array();
+ 					markerArr = new Array();
+ 					overlayArr = new Array();
  					
  					for(var i=0; i<data.length; i++){
- 						//위치, 오버레이컨텐츠 설정
+ 						// AST : 위치, 오버레이컨텐츠 설정
+ 						var atitle = data[i].atitle;
+ 						var aimage = "${path}/resources/image/culture/"+data[i].aimage;
+ 						var aaddress = data[i].acity+" "+data[i].agu;
+ 						var aaddress2 =data[i].aaddress;
+ 						var detailView = "${path}/attraction/initDetails.do?name="+data[i].atitle;
+ 						
+ 						 
  						var position = {
  								content: '<div class="wrap">' +
  						         '    <div class="info">' +
  						         '        <div class="title">' +
- 						         '           경복궁' +
- 						         '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
+ 						         			atitle+
+ 						         '            <div class="close" onclick="closeOverlay('+i+')" title="닫기"></div>' +
  						         '        </div>' +
  						         '        <div class="body">' +
  						         '            <div class="img">' +
- 						         '                <img src="https://lh4.googleusercontent.com/proxy/fBbACHhSGHYVwVIHQIbMBAuf80D0PBmn0xbL8evKS_cjHUP6os0YAD-P1Teg2eDAearjZWHz5oOtpHgadRHGynkAh8Q_djH7LBWh8_BOEyNy7WLWm76BQv4Luc93ZwjwW9X85hTJNwHxxLRRPHlMsMvqgddLiQ=w408-h251-k-no" width="73" height="70">' +
+ 						         '                <img src="'+
+ 						         					aimage+
+ 						         '					" width="73" height="70">' +
  						         '           </div>' +
  						         '            <div class="desc">' +
- 						         '                <div class="ellipsis">주소1</div>' +
- 						         '                <div class="jibun ellipsis">주소2</div>' +
+ 						         '                <div class="jibun ellipsis">'+
+ 						         			       	aaddress+
+ 						         '			      </div>'+
+ 						         '                <div class="ellipsis">'+
+ 						         					aaddress2+
+ 						         '			      </div>' +
  						         '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a>'+  
- 						         '             <a href="#" target="_blank" class="link">상세보기</a></div>' +
+ 						         '             	  <a href="'+
+ 						         					detailView+
+ 						         '					"	target="_blank" class="link">상세보기</a></div>' +
  						         '            </div>' +
  						         '        </div>' +
  						         '    </div>' +
@@ -140,47 +156,34 @@
  						}
  						
  						positions.push(position);
- 						//마커 설정
+ 						// AST : 마커 설정
  						var marker = new daum.maps.Marker({
- 					         position : positions[i].latlng
+ 					         position : positions[i].latlng,
+ 					         map : map
  					      });
- 						//지도에 표시
- 						marker.setMap(map);
- 						//배열로 푸시
- 						markers.push(marker);
+ 						// AST : 배열로 푸시
+ 						markerArr.push(marker);
  						
- 						//오버레이 설정
- 					   var overlay2 = new daum.maps.CustomOverlay({
+ 						// AST : 오버레이 설정
+ 					   var overlay = new daum.maps.CustomOverlay({
  					         content : position.content,
- 					         map : map,
  					         position : position.latlng,
- 					        
+ 					         clickable : true
  					      });
- 						// 배열로 푸시
- 						overlays.push(overlay);
-						
- 					/*daum.maps.event.addListener(markers[i], 'click', function() {
- 				         
- 				         overlays[i].setMap(map);
- 				         markerClick = true;
- 				      }); */
- 					  
- 					 daum.maps.event.addListener(marker, 'click', makeOverListener(overlay2));
- 					  //daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+ 						// AST : 배열로 푸시
+ 						overlayArr.push(overlay);
  					
  					}
+ 					
+ 					//  AST : 이벤트 처리 함수 콜
+ 					markerMaker(markerArr, overlayArr);
+ 					// AST : 지도 중심이동
+ 					map.panTo(markerArr[0].getPosition());    
  				}
  			});
  	   	});
       });
    		
-   	function makeOverListener(overlay2) {
-   	    return function() {
-   	        overlay2.setMap(map);
-   	    };
-   	}
-	
-   	
    </script>
 </head>
 
@@ -278,8 +281,8 @@
       <section class="container">
          <div class="row">
 
-            <!--내코  -->
-            <div class="col-md-3">
+            <!-- AST : 왼쪽 바 넣을까?  -->
+           <!--  <div class="col-md-3">
 
                <ul class="nav nav-list">
                   <li><a href="shortcodes-rows.html"><i
@@ -308,10 +311,11 @@
                         class="fa fa-circle-o"></i> Modals</a></li>
                </ul>
 
-            </div>
-            <!--내코끝  -->
-
-            <div class="col-md-9">
+            </div> -->
+            <!--왼쪽바 끝  -->
+			
+			<!-- AST : 맵이 들어갈 곳, col-md-숫자 변경으로 조절 -->
+            <div class="col-md-12">
                <div class="map_wrap">
                    <div id="gmap" sytle="width: 100%; height: 700px; position:relative; overflow:visible;"></div>
                    <div class="custom_zoomcontrol radius_border"> 
@@ -326,12 +330,11 @@
       var mapContainer = document.getElementById('gmap'), // 지도를 표시할 div 
          mapOption = {
             center : new daum.maps.LatLng(37.579634, 126.976955), // 지도의 중심좌표
-            level : 3 // 지도의 확대 레벨
+            level : 11 // 지도의 확대 레벨
          };
-   
       var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
    
-      // AST : 기본 마커 생성
+      /* // AST : 기본 마커 생성
       
       // 마커가 표시될 위치입니다 
       var markerPosition = new daum.maps.LatLng(37.579634, 126.976955);
@@ -345,10 +348,10 @@
       marker.setMap(map);
    
       // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-      // marker.setMap(null);    
+      // marker.setMap(null); */    
    
-   
-      // AST : 이미지 바꾼 마커
+
+      // AST : 이미지 바꾼 마커 - 사용할까?
       // 마커가 표시될 위치입니다 
       var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
          imageSize = new daum.maps.Size(64, 69), // 마커이미지의 크기입니다
@@ -369,14 +372,13 @@
       // 마커가 지도 위에 표시되도록 설정합니다
       marker2.setMap(map);
 
-      // AST : 지도 클릭 이벤트
-      //마커가 클릭된 상태이면 지도클릭이벤트를 막는다.
-      var markerClick=false;
+      // AST : 지도 클릭 이벤트 - 원만들기
+      //마커가 클릭된 상태이면 지도클릭이벤트를 막는다. // clickable : true 로 대체 되었다
       
       //지도 클릭 이벤트 : 클릭된 중심으로부터 원그리기
       var circle;
       daum.maps.event.addListener(map, 'click', function(mouseEvent) {
-            if (markerClick == false) {
+            
                
                //이전에 원이 있으면 지운다.
                if(circle!=null){
@@ -386,7 +388,7 @@
                var mousePosition = mouseEvent.latLng;
                circle = new daum.maps.Circle({
                   center : mousePosition, // 원의 중심좌표 입니다 
-                  radius : 1000, // 미터 단위의 원의 반지름입니다 
+                  radius : 3000, // 미터 단위의 원의 반지름입니다 
                   strokeWeight : 5, // 선의 두께입니다 
                   strokeColor : '#75B8FA', // 선의 색깔입니다
                   strokeOpacity : 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
@@ -395,34 +397,12 @@
                   fillOpacity : 0.2 // 채우기 불투명도 입니다   
                });
                circle.setMap(map);
-            }
+          
          });
    
-   		
-      
-      // AST : 마커 클릭 이벤트 - 커스텀창
-         //커스텀 오버레이
-         var content = '<div class="wrap">' +
-         '    <div class="info">' +
-         '        <div class="title">' +
-         '           경복궁' +
-         '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' +
-         '        </div>' +
-         '        <div class="body">' +
-         '            <div class="img">' +
-         '                <img src="https://lh4.googleusercontent.com/proxy/fBbACHhSGHYVwVIHQIbMBAuf80D0PBmn0xbL8evKS_cjHUP6os0YAD-P1Teg2eDAearjZWHz5oOtpHgadRHGynkAh8Q_djH7LBWh8_BOEyNy7WLWm76BQv4Luc93ZwjwW9X85hTJNwHxxLRRPHlMsMvqgddLiQ=w408-h251-k-no" width="73" height="70">' +
-         '           </div>' +
-         '            <div class="desc">' +
-         '                <div class="ellipsis">주소1</div>' +
-         '                <div class="jibun ellipsis">주소2</div>' +
-         '                <div><a href="http://www.kakaocorp.com/main" target="_blank" class="link">홈페이지</a>'+  
-         '             <a href="#" target="_blank" class="link">상세보기</a></div>' +
-         '            </div>' +
-         '        </div>' +
-         '    </div>' +
-         '</div>';
+    
    
-      //마커 위에 커스텀오버레이를 표시합니다
+   	  /* //마커 위에 커스텀오버레이를 표시합니다
       //마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
       var overlay = new daum.maps.CustomOverlay({
          content : content,
@@ -444,7 +424,7 @@
       }
       
       //시작할때는 오버레이를 꺼둔다
-      overlay.setMap(null);
+      overlay.setMap(null); */
       
       
       // AST : 확대, 축소 
@@ -457,13 +437,37 @@
       function zoomOut() {
           map.setLevel(map.getLevel() + 1);
       }
+      
+      // AST : 오버레이 닫기 위한 변수
+      var overlays2;
+      
+      // AST : 오버레이 설정 함수
+      function markerMaker(markersArr, overlaysArr){
+    	  console.log(markersArr);
+    	  console.log(overlaysArr);
+    	  overlays2 = overlaysArr;
+    	  // AST : 이벤트 리스너
+    	  for(var i=0; i<markersArr.length; i++){
+    		  daum.maps.event.addListener(markersArr[i], 'click', overlayMaker(overlaysArr[i])); 
+    	  }
+      }
+      // AST : 클로저?
+      function overlayMaker(eachOverlay){
+    	  	return function(){
+    	  	eachOverlay.setMap(map);
+    	  	}
+	      }
+      
+      // AST : 오버레이 닫기 함수
+      function closeOverlay(i) {
+          overlays2[i].setMap(null);
+       }
+      
+     
    </script>
-
 
          </div>
       </section>
-
-
 
    </div>
    <!-- /WRAPPER -->

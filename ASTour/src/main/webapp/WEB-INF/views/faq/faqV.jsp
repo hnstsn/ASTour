@@ -20,7 +20,7 @@
    </head>
 
    <span id="header_shadow"></span>
-   
+   <body>
       <!-- WRAPPER -->
       <div id="wrapper">
 
@@ -184,6 +184,6 @@
 
       </div>
       <!-- /WRAPPER -->
-
+</body>
 
 </html>
