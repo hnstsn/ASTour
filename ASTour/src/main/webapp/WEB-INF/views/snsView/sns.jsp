@@ -14,6 +14,7 @@
 <!-- mobile settings -->
 <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 <%@ include file="../include/bootstap_collect.jsp"%>
+<%@ include file="../include/sessionCheck.jsp" %>
 <!-- Morenizr -->
 <script type="text/javascript" src="assets/plugins/modernizr.min.js"></script>
 
@@ -29,7 +30,7 @@
 			<!-- AST : 페이지 타이틀 -->
 			<header id="page-title">
 				<div class="container">
-					<h1>황성빈님의 블로그</h1>
+					<h1>${memList[0].mname } 블로그</h1>
 				</div>
 			</header>
 			<!-- / AST : 페이지 타이틀 -->
@@ -57,9 +58,9 @@
 
 							<h3>사람 찾기</h3>
 
-							<form method="get" action="#" class="input-group">
-								<input type="text" class="form-control" name="s" id="s" value=""
-									placeholder="search..." /> <span class="input-group-btn">
+							<form method="get" action="${path }/sns/snsPepole.do" class="input-group">
+								<input type="text" class="form-control" name="pepole_id" id="pepole_id" value=""
+									placeholder="ID이메일을입력하시오..." /> <span class="input-group-btn">
 									<button class="btn btn-primary">
 										<i class="fa fa-search"></i>
 									</button>
@@ -92,8 +93,9 @@
 							<h4>게시물 보기</h4>
 
 							<ul class="nav nav-list">
-								<li><a href="#"><i class="fa fa-circle-o"></i> 사진</a></li>
-								<li><a href="#"><i class="fa fa-circle-o"></i> 동영상</a></li>
+								<li><a href="${path }/sns/writeview.do?mpk=${memList[0].mpk }">
+								<i class="fa fa-circle-o"></i> 글쓰기</a></li>
+							
 								<li><a href="#"><i class="fa fa-circle-o"></i> 리뷰 게시물</a></li>
 								<li><a href="#"><i class="fa fa-circle-o"></i> 나의 게시물</a></li>
 							</ul>
@@ -117,19 +119,21 @@
 										<a href="${path}/sns/contentview.do?spk=${sns.spk}">${sns.stitle }</a>
 									</h2>
 									<a href="blog.html" class="label label-default light"><i
-										class="fa fa-dot-circle-o"></i> Business</a> <a
+										class="fa fa-dot-circle-o"></i>${sns.ssort }</a> <a
 										href="blog-post.html#comments"
 										class="scrollTo label label-default light"><i
 										class="fa fa-comment-o"></i> 3 Comments</a> <span
 										class="label label-default light">${sns.sdate }</span>
 								</div>
 								<!-- / AST : 타임라인 타이틀  -->
-
+								
 								<!-- AST : 타임라인 이미지  -->
+								<c:if test="${sns.sfile ne null}">
 								<figure>
 									<img src="${path }/${sns.spath}${sns.sfile}" class="img-rounded"
 										alt="img" />									
 								</figure>
+								</c:if>
 								<!-- / AST : 타임라인 이미지  -->
 
 								<!-- AST : 타임라인 내용  -->
@@ -138,11 +142,7 @@
 							</div>
 						</c:forEach>
 						<!-- / AST : 타임라인 게시물  -->
-						<div align="right">
-						<form action="${path }/sns/writeview.do">
-						<input type=submit class="btn btn-success" value="글쓰기">
-						</form>
-						</div>
+					
 						<!-- AST : 페이지 넘기기 -->
 						<div class="text-center">
 							<ul class="pagination">

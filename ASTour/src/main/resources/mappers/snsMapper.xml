@@ -6,25 +6,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 <mapper namespace="sns">
 
-	<select id="snsList" 
-	resultType="com.project.astour.model.dto.mypage.snsVO"> 
-		SELECT *FROM sns_tbl order by spk desc
+<!--s.spk, s.stitle, s.scontent, s.sdate, s.mpk, s.stag, s.ssort , m.mname, m.mfile, m.mfile2, m.mpath -->
+	<select id="snsList" resultType="com.project.astour.model.dto.mypage.snsVO">
+		SELECT * FROM sns_tbl where mpk = #{mpk } order by spk desc
 	</select>
-   
-   <select id="contentview"
-		resultType="com.project.astour.model.dto.mypage.snsVO">
-		SELECT *FROM sns_tbl WHERE spk =#{spk }
+
+	<select id="contentview" resultType="com.project.astour.model.dto.mypage.snsVO">
+		SELECT *FROM sns_tbl WHERE
+		spk =#{spk }
 	</select>
-	
+
 	<insert id="insertcontent">
-		INSERT INTO sns_tbl (spk, stitle, scontent, sdate, stag, ssort)
-		VALUES (sns_seq.nextval, #{stitle}, #{scontent}, sysdate, #{stag}, #{ssort})
+		INSERT INTO sns_tbl (spk, stitle, scontent, sdate, mpk,
+		stag, ssort)
+		VALUES (sns_seq.nextval, #{stitle}, #{scontent}, sysdate, #{mpk},
+		#{stag}, #{ssort})
 	</insert>
-	
+
 	<delete id="deletecontent">
 		DELETE FROM sns_tbl where spk= #{spk}
 	</delete>
 	
+	<select id="memList" resultType="com.project.astour.model.dto.member.MemberVO">
+		SELECT * FROM ASTMember WHERE mpk=#{mpk}
+	</select>
+	
+	<select id="pepoleList" resultType="com.project.astour.model.dto.member.MemberVO">
+		SELECT * FROM ASTMember WHERE mname LIKE #{mname}
+	</select>
+
 </mapper>
 
-<!-- #{sfile}, #{spath},  sfile, spath, -->
+<!-- #{sfile}, #{spath}, sfile, spath, -->

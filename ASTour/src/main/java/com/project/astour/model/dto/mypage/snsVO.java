@@ -13,8 +13,7 @@ public class snsVO {
 	private String spath; // 경로
 	private int mpk; // 작성자???????? 승완이형한테 물어보셈요!
 	private String stag; // 장소태그
-	private int ssort; // 리뷰/내게시물 구분
-	
+	private String ssort; // 리뷰/내게시물 구분
 	
 	public int getSpk() {
 		return spk;
@@ -70,10 +69,10 @@ public class snsVO {
 	public void setStag(String stag) {
 		this.stag = stag;
 	}
-	public int getSsort() {
+	public String getSsort() {
 		return ssort;
 	}
-	public void setSsort(int ssort) {
+	public void setSsort(String ssort) {
 		this.ssort = ssort;
 	}
 	

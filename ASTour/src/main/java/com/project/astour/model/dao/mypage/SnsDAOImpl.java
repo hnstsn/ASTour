@@ -17,8 +17,8 @@ public class SnsDAOImpl implements SnsDAO {
 	SqlSession sqlSession;
 	
 	@Override
-	public List<snsVO> snsList() {
-		return sqlSession.selectList("sns.snsList"); 
+	public List<snsVO> snsList(int mpk) {
+		return sqlSession.selectList("sns.snsList",mpk); 
 	}
 
 	@Override
@@ -27,9 +27,15 @@ public class SnsDAOImpl implements SnsDAO {
 		sqlSession.delete("sns.deletecontent", spk);
 	}
 
-//	@Override
-//	public List<MemberVO> memList() {
-//		
-//		return null;
-//	}
+	@Override
+	public List<MemberVO> memList(int mpk) {
+		return sqlSession.selectList("sns.memList",mpk);
+	}
+
+	//사람찾기
+	@Override
+	public List<MemberVO> pepoleList(String mname){
+		return sqlSession.selectList("sns.pepoleList",mname);
+	}
+	
 }
