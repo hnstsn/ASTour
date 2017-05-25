@@ -32,7 +32,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM ASTProfile WHERE mpk=#{mpk} ORDER BY ppk DESC
 	</select>
 	
-	
 	<!-- 회원 정보 수정 -->
 	<update id="modifyInfo">
 		UPDATE ASTMember SET mpw=${mpw}, mname=#{mname}, mphone=#{mphone}
