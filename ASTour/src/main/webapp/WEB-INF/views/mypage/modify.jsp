@@ -103,6 +103,11 @@ $(document).ready(function() {
 		} else if (mphone == '') {
 			alert("핸드폰을 입력하세요");
 			return false;
+
+		// 비밀번호가 아직 아니라면
+		} else if (!pwIsOk()) {
+			alert("비밀번호를 확인해주세요");
+			return false;
 			
 		// 다 입력했으며 비밀번호가 최종 ok면
 		} else if(pwIsOk()) {
@@ -157,7 +162,7 @@ var openFile = function(event) {
 							<div class="form-group">
 							
 								<div class="col-md-8" style="margin-left: 15%;">
-									<img src="${path}/profile/${profile.pfile2}" class="img-circle" id="prfImg" width="300" height="250" alt="사진없음">
+									<img src="${path}/profile/${profile.pfile}" class="img-circle" id="prfImg" width="300" height="250" alt="사진없음">
 									<input type="file" name="prfFile" onChange="openFile(event)" />
 								</div>
 							

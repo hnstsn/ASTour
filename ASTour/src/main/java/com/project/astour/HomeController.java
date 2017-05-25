@@ -14,7 +14,6 @@ import com.project.astour.model.dto.member.MemberVO;
 /**
  * Handles requests for the application home page.
  */
-//수정해야함
 @Controller
 public class HomeController {
 	
@@ -38,6 +37,7 @@ public class HomeController {
 //		마이페이지 - SNS 페이지 전환
 		else if (cpage == 30) {
 			MemberVO member = (MemberVO) session.getAttribute("member");
+//			로그인 하지 않았다면(세션이 없다면)
 			if (member == null)
 				return "include/sessionCheck";
 			int mpk = member.getMpk();
@@ -46,6 +46,7 @@ public class HomeController {
 		} else if (cpage == 40) {
 //			회원정보 수정 페이지로 이동하는데 로그인한 사람의 정보를 넘겨주기 위해 세션에서 값을 받는다.
 			MemberVO member = (MemberVO) session.getAttribute("member");
+//			로그인 하지 않았다면(세션이 없다면)
 			if (member == null) 
 				return "include/sessionCheck";
 			int mpk = member.getMpk();

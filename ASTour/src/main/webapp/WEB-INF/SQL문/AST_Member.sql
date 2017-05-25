@@ -2,6 +2,7 @@
 -- mpk : pk, mid : id, mpw : password, mname : 이름, mphone : 전화번호
 -- mfile : 사진 이름,  mfile2 : 저장소에 구분되는 사진 이름, mpath : 저장되는 경로
 
+-- 변경 전 테이블
 create table ASTMember (
   mpk number primary key,
   mid varchar2(30) not null,
@@ -13,11 +14,13 @@ create table ASTMember (
   mpath varchar2(50)
 );
 
+-- 위의 테이블 수정
 --ASTMember table 수정 - mfile, pfile2, mpath 삭제
 ALTER Table ASTMember drop column mfile;
 alter table astmember drop column mfile2;
 alter table astmember drop column mpath;
 
+-- 프로필 사진을 위한 테이블 생성
 create table ASTProfile (
   ppk number,
   pfile varchar2(20),
@@ -27,8 +30,6 @@ create table ASTProfile (
   constraint ASTProfile_pk primary key (ppk),
   constraint ASTProfile_fk foreign key (mpk) references ASTMember (mpk)
 );
-
-drop sequence prf_seq;
 
 -- member table primary key를 위한 Sequence 생성
 create sequence mem_seq start with 1 increment by 1;

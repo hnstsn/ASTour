@@ -33,16 +33,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-	<!-- 회원 정보 수정 === 더 해야 된다 -->
+	<!-- 회원 정보 수정 -->
 	<update id="modifyInfo">
 		UPDATE ASTMember SET mpw=${mpw}, mname=#{mname}, mphone=#{mphone}
-		WHERE mpk = #{mpk}
+		WHERE mpk=#{mpk}
 	</update>
 	
-	<!-- 회원정보 수정 시 프로필 사진 입력 : 구분되는 파일명도 넣어줘야 한다 -->
+	<!-- 회원정보 수정 시 프로필 사진 입력  -->
 	<insert id="insertPrf">
-		INSERT INTO ASTProfile (ppk, pfile, pfile2, ppath, mpk) 
-		VALUES (prf_seq.nextval, #{pfile}, #{pfile2}, 'WEB-INF/views/upload/profile', #{mpk})
+		INSERT INTO ASTProfile (ppk, pfile, ppath, mpk) 
+		VALUES (prf_seq.nextval, #{pfile}, 'WEB-INF/views/upload/profile', #{mpk})
 	</insert>
 	
 </mapper>

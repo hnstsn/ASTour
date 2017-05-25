@@ -51,18 +51,15 @@ public class ModifyCtrl {
 		mService.modifyInfo(mem);
 		// 첨부파일(프로필 사진)이 있으면
 		if (!prfFile.isEmpty()) {
+			System.out.println("@@@@" + prfFile.getOriginalFilename());
 			// 업로드할 파일명
 			String file = prfFile.getOriginalFilename();
 			String savedName = uploadFile(file, prfFile.getBytes());
 			System.out.println(savedName);
 			ProfileVO prf = new ProfileVO();
-			prf.setPfile(file);
-			prf.setPfile2(savedName);
+			prf.setPfile(savedName);
 			prf.setMpk(mem.getMpk());
 			pService.insertPrf(prf);
-			// 파일을 지정한 디렉토리로 이동
-			//String fpath = "C:/Users/bituser/git/ASTour/ASTour/src/main/webapp/WEB-INF/views/upload/profile/";
-			//prfFile.transferTo(new File(pfUploadPath+file));
 		}
 		return "redirect:/chgPage.do?cpage=40";
 	}

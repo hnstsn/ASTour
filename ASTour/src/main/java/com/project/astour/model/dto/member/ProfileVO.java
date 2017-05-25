@@ -1,13 +1,12 @@
 package com.project.astour.model.dto.member;
 
 /*  ASTProfile table
-	ppk : primary key, pfile : 사진명, pfile2 : 사진명2, 
+	ppk : primary key, pfile : 사진명 
 	ppath : 경로, mpk : ASTMember table의 pk
  */
 public class ProfileVO {
 	private int ppk;
 	private String pfile;
-	private String pfile2;
 	private String ppath;
 	private int mpk;
 	
@@ -22,12 +21,6 @@ public class ProfileVO {
 	}
 	public void setPfile(String pfile) {
 		this.pfile = pfile;
-	}
-	public String getPfile2() {
-		return pfile2;
-	}
-	public void setPfile2(String pfile2) {
-		this.pfile2 = pfile2;
 	}
 	public String getPpath() {
 		return ppath;
