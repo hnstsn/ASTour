@@ -4,6 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+	<typeAliases>
+		<typeAlias type="com.project.astour.model.dto.member.MemberVO" alias="MemberVO" />
+		<typeAlias type="com.project.astour.model.dto.member.ProfileVO" alias="ProfileVO" />
+	</typeAliases>
+
 	<mappers>
 		<mapper resource="mappers/snsMapper.xml"></mapper>
 		<mapper resource="mappers/memberMapper.xml"></mapper>

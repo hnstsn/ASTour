@@ -10,5 +10,7 @@ public interface MemberService {
 	public void logout(HttpSession session);
 	public boolean idCheck(String mid);
 	public void joinMember(MemberVO vo);
-
+	public MemberVO getInfo(int mpk);
+	public void modifyInfo(MemberVO vo);
+	
 }

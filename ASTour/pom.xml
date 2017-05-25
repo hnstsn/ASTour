@@ -105,18 +105,17 @@
 		<dependency>
 		    <groupId>commons-fileupload</groupId>
 		    <artifactId>commons-fileupload</artifactId>
-		    <version>1.3.1</version>
+		    <version>1.3.2</version>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.imgscalr/imgscalr-lib -->
-		<!-- 썸네임 -->
+		<!-- 썸네일 -->
 		<dependency>
 		    <groupId>org.imgscalr</groupId>
 		    <artifactId>imgscalr-lib</artifactId>
 		    <version>4.2</version>
 		</dependency>
 		
-	    
 				
 		<!-- AspectJ -->
 		<dependency>

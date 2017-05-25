@@ -7,5 +7,7 @@ public interface MemberDAO {
 	public MemberVO loginCheck(MemberVO vo);
 	public int idCheck(String mid);
 	public void joinMember(MemberVO vo);
-
+	public MemberVO getInfo(int mpk);
+	public void modifyInfo(MemberVO vo);
+	
 }

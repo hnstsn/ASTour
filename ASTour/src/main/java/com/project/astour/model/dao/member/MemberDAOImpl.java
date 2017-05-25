@@ -19,7 +19,6 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne("member.loginCheck", vo);
 	}
 	
-
 	// 아이디 중복 체크 함수
 	@Override
 	public int idCheck(String mid) {
@@ -30,6 +29,16 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void joinMember(MemberVO vo) {
 		sqlSession.insert("member.joinMember", vo);
+	}
+	
+	// 개인정보 가져오기
+	public MemberVO getInfo(int mpk) {
+		return sqlSession.selectOne("member.getInfo", mpk);
+	}
+
+	@Override
+	public void modifyInfo(MemberVO vo) {
+		sqlSession.update("member.modifyInfo", vo);
 	}
 
 }

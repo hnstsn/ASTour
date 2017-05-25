@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="member">
 
 	<!-- 로그인체크 -->
-	<select id="loginCheck" resultType="com.project.astour.model.dto.member.MemberVO">
+	<select id="loginCheck" resultType="MemberVO">
 		SELECT * FROM ASTMember WHERE mid=#{mid} AND mpw=#{mpw}
 	</select>
 	
@@ -18,8 +18,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 회원가입 -->
 	<insert id="joinMember">
-		INSERT INTO astmember (mpk, mid, mpw, mname, mphone) 
+		INSERT INTO ASTMember (mpk, mid, mpw, mname, mphone) 
 		VALUES (mem_seq.nextval, #{mid}, #{mpw}, #{mname}, #{mphone})
+	</insert>
+	
+	<!-- 회원 정보 수정 시 가져올 데이터들 -->
+	<select id="getInfo" resultType="MemberVO">
+		SELECT * FROM ASTMember WHERE mpk=#{mpk}
+	</select>
+	
+	<!-- 해당 프로필 사진 가져오기 -->
+	<select id="getProfile" resultType="ProfileVO">
+		SELECT * FROM ASTProfile WHERE mpk=#{mpk} ORDER BY ppk DESC
+	</select>
+	
+	
+	<!-- 회원 정보 수정 === 더 해야 된다 -->
+	<update id="modifyInfo">
+		UPDATE ASTMember SET mpw=${mpw}, mname=#{mname}, mphone=#{mphone}
+		WHERE mpk = #{mpk}
+	</update>
+	
+	<!-- 회원정보 수정 시 프로필 사진 입력 : 구분되는 파일명도 넣어줘야 한다 -->
+	<insert id="insertPrf">
+		INSERT INTO ASTProfile (ppk, pfile, pfile2, ppath, mpk) 
+		VALUES (prf_seq.nextval, #{pfile}, #{pfile2}, 'WEB-INF/views/upload/profile', #{mpk})
 	</insert>
 	
 </mapper>

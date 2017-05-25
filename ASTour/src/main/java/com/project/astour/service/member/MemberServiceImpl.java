@@ -46,4 +46,14 @@ public class MemberServiceImpl implements MemberService {
 		mdao.joinMember(vo);
 	}
 
+	@Override
+	public MemberVO getInfo(int mpk) {
+		return mdao.getInfo(mpk);
+	}
+
+	@Override
+	public void modifyInfo(MemberVO vo) {
+		mdao.modifyInfo(vo);
+	}
+
 }

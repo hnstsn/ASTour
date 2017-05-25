@@ -18,7 +18,7 @@
 	<%@ include file="include/bootstap_collect.jsp" %>
 
 </head>
-<body><!-- Available classes for body: boxed , pattern1...pattern10 . Background Image - example add: data-background="assets/images/boxed_background/1.jpg"  -->
+<body>
 
 	<!-- AST : menu부분을 위한 jsp page -->
 	<jsp:include page="include/menu.jsp" />
