@@ -48,6 +48,7 @@ public class ModifyCtrl {
 	@RequestMapping("modify.do")
 	public String modify(@ModelAttribute MemberVO mem, Model model,
 			 			 MultipartFile prfFile) throws Exception {
+		// 회원정보 수정하기
 		mService.modifyInfo(mem);
 		// 첨부파일(프로필 사진)이 있으면
 		if (!prfFile.isEmpty()) {

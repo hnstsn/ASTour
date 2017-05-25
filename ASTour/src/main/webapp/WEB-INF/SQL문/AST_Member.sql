@@ -23,13 +23,14 @@ alter table astmember drop column mpath;
 -- 프로필 사진을 위한 테이블 생성
 create table ASTProfile (
   ppk number,
-  pfile varchar2(20),
-  pfile2 varchar2(60),
+  pfile varchar2(50),
   ppath varchar2(30),
   mpk number,
   constraint ASTProfile_pk primary key (ppk),
   constraint ASTProfile_fk foreign key (mpk) references ASTMember (mpk)
 );
+
+drop table astprofile;
 
 -- member table primary key를 위한 Sequence 생성
 create sequence mem_seq start with 1 increment by 1;
