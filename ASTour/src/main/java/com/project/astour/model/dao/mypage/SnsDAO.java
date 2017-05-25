@@ -7,7 +7,9 @@ import com.project.astour.model.dto.mypage.snsVO;
 
 public interface SnsDAO {
 
-	public List<snsVO> snsList();
+	public List<snsVO> snsList(int mpk);
 	public void contentdelete(int spk);
-//	public List<MemberVO> memList();
+	public List<MemberVO> memList(int mpk); 
+	public List<MemberVO> pepoleList(String mname);
+	
 }

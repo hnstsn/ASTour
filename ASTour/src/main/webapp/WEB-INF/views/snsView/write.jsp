@@ -54,7 +54,9 @@
 				<!-- FORM -->
 				<div class="col-md-12">
 					<h2>글쓰기</h2>
-					<form action="${path }/sns/insert.do" class="white-row" method="post">
+					<form action="${path }/sns/insert.do" class="white-row"
+						method="post">
+						<input type="hidden" value="${mpk }" name="mpk">
 						<div class="row">
 							<div class="form-group">
 								<div class="col-md-4">
@@ -63,10 +65,10 @@
 								</div>
 
 								<div class="col-md-4" id="selectview">
-									<label>리뷰&나의게시물 *</label> <select class="form-control" name="ssort"
-										id="ssort">
-										<option value="1">리뷰</option>
-										<option value="2">나의게시물</option>
+									<label>리뷰&나의게시물 *</label> <select class="form-control"
+										name="ssort" id="ssort">
+										<option value="review">리뷰</option>
+										<option value="bulletins">나의게시물</option>
 									</select>
 								</div>
 
@@ -98,11 +100,10 @@
 
 						<div class="row">
 							<div class="col-md-12">
-								<input type="submit" class="btn btn-primary btn-lg"
-									value="확인">
+								<input type="submit" class="btn btn-primary btn-lg" value="확인">
 							</div>
 						</div>
-						
+
 					</form>
 
 				</div>

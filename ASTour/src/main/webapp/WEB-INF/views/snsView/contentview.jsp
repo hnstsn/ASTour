@@ -35,7 +35,7 @@
 			<!-- PAGE TITLE -->
 			<header id="page-title">
 				<div class="container">
-					<h1>황성빈님의 블로그</h1>
+					<h1>이름블로그</h1>
 				</div>
 			</header>
 
@@ -61,7 +61,7 @@
 							data-plugin-options='{"items": 1, "singleItem": true, "navigation": true, "pagination": true, "autoPlay": true, "transitionStyle":"fadeUp"}'>
 							<!-- transitionStyle: fade, backSlide, goDown, fadeUp,  -->
 							<div class="item">
-								<img src="${path }/${list[0].spath}${list[0].sfile}"
+								<img src="#"
 									class="img-rounded" width="1200" height="600" alt="img" />
 							</div>
 							<div class="item">
@@ -73,7 +73,7 @@
 
 						<!-- article content -->
 						<article>
-							<p class="dropcap">${list[0].scontent }</p>
+							<p class="dropcap">실내용</p>
 						</article>
 						<hr />
 
