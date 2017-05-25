@@ -16,6 +16,15 @@
 <%@ include file="../include/bootstap_collect.jsp"%>
 <!-- Morenizr -->
 <script type="text/javascript" src="assets/plugins/modernizr.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("#delete").click(function() {
+			alert("정말로 삭제하시겠습니까?");
+	         location.href="${path}/sns/delete.do?spk=${list[0].spk }"
+
+		});
+	});
+</script>
 </head>
 <body>
 	<!-- WRAPPER -->
@@ -53,7 +62,7 @@
 							<!-- transitionStyle: fade, backSlide, goDown, fadeUp,  -->
 							<div class="item">
 								<img src="${path }/${list[0].spath}${list[0].sfile}"
-									class="img-responsive" alt="img" />
+									class="img-rounded" width="1200" height="600" alt="img" />
 							</div>
 							<div class="item">
 								<img src="assets/images/demo/screens/scr4.jpg"
@@ -137,36 +146,35 @@
 							<hr />
 
 							<h4>
-								Leave a reply <small class="block fsize13 font300">Your
-									email address will not be published.</small>
+								댓글
 							</h4>
 
 							<!-- COMMENT FORM -->
 							<form id="commentForm" class="form-horizontal" method="post"
 								action="#">
-								<div class="row">
+								<!-- <div class="row">
 
-									<!-- name -->
+									name
 									<div class="col-md-4">
 										<label>Name *</label> <input required
 											class="form-control input-lg" type="text" name="author"
 											id="author" value="" />
 									</div>
 
-									<!-- email -->
+									email
 									<div class="col-md-4">
 										<label>Email *</label> <input required
 											class="form-control input-lg" type="text" name="email"
 											id="email" value="" />
 									</div>
 
-									<!-- website -->
+									website
 									<div class="col-md-4">
 										<label>Website</label> <input class="form-control input-lg"
 											type="text" name="url" id="url" value="" />
 									</div>
 
-								</div>
+								</div> -->
 
 								<div class="row">
 
@@ -188,6 +196,9 @@
 								</div>
 							</form>
 							<!-- /COMMENT FORM -->
+							<div align="right">
+								<button class="btn btn-primary" id="delete">글 삭제</button>
+							</div>
 						</div>
 						<!-- /COMMENTS -->
 					</div>

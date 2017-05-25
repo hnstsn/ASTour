@@ -1,18 +1,16 @@
 package com.project.astour.controller.mypage;
 
-import java.util.List;
+import java.util.List; 
 
 import javax.inject.Inject;
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.astour.model.dto.member.MemberVO;
 import com.project.astour.model.dto.mypage.snsVO;
 import com.project.astour.service.mypage.SnsService;
 import com.project.astour.service.timeline.TimelineService;
@@ -32,7 +30,7 @@ public class SnsController {
 	TimelineService timelineService;
 	
 	@RequestMapping("initSns.do")
-	public String initSns(Model model) {
+	public String initSns(Model model) {		
 		List<snsVO> snsList = snsService.snsList();
 		model.addAttribute("list", snsList);
 		model.addAttribute("curPage", "snsView/sns.jsp");
@@ -64,6 +62,17 @@ public class SnsController {
 		
 		
 		writeservice.insertcontent(vo);
+		List<snsVO> snsList = snsService.snsList();
+		model.addAttribute("list", snsList);
+		model.addAttribute("curPage", "snsView/sns.jsp");
+		return "home";
+	}
+	
+	@RequestMapping("delete.do")
+	public String initdelete(Model model,
+			@RequestParam(value="spk") int spk){
+		
+		snsService.contentdelete(spk);
 		List<snsVO> snsList = snsService.snsList();
 		model.addAttribute("list", snsList);
 		model.addAttribute("curPage", "snsView/sns.jsp");

@@ -19,4 +19,10 @@ public class SnsServiceImpl implements SnsService {
 	public List<snsVO> snsList() {
 		return snsDao.snsList();
 	}
+
+	@Override
+	public void contentdelete(int spk) {
+		
+		snsDao.contentdelete(spk);
+	}
 }

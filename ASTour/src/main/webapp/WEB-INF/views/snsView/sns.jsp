@@ -21,8 +21,6 @@
 </head>
 <body>
 
-	<span id="header_shadow"></span>
-	
 	<!-- AST : 블로그 전체 틀  -->
 	<div id="wrapper">
 
@@ -111,7 +109,7 @@
 					
 						<!-- AST : 타임라인 게시물  -->
 						<c:forEach var="sns" items="${list }">
-							<div class="item">
+							<div class="item" style="margin-bottom : 30px; padding-bottom: 30px">
 							
 								<!-- AST : 타임라인 타이틀  -->
 								<div class="item-title">
@@ -129,8 +127,8 @@
 
 								<!-- AST : 타임라인 이미지  -->
 								<figure>
-									<img src="${path }/${sns.spath}${sns.sfile}" class="img-responsive"
-										alt="img" />
+									<img src="${path }/${sns.spath}${sns.sfile}" class="img-rounded"
+										alt="img" />									
 								</figure>
 								<!-- / AST : 타임라인 이미지  -->
 
@@ -140,9 +138,11 @@
 							</div>
 						</c:forEach>
 						<!-- / AST : 타임라인 게시물  -->
+						<div align="right">
 						<form action="${path }/sns/writeview.do">
-						<input type=submit value="글쓰기">
+						<input type=submit class="btn btn-success" value="글쓰기">
 						</form>
+						</div>
 						<!-- AST : 페이지 넘기기 -->
 						<div class="text-center">
 							<ul class="pagination">
@@ -165,22 +165,6 @@
 	</div>
 	<!-- / AST : 블로그 전체 틀 -->
 
-	<!-- FOOTER -->
-	<footer>
-
-		<!-- copyright , scrollTo Top -->
-		<div class="footer-bar">
-			<div class="container">
-				<span class="copyright">Copyright &copy; Your Company, LLC .
-					All Rights Reserved.</span> <a class="toTop" href="#topNav">BACK TO
-					TOP <i class="fa fa-arrow-circle-up"></i>
-				</a>
-			</div>
-		</div>
-		<!-- copyright , scrollTo Top -->
-
-	</footer>
-	<!-- /FOOTER -->
 
 </body>
 </html>

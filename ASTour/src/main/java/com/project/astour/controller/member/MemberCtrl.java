@@ -61,5 +61,4 @@ public class MemberCtrl {
 		logger.info("회원가입 - memberJoin()");
 		mService.joinMember(vo);
 	}
-
 }

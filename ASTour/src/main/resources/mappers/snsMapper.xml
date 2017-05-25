@@ -7,8 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="sns">
 
 	<select id="snsList" 
-	resultType="com.project.astour.model.dto.mypage.snsVO">
-		SELECT *FROM sns_tbl
+	resultType="com.project.astour.model.dto.mypage.snsVO"> 
+		SELECT *FROM sns_tbl order by spk desc
 	</select>
    
    <select id="contentview"
@@ -20,6 +20,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO sns_tbl (spk, stitle, scontent, sdate, stag, ssort)
 		VALUES (sns_seq.nextval, #{stitle}, #{scontent}, sysdate, #{stag}, #{ssort})
 	</insert>
+	
+	<delete id="deletecontent">
+		DELETE FROM sns_tbl where spk= #{spk}
+	</delete>
 	
 </mapper>
 
