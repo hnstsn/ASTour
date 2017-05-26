@@ -87,9 +87,6 @@ $(document).ready(function() {
 		}
 	});
 	
-	$("#af_mpw").removeAttr("disabled");
-	$("#af_mpwChk").removeAttr("disabled");
-	
 	$("#submitBtn").click(function() {
 		var mname = $("#mname").val();
 		    mphone = $("#mphone").val();
