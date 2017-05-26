@@ -61,8 +61,7 @@ public class SnsController {
 	//승완이형이 수정해야할 부분 
 	//글쓰기 추가 후 여기서 파일업로드 추가로 해야함
 	@RequestMapping("insert.do")
-	public String initinsert(Model model,
-			@ModelAttribute snsVO vo){
+	public String initinsert(Model model, @ModelAttribute snsVO vo){
 		writeservice.insertcontent(vo);
 		
 		List<snsVO> snsList = snsService.snsList(vo.getMpk());
