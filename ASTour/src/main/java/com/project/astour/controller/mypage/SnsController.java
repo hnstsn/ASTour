@@ -123,6 +123,22 @@ public class SnsController {
 		return "home";
 	}
 	
+	@RequestMapping("reviewSelect.do")
+	public String reviewSelect(Model model,
+			@RequestParam(value="mpk") int mpk){
+				
+		List<snsVO> reviewSelect = snsService.reviewSelect(mpk);
+		List<MemberVO> memList = snsService.memList(mpk);
+		
+		
+		model.addAttribute("memList", memList);
+		model.addAttribute("list", reviewSelect);
+		model.addAttribute("mpk",mp);
+		model.addAttribute("curPage", "snsView/sns.jsp");
+		
+		return "home";
+	}
+	
 	@RequestMapping("contentview.do")
 	public String BlogContent(Model model,
 			@RequestParam(value="spk") int spk) {

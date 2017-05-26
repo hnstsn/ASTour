@@ -38,4 +38,9 @@ public class SnsDAOImpl implements SnsDAO {
 		return sqlSession.selectList("sns.pepoleList",mname);
 	}
 	
+	@Override
+	public List<snsVO> reviewSelect(int mpk) {
+		return sqlSession.selectList("sns.reviewSelect",mpk);
+	}
+	
 }

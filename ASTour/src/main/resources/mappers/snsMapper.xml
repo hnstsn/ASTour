@@ -45,5 +45,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       nvl(p.ppath,'WEB-INF/views/upload/profile') as ppath  
       FROM ASTMember m, ASTProfile p WHERE m.mpk=p.mpk(+) and m.mname LIKE #{mname} 
    </select>
+   
+   <select id="reviewSelect" resultType="com.project.astour.model.dto.mypage.snsVO">
+		SELECT * FROM sns_tbl where mpk = #{mpk} and ssort = 'review'
+	</select>
 
 </mapper>

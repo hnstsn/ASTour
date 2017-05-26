@@ -40,4 +40,10 @@ public class SnsServiceImpl implements SnsService {
 		return snsDao.pepoleList("%"+mname+"%");
 	}
 	
+	@Override
+	public List<snsVO> reviewSelect(int mpk) {
+		return snsDao.reviewSelect(mpk);
+	}
+
+	
 }
