@@ -26,7 +26,7 @@
 	content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 
 <%@ include file="../include/bootstap_collect.jsp"%>
-
+<%@ include file="../include/sessionCheck.jsp" %>
 </head>
 <!-- WRAPPER -->
 <div id="wrapper">

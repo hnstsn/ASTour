@@ -17,7 +17,6 @@
 <%@ include file="../include/sessionCheck.jsp" %>
 <!-- Morenizr -->
 <script type="text/javascript" src="assets/plugins/modernizr.min.js"></script>
-
 </head>
 
 <!-- AST : 블로그 전체 틀  -->

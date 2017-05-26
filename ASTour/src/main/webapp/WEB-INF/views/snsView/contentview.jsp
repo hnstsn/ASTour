@@ -14,6 +14,7 @@
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 <%@ include file="../include/bootstap_collect.jsp"%>
+<%@ include file="../include/sessionCheck.jsp" %>
 <!-- Morenizr -->
 <script type="text/javascript" src="assets/plugins/modernizr.min.js"></script>
 <script>
