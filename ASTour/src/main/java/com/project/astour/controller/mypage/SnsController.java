@@ -32,9 +32,10 @@ public class SnsController {
 	
 	@Inject
 	TimelineService timelineService;
+	
 	//기존 mpk 식별하기위함 
 	int mp=0;
-	//처음화면
+	//처음화면 (0)
 	@RequestMapping("initSns.do")
 	public String initSns(Model model,@RequestParam(value="mpk") int mpk) {
 		//초기 mpk 저장
@@ -52,11 +53,12 @@ public class SnsController {
 	@RequestMapping("writeview.do")
 	public String writeview(Model model,
 				@RequestParam(value="mpk") int mpk){
-		model.addAttribute("curpage", "snsView/write.jsp");
 		model.addAttribute("mpk", mpk);
-		return "snsView/write";
+		model.addAttribute("curPage", "snsView/write.jsp");
+		return "home";
 	}
 
+	//승완이형이 수정해야할 부분 
 	//글쓰기 추가 후 여기서 파일업로드 추가로 해야함
 	@RequestMapping("insert.do")
 	public String initinsert(Model model,
@@ -84,7 +86,7 @@ public class SnsController {
 		return "home";
 	}
 	
-	//사람찾기
+	//사람찾기 (0)
 	@RequestMapping("snsPepole.do")
 	public String pepole(Model model,
 			@RequestParam(value="pepole_id") String pepole_id){
@@ -94,7 +96,7 @@ public class SnsController {
 		return "home";
 	}
 	
-	//사람찾기후 페이지 들어옴
+	//사람찾기후 페이지 들어옴 (0)
 	@RequestMapping("iniPepole.do")
 	public String iniPepole(Model model,
 			@RequestParam(value="mpk") int mpk){
@@ -108,7 +110,7 @@ public class SnsController {
 		return "home";
 	}
 	
-	//전체검색 해야함
+	//전체검색  (0)
 	@RequestMapping("snsSelect.do")
 	public String snsSelect(Model model,
 			@RequestParam(value="mpk") int mpk){
@@ -122,7 +124,6 @@ public class SnsController {
 		return "home";
 	}
 	
-	//aaaaaaaa
 	@RequestMapping("contentview.do")
 	public String BlogContent(Model model,
 			@RequestParam(value="spk") int spk) {

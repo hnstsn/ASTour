@@ -23,29 +23,11 @@
 <meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
 
 <script type="text/javascript">
-	/*	$(document).ready(function() {
-		$("#selectview").click(function() {
-			var test2=$('#contact_select').val();
-			if(test2==1){
-				document.getElementById('view').innerHTML ="<label>태그*</label>"+"<input type=\"email\" value=\"\" class=\"form-control\" id=\"contact_email\">"
-			}
-			else{
-				document.getElementById('view').innerHTML ="";
-			}
-		});
-		$("#contact_sub").click(function() {
-			var contact_name=$('#contact_name').val(); //제목
-			var contact_tag=$('#contact_tag').val(); //태그
-			var contact_message=$('#contact_message').val(); //내용
-			var contact_image=$('#contact_image').val(); //이미지 데이터전송
-		}); 
-	}); */
+	
 </script>
 </head>
 
 <body>
-	<%@ include file="../include/menu.jsp"%>
-
 	<!-- WRAPPER -->
 	<div id="wrapper">
 		<br />
@@ -56,6 +38,7 @@
 					<h2>글쓰기</h2>
 					<form action="${path }/sns/insert.do" class="white-row"
 						method="post">
+						<!-- 작성자가 누군지 알아야지 저장할수 있기 때문에 mpk 받고 또 넘겨줌 -->
 						<input type="hidden" value="${mpk }" name="mpk">
 						<div class="row">
 							<div class="form-group">
@@ -115,24 +98,5 @@
 
 	</div>
 	<!-- /WRAPPER -->
-
-
-
-	<!-- FOOTER -->
-	<footer>
-		<!-- copyright , scrollTo Top -->
-		<div class="footer-bar">
-			<div class="container">
-				<span class="copyright">Copyright &copy; Your Company, LLC .
-					All Rights Reserved.</span> <a class="toTop" href="#topNav">BACK TO
-					TOP <i class="fa fa-arrow-circle-up"></i>
-				</a>
-			</div>
-		</div>
-		<!-- copyright , scrollTo Top -->
-	</footer>
-	<!-- /FOOTER -->
-
-
 </body>
 </html>
