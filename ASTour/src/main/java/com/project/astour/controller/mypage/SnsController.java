@@ -69,7 +69,7 @@ public class SnsController {
 		model.addAttribute("memList", memList);
 		model.addAttribute("list", snsList);
 		model.addAttribute("curPage", "snsView/sns.jsp");
-		
+		model.addAttribute("mpk",mp);
 		return "home";
 	}
 	
