@@ -15,7 +15,6 @@
 <html>
 <!--<![endif]-->
 
-
 <head>
 <meta charset="utf-8" />
 <meta name="keywords" content="HTML5,CSS3,Template" />
@@ -29,70 +28,67 @@
 <%@ include file="../include/bootstap_collect.jsp"%>
 
 </head>
-<body>
+<!-- WRAPPER -->
+<div id="wrapper">
 
-	<!-- WRAPPER -->
-	<div id="wrapper">
-
-		<!-- PAGE TITLE -->
-		<header id="page-title">
-		<div class="container" style="margin-left: 20%; margin-right: 20%">
-			<h1>사람찾기</h1>
-		</div>
-		</header>
-
-		<div class="row" style="margin-left: 20%; margin-right: 20%">
-			<ul class="sort-destination isotope" data-sort-id="isotope-list">
-				<!-- 수정 -->
-				<%-- <c:forEach var="attraction" items="${list}"> --%>
-				 <c:forEach var="pepole" items="${pepoleList}">
-				<li class="isotope-item col-sm-6 col-md-4 design">
-					<!-- item 3 -->
-					<div class="item-box">
-						<figure> <a class="item-hover"
-							href="${path }/sns/iniPepole.do?mpk=${pepole.mpk }"> 
-							<span class="overlay color2"></span> 
-							<span class="inner">
-							 <span	class="block fa fa-plus fsize20"></span>
-							 <strong>${pepole.mname }</strong>마이페이지
-							 </span>
-						</a> <img src="${path}/resources/image/culture/Namsan.jpg"
-							width="260" height="260" alt=""> </figure>
-						<div class="item-box-desc">
-							<h4>${pepole.mid }</h4>
-							<small class="styleColor">${pepole.mname }</small>
-						</div>
-					</div>
-				</li>
-				</c:forEach>
-				<%-- <c:forEach var="attraction" items="${list}">
-				<li class="isotope-item col-sm-6 col-md-4 design">
-					<!-- item 3 -->
-					<div class="item-box">
-						<figure> <a class="item-hover"
-							href="portfolio-single-full-slider.html"> 
-							<span class="overlay color2"></span> 
-							<span class="inner">
-							 <span	class="block fa fa-plus fsize20"></span>
-							 <strong>review</strong>${title }
-							 </span>
-						</a> <img class="img-responsive"
-							src="${path}/resources/image/culture/${image }"
-							width="260" height="260" alt=""> </figure>
-						<div class="item-box-desc">
-							<h4>${title }</h4>
-							<small class="styleColor">작성자</small>
-						</div>
-					</div>
-				</li>
-				</c:forEach>
-				<!-- 수정끝 --> --%>
-			</ul>
-		</div>
-		<!-- /.masonry-container -->
+	<!-- PAGE TITLE -->
+	<header id="page-title">
+	<div class="container" style="margin-left: 20%; margin-right: 20%">
+		<h1>사람찾기</h1>
 	</div>
-	<!-- /WRAPPER -->
+	</header>
 
-</body>
+	<div class="row" style="margin-left: 20%; margin-right: 20%">
+		<ul class="sort-destination isotope" data-sort-id="isotope-list">
+			<!-- 수정 -->
+			<%-- <c:forEach var="attraction" items="${list}"> --%>
+			 <c:forEach var="pepole" items="${pepoleList}">
+			<li class="isotope-item col-sm-6 col-md-4 design">
+				<!-- item 3 -->
+				<div class="item-box">
+					<figure> <a class="item-hover"
+						href="${path }/sns/iniPepole.do?mpk=${pepole.mpk }"> 
+						<span class="overlay color2"></span> 
+						<span class="inner">
+						 <span	class="block fa fa-plus fsize20"></span>
+						 <strong>${pepole.mname }</strong>마이페이지
+						 </span>
+					</a> <img src="${path}/resources/image/culture/Namsan.jpg"
+						width="260" height="260" alt=""> </figure>
+					<div class="item-box-desc">
+						<h4>${pepole.mid }</h4>
+						<small class="styleColor">${pepole.mname }</small>
+					</div>
+				</div>
+			</li>
+			</c:forEach>
+			<%-- <c:forEach var="attraction" items="${list}">
+			<li class="isotope-item col-sm-6 col-md-4 design">
+				<!-- item 3 -->
+				<div class="item-box">
+					<figure> <a class="item-hover"
+						href="portfolio-single-full-slider.html"> 
+						<span class="overlay color2"></span> 
+						<span class="inner">
+						 <span	class="block fa fa-plus fsize20"></span>
+						 <strong>review</strong>${title }
+						 </span>
+					</a> <img class="img-responsive"
+						src="${path}/resources/image/culture/${image }"
+						width="260" height="260" alt=""> </figure>
+					<div class="item-box-desc">
+						<h4>${title }</h4>
+						<small class="styleColor">작성자</small>
+					</div>
+				</div>
+			</li>
+			</c:forEach>
+			<!-- 수정끝 --> --%>
+		</ul>
+	</div>
+	<!-- /.masonry-container -->
+</div>
+<!-- /WRAPPER -->
+
 </html>
 
