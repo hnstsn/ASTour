@@ -65,7 +65,7 @@ $(document).ready(function() {
 								<label>리뷰&나의게시물 *</label> 
 									<select class="form-control" name="ssort" id="ssort">
 										<option value="review">리뷰</option>
-										<option value="bulletins">나의게시물</option>
+										<option value="mybrd">나의게시물</option>
 									</select>
 								</div>
 								<div class="col-md-5">

@@ -55,7 +55,7 @@
 
 						<h3>사람 찾기</h3>
 
-						<form method="get" action="${path }/sns/snsPepole.do" class="input-group">
+						<form method="get" action="${path}/sns/snsPepole.do" class="input-group">
 							<input type="text" class="form-control" name="pepole_id" id="pepole_id" value=""
 								placeholder="ID이메일을입력하시오..." /> <span class="input-group-btn">
 								<button class="btn btn-primary">

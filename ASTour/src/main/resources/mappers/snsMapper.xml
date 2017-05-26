@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!--s.spk, s.stitle, s.scontent, s.sdate, s.mpk, s.stag, s.ssort , m.mname, m.mfile, m.mfile2, m.mpath -->
 	<select id="snsList" resultType="com.project.astour.model.dto.mypage.snsVO">
-		SELECT * FROM sns_tbl where mpk = #{mpk } order by spk desc
+		SELECT * FROM sns_tbl where mpk = #{mpk} order by spk desc
 	</select>
 
 	<select id="contentview" resultType="com.project.astour.model.dto.mypage.snsVO">
@@ -17,10 +17,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<insert id="insertcontent">
-		INSERT INTO sns_tbl (spk, stitle, scontent, sdate, mpk,
-		stag, ssort)
-		VALUES (sns_seq.nextval, #{stitle}, #{scontent}, sysdate, #{mpk},
-		#{stag}, #{ssort})
+		INSERT INTO sns_tbl (spk, stitle, scontent, sdate, mpk, stag, ssort)
+		VALUES (sns_seq.nextval, #{stitle}, #{scontent}, sysdate, #{mpk}, #{stag}, #{ssort})
 	</insert>
 
 	<delete id="deletecontent">

@@ -204,7 +204,7 @@ $(document).ready(function() {
 			alert("비밀번호 중복을 확인하세요");
 			return false;
 		}
-		//조건에 충족되니 회원가입ㄱㄱ//
+		//조건에 충족되니 회원가입ㄱㄱ
 		if (id_check && pw_check && mname_check && mphone_check) {
 			document.joinForm.action="${path}/member/memberJoin.do";
 			document.joinForm.submit();
