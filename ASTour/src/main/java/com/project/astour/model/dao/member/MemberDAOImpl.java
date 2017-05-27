@@ -1,5 +1,8 @@
 package com.project.astour.model.dao.member;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -36,9 +39,29 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne("member.getInfo", mpk);
 	}
 
+	// 정보 수정하기
 	@Override
 	public void modifyInfo(MemberVO vo) {
 		sqlSession.update("member.modifyInfo", vo);
+	}
+
+	// 아이디 찾기
+	@Override
+	public String getId(String mname, String mphone) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("mname", mname);
+		map.put("mphone", mphone);
+		return sqlSession.selectOne("member.getId", map);
+	}
+
+	// 비밀번호 찾기
+	@Override
+	public String getPw(String mid, String mname, String mphone) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("mid", mid);
+		map.put("mname", mname);
+		map.put("mphone", mphone);
+		return sqlSession.selectOne("member.getPw", map);
 	}
 
 }

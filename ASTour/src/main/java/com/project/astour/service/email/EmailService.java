@@ -6,5 +6,7 @@ public interface EmailService {
     public void send(String to);
     // 인증번호와 일치하는지 확인하는 함수
     public boolean certify(String cerNum);
+    // 비밀번호 찾기
+    public void sendPw(String to, String mpw);
 
 }

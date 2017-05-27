@@ -7,12 +7,16 @@ import org.springframework.stereotype.Service;
 
 import com.project.astour.model.dao.member.MemberDAO;
 import com.project.astour.model.dto.member.MemberVO;
+import com.project.astour.service.email.EmailService;
 
 @Service
 public class MemberServiceImpl implements MemberService {
 	
 	@Inject
 	private MemberDAO mdao;
+	
+	@Inject
+	private EmailService eService;
 	
 	// 로그인 체크
 	@Override
@@ -46,14 +50,38 @@ public class MemberServiceImpl implements MemberService {
 		mdao.joinMember(vo);
 	}
 
+	// 정보수정을 보여주기 위해 정보 가져오기
 	@Override
 	public MemberVO getInfo(int mpk) {
 		return mdao.getInfo(mpk);
 	}
 
+	// 정보 수정
 	@Override
 	public void modifyInfo(MemberVO vo) {
 		mdao.modifyInfo(vo);
+	}
+
+	// 아이디 찾기
+	@Override
+	public String getId(String mname, String mphone) {
+		String mid = mdao.getId(mname, mphone);
+		// 아이디를 찾았으면 아이디를 return 
+		// 못 찾았으면 false를 리턴
+		return (mid != null) ? mid : "false";
+	}
+
+	// 비밀번호 찾기
+	@Override
+	public boolean getPw(String mid, String mname, String mphone) {
+		String mpw = mdao.getPw(mid, mname, mphone);
+		// 비밀번호를 찾았으면
+		if (mpw != null) {
+			// 비밀번호를 이메일로 보내준다
+			eService.sendPw(mid, mpw);
+			return true;
+		}
+		return false;
 	}
 
 }

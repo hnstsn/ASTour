@@ -59,9 +59,14 @@ $(document).ready(function() {
 
 <!-- AST(CSW) : 회원가입 창 popup으로 -->
 <script>
-	function signin_popup() {
-		window.open("${path}/member/insertJoin.do", "회원가입", "width=600, height=700, left=200, top=100");
-	}
+function signin_popup() {
+	window.open("${path}/member/insertJoin.do", "회원가입", "width=600, height=700, left=200, top=100");
+}
+
+function searchIdPw() {
+	window.open("${path}/member/searchIdPw.do", "아이디 비밀번호 찾기", "width=600, height=500, left=200, top=100");
+}
+
 </script>
 
 <!-- Top Bar -->
@@ -107,9 +112,13 @@ $(document).ready(function() {
 		                     <span class="input-group-btn">
 		                     	<input type="button" class="btn btn-success" id="loginBtn" value="Log In" />
 		                     </span>
-		                     <br />
 		                     
 		                  </div>
+		                  <div class="checkbox" style="text-align: center; ">
+							<label onClick="searchIdPw()">
+								&bull;아이디/비밀번호 찾기 
+							</label>
+						</div>
 		
 		               </form>
 		

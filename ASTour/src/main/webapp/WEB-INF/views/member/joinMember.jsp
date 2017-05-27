@@ -186,9 +186,9 @@ $(document).ready(function() {
 		} else
 			mname_check = true;
 		
-		// 핸드폰을 입력체크
+		// 휴대폰 번호를 입력체크
 		if (mphone=='') {
-			alert("핸드폰을 입력하세요");
+			alert("휴대폰 번호를 입력하세요");
 			$("#mphone").focus();
 			return false;
 		} else
@@ -274,7 +274,7 @@ $(document).ready(function() {
 									<input type="text" class="form-control" name="mname" id="mname" placeholder="이름을 입력하세요" />
 								</div>
 								<div class="col-md-6">
-									<label>휴대폰</label>
+									<label>휴대폰 번호</label>
 									<input type="text" class="form-control" name="mphone" id="mphone" placeholder="-없이 입력하세요" />
 								</div>
 							</div>

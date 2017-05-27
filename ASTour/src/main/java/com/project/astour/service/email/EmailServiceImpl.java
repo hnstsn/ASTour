@@ -18,7 +18,7 @@ public class EmailServiceImpl implements EmailService {
 	String repetitionNum;
 	
 	@Inject
-	 private JavaMailSender mailSender;
+	private JavaMailSender mailSender;
 	
 	// 인증번호 보내는 함수
 	public void send(String to) {
@@ -49,6 +49,28 @@ public class EmailServiceImpl implements EmailService {
 	public boolean certify(String cerNum) {
 		// 인증번호와 입력한 번호가 같은지 확인
 		return (repetitionNum.equals(cerNum)) ? true : false;
+	}
+
+	// 비밀번호 이메일로 보내기
+	@Override
+	public void sendPw(String to, String mpw) {
+		MimeMessage message = mailSender.createMimeMessage();
+		try {
+			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+			// 메일 제목
+			helper.setSubject("ASTour에 다시 오신 것을 환영합니다.");
+			String text = "ASTour에 다시 오신 것을 환영합니다.\n요청하신 비밀번호는 " + mpw + "입니다.";
+			// 메일 내용
+			helper.setText(text);
+			// 보내는 사람
+			helper.setFrom("astour1865@gmail.com");
+			// 받는 사람
+			helper.setTo(to);
+			// 메일 보내기
+			mailSender.send(message);
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

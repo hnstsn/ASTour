@@ -44,5 +44,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES (prf_seq.nextval, #{pfile}, 'WEB-INF/views/upload/profile', #{mpk})
 	</insert>
 	
+	<!-- 아이디 찾기 -->
+	<select id="getId" resultType="String">
+		SELECT mid FROM ASTMember WHERE mname=#{mname} AND mphone=#{mphone}
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="getPw" resultType="String">
+		SELECT mpw FROM ASTMember WHERE mid=#{mid} AND mname=#{mname} AND mphone=#{mphone}
+	</select>
+	
 </mapper>
 

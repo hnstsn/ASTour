@@ -12,5 +12,7 @@ public interface MemberService {
 	public void joinMember(MemberVO vo);
 	public MemberVO getInfo(int mpk);
 	public void modifyInfo(MemberVO vo);
+	public String getId(String mname, String mphone);
+	public boolean getPw(String mid, String mname, String mphone); 
 	
 }

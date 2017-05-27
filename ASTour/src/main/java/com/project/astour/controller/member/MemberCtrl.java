@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.astour.model.dto.member.MemberVO;
@@ -56,9 +57,31 @@ public class MemberCtrl {
 		return "member/joinMember";
 	}
 	
+	// 회원가입
 	@RequestMapping("memberJoin.do")
 	public void memberJoin(@ModelAttribute MemberVO vo) {
 		logger.info("회원가입 - memberJoin()");
 		mService.joinMember(vo);
+	}
+	
+	// 아이디 비밀번호 찾기
+	@RequestMapping("searchIdPw.do")
+	public String searchIdPw() {
+		return "member/searchIdPw";
+	}
+	
+	// 아이디 찾기
+	@RequestMapping("getId.do")
+	@ResponseBody
+	public String getId(@RequestParam String mname, @RequestParam String mphone) {
+		return mService.getId(mname, mphone);
+	}
+	
+	// 비밀번호 찾기
+	@RequestMapping("getPw.do")
+	@ResponseBody
+	public boolean getPw(@RequestParam String mid, @RequestParam String mname, @RequestParam String mphone) {
+		logger.info("비밀번호 찾기!!");
+		return mService.getPw(mid, mname, mphone);
 	}
 }
