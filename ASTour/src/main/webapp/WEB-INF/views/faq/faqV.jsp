@@ -32,7 +32,7 @@
             <div class="container">
                <h1>고객센터</h1>
 
-               <ul class="breadcrumb">
+               <!-- <ul class="breadcrumb">
                   <li><a href="index.html">Home</a></li>
                   <li><a href="#">Pages</a></li>
                   <li class="active">FAQ</li>
@@ -46,51 +46,42 @@
             
           <!--   <p class="lead">그만 물어봐 </p> -->
 
-            <div class="divider"><!-- divider -->
+          
+
+			<div class="toogle toogle-accordion">
+				<c:forEach var="faqList" items="${faqList}">
+					<!-- 열린채로 보이게 하려면<div class="toggle active"> 아래로 수정-->
+					<div class="toggle">
+						<label>${faqList.alabel }</label>
+						<div class="toggle-content">
+							<p>${faqList.acontent}</p>
+						</div>
+					</div>
+				</c:forEach>
+
+
+			</div>
+		
+		    <div class="divider">divider
                <i class="fa fa-star"></i>
             </div>
-
-            <div class="toogle toogle-accordion">
-
-               <!-- <div class="toggle active"> 아래로 수정-->
-               <div class="toggle">
-                  <label>ASTour FAQ입니다.</label>
-                  <div class="toggle-content" >
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet.</p>
-                     <a class="img-thumbnail lightbox pull-left inner" href="resources/assets/images/demo/test_2.jpg" data-plugin-options='{"type":"image"}'>
-                        <img src="resources/assets/images/demo/test_2_small.jpg" height="110" alt="" />
-                     </a>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet.</p>
-
-                  </div>
-               </div>
-               <div class="toggle">
-					<label>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</label>
-					<div class="toggle-content">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur <a data-toggle="tooltip" data-original-title="Default tooltip" href="#">pellentesque neque eget</a> diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet. <a href="#" data-container="body" data-toggle="popover" data-placement="top" data-content="And here's some amazing content. It's very engaging. right?" data-original-title="A Title" title="A Title">Popover on top</a></p>
-						<ul class="list-icon check StyleSecondColor">
-							<li>Nullam id dolor id</li>
-							<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-							<li>Maecenas sed diam eget</li>
-							<li>Curabitur pellentesque neque eget diam posuere porta.</li>
-						</ul>
-					</div>
-				</div>
-
-            </div>
-
-            <!-- CALLOUT -->
+		
+			<!-- CALLOUT -->
             <div class="bs-callout text-center nomargin-bottom">
                <h3>
-                  <strong>Not Here</strong> what you are looking for? 메일로 보내주세요 <br/> <strong> astour1865@gmail.com</strong>
+                  <strong>다른 문의사항은 메일로 보내주세요! <br/> astour1865@gmail.com</strong>
                </h3>
 
                <div class="divider"><!-- divider -->
                   <i class="fa fa-chevron-down"></i>
+                  
                </div>
-
+			
                <h3>
-                  <a href="contact-us.html" target="_blank" class="btn btn-primary btn-lg">Contact Us!</a>
+               		<Strong>또는</Strong></br>
+               		<Strong>관리자에게 메시지를 보내주세요!</Strong></br>
+                   <a style="margin-top: 10px" href="contact-us.html" target="_blank" class="btn btn-primary btn-lg" >문의하기</a>
+                      
                </h3>
             </div>
             <!-- /CALLOUT -->

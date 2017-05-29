@@ -14,6 +14,7 @@
 		<mapper resource="mappers/memberMapper.xml"></mapper>
 		<mapper resource="mappers/attractionMapper.xml"></mapper>
 		<mapper resource="mappers/mapMapper.xml"></mapper>
+		<mapper resource="mappers/faqMapper.xml"></mapper>
 	</mappers>
 	
 </configuration>
