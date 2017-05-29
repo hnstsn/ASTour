@@ -13,7 +13,8 @@
 
       <!-- mobile settings -->
       <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
-
+	<!-- AST : bootstrap을 위한 것들을 모아놓은  jsp page -->
+	<%@ include file="../include/bootstap_collect.jsp" %>
    </head>
 
    <span id="header_shadow"></span>
