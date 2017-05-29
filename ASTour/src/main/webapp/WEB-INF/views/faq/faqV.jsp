@@ -32,21 +32,21 @@
             -->
          
             <div class="container">
-               <h1>FAQ</h1>
+               <h1>고객센터</h1>
 
                <ul class="breadcrumb">
                   <li><a href="index.html">Home</a></li>
-                  <!-- <li><a href="#">Pages</a></li> -->
+                  <li><a href="#">Pages</a></li>
                   <li class="active">FAQ</li>
-               </ul>
+               </ul> -->
             </div>
          </header>
 
          <section class="container">
 
-            <h2><strong>자</strong>주 <strong>묻</strong>는 <strong>질</strong>문</h2>
+            <h2><strong>자주 묻는 질문</strong></h2>
             
-            <p class="lead">그만 물어봐. ${list[0].fname} , ${list[1].fname }</p>
+          <!--   <p class="lead">그만 물어봐 </p> -->
 
             <div class="divider"><!-- divider -->
                <i class="fa fa-star"></i>
@@ -56,8 +56,8 @@
 
                <!-- <div class="toggle active"> 아래로 수정-->
                <div class="toggle">
-                  <label>이 사이트는 뭐하는덴가요?</label>
-                  <div class="toggle-content">
+                  <label>이 사이트는 뭐하는 덴가요?</label>
+                  <div class="toggle-content" >
                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus, ut feugiat nibh adipiscing sit amet.</p>
                      <a class="img-thumbnail lightbox pull-left inner" href="resources/assets/images/demo/test_2.jpg" data-plugin-options='{"type":"image"}'>
                         <img src="resources/assets/images/demo/test_2_small.jpg" height="110" alt="" />
