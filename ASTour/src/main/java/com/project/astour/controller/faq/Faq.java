@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class Faq {
 	
-	
-	@RequestMapping("faq")
+	@RequestMapping("faq.do")
 	public String locaSelect(Model model) {
 		model.addAttribute("curPage", "faq/faqV.jsp"); 
 		return "home";

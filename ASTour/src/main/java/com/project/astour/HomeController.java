@@ -53,7 +53,7 @@ public class HomeController {
 			return "redirect:/modify/getPriInfo.do?mpk=" + mpk;
 //		고객선터 페이지 전환
 		} else if (cpage == 50)
-			return "redirect:/faq";
+			return "redirect:/faq.do";
 //		기본 main로
 		return "redirect:/";
 	}
