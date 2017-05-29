@@ -1,7 +1,3 @@
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -26,7 +22,6 @@
 	content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 
 <%@ include file="../include/bootstap_collect.jsp"%>
-<%@ include file="../include/sessionCheck.jsp" %>
 </head>
 <!-- WRAPPER -->
 <div id="wrapper">
@@ -53,7 +48,7 @@
 						 <span	class="block fa fa-plus fsize20"></span>
 						 <strong>${pepole.mname }</strong>마이페이지
 						 </span>
-					</a> <img src="${path}/resources/image/culture/Namsan.jpg"
+					</a> <img src="${path}/profile/${pepole.pfile}"
 						width="260" height="260" alt=""> </figure>
 					<div class="item-box-desc">
 						<h4>${pepole.mid }</h4>
@@ -62,28 +57,7 @@
 				</div>
 			</li>
 			</c:forEach>
-			<%-- <c:forEach var="attraction" items="${list}">
-			<li class="isotope-item col-sm-6 col-md-4 design">
-				<!-- item 3 -->
-				<div class="item-box">
-					<figure> <a class="item-hover"
-						href="portfolio-single-full-slider.html"> 
-						<span class="overlay color2"></span> 
-						<span class="inner">
-						 <span	class="block fa fa-plus fsize20"></span>
-						 <strong>review</strong>${title }
-						 </span>
-					</a> <img class="img-responsive"
-						src="${path}/resources/image/culture/${image }"
-						width="260" height="260" alt=""> </figure>
-					<div class="item-box-desc">
-						<h4>${title }</h4>
-						<small class="styleColor">작성자</small>
-					</div>
-				</div>
-			</li>
-			</c:forEach>
-			<!-- 수정끝 --> --%>
+			
 		</ul>
 	</div>
 	<!-- /.masonry-container -->

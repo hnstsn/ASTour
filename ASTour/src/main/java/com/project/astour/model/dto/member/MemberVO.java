@@ -16,6 +16,29 @@ public class MemberVO {
 	private String mname;
 	private String mphone;
 	
+	//sns 사람찾기 하기위함
+	private String pfile;
+	private String ppath;
+	private int ppk;
+	
+	public String getPfile() {
+		return pfile;
+	}
+	public void setPfile(String pfile) {
+		this.pfile = pfile;
+	}
+	public String getPpath() {
+		return ppath;
+	}
+	public void setPpath(String ppath) {
+		this.ppath = ppath;
+	}
+	public int getPpk() {
+		return ppk;
+	}
+	public void setPpk(int ppk) {
+		this.ppk = ppk;
+	}
 	public int getMpk() {
 		return mpk;
 	}
