@@ -13,7 +13,7 @@ create table sns_tbl (
 );
 
 -- sns 테이블 용 sequence
-create sequence sns_seq start with 1 increment by 1;
+create sequence sns_seq start with 1 increment by 1 nocache;
 
 -- sns 파일 테이블
 create table snsFile_tbl(
@@ -26,4 +26,20 @@ create table snsFile_tbl(
 );
 
 -- snsFile 테이블 용 sequence
-create sequence sfile_seq start with 1 increment by 1;
+create sequence sfile_seq start with 1 increment by 1 nocache;
+
+-- sffile 크기 200byte로 변경
+ALTER TABLE snsFile_tbl MODIFY (sffile VARCHAR2(200));
+
+--sns table 조회
+select * from sns_tbl;
+
+--sns file table 조회
+select * from snsfile_tbl;
+  
+
+select sns_seq.currval from dual;
+select sfile_seq.currval from dual;
+
+
+SELECT MAX(spk) FROM sns_tbl;

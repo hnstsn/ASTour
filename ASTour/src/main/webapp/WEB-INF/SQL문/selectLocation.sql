@@ -3,7 +3,6 @@ create table SIGUN (
   gun varchar2(20)
 );
 
-
 Insert into SIGUN (SI,GUN) values ('서울','강남구');
 Insert into SIGUN (SI,GUN) values ('서울','강동구');
 Insert into SIGUN (SI,GUN) values ('서울','강북구');
