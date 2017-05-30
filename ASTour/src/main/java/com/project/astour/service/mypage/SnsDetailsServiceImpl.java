@@ -61,4 +61,9 @@ public class SnsDetailsServiceImpl implements SnsDetailsService{
 		return snsDetailsDao.count(spk);
 	}
 	
+	@Override
+	public void delete(int rpk) {
+		snsDetailsDao.delete(rpk);
+	}
+	
 }

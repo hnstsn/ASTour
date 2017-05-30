@@ -20,4 +20,5 @@ public interface SnsDetailsService {
 	public void hitsView(int spk, HttpSession session);
 	
 	public SnsReplyVO count(int spk);
+	public void delete(int rpk);
 }

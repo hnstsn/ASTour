@@ -89,5 +89,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) as ct from ASTMember am,ASTProfile af,reply_tbl rt
 		where am.mpk=af.mpk(+) and am.mpk=rt.mpk and spk=#{spk}
 	</select>
+	
+	<!-- 뎃글삭제 -->
+	<delete id="replydelete">
+		delete from reply_tbl where rpk=#{rpk}
+	</delete>
 
 </mapper>

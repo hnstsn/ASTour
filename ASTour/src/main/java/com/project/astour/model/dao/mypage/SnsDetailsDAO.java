@@ -18,5 +18,6 @@ public interface SnsDetailsDAO {
 	public void hitsView(int spk);
 	
 	public SnsReplyVO count(int spk);
+	public void delete(int rpk);
 	
 }

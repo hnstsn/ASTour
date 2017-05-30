@@ -38,6 +38,7 @@ function f1(rpk,spk,mpk){
 
 function f2(){
 	alert("수정클릭");
+	
 };
 </script>
 </head>

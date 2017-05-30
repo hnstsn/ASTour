@@ -52,5 +52,10 @@ public class SnsDetailsDAOImpl implements SnsDetailsDAO{
 		return sqlSession.selectOne("sns.replyCount",spk);
 	}
 	
+	//댓글삭제
+	@Override
+	public void delete(int rpk) {
+		sqlSession.delete("sns.replydelete",rpk);
+	}
 		
 }

@@ -22,6 +22,7 @@ public class SnsDetailsController {
 	SnsDetailsService snsDetailsService;
 
 	int mp=0;
+	String name1;//페이지 네임 고정 
 	//상세보기
 	@RequestMapping("contentview.do")
 	public String BlogContent(Model model,
@@ -31,7 +32,7 @@ public class SnsDetailsController {
 			@RequestParam(value="name") String name,
 			HttpSession session) {
 		mp=mmpk;
-		
+		name1=name;
 		snsDetailsService.hitsView(spk,session);//조횟수
 		List<snsVO> contentView = snsDetailsService.contentView(spk);
 		List<SnsFileVO> contentViewFile = snsDetailsService.contentViewFile(spk);
@@ -74,15 +75,22 @@ public class SnsDetailsController {
 	}
 	
 	//뎃글삭제
-	@RequestMapping("delete.do")
-	public String delete(Model model,
-			@RequestParam(value="rpk") int spk){
-
-		System.out.println(spk);
-		System.out.println("접속했다1");
-		model.addAttribute("mmpk",mp);
-		model.addAttribute("curPage", "snsView/contentview.jsp");
-		return "home";
-	}
+		@RequestMapping("delete.do")
+		public String delete(Model model,SnsReplyVO vo){
+			snsDetailsService.delete(vo.getRpk()); //뎃글 삭제 
+			
+			List<snsVO> contentView = snsDetailsService.contentView(vo.getSpk());
+			List<SnsFileVO> contentViewFile = snsDetailsService.contentViewFile(vo.getSpk());
+			List<SnsReplyVO> replyView = snsDetailsService.replyView(vo.getSpk());
+			
+			model.addAttribute("replyView",replyView);
+			model.addAttribute("fileList",contentViewFile);
+			model.addAttribute("contenlist", contentView);
+			model.addAttribute("name",name1);
+			model.addAttribute("mpk",vo.getMpk());
+			model.addAttribute("mmpk",mp);
+			model.addAttribute("curPage", "snsView/contentview.jsp");
+			return "home";
+		}
 
 }
