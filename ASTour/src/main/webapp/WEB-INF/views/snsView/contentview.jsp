@@ -26,15 +26,19 @@
 		}
 	});
 }); */
-function f1(rpk){
+function f1(rpk,spk,mpk){
     if(confirm("삭제하시겠습니까?")){
     	alert("삭제");
-    	//location.href="${path}/snsdetails/delete.do?rpk"+rpk+"\"";
+    	location.href="${path}/snsdetails/delete.do?rpk="+rpk+"&spk="+spk+"&mpk="+mpk;
     	return true;
     } else {
         return false;
     }
-}
+};
+
+function f2(){
+	alert("수정클릭");
+};
 </script>
 </head>
 <!-- WRAPPER -->
@@ -89,6 +93,12 @@ function f1(rpk){
 					<article style="margin-left: 3%;margin-right: 3%">
 						<h4>${contenlist[0].scontent }</h4>
 					</article>
+					<p align="right">
+						<c:if test="${mpk eq mmpk}">
+							<button class="btn btn-primary" id="delete1">수정</button>
+							<button class="btn btn-primary" id="delete2">글 삭제</button>
+						</c:if>
+					</p>
 					<hr />
 
 					<div class="divider">
@@ -108,16 +118,17 @@ function f1(rpk){
 									src="${path}/profile/${re.pfile}" width="64" height="64" alt="">
 								</span>
 
-								<div class="media-body">
+								<div class="media-body-1">
 									<c:if test="${mpk eq re.mpk}">
-										<a class="scrollTo replyBtn">수정</a>
-										<a class="scrollTo replyBtn" onclick="f1(${re.rpk})">삭제</a>
+										<a style="margin-left: 1%" class="scrollTo replyBtn" onclick="f2()">수정</a>
+										<a class="scrollTo replyBtn" onclick="f1(${re.rpk},${re.spk },${mpk })">삭제</a>
 									</c:if>
 									<h4 class="media-heading bold">${re.mname}</h4>
 									<small class="block"> <fmt:formatDate
 											value="${re.rtime }" pattern="yyyy-MM-dd a HH:mm:ss" /></small>
 									${re.rcontent }
 								</div>
+								
 							</div>
 						</c:forEach>
 						<!-- AST : 페이지 넘기기 -->
@@ -159,10 +170,10 @@ function f1(rpk){
 										<button class="btn btn-primary">등록</button>
 									</p>
 									<p align="right">
-										<c:if test="${mpk eq mmpk}">
+										<%-- <c:if test="${mpk eq mmpk}">
 											<button class="btn btn-primary" id="delete1">수정</button>
 											<button class="btn btn-primary" id="delete2">글 삭제</button>
-										</c:if>
+										</c:if> --%>
 									</p>
 								</div>
 							</div>
