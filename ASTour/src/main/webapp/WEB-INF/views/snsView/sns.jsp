@@ -131,7 +131,7 @@
 							<!-- AST : 타임라인 이미지  -->
 							<c:forEach var="file" items="${snsFileList }">
 								<c:if test="${file.spk == sns.spk}">
-									<img src="${path}/profile/${file.sffile}" class="img-rounded"
+									<img src="${path}/sns/${file.sffile}" class="img-rounded"
 										alt="img" width="300" height="200" />
 								</c:if>
 							</c:forEach>

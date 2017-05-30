@@ -52,7 +52,6 @@ public class SnsController {
 		List<snsVO> snsList = snsService.snsList(mpk);
 		// 게시글에 해당하는 사진 가져오기
 		List<SnsFileVO> snsFileList = new ArrayList<SnsFileVO>();
-		System.out.println("snsLIst크기 : " + snsList.size());
 		SnsFileVO snsFileVO;
 		for (snsVO vo : snsList) {
 			System.out.println("보내줄 spk : " + vo.getSpk());
@@ -81,15 +80,24 @@ public class SnsController {
 	@RequestMapping("insert.do")
 	public String initinsert(Model model, @ModelAttribute snsVO sns, @RequestParam int mpk) throws Exception {
 		System.out.println("@@@@@@@@@@@@@@@@@@@");
+		snsService.insBrd(sns);
 
 		List<snsVO> snsList = snsService.snsList(sns.getMpk());
 		List<MemberVO> memList = snsService.memList(sns.getMpk());
+		// 게시글에 해당하는 사진 가져오기
+		List<SnsFileVO> snsFileList = new ArrayList<SnsFileVO>();
+		SnsFileVO snsFileVO;
+		for (snsVO vo : snsList) {
+			snsFileVO = snsFileService.snsFileList(vo.getSpk());
+			if (snsFileVO != null) {
+				snsFileList.add(snsFileVO);
+			}
+		}
+		model.addAttribute("snsFileList", snsFileList); // 파일 리스트
 		model.addAttribute("memList", memList);
 		model.addAttribute("mpk", mp);
 		model.addAttribute("list", snsList);
-
 		// 게시글 작성
-		snsService.insBrd(sns);
 		model.addAttribute("curPage", "snsView/sns.jsp");
 		return "home";
 	}

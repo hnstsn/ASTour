@@ -33,12 +33,10 @@ public class SnsDetails {
 		mp=mmpk;
 		
 		timelineService.hitsView(spk,session);//조횟수
-		System.out.println("확인"+mmpk);
 		List<snsVO> contentView = timelineService.contentView(spk);
 		List<SnsFileVO> contentViewFile = timelineService.contentViewFile(spk);
 		List<SnsReplyVO> replyView = timelineService.replyView(spk);
 		SnsReplyVO ct = timelineService.count(spk);
-		System.out.println("확인이다"+ct.getCt()%2);
 		
 		if(ct.getCt()/2!=0){
 			model.addAttribute("ct",ct.getCt()/10+1);			
@@ -76,5 +74,15 @@ public class SnsDetails {
 	}
 	
 	//뎃글삭제
+	@RequestMapping("delete.do")
+	public String delete(Model model,
+			@RequestParam(value="rpk") int spk){
+
+		System.out.println(spk);
+		System.out.println("접속했다1");
+		model.addAttribute("mmpk",mp);
+		model.addAttribute("curPage", "snsView/contentview.jsp");
+		return "home";
+	}
 
 }

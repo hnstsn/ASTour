@@ -26,6 +26,15 @@
 		}
 	});
 }); */
+function f1(rpk){
+    if(confirm("삭제하시겠습니까?")){
+    	alert("삭제");
+    	//location.href="${path}/snsdetails/delete.do?rpk"+rpk+"\"";
+    	return true;
+    } else {
+        return false;
+    }
+}
 </script>
 </head>
 <!-- WRAPPER -->
@@ -65,8 +74,8 @@
 						<!-- transitionStyle: fade, backSlide, goDown, fadeUp,  -->
 						<c:forEach var="file" items="${fileList }">
 							<div class="item">
-								<img src="${path}/profile/${file.sffile}" class="img-rounded"
-									width="1200" height="600" alt="img" />
+								<img src="${path}/sns/${file.sffile}" class="img-rounded"
+									width="1000" height="400" alt="img" />
 							</div>
 						</c:forEach>
 						<!-- <div class="item">
@@ -77,8 +86,8 @@
 
 
 					<!-- article content -->
-					<article>
-						<p class="dropcap">${contenlist[0].scontent }</p>
+					<article style="margin-left: 3%;margin-right: 3%">
+						<h4>${contenlist[0].scontent }</h4>
 					</article>
 					<hr />
 
@@ -99,11 +108,10 @@
 									src="${path}/profile/${re.pfile}" width="64" height="64" alt="">
 								</span>
 
-								<div class="media-body-1">
+								<div class="media-body">
 									<c:if test="${mpk eq re.mpk}">
-										<a style="margin-left: 1%" href="#commentForm"
-											class="scrollTo replyBtn">삭제</a>
-										<a href="#commentForm" class="scrollTo replyBtn">수정</a>
+										<a class="scrollTo replyBtn">수정</a>
+										<a class="scrollTo replyBtn" onclick="f1(${re.rpk})">삭제</a>
 									</c:if>
 									<h4 class="media-heading bold">${re.mname}</h4>
 									<small class="block"> <fmt:formatDate
@@ -152,8 +160,8 @@
 									</p>
 									<p align="right">
 										<c:if test="${mpk eq mmpk}">
-											<button class="btn btn-primary" id="delete">수정</button>
-											<button class="btn btn-primary" id="delete">글 삭제</button>
+											<button class="btn btn-primary" id="delete1">수정</button>
+											<button class="btn btn-primary" id="delete2">글 삭제</button>
 										</c:if>
 									</p>
 								</div>
