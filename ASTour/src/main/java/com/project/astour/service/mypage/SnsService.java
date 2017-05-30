@@ -8,9 +8,9 @@ import com.project.astour.model.dto.mypage.snsVO;
 public interface SnsService {
 
 	public List<snsVO> snsList(int mpk);
-	public void contentdelete(int spk);
+	public void contentDelete(int spk);
 	public List<MemberVO> memList(int mpk);
 	public List<MemberVO> pepoleList(String mname);
 	public List<snsVO> reviewSelect(int mpk);
-	
+	public void insBrd(snsVO sns) throws Exception;
 }

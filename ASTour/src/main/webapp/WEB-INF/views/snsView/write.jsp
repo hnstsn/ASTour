@@ -1,7 +1,3 @@
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -24,12 +20,18 @@
 
 $(document).ready(function() {
 	
+	// 파일 추가 누르면
 	$("#addFiles").click(function() {
-		var add = "<div class='addFileDiv'><input type='file' name='sfile' class='sfile'><font class='deFile'>[X]</font></div>";
+		var add = "<input type='file' name='files' class='files'><font class='deFile'>[X]</font><br>";
 		$("#filesDiv").append(add);
 		
+		// 파일 삭제하기
 		$(".deFile").click(function() {
-			$(this).parent().remove();
+			// input tag 삭제
+			$(this).prev().remove();
+			// br tag 삭제
+			$(this).next().remove();
+			// font tag 삭제
 			$(this).remove();
 		});
 	});
@@ -38,7 +40,7 @@ $(document).ready(function() {
 </script>
 <style>
 .col-md-5 { padding-left: 0px; width:260px; }
-.sfile { float:left; }
+.files { float:left; }
 .addFileDiv 	{ margin-top : 5px; }
 .deFile:hover { cursor:pointer; }
 </style>
@@ -52,7 +54,7 @@ $(document).ready(function() {
 			<div class="col-md-12">
 				<h2>글쓰기</h2>
 				<form action="${path}/sns/insert.do" class="white-row"
-					method="post">
+					method="post"  enctype="multipart/form-data">
 					<!-- 작성자가 누군지 알아야지 저장할수 있기 때문에 mpk 받고 또 넘겨줌 -->
 					<input type="hidden" name="mpk" value="${mpk}" />
 					<div class="row">
@@ -76,16 +78,13 @@ $(document).ready(function() {
 							<div class="col-md-4">
 								<label id="addFiles">이미지사진 (추가)</label>
 								<div id="filesDiv">
-									<div class="addFileDiv">
-										<input type="file" name="sfile" class="sfile">
-										<font class="deFile">[X]</font>
-									</div>
+									<input type="file" name="files" class="files">
+									<font class="deFile">[X]</font><br>
 								</div>
 							</div>
 
 						</div>
 					</div>
-
 
 					<div class="row">
 						<div class="form-group">

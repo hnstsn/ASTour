@@ -22,9 +22,9 @@ public class SnsDAOImpl implements SnsDAO {
 	}
 
 	@Override
-	public void contentdelete(int spk) {
+	public void contentDelete(int spk) {
 
-		sqlSession.delete("sns.deletecontent", spk);
+		sqlSession.delete("sns.deleteContent", spk);
 	}
 
 	@Override
@@ -42,5 +42,17 @@ public class SnsDAOImpl implements SnsDAO {
 	public List<snsVO> reviewSelect(int mpk) {
 		return sqlSession.selectList("sns.reviewSelect",mpk);
 	}
-	
+
+	// 게시글 작성
+	@Override
+	public void insBrd(snsVO sns) throws Exception {
+		sqlSession.insert("sns.insBrd", sns);
+	}
+
+	// 해당하는 게시글의 파일 첨부
+	@Override
+	public void insBrdFiles(String sffile) {
+		sqlSession.insert("sns.insBrdFiles", sffile);
+	}
+
 }

@@ -87,6 +87,7 @@ $(document).ready(function() {
 		}
 	});
 	
+	// 정보수정 버튼을 누르면
 	$("#submitBtn").click(function() {
 		var mname = $("#mname").val();
 		    mphone = $("#mphone").val();

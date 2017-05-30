@@ -7,7 +7,6 @@ public class SnsFileVO {
 	String sfpath;
 	int spk;
 	
-	
 	public int getSfpk() { return sfpk; }
 	public void setSfpk(int sfpk) { this.sfpk = sfpk; }
 	public String getSffile() { return sffile; }

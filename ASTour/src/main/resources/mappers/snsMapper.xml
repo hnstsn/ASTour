@@ -10,42 +10,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		m.mfile, m.mfile2, m.mpath -->
 	<!-- SELECT * FROM sns_tbl where mpk = #{mpk } order by spk desc -->
 	<!-- 게시판내용들 -->
-	<select id="snsList" resultType="com.project.astour.model.dto.mypage.snsVO">
-		SELECT substr(scontent,1,10)as scontent,sns_tbl.* FROM sns_tbl where mpk =
-		#{mpk } order by spk desc
+	<select id="snsList" resultType="snsVO">
+		SELECT substr(scontent,1,10) as scontent, sns_tbl.* FROM sns_tbl 
+		where mpk = #{mpk} order by spk desc
 	</select>
 
 	<!-- 게시판 사진하나 -->
-	<select id="snsfile" resultType="com.project.astour.model.dto.mypage.SnsFileVO">
-		select * from snsfile_tbl
-		where sfpk in (select min(sfpk) from snsfile_tbl group by spk) and spk =
-		#{spk}
+	<select id="snsfile" resultType="SnsFileVO">
+		select * from snsFile_tbl 
+		where sfpk in (select min(sfpk) from snsFile_tbl group by spk) and spk = #{spk}
 	</select>
 
 	<!-- 상세보기 -->
-	<select id="contentview" resultType="com.project.astour.model.dto.mypage.snsVO">
-		SELECT *FROM sns_tbl WHERE
-		spk =#{spk }
+	<select id="contentView" resultType="snsVO">
+		SELECT *FROM sns_tbl WHERE spk =#{spk }
 	</select>
+	
 	<!-- 상세보기 파일 -->
-	<select id="contentViewFile" resultType="com.project.astour.model.dto.mypage.SnsFileVO">
-		select * from snsfile_tbl where spk = #{spk}
+	<select id="contentViewFile" resultType="SnsFileVO">
+		select * from snsFile_tbl where spk = #{spk}
 	</select>
 
-	<!-- 추가 -->
-	<insert id="insertcontent">
-		INSERT INTO sns_tbl (spk, stitle, scontent, sdate, mpk, stag, ssort)
-		VALUES (sns_seq.nextval, #{stitle}, #{scontent}, sysdate, #{mpk}, #{stag},
-		#{ssort})
-	</insert>
+	<!-- 게시글 삽입 -->
+    <insert id="insBrd">
+      INSERT INTO sns_tbl 
+      VALUES (sns_seq.nextval, #{stitle}, #{scontent}, sysdate, #{stag}, #{ssort}, 0, 0, #{mpk})
+    </insert>
+    
+    <!-- 파일 삽입 -->
+    <insert id="insBrdFiles">
+    	INSERT INTO snsFile_tbl VALUES (sfile_seq.nextval, #{sffile}, 'sns', (SELECT MAX(spk) FROM sns_tbl))
+    </insert>
 
 	<!-- 삭제 -->
-	<delete id="deletecontent">
+	<delete id="deleteContent">
 		DELETE FROM sns_tbl where spk= #{spk}
 	</delete>
 
 	<!-- 프로필사진 -->
-	<select id="memList" resultType="com.project.astour.model.dto.member.MemberVO">
+	<select id="memList" resultType="MemberVO">
 		SELECT m.mpk,m.mname,p.ppk,nvl(p.pfile,'mu.jpg') as pfile,
 		nvl(p.ppath,'WEB-INF/views/upload/profile') as ppath
 		FROM ASTMember m, ASTProfile p WHERE m.mpk=p.mpk(+) and m.mpk=#{mpk }
@@ -53,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<!-- 사람검색 -->
-	<select id="pepoleList" resultType="com.project.astour.model.dto.member.MemberVO">
+	<select id="pepoleList" resultType="MemberVO">
 		SELECT m.mpk,m.mid,m.mname,p.ppk,nvl(p.pfile,'mu.jpg') as pfile,
 		nvl(p.ppath,'WEB-INF/views/upload/profile') as ppath
 		FROM ASTMember m, ASTProfile p WHERE m.mpk=p.mpk(+) and m.mname LIKE
@@ -61,21 +64,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<!-- 모름 -->
-	<select id="reviewSelect" resultType="com.project.astour.model.dto.mypage.snsVO">
-		SELECT * FROM sns_tbl where
-		mpk = #{mpk} and ssort = 'review'
+	<select id="reviewSelect" resultType="snsVO">
+		SELECT * FROM sns_tbl where mpk = #{mpk} and ssort = 'review'
 	</select>
 
 	<!-- 뎃글추가 -->
 	<insert id="addreply">
-		INSERT INTO reply_tbl VALUES (rep_seq.nextval, #{rcontent}, sysdate, #{spk},
-		#{mpk})
+		INSERT INTO reply_tbl VALUES (rep_seq.nextval, #{rcontent}, sysdate, #{spk}, #{mpk})
 	</insert>
 
-	<select id="replyView" resultType="com.project.astour.model.dto.mypage.SnsReplyVO">
-		select rt.*,nvl(af.pfile,'mu.jpg') as pfile ,nvl(af.ppath,'mu.jpg') as
-		ppath,am.mname,am.mid
-		from ASTMember am,ASTProfile af,reply_tbl rt
+	<select id="replyView" resultType="SnsReplyVO">
+		select rt.*, nvl(af.pfile,'mu.jpg') as pfile ,nvl(af.ppath,'mu.jpg') as ppath,
+		am.mname, am.mid from ASTMember am, ASTProfile af, reply_tbl rt
 		where am.mpk=af.mpk(+) and am.mpk=rt.mpk and spk=#{spk} order by rpk asc
 	</select>
 
@@ -85,9 +85,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 
 	<!-- 뎃글 갯수 -->
-	<select id="replycount" resultType="com.project.astour.model.dto.mypage.SnsReplyVO">
-		select count(*) as ct
-		from ASTMember am,ASTProfile af,reply_tbl rt
+	<select id="replycount" resultType="SnsReplyVO">
+		select count(*) as ct from ASTMember am,ASTProfile af,reply_tbl rt
 		where am.mpk=af.mpk(+) and am.mpk=rt.mpk and spk=#{spk}
 	</select>
 
