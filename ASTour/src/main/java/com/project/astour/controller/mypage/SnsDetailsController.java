@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.SnsReplyVO;
 import com.project.astour.model.dto.mypage.snsVO;
-import com.project.astour.service.timeline.TimelineService;
+import com.project.astour.service.mypage.SnsDetailsService;
 
 @Controller
 @RequestMapping("snsdetails")
-public class SnsDetails {
+public class SnsDetailsController {
 	@Inject
-	TimelineService timelineService;
+	SnsDetailsService snsDetailsService;
 
 	int mp=0;
 	//상세보기
@@ -32,11 +32,11 @@ public class SnsDetails {
 			HttpSession session) {
 		mp=mmpk;
 		
-		timelineService.hitsView(spk,session);//조횟수
-		List<snsVO> contentView = timelineService.contentView(spk);
-		List<SnsFileVO> contentViewFile = timelineService.contentViewFile(spk);
-		List<SnsReplyVO> replyView = timelineService.replyView(spk);
-		SnsReplyVO ct = timelineService.count(spk);
+		snsDetailsService.hitsView(spk,session);//조횟수
+		List<snsVO> contentView = snsDetailsService.contentView(spk);
+		List<SnsFileVO> contentViewFile = snsDetailsService.contentViewFile(spk);
+		List<SnsReplyVO> replyView = snsDetailsService.replyView(spk);
+		SnsReplyVO ct = snsDetailsService.count(spk);
 		
 		if(ct.getCt()/2!=0){
 			model.addAttribute("ct",ct.getCt()/10+1);			
@@ -58,10 +58,10 @@ public class SnsDetails {
 	public String PostContent(Model model,@RequestParam(value="name") String name,
 			SnsReplyVO vo){
 		
-		timelineService.reply(vo);
-		List<snsVO> contentView = timelineService.contentView(vo.getSpk());
-		List<SnsFileVO> contentViewFile = timelineService.contentViewFile(vo.getSpk());
-		List<SnsReplyVO> replyView = timelineService.replyView(vo.getSpk());
+		snsDetailsService.reply(vo);
+		List<snsVO> contentView = snsDetailsService.contentView(vo.getSpk());
+		List<SnsFileVO> contentViewFile = snsDetailsService.contentViewFile(vo.getSpk());
+		List<SnsReplyVO> replyView = snsDetailsService.replyView(vo.getSpk());
 		
 		model.addAttribute("replyView",replyView);
 		model.addAttribute("fileList",contentViewFile);

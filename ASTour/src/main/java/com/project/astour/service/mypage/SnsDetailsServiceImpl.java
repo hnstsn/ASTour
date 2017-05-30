@@ -1,42 +1,41 @@
-package com.project.astour.service.timeline;
+package com.project.astour.service.mypage;
 
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
-import com.project.astour.model.dao.timeline.TimelineDAO;
+import com.project.astour.model.dao.mypage.SnsDetailsDAO;
 import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.SnsReplyVO;
 import com.project.astour.model.dto.mypage.snsVO;
 
 @Service
-public class TimelineServiceImpl implements TimelineService{
+public class SnsDetailsServiceImpl implements SnsDetailsService{
 
 	@Inject
-	TimelineDAO timelineDao;
+	SnsDetailsDAO snsDetailsDao;
 	
 	@Override
 	public List<snsVO> contentView(int spk) {
-		return timelineDao.contentView(spk);
+		return snsDetailsDao.contentView(spk);
 	}
 
 	@Override
 	public List<SnsFileVO> contentViewFile(int spk) {
-		return timelineDao.contentViewFile(spk);
+		return snsDetailsDao.contentViewFile(spk);
 	}
 
 	@Override
 	public void reply(SnsReplyVO vo) {
-		timelineDao.reply(vo);
+		snsDetailsDao.reply(vo);
 	}
 
 	@Override
 	public List<SnsReplyVO> replyView(int spk) {
-		return timelineDao.replyView(spk);
+		return snsDetailsDao.replyView(spk);
 	}
 	
 	// 조회수
@@ -52,14 +51,14 @@ public class TimelineServiceImpl implements TimelineService{
 		long current_time = System.currentTimeMillis();
 		// 일정 시간이 경과 후 조회수 증가 처리
 		if(current_time - update_time > 5*1000){
-			timelineDao.hitsView(spk);
+			snsDetailsDao.hitsView(spk);
 			session.setAttribute("update_time_"+spk, current_time);
 		}
 	}
 
 	@Override
 	public SnsReplyVO count(int spk) {
-		return timelineDao.count(spk);
+		return snsDetailsDao.count(spk);
 	}
 	
 }

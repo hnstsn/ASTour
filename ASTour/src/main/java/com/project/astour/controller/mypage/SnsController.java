@@ -17,10 +17,6 @@ import com.project.astour.model.dto.mypage.snsVO;
 import com.project.astour.service.member.MemberService;
 import com.project.astour.service.mypage.SnsFileService;
 import com.project.astour.service.mypage.SnsService;
-import com.project.astour.service.timeline.TimelineService;
-import com.project.astour.service.write.WriteService;
-
-import ch.qos.logback.core.net.SyslogOutputStream;
 
 @Controller
 @RequestMapping("sns")
@@ -35,8 +31,6 @@ public class SnsController {
 	@Inject
 	MemberService memberService;
 
-	@Inject
-	WriteService writeService;
 
 	// 기존 mpk 식별하기위함
 	int mp = 0;

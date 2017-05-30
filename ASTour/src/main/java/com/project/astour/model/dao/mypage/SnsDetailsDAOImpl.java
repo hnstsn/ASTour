@@ -1,4 +1,4 @@
-package com.project.astour.model.dao.timeline;
+package com.project.astour.model.dao.mypage;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import com.project.astour.model.dto.mypage.SnsReplyVO;
 import com.project.astour.model.dto.mypage.snsVO;
 
 @Repository
-public class TimelineDAOImpl implements TimelineDAO{
+public class SnsDetailsDAOImpl implements SnsDetailsDAO{
 
 	@Inject
 	SqlSession sqlSession;
