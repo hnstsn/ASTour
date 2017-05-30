@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -20,6 +21,10 @@ public class SnsServiceImpl implements SnsService {
 
 	@Inject
 	SnsDAO snsDao;
+	
+//	sns 게시글의 파일들이 저장되는 경로
+	@Resource(name="brdUploadPath")
+	String brdUploadPath;
 	
 		
 	@Override
@@ -67,13 +72,11 @@ public class SnsServiceImpl implements SnsService {
 	
 //	파일 이름이 중복되지 않도록 처리 및 업로드
 	private void uploadFile(String fName, byte[] fileData) throws Exception {
-		// sns 게시글의 파일들이 저장되는 경로
-		String uploadPath = "D:\\STS_Workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\ASTour\\WEB-INF\\views\\upload\\sns\\";
 		// 구별되는 이름으로 저장
 		UUID uid = UUID.randomUUID();
 		String savedName = uid.toString() + "_" + fName;
 		// 해당 경로에 저장될 이름으로 파일 생성해서 복사
-		File target = new File(uploadPath, savedName);
+		File target = new File(brdUploadPath, savedName);
 		FileCopyUtils.copy(fileData, target);
 		//
 		snsDao.insBrdFiles(savedName);

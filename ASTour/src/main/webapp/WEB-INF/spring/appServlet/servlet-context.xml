@@ -19,6 +19,7 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	<!-- mapping : 가상 경로(상대경로), location : 리소스가 실제로 저장된 경로 -->
 	<resources mapping="/profile/**" location="/WEB-INF/views/upload/profile/"/>
+	<resources mapping="/sns/**" location="/WEB-INF/views/upload/sns/"/>
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -34,7 +35,13 @@
 	</beans:bean>
 	<!-- 프로필 사진 업로드 경로 -->
 	<beans:bean id="pfUploadPath" class="java.lang.String">
-		<beans:constructor-arg value="C:/Users/bit-user/workspace4/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ASTour/WEB-INF/views/upload/profile/" />
+		<beans:constructor-arg value="D:/STS_Workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ASTour/WEB-INF/views/upload/profile/" />
 	</beans:bean>
+	<!-- 게시글 사진 업로드 경로 -->
+	<beans:bean id="brdUploadPath" class="java.lang.String">
+		<beans:constructor-arg value="D:\\STS_Workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\ASTour\\WEB-INF\\views\\upload\\sns\\" />
+	</beans:bean>
+	<!-- csw 주소
+	"D:/STS_Workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ASTour/WEB-INF/views/upload/profile/" -->
 	<!-- 정지영주소 C:/Users/bit-user/workspace4/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ASTour/WEB-INF/views/upload/profile/  -->
 </beans:beans>
