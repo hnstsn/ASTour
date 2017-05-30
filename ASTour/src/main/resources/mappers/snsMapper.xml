@@ -69,7 +69,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<!-- 뎃글추가 -->
-	<insert id="addreply">
+	<insert id="addReply">
 		INSERT INTO reply_tbl VALUES (rep_seq.nextval, #{rcontent}, sysdate, #{spk}, #{mpk})
 	</insert>
 
@@ -85,7 +85,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 
 	<!-- 뎃글 갯수 -->
-	<select id="replycount" resultType="SnsReplyVO">
+	<select id="replyCount" resultType="SnsReplyVO">
 		select count(*) as ct from ASTMember am,ASTProfile af,reply_tbl rt
 		where am.mpk=af.mpk(+) and am.mpk=rt.mpk and spk=#{spk}
 	</select>

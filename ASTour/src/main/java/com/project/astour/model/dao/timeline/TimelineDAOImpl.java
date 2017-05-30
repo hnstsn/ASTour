@@ -20,7 +20,7 @@ public class TimelineDAOImpl implements TimelineDAO{
 	//내용
 	@Override
 	public List<snsVO> contentView(int spk) {
-		return sqlSession.selectList("sns.contentview",spk);
+		return sqlSession.selectList("sns.contentView",spk);
 
 	}
 
@@ -33,7 +33,7 @@ public class TimelineDAOImpl implements TimelineDAO{
 	//뎃글추가
 	@Override
 	public void reply(SnsReplyVO vo) {
-		sqlSession.insert("sns.addreply",vo);
+		sqlSession.insert("sns.addReply",vo);
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class TimelineDAOImpl implements TimelineDAO{
 
 	@Override
 	public SnsReplyVO count(int spk) {
-		return sqlSession.selectOne("sns.replycount",spk);
+		return sqlSession.selectOne("sns.replyCount",spk);
 	}
 	
 		
