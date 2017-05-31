@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.astour.model.dao.mypage.SnsDAO;
 import com.project.astour.model.dto.member.MemberVO;
+import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.snsVO;
 
 @Service
@@ -33,13 +34,7 @@ public class SnsServiceImpl implements SnsService {
 	}
 
 	@Override
-	public void contentDelete(int spk) {
-		
-		snsDao.contentDelete(spk);
-	}
-
-	@Override
-	public List<MemberVO> memList(int mpk) {
+	public MemberVO memList(int mpk) {
 		return snsDao.memList(mpk);
 	}
 	
@@ -78,9 +73,23 @@ public class SnsServiceImpl implements SnsService {
 		// 해당 경로에 저장될 이름으로 파일 생성해서 복사
 		File target = new File(brdUploadPath, savedName);
 		FileCopyUtils.copy(fileData, target);
-		//
-		snsDao.insBrdFiles(savedName);
-		
+		// 파일명과  spk를 구해서 넣어준다
+		SnsFileVO sFile = new SnsFileVO();
+		sFile.setSffile(savedName);
+		sFile.setSpk(getSpk());
+		snsDao.insBrdFiles(sFile);
+	}
+
+	// 게시글의 파일에 필요한 spk
+	@Override
+	public int getSpk() {
+		return snsDao.getSpk();
+	}
+
+	// 게시글 수정시 파일 삽입
+	@Override
+	public void insBrdFiles(SnsFileVO sFile, MultipartFile f) throws Exception {
+		uploadFile(sFile.getSffile(), f.getBytes());
 	}
 
 

@@ -17,17 +17,40 @@ public class SnsDetailsDAOImpl implements SnsDetailsDAO{
 	@Inject
 	SqlSession sqlSession;
 
-	//내용
+	// 상세보기
 	@Override
-	public List<snsVO> contentView(int spk) {
-		return sqlSession.selectList("sns.contentView",spk);
-
+	public snsVO contentView(int spk) {
+		return sqlSession.selectOne("sns.contentView",spk);
 	}
-
-	//파일
+	
+	// 해당 게시물 상세보기
 	@Override
 	public List<SnsFileVO> contentViewFile(int spk) {
 		return sqlSession.selectList("sns.contentViewFile",spk);
+	}
+
+	// 게시글 삭제
+	@Override
+	public void contentDelete(int spk) {
+		sqlSession.delete("sns.deleteContent", spk);
+	}
+	
+	// 해당 게시글의 파일들 삭제
+	@Override
+	public void deleteFiles(int spk) {
+		sqlSession.delete("sns.deleteFiles", spk);
+	}
+	
+	// 게시글 수정때 삭제할 사진 파일 삭제
+	@Override
+	public void deletePic(int sfpk) {
+		sqlSession.delete("sns.deletePic", sfpk);
+	}
+	
+	// 게시글 수정
+	@Override
+	public void upContent(snsVO sns) {
+		sqlSession.update("sns.upContent", sns);
 	}
 
 	//뎃글추가
@@ -57,5 +80,17 @@ public class SnsDetailsDAOImpl implements SnsDetailsDAO{
 	public void delete(int rpk) {
 		sqlSession.delete("sns.replydelete",rpk);
 	}
-		
+	
+	//댓글 수정을 위한 정보가지고오기 
+	@Override
+	public SnsReplyVO upselect(int rpk) {
+		return sqlSession.selectOne("sns.replyselect",rpk);
+	}
+
+	//댓글업데이트
+	@Override
+	public void replyupdate(SnsReplyVO vo) {
+		sqlSession.update("sns.replyupdate",vo);
+	}
+
 }

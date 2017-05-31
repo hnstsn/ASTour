@@ -13,6 +13,7 @@ import com.project.astour.service.email.EmailService;
 @RestController
 @RequestMapping("email")
 public class EmailCtrl {
+//	AST(CSW) : 이메일 전송
 	
 	private static final Logger logger = LoggerFactory.getLogger("EmailCtrl.class");
 	

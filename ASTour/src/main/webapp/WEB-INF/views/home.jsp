@@ -15,9 +15,10 @@
 </head>
 <body>
 
-	<!-- AST : menu부분을 위한 jsp page -->
+	<!-- AST(CSW) : menu부분을 위한 jsp page -->
 	<jsp:include page="include/menu.jsp" />
 	
+	<!-- AST(CSW) : 전환되는 페이지 -->
 	<jsp:include page="${curPage}" />
 
 

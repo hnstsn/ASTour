@@ -17,6 +17,7 @@ import com.project.astour.service.member.MemberService;
 @Controller
 @RequestMapping("member")
 public class MemberCtrl {
+//	AST(CSW) : 회원가입, 아이디 체크, 중복체크 , 찾기 등등
 	
 	private static final Logger logger = LoggerFactory.getLogger("MemberCtrl.class");
 	

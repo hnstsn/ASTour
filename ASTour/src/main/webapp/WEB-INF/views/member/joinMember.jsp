@@ -12,9 +12,11 @@
 	<meta name="keywords" content="HTML5,CSS3,Template" />
 	<meta name="description" content="" />
 	<meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
+	<!-- mobile settings -->
+<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 	<%@ include file="../include/bootstap_collect.jsp" %>
 <script>
-// AST(CSW)
+// AST(CSW) : 회원가입
 // 비밀번호 중복 체크 변수
 var pwchkIsOk = false;
 // 비밀번호와 체크용이 일치하는지 확인하는 함수
@@ -66,7 +68,7 @@ $(document).ready(function() {
 	var idIsOk = false;
 	//초기에 인증하는 div 숨기기
 	$("#repetitionDiv").hide();
-	// 중복체크 버튼을 누륺루 사용 가능한 아이디면 인증하는 div를 띄워주자
+	// 중복체크 버튼을 누른 후 사용 가능한 아이디면 인증하는 div를 띄워주자
 	$("#repetitionBtn").click(function() {
 		var mid = $("#mid").val();
 		// 아이디에 입력값이 있을 경우 실행

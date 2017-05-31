@@ -12,9 +12,12 @@
 	<meta name="keywords" content="HTML5,CSS3,Template" />
 	<meta name="description" content="" />
 	<meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
-	<%@ include file="../include/bootstap_collect.jsp" %>
-	<%@ include file="../include/sessionCheck.jsp" %>
+	<!-- mobile settings -->
+<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+<%@ include file="../include/bootstap_collect.jsp" %>
+<%@ include file="../include/sessionCheck.jsp" %>
 <script>
+// AST(CSW) : 정보 수정 페이지
 //현재 비밀번호가 맞는지 확인하는 함수
 function pwIsCor() {
 	var be_mpw = $("#be_mpw").val();

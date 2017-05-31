@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 상세보기 -->
 	<select id="contentView" resultType="snsVO">
-		SELECT *FROM sns_tbl WHERE spk =#{spk }
+		SELECT * FROM sns_tbl WHERE spk =#{spk}
 	</select>
 	
 	<!-- 상세보기 파일 -->
@@ -31,21 +31,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from snsFile_tbl where spk = #{spk}
 	</select>
 
+    <!-- AST(CSW) -->
 	<!-- 게시글 삽입 -->
     <insert id="insBrd">
       INSERT INTO sns_tbl 
       VALUES (sns_seq.nextval, #{stitle}, #{scontent}, sysdate, #{stag}, #{ssort}, 0, 0, #{mpk})
     </insert>
     
+    <!-- 게시글 쓸때 파일 테이블의 spk를 사용해야 돼서 -->
+    <select id="getSpk" resultType="Integer">
+    	SELECT MAX(spk) FROM sns_tbl
+    </select>
+    
     <!-- 파일 삽입 -->
     <insert id="insBrdFiles">
-    	INSERT INTO snsFile_tbl VALUES (sfile_seq.nextval, #{sffile}, 'sns', (SELECT MAX(spk) FROM sns_tbl))
+    	INSERT INTO snsFile_tbl VALUES (sfile_seq.nextval, #{sffile}, 'sns', #{spk})
     </insert>
 
-	<!-- 삭제 -->
+	<!-- 게시글 삭제 -->
 	<delete id="deleteContent">
 		DELETE FROM sns_tbl where spk= #{spk}
 	</delete>
+	
+	<!-- 해당 게시글의 파일 테이블의 레코드 삭제 -->
+	<delete id="deleteFiles">
+		DELETE FROM snsfile_tbl WHERE spk=#{spk}
+	</delete>
+	
+	<!-- 게시물 수정때 해당하는 파일만 삭제 -->
+	<delete id="deletePic">
+		DELETE FROM snsfile_tbl WHERE sfpk=#{sfpk}
+	</delete>
+	
+	<!-- 게시글 수정 -->
+	<update id="upContent">
+		UPDATE sns_tbl SET stitle=#{stitle}, scontent=#{scontent}, stag=#{stag}, ssort=#{ssort}
+		WHERE spk=#{spk}
+	</update>	
+	<!-- AST(CSW) 끝  -->
 
 	<!-- 프로필사진 -->
 	<select id="memList" resultType="MemberVO">
@@ -57,10 +80,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 사람검색 -->
 	<select id="pepoleList" resultType="MemberVO">
-		SELECT m.mpk,m.mid,m.mname,p.ppk,nvl(p.pfile,'mu.jpg') as pfile,
-		nvl(p.ppath,'WEB-INF/views/upload/profile') as ppath
-		FROM ASTMember m, ASTProfile p WHERE m.mpk=p.mpk(+) and m.mname LIKE
-		#{mname}
+		SELECT m.mpk, m.mid, m.mname, p.ppk, nvl(p.pfile,'mu.jpg') AS pfile,
+			   nvl(p.ppath,'WEB-INF/views/upload/profile') AS ppath
+		FROM ASTMember m, ASTProfile p 
+		WHERE m.mpk=p.mpk(+) AND m.mname LIKE #{mname}
 	</select>
 
 	<!-- 모름 -->
@@ -76,7 +99,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="replyView" resultType="SnsReplyVO">
 		select rt.*, nvl(af.pfile,'mu.jpg') as pfile ,nvl(af.ppath,'mu.jpg') as ppath,
 		am.mname, am.mid from ASTMember am, ASTProfile af, reply_tbl rt
-		where am.mpk=af.mpk(+) and am.mpk=rt.mpk and spk=#{spk} order by rpk asc
+		where am.mpk=af.mpk(+) and am.mpk=rt.mpk and spk=#{spk} order by rpk desc
 	</select>
 
 	<!-- 조회수 증가 -->
@@ -94,5 +117,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="replydelete">
 		delete from reply_tbl where rpk=#{rpk}
 	</delete>
+	
+	<!-- 댓글수정 하기위해 정보불러오기 -->
+   <select id="replyselect" resultType="SnsReplyVO">
+   select am.mpk,am.mname,nvl(af.pfile,'mu.jpg') as pfile, rt.* 
+   from ASTMember am,ASTProfile af, reply_tbl rt
+   where am.mpk=af.mpk(+) and rt.mpk=am.mpk and rpk=#{rpk}
+   </select>
+   
+   <!-- 댓글업데이트 -->
+   <update id="replyupdate">
+      update reply_tbl set rcontent=#{rcontent},rtime=sysdate where rpk=#{rpk}
+   </update>
 
 </mapper>

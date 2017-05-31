@@ -7,7 +7,8 @@
 <!--[if IE 9]>         <html class="ie ie9"> <![endif]-->
 <!--[if gt IE 9]><!-->
 <html>
-
+<!-- mobile settings -->
+<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 <head>
 <meta charset="utf-8" />
 
