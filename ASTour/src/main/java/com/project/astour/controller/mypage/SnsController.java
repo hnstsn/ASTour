@@ -86,10 +86,10 @@ public class SnsController {
 		return "home";
 	}
 
+
 	// 사람찾기 (0)
 	@RequestMapping("snsPeople.do")
 	public String pepole(Model model, @RequestParam(value = "people_id") String people_id) {
-		System.out.println("사람찾기 접속 " + people_id);
 		List<MemberVO> peopleList = snsService.peopleList(people_id);
 		model.addAttribute("peopleList", peopleList);
 		model.addAttribute("curPage", "snsView/snsPeopleView.jsp");
