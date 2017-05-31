@@ -17,20 +17,14 @@ import com.project.astour.model.dto.member.MemberVO;
 import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.snsVO;
 import com.project.astour.service.member.MemberService;
-import com.project.astour.service.mypage.SnsFileService;
 import com.project.astour.service.mypage.SnsService;
 
 @Controller
 @RequestMapping("sns")
 public class SnsController {
 	
-	private static final Logger logger = LoggerFactory.getLogger("SnsController.class");
-
 	@Inject
 	SnsService snsService;
-
-	@Inject
-	SnsFileService snsFileService;
 
 	@Inject
 	MemberService memberService;
@@ -48,7 +42,7 @@ public class SnsController {
 		SnsFileVO snsFileVO;
 		for (snsVO vo : snsList) {
 			System.out.println("보내줄 spk : " + vo.getSpk());
-			snsFileVO = snsFileService.snsFileList(vo.getSpk());
+			snsFileVO = snsService.snsFileList(vo.getSpk());
 			if (snsFileVO != null) {
 				snsFileList.add(snsFileVO);
 			}
@@ -79,7 +73,7 @@ public class SnsController {
 		List<SnsFileVO> snsFileList = new ArrayList<SnsFileVO>();
 		SnsFileVO snsFileVO;
 		for (snsVO vo : snsList) {
-			snsFileVO = snsFileService.snsFileList(vo.getSpk());
+			snsFileVO = snsService.snsFileList(vo.getSpk());
 			if (snsFileVO != null) {
 				snsFileList.add(snsFileVO);
 			}
@@ -93,12 +87,12 @@ public class SnsController {
 	}
 
 	// 사람찾기 (0)
-	@RequestMapping("snsPepole.do")
-	public String pepole(Model model, @RequestParam(value = "pepole_id") String pepole_id) {
-		logger.info("사람찾기 접속");
-		List<MemberVO> pepoleList = snsService.pepoleList(pepole_id);
-		model.addAttribute("pepoleList", pepoleList);
-		model.addAttribute("curPage", "snsView/snsPepoleView.jsp");
+	@RequestMapping("snsPeople.do")
+	public String pepole(Model model, @RequestParam(value = "people_id") String people_id) {
+		System.out.println("사람찾기 접속 " + people_id);
+		List<MemberVO> peopleList = snsService.peopleList(people_id);
+		model.addAttribute("peopleList", peopleList);
+		model.addAttribute("curPage", "snsView/snsPeopleView.jsp");
 		return "home";
 	}
 
@@ -115,7 +109,7 @@ public class SnsController {
 		SnsFileVO snsFileVO;
 		for (snsVO vo : snsList) {
 //			System.out.println("보내줄 spk : " + vo.getSpk());
-			snsFileVO = snsFileService.snsFileList(vo.getSpk());
+			snsFileVO = snsService.snsFileList(vo.getSpk());
 			if (snsFileVO != null) {
 				snsFileList.add(snsFileVO);
 			}
@@ -139,7 +133,7 @@ public class SnsController {
 		SnsFileVO snsFileVO;
 		for (snsVO vo : snsList) {
 			System.out.println("보내줄 spk : " + vo.getSpk());
-			snsFileVO = snsFileService.snsFileList(vo.getSpk());
+			snsFileVO = snsService.snsFileList(vo.getSpk());
 			if (snsFileVO != null) {
 				snsFileList.add(snsFileVO);
 			}
@@ -152,16 +146,29 @@ public class SnsController {
 		return "home";
 	}
 
+	// 리뷰 게시물인지 나의 게시물인지 확인
 	@RequestMapping("reviewSelect.do")
-	public String reviewSelect(Model model, @RequestParam(value = "mpk") int mpk) {
-
-		List<snsVO> reviewSelect = snsService.reviewSelect(mpk);
+	public String reviewSelect(@RequestParam int mpk,
+							   @RequestParam String ssort,
+							   Model model) {
+		List<snsVO> snsList = snsService.reviewSelect(mpk, ssort);
 		MemberVO member = snsService.memList(mpk);
+		List<SnsFileVO> snsFileList = new ArrayList<SnsFileVO>();
+		
+		SnsFileVO snsFileVO;
+		for (snsVO vo : snsList) {
+			System.out.println("보내줄 spk : " + vo.getSpk());
+			snsFileVO = snsService.snsFileList(vo.getSpk());
+			if (snsFileVO != null) {
+				snsFileList.add(snsFileVO);
+			}
+		}
 
+		model.addAttribute("snsFileList", snsFileList); // 파일 리스트
 		model.addAttribute("member", member);
-		model.addAttribute("list", reviewSelect);
+		model.addAttribute("list", snsList);
 		model.addAttribute("curPage", "snsView/sns.jsp");
-
+		
 		return "home";
 	}
 

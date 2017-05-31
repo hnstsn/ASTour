@@ -28,28 +28,35 @@
 	</div>
 	</header>
 
+	<!-- AST(CSW) : 사람 검색해서 없으면 없다고 있으면 보여주고 -->
 	<div class="row" style="margin-left: 20%; margin-right: 20%">
 		<ul class="sort-destination isotope" data-sort-id="isotope-list">
-			<!-- 수정 -->
-			 <c:forEach var="pepole" items="${pepoleList}">
-			<li class="isotope-item col-sm-6 col-md-4 design">
-				<!-- item 3 -->
-				<div class="item-box">
-					<figure>
-						<a href="${path}/sns/findPepole.do?mpk=${pepole.mpk}" class="item-hover" >
-							<span class="overlay color3"></span> 
-							<span class="inner"></span>
-						</a>
-						<img src="${path}/profile/${pepole.pfile}" width="260" height="260" alt="프로필 사진 없음">
-					</figure> 
-					<div class="item-box-desc">
-						<h4>${pepole.mname}님</h4>
-						<h5>${pepole.mid}</h5>
-					</div>
-				</div>
-			</li>
-			</c:forEach>
-			
+			<c:choose>
+				<c:when test="${peopleList.size() < 1}">
+					<h2>찾고 계신 사람이 없습니다.</h2>
+					<h2>이름을 다시 한번 확인해주세요.</h2>
+				</c:when>
+				<c:otherwise>
+					<c:forEach var="people" items="${peopleList}">
+						<li class="isotope-item col-sm-6 col-md-4 design">
+							<!-- item 3 -->
+							<div class="item-box">
+								<figure>
+									<a href="${path}/sns/findPepole.do?mpk=${people.mpk}" class="item-hover" >
+										<span class="overlay color3"></span> 
+										<span class="inner"></span>
+									</a>
+									<img src="${path}/profile/${people.pfile}" width="260" height="260" alt="프로필 사진 없음">
+								</figure> 
+								<div class="item-box-desc">
+									<h4>${people.mname}님</h4>
+									<h5>${people.mid}</h5>
+								</div>
+							</div>
+						</li>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
 			
 		</ul>
 	</div>

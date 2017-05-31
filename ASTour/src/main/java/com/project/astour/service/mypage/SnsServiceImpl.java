@@ -1,7 +1,9 @@
 package com.project.astour.service.mypage;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -40,13 +42,21 @@ public class SnsServiceImpl implements SnsService {
 	
 	//사람찾기
 	@Override
-	public List<MemberVO> pepoleList(String mname){
-		return snsDao.pepoleList("%"+mname+"%");
+	public List<MemberVO> peopleList(String mname){
+		return snsDao.peopleList("%"+mname+"%");
 	}
 	
 	@Override
-	public List<snsVO> reviewSelect(int mpk) {
-		return snsDao.reviewSelect(mpk);
+	public List<snsVO> reviewSelect(int mpk, String ssort) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("mpk", mpk);
+		map.put("ssort", ssort);
+		return snsDao.reviewSelect(map);
+	}
+	
+	@Override
+	public SnsFileVO snsFileList(int spk) {
+		return snsDao.snsFileList(spk);
 	}
 
 	// 게시글 작성

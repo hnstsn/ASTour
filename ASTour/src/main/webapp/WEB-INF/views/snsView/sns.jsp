@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, java.text.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
@@ -18,6 +17,20 @@
 <%@ include file="../include/sessionCheck.jsp"%>
 <!-- Morenizr -->
 <script type="text/javascript" src="assets/plugins/modernizr.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#schBtn").click(function() {
+		var people_id = $("#people_id").val();
+		if (people_id == '') {
+			alert("이름을 입력해주세요");
+			return false;
+		} else {
+			document.schForm.action="${path}/sns/snsPeople.do";
+			document.schForm.submit();
+		}
+	});
+});
+</script>
 </head>
 
 <!-- AST : 블로그 전체 틀  -->
@@ -43,11 +56,11 @@
 
 						<h3>사람 찾기</h3>
 
-						<form method="get" action="${path}/sns/snsPepole.do" class="input-group">
-							<input type="text" class="form-control" name="pepole_id"
-								id="pepole_id" placeholder="이름을 입력하세요" /> 
+						<form method="post" name="schForm" class="input-group">
+							<input type="text" class="form-control" name="people_id"
+								id="people_id" placeholder="이름을 입력하세요" /> 
 							<span class="input-group-btn">
-							<button class="btn btn-success">
+							<button class="btn btn-success" id="schBtn">
 								<i class="fa fa-search"></i>
 							</button>
 							</span>
@@ -79,17 +92,19 @@
 						<h4>게시물 보기</h4>
 						<ul class="nav nav-list">
 							<li>
-								<a href="${path }/sns/snsSelect.do?mpk=${member.mpk}">
-								<i class="fa fa-circle-o"></i> 전체 보기</a>
+								<a href="${path}/sns/snsSelect.do?mpk=${member.mpk}">
+								<i class="fa fa-circle-o"></i>전체 보기</a>
 							</li>
 							<li>
-								<a href="${path }/sns/reviewSelect.do?mpk=${member.mpk}">
+								<a href="${path}/sns/reviewSelect.do?mpk=${member.mpk}&ssort=review">
 								<i class="fa fa-circle-o"></i> 리뷰 게시물</a>
 							</li>
-							<li><a href="#"><i class="fa fa-circle-o"></i> 나의 게시물</a></li>
-							<c:if test="${sessionScope.member.mpk eq member.mpk }">
+							<li><a href="${path}/sns/reviewSelect.do?mpk=${member.mpk}&ssort=mybrd">
+								<i class="fa fa-circle-o"></i> 나의 게시물</a>
+							</li>
+							<c:if test="${sessionScope.member.mpk eq member.mpk}">
 								<li>
-									<a href="${path}/sns/writeview.do?mpk=${mpk}">
+									<a href="${path}/sns/writeview.do?mpk=${sessionScope.member.mpk}">
 										<i class="fa fa-circle-o"></i> 글쓰기
 									</a>
 								</li>

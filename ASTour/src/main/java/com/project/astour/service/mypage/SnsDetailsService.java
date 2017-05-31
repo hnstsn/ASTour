@@ -17,6 +17,7 @@ public interface SnsDetailsService {
 	public List<SnsFileVO> contentViewFile(int spk);
 	public void contentDelete(snsVO sns);
 	public void deletePic(int sfpk);
+	public void deleteReplys(int spk);
 	public void upContent(snsVO sns);
 	public void reply(SnsReplyVO vo);
 	public List<SnsReplyVO> replyView(int spk);

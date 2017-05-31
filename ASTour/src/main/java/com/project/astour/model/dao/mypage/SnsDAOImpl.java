@@ -1,6 +1,7 @@
 package com.project.astour.model.dao.mypage;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -29,13 +30,18 @@ public class SnsDAOImpl implements SnsDAO {
 
 	//사람찾기
 	@Override
-	public List<MemberVO> pepoleList(String mname){
-		return sqlSession.selectList("sns.pepoleList",mname);
+	public List<MemberVO> peopleList(String mname){
+		return sqlSession.selectList("sns.peopleList",mname);
 	}
 	
 	@Override
-	public List<snsVO> reviewSelect(int mpk) {
-		return sqlSession.selectList("sns.reviewSelect",mpk);
+	public List<snsVO> reviewSelect(Map<String, Object> map) {
+		return sqlSession.selectList("sns.reviewSelect", map);
+	}
+	
+	@Override
+	public SnsFileVO snsFileList(int spk){
+		return sqlSession.selectOne("sns.snsfile",spk);
 	}
 
 	// 게시글 작성

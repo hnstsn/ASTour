@@ -13,6 +13,7 @@ public interface SnsDetailsDAO {
 	public snsVO contentView(@RequestParam(value="spk") int spk);
 	public void contentDelete(int spk);
 	public void deleteFiles(int spk);
+	public void deleteReplys(int spk);
 	public void deletePic(int sfpk);
 	public void upContent(snsVO sns);
 	public List<SnsFileVO> contentViewFile(int spk);

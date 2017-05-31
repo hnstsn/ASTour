@@ -12,8 +12,9 @@ public interface SnsService {
 
 	public List<snsVO> snsList(int mpk);
 	public MemberVO memList(int mpk);
-	public List<MemberVO> pepoleList(String mname);
-	public List<snsVO> reviewSelect(int mpk);
+	public List<MemberVO> peopleList(String mname);
+	public List<snsVO> reviewSelect(int mpk, String ssort);
+	public SnsFileVO snsFileList(int spk);
 	public void insBrd(snsVO sns) throws Exception;
 	public int getSpk();
 	public void insBrdFiles(SnsFileVO sFile, MultipartFile f) throws Exception;

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.project.astour.model.dto.member.MemberVO;
 import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.SnsReplyVO;
 import com.project.astour.model.dto.mypage.snsVO;
@@ -33,8 +32,6 @@ public class SnsDetailsController {
 	@Inject
 	MemberService mService;
 
-	int mp=0;
-	String name1;//페이지 네임 고정 
 	// 게시글 상세보기
 	@RequestMapping("contentview.do")
 	public String BlogContent(Model model, @RequestParam(value="spk") int spk,
@@ -67,6 +64,7 @@ public class SnsDetailsController {
 	// AST(CSW) : 게시글 삭제
 	@RequestMapping("deContent.do")
 	public String deleteContent(@ModelAttribute snsVO sns) {
+		snsDetailsService.deleteReplys(sns.getSpk());
 		snsDetailsService.contentDelete(sns);
 		return "redirect:/chgPage.do?cpage=30";
 	}
@@ -120,17 +118,7 @@ public class SnsDetailsController {
 	//추가
 	@RequestMapping("in.do")
 	public String PostContent(Model model, SnsReplyVO vo){
-		
 		snsDetailsService.reply(vo);
-//		snsVO contentView = snsDetailsService.contentView(vo.getSpk());
-//		List<SnsFileVO> contentViewFile = snsDetailsService.contentViewFile(vo.getSpk());
-//		List<SnsReplyVO> replyView = snsDetailsService.replyView(vo.getSpk());
-//		
-//		model.addAttribute("replyView",replyView);
-//		model.addAttribute("fileList",contentViewFile);
-//		model.addAttribute("contenlist", contentView);
-//		model.addAttribute("curPage", "snsView/contentview.jsp");
-//		return "home";
 		return "redirect:/snsdetails/contentview.do?spk="+vo.getSpk()+"&mname="+vo.getMname();
 	}
 	
@@ -138,19 +126,6 @@ public class SnsDetailsController {
 	@RequestMapping("delete.do")
 	public String delete(Model model, @ModelAttribute SnsReplyVO vo){
 		snsDetailsService.delete(vo.getRpk()); //댓글 삭제 
-		
-//		snsVO contentView = snsDetailsService.contentView(vo.getSpk());
-//		List<SnsFileVO> contentViewFile = snsDetailsService.contentViewFile(vo.getSpk());
-//		List<SnsReplyVO> replyView = snsDetailsService.replyView(vo.getSpk());
-//		
-//		model.addAttribute("replyView",replyView);
-//		model.addAttribute("fileList",contentViewFile);
-//		model.addAttribute("contenlist", contentView);
-//		model.addAttribute("name",name1);
-//		model.addAttribute("mpk",vo.getMpk());
-//		model.addAttribute("mmpk",mp);
-//		model.addAttribute("curPage", "snsView/contentview.jsp");
-//		return "home";
 		return "redirect:/snsdetails/contentview.do?spk="+vo.getSpk()+"&mname="+vo.getMname();
 	}
 	
@@ -162,9 +137,6 @@ public class SnsDetailsController {
        model.addAttribute("list",snsReplyVO);
        model.addAttribute("mname",vo.getMname());
        model.addAttribute("spk",vo.getSpk());
-//       model.addAttribute("mpk",mpk);
-//       model.addAttribute("mmpk",mmpk);
-//       System.out.println("확인용:"+spk+""+mpk+""+mmpk);
        return "snsView/updateView";
     }
     

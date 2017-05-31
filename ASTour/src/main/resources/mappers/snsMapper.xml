@@ -58,9 +58,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE FROM snsfile_tbl WHERE spk=#{spk}
 	</delete>
 	
-	<!-- 게시물 수정때 해당하는 파일만 삭제 -->
+	<!-- 게시물 수정 때 해당하는 파일만 삭제 -->
 	<delete id="deletePic">
 		DELETE FROM snsfile_tbl WHERE sfpk=#{sfpk}
+	</delete>
+	
+	<!-- 게시글 삭제할 때 해당 댓글들 삭제 -->
+	<delete id="deleteReplys">
+		DELETE FROM reply_tbl WHERE spk=#{spk}
 	</delete>
 	
 	<!-- 게시글 수정 -->
@@ -79,19 +84,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<!-- 사람검색 -->
-	<select id="pepoleList" resultType="MemberVO">
+	<select id="peopleList" resultType="MemberVO">
 		SELECT m.mpk, m.mid, m.mname, p.ppk, nvl(p.pfile,'mu.jpg') AS pfile,
 			   nvl(p.ppath,'WEB-INF/views/upload/profile') AS ppath
 		FROM ASTMember m, ASTProfile p 
 		WHERE m.mpk=p.mpk(+) AND m.mname LIKE #{mname}
 	</select>
 
-	<!-- 모름 -->
+	<!-- 메뉴에서 게시글이나 리뷰에 맞게 보여줌 -->
 	<select id="reviewSelect" resultType="snsVO">
-		SELECT * FROM sns_tbl where mpk = #{mpk} and ssort = 'review'
+		SELECT * FROM sns_tbl where mpk = #{mpk} and ssort = #{ssort}
 	</select>
 
-	<!-- 뎃글추가 -->
+	<!-- 댓글추가 -->
 	<insert id="addReply">
 		INSERT INTO reply_tbl VALUES (rep_seq.nextval, #{rcontent}, sysdate, #{spk}, #{mpk})
 	</insert>
@@ -107,27 +112,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE sns_tbl SET shits=shits+1 WHERE spk=#{spk}
 	</update>
 
-	<!-- 뎃글 갯수 -->
+	<!-- 댓글 갯수 -->
 	<select id="replyCount" resultType="SnsReplyVO">
 		select count(*) as ct from ASTMember am,ASTProfile af,reply_tbl rt
 		where am.mpk=af.mpk(+) and am.mpk=rt.mpk and spk=#{spk}
 	</select>
 	
-	<!-- 뎃글삭제 -->
+	<!-- 댓글삭제 -->
 	<delete id="replydelete">
 		delete from reply_tbl where rpk=#{rpk}
 	</delete>
 	
 	<!-- 댓글수정 하기위해 정보불러오기 -->
    <select id="replyselect" resultType="SnsReplyVO">
-   select am.mpk,am.mname,nvl(af.pfile,'mu.jpg') as pfile, rt.* 
-   from ASTMember am,ASTProfile af, reply_tbl rt
-   where am.mpk=af.mpk(+) and rt.mpk=am.mpk and rpk=#{rpk}
+	   select am.mpk,am.mname,nvl(af.pfile,'mu.jpg') as pfile, rt.* 
+	   from ASTMember am,ASTProfile af, reply_tbl rt
+	   where am.mpk=af.mpk(+) and rt.mpk=am.mpk and rpk=#{rpk}
    </select>
    
    <!-- 댓글업데이트 -->
    <update id="replyupdate">
-      update reply_tbl set rcontent=#{rcontent},rtime=sysdate where rpk=#{rpk}
+		update reply_tbl set rcontent=#{rcontent},rtime=sysdate where rpk=#{rpk}
    </update>
 
 </mapper>

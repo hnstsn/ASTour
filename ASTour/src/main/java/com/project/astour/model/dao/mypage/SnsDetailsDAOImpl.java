@@ -41,6 +41,13 @@ public class SnsDetailsDAOImpl implements SnsDetailsDAO{
 		sqlSession.delete("sns.deleteFiles", spk);
 	}
 	
+	// 해당 게시글의 댓글들 삭제
+	
+	@Override
+	public void deleteReplys(int spk) {
+		sqlSession.delete("sns.deleteReplys", spk);
+	}
+	
 	// 게시글 수정때 삭제할 사진 파일 삭제
 	@Override
 	public void deletePic(int sfpk) {

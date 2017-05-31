@@ -37,6 +37,8 @@ public class SnsDetailsServiceImpl implements SnsDetailsService{
 	public void contentDelete(snsVO sns) {
 		// 해당 게시물의 파일 삭제 - 없으면 그냥 건너뛴다
 		snsDetailsDao.deleteFiles(sns.getSpk());
+		// 해당 게시물의 댓글 다 삭제
+		
 		// 해당 게시글 삭제
 		snsDetailsDao.contentDelete(sns.getSpk());
 	}
@@ -45,6 +47,12 @@ public class SnsDetailsServiceImpl implements SnsDetailsService{
 	@Override
 	public void deletePic(int sfpk) {
 		snsDetailsDao.deletePic(sfpk);
+	}
+	
+	// 게시글 삭제할 때 댓글들 다 삭제
+	@Override
+	public void deleteReplys(int spk) {
+		snsDetailsDao.deleteReplys(spk);
 	}
 	
 	// 게시글 수정
