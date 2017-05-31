@@ -96,7 +96,6 @@
 				 	overlayArr[i].setMap(null);
 				}
    			 
-   			
    			// AST : like 쓰기위해 % 직접 넣음
  		   var selectedSi = $("#siSelect option:selected").val()+"%";
  		   var selectedGun = $("#gunSelect option:selected").val()+"%";
