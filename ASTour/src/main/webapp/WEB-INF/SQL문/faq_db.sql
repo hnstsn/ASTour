@@ -1,8 +1,7 @@
-Drop table faq;
-Drop Sequence faq_SEQ;
+
+Create table faq(anum number primary key, alabel varchar2(100), acontent varchar2(4000));
 
 CREATE SEQUENCE faq_SEQ START WITH 1 INCREMENT BY 1;
-Create table faq(anum number primary key, alabel varchar2(100), acontent varchar2(4000));
 
 insert into faq values(faq_SEQ.NEXTVAL, 'AStour가 무엇인가요?','AStour는 여행지 정보를 웹과 앱에서 제공합니다. </br>
 여행지에 대한 기본정보와 사용자의 리뷰를 볼 수 있습니다.');

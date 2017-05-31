@@ -1,7 +1,6 @@
 package com.project.astour.controller.mypage;
-
+ 
 import java.io.File;
-import java.io.IOException;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -19,10 +18,11 @@ import com.project.astour.model.dto.member.MemberVO;
 import com.project.astour.model.dto.member.ProfileVO;
 import com.project.astour.service.member.MemberService;
 import com.project.astour.service.mypage.ProfileService;
-
+ 
 @Controller
 @RequestMapping("modify")
 public class ModifyCtrl {
+//	AST(CSW) : 회원정보 수정
 	
 	@Inject
 	MemberService mService;
@@ -52,7 +52,6 @@ public class ModifyCtrl {
 		mService.modifyInfo(mem);
 		// 첨부파일(프로필 사진)이 있으면
 		if (!prfFile.isEmpty()) {
-			System.out.println("@@@@" + prfFile.getOriginalFilename());
 			// 업로드할 파일명
 			String file = prfFile.getOriginalFilename();
 			String savedName = uploadFile(file, prfFile.getBytes());
@@ -74,5 +73,5 @@ public class ModifyCtrl {
 		FileCopyUtils.copy(fileData, target);
 		return savedName;
 	}
-
+ 
 }

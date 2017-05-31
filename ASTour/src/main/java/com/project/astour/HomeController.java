@@ -16,6 +16,7 @@ import com.project.astour.model.dto.member.MemberVO;
  */
 @Controller
 public class HomeController {
+//	AST(CSW) : 초기 페이지와 메뉴 탭 이동
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	

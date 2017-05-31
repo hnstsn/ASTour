@@ -1,4 +1,4 @@
-package com.project.astour.model.dao.timeline;
+package com.project.astour.model.dao.mypage;
 
 import java.util.List;
 
@@ -8,9 +8,13 @@ import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.SnsReplyVO;
 import com.project.astour.model.dto.mypage.snsVO;
 
-public interface TimelineDAO {
+public interface SnsDetailsDAO {
 
-	public List<snsVO> contentView(@RequestParam(value="spk") int spk);
+	public snsVO contentView(@RequestParam(value="spk") int spk);
+	public void contentDelete(int spk);
+	public void deleteFiles(int spk);
+	public void deletePic(int sfpk);
+	public void upContent(snsVO sns);
 	public List<SnsFileVO> contentViewFile(int spk);
 	public void reply(SnsReplyVO vo);
 	
@@ -18,5 +22,9 @@ public interface TimelineDAO {
 	public void hitsView(int spk);
 	
 	public SnsReplyVO count(int spk);
+	public void delete(int rpk);
+	
+	public SnsReplyVO upselect(int rpk);
+	public void replyupdate(SnsReplyVO vo);
 	
 }

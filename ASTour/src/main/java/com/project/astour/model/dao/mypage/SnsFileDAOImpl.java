@@ -1,7 +1,5 @@
 package com.project.astour.model.dao.mypage;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;

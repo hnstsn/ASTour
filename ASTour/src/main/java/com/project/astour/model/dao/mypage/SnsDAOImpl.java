@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.project.astour.model.dto.member.MemberVO;
+import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.snsVO;
 
 @Repository
@@ -22,14 +23,8 @@ public class SnsDAOImpl implements SnsDAO {
 	}
 
 	@Override
-	public void contentdelete(int spk) {
-
-		sqlSession.delete("sns.deletecontent", spk);
-	}
-
-	@Override
-	public List<MemberVO> memList(int mpk) {
-		return sqlSession.selectList("sns.memList",mpk);
+	public MemberVO memList(int mpk) {
+		return sqlSession.selectOne("sns.memList",mpk);
 	}
 
 	//사람찾기
@@ -42,5 +37,24 @@ public class SnsDAOImpl implements SnsDAO {
 	public List<snsVO> reviewSelect(int mpk) {
 		return sqlSession.selectList("sns.reviewSelect",mpk);
 	}
+
+	// 게시글 작성
+	@Override
+	public void insBrd(snsVO sns) throws Exception {
+		sqlSession.insert("sns.insBrd", sns);
+	}
+
+	// 게시글 파일에 필요한 spk
+	@Override
+	public int getSpk() {
+		return sqlSession.selectOne("sns.getSpk");
+	}
 	
+	// 해당하는 게시글의 파일 첨부
+	@Override
+	public void insBrdFiles(SnsFileVO sFile) {
+		sqlSession.insert("sns.insBrdFiles", sFile);
+	}
+
+
 }

@@ -12,7 +12,10 @@
 	<meta name="keywords" content="HTML5,CSS3,Template" />
 	<meta name="description" content="" />
 	<meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
-	<%@ include file="../include/bootstap_collect.jsp" %>
+	<!-- mobile settings -->
+<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+<%@ include file="../include/bootstap_collect.jsp" %>
+<!-- AST(CSW) : 아이디, 비밀번호 찾기 -->
 <script>
 $(document).ready(function() {
 		

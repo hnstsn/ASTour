@@ -14,11 +14,13 @@ create table ASTMember (
   mpath varchar2(50)
 );
 
+
 -- 위의 테이블 수정
 --ASTMember table 수정 - mfile, pfile2, mpath 삭제
 ALTER Table ASTMember drop column mfile;
 alter table astmember drop column mfile2;
 alter table astmember drop column mpath;
+
 
 -- 프로필 사진을 위한 테이블 생성
 create table ASTProfile (
@@ -30,7 +32,10 @@ create table ASTProfile (
   constraint ASTProfile_fk foreign key (mpk) references ASTMember (mpk)
 );
 
-drop table astprofile;
+
+--pfile 크기 100byte로 변경
+ALTER TABLE ASTProfile MODIFY (pfile VARCHAR2(200));
+
 
 -- member table primary key를 위한 Sequence 생성
 create sequence mem_seq start with 1 increment by 1;
@@ -43,20 +48,19 @@ select * from astMember;
 --프로필 테이블 조회
 select * from astprofile;
 
--- 테스트용 
-insert into astprofile values (prf_seq.nextval, 'prof.png', '', 'resources/profile', 4);
-
-delete astprofile;
 
 -- 관리자 아이디 생성
 insert into astmember (mpk, mid, mpw, mname, mphone) 
 values (mem_seq.nextval, 'astour1865@gmail.com', 'ArSnsTour4', 'Admin', '');
 
+-- 테스트 아이디 생성
 insert into astmember (mpk, mid, mpw, mname, mphone) 
-values (mem_seq.nextval, 'asd', '1234', 'asd', '');
+values (mem_seq.nextval, 'asd@asd', '1234', 'asd', '');
 
-update astmember set mid='asdf@sfd' where mid='asd';
 
-select * from astmember where mpk=1;
+-- 멤버 테이블 조회
+select * from astMember;
+--프로필 테이블 조회
+select * from astprofile;
 
 commit;

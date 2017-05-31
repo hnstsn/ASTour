@@ -7,6 +7,10 @@
 	<typeAliases>
 		<typeAlias type="com.project.astour.model.dto.member.MemberVO" alias="MemberVO" />
 		<typeAlias type="com.project.astour.model.dto.member.ProfileVO" alias="ProfileVO" />
+		<typeAlias type="com.project.astour.model.dto.mypage.snsVO" alias="snsVO" />
+		<typeAlias type="com.project.astour.model.dto.mypage.SnsFileVO" alias="SnsFileVO" />
+		<typeAlias type="com.project.astour.model.dto.mypage.SnsReplyVO" alias="SnsReplyVO" />
+		
 	</typeAliases>
 
 	<mappers>

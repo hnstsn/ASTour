@@ -10,16 +10,15 @@
 	<meta name="keywords" content="HTML5,CSS3,Template" />
 	<meta name="description" content="" />
 	<meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
-
 	<!-- mobile settings -->
 	<meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
-	
 </head>
 <body>
 
-	<!-- AST : menu부분을 위한 jsp page -->
+	<!-- AST(CSW) : menu부분을 위한 jsp page -->
 	<jsp:include page="include/menu.jsp" />
 	
+	<!-- AST(CSW) : 전환되는 페이지 -->
 	<jsp:include page="${curPage}" />
 
 
