@@ -10,7 +10,7 @@ import com.project.astour.model.dto.mypage.snsVO;
 
 public interface SnsService {
 
-	public List<snsVO> snsList(int mpk);
+	public List<snsVO> snsList(int start,int end,int mpk);
 	public MemberVO memList(int mpk);
 	public List<MemberVO> peopleList(String mname);
 	public List<snsVO> reviewSelect(int mpk, String ssort);
@@ -18,4 +18,7 @@ public interface SnsService {
 	public void insBrd(snsVO sns) throws Exception;
 	public int getSpk();
 	public void insBrdFiles(SnsFileVO sFile, MultipartFile f) throws Exception;
+	
+	// 게시물 갯수 조회
+	public int count(int mpk);
 }

@@ -162,13 +162,20 @@ $(function(){
 					<!-- AST : 페이지 넘기기 -->
 					<div class="text-center">
 						<ul class="pagination">
-							<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+						<c:if test="${pager.curBlock > 1 }">
+							<li><a href="${path }/sns/initSns.do?mpk=${pager.mpk}&curPage1=${pager.prevPage}"><i class="fa fa-chevron-left"></i></a></li>
+						</c:if>
+							<c:forEach var="num" begin="${pager.blockBegin }" end="${pager.blockEnd }">
+							<c:if test="${num == pager.curPage }">
+							<li><a style="background: GREEN;" href="${path }/sns/initSns.do?mpk=${pager.mpk}&curPage1=${num} ">${num }</a></li>
+							</c:if>
+							<c:if test="${num != pager.curPage }">
+							<li><a href="${path }/sns/initSns.do?mpk=${pager.mpk}&curPage1=${num} ">${num }</a></li>
+							</c:if>
+							</c:forEach>
+						<c:if test="${pager.curBlock <= pager.totBlock}">
+                           <li><a href="${path }/sns/initSns.do?mpk=${pager.mpk}&curPage1=${pager.nextPage}"><i class="fa fa-chevron-right"></i></a></li>
+                        </c:if>
 						</ul>
 					</div>
 					<!-- / AST : 페이지 넘기기 -->

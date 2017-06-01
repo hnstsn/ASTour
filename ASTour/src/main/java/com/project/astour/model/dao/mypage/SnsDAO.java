@@ -9,7 +9,7 @@ import com.project.astour.model.dto.mypage.snsVO;
 
 public interface SnsDAO {
 
-	public List<snsVO> snsList(int mpk);
+	public List<snsVO> snsList(int start,int end,int mpk);
 	public MemberVO memList(int mpk); 
 	public List<MemberVO> peopleList(String mname);
 	public List<snsVO> reviewSelect(Map<String, Object> map);
@@ -18,4 +18,6 @@ public interface SnsDAO {
 	public int getSpk();
 	public void insBrdFiles (SnsFileVO sFile);
 	
+	// 게시물 갯수 조회 
+	public int count(int mpk);
 }

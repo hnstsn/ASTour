@@ -11,8 +11,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- SELECT * FROM sns_tbl where mpk = #{mpk } order by spk desc -->
 	<!-- 게시판내용들 -->
 	<select id="snsList" resultType="snsVO">
-		SELECT substr(scontent,1,10) as scontent, sns_tbl.* FROM sns_tbl 
-		where mpk = #{mpk} order by spk desc
+		SELECT * FROM(
+		SELECT rownum rnum, a.*
+		FROM(
+		SELECT substr(st.scontent,1,10) as sct,st.* FROM sns_tbl st
+		where mpk = #{mpk } order by spk desc ) a
+		)WHERE rnum between #{start } and #{end }
 	</select>
 
 	<!-- 게시판 사진하나 -->
@@ -152,5 +156,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="nameone" resultType="String">
 	SELECT ab.mname FROM ASTMember ab,sns_tbl st where ab.mpk=st.mpk and st.spk=#{spk}
 	</select>
+	
+	<!-- 게시판 갯수 조회 -->
+	<select id="count" resultType="int">
+		select count(*) from sns_tbl where mpk=#{mpk }
+	</select>
+	
 
 </mapper>

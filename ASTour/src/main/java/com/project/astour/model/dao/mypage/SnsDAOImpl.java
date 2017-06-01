@@ -1,5 +1,6 @@
 package com.project.astour.model.dao.mypage;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,8 +20,14 @@ public class SnsDAOImpl implements SnsDAO {
 	SqlSession sqlSession;
 	
 	@Override
-	public List<snsVO> snsList(int mpk) {
-		return sqlSession.selectList("sns.snsList",mpk); 
+	public List<snsVO> snsList(int start,int end,int mpk) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("mpk", mpk);
+		
+		return sqlSession.selectList("sns.snsList",map); 
 	}
 
 	@Override
@@ -60,6 +67,12 @@ public class SnsDAOImpl implements SnsDAO {
 	@Override
 	public void insBrdFiles(SnsFileVO sFile) {
 		sqlSession.insert("sns.insBrdFiles", sFile);
+	}
+
+	// 게시물 갯수 조회
+	@Override
+	public int count(int mpk) {
+		return sqlSession.selectOne("sns.count", mpk);
 	}
 
 

@@ -16,6 +16,17 @@ public class snsVO {
 	private int shits;			// 조회수
 	private int slikes;			// 좋아요수
 	private MultipartFile[] files;	// 파일
+	
+	
+	private String sct; // scontent 간략한글자 10글자만 뽑아내귀
+	
+	public String getSct() {
+		return sct;
+	}
+
+	public void setSct(String sct) {
+		this.sct = sct;
+	}
 
 	public int getShits() {
 		return shits;

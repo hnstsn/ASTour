@@ -31,8 +31,8 @@ public class SnsServiceImpl implements SnsService {
 	
 		
 	@Override
-	public List<snsVO> snsList(int mpk) {
-		return snsDao.snsList(mpk);
+	public List<snsVO> snsList(int start,int end,int mpk) {
+		return snsDao.snsList(start,end,mpk);
 	}
 
 	@Override
@@ -100,6 +100,13 @@ public class SnsServiceImpl implements SnsService {
 	@Override
 	public void insBrdFiles(SnsFileVO sFile, MultipartFile f) throws Exception {
 		uploadFile(sFile.getSffile(), f.getBytes());
+	}
+
+	
+	// 게시물 갯수 조회
+	@Override
+	public int count(int mpk) {
+		return snsDao.count(mpk);
 	}
 
 

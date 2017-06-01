@@ -24,7 +24,12 @@ public class Pager {
 	private int blockBegin; // 현재 페이지 블록의 시작번호
 	private int blockEnd; // 현재 페이지 블록의 끝번호
 	private int spk;
-
+	private int mpk;
+	
+	
+	
+	public int getMpk() { return mpk; }
+	public void setMpk(int mpk) { this.mpk = mpk; }
 	public int getSpk() { return spk; }
 	public void setSpk(int spk) { this.spk = spk; }
 
