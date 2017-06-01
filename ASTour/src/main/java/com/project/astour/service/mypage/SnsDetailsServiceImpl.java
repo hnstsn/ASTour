@@ -66,10 +66,10 @@ public class SnsDetailsServiceImpl implements SnsDetailsService{
 		snsDetailsDao.reply(vo);
 	}
 
-	@Override
+	/*@Override
 	public List<SnsReplyVO> replyView(int spk) {
 		return snsDetailsDao.replyView(spk);
-	}
+	}*/
 	
 	// 조회수
 	@Override
@@ -108,5 +108,17 @@ public class SnsDetailsServiceImpl implements SnsDetailsService{
 	public void replyupdate(SnsReplyVO vo) {
 		snsDetailsDao.replyupdate(vo);
 	}
+	
+	//댓글 보기
+	@Override
+	public List<SnsReplyVO> replyView(int start,int end,int spk){
+		return snsDetailsDao.replyView(start, end,spk);
+	}
+	//상세보기 이름 하나 가지고오기
+	@Override
+	public String nameone(int spk) {
+		return snsDetailsDao.nameone(spk);
+	}
+	
 
 }

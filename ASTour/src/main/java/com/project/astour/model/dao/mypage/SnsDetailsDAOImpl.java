@@ -1,6 +1,8 @@
 package com.project.astour.model.dao.mypage;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -66,11 +68,11 @@ public class SnsDetailsDAOImpl implements SnsDetailsDAO{
 		sqlSession.insert("sns.addReply",vo);
 	}
 
-	@Override
+	/*@Override
 	public List<SnsReplyVO> replyView(int spk) {
 		return sqlSession.selectList("sns.replyView",spk);
 	}
-
+*/
 	// 조회수
 	@Override
 	public void hitsView(int spk) {
@@ -100,4 +102,20 @@ public class SnsDetailsDAOImpl implements SnsDetailsDAO{
 		sqlSession.update("sns.replyupdate",vo);
 	}
 
+	//댓글보여주기
+	@Override
+	public List<SnsReplyVO> replyView(int start,int end,int spk){
+		Map<String, Object> map= new HashMap<String, Object>();
+		map.put("start",start);
+		map.put("end",end);
+		map.put("spk",spk);
+		return sqlSession.selectList("sns.replyView",map);
+	}
+
+	//상세보기에 이름가지고오기 
+	@Override
+	public String nameone(int spk) {
+		return sqlSession.selectOne("sns.nameone",spk);
+	}
+	
 }

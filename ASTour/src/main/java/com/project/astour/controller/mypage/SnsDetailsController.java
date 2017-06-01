@@ -1,6 +1,6 @@
 package com.project.astour.controller.mypage;
 
-import java.util.List;
+import java.util.List; 
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.astour.model.dto.mypage.Pager;
 import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.SnsReplyVO;
 import com.project.astour.model.dto.mypage.snsVO;
@@ -35,24 +36,28 @@ public class SnsDetailsController {
 	// 게시글 상세보기
 	@RequestMapping("contentview.do")
 	public String BlogContent(Model model, @RequestParam(value="spk") int spk,
-							@RequestParam(value="mname") String mname, HttpSession session) {
-		
+			@RequestParam(defaultValue="1") int curPage1, HttpSession session) {
+		//spk로 조인을 통해서 상세보기 name 하나만 가지고옴
+		String mname=snsDetailsService.nameone(spk);
 		snsDetailsService.hitsView(spk,session);//조회수
 		// 해당 게시글 가져오기
 		snsVO contentView = snsDetailsService.contentView(spk);
 		// 해당 게시글의 파일 가져오기
 		List<SnsFileVO> contentViewFile = snsDetailsService.contentViewFile(spk);
-		// 해당 게시물의 댓글 가져오기
-		List<SnsReplyVO> replyView = snsDetailsService.replyView(spk);
+		//List<SnsReplyVO> replyView = snsDetailsService.replyView(spk);
 		
 		SnsReplyVO ct = snsDetailsService.count(spk);
+		Pager pager = new Pager(ct.getCt(),curPage1);
+		pager.setSpk(spk);//spk 를 가지고 있어야하기때문에
+		int start=pager.getPageBegin();
+		int end=pager.getPageEnd();
+		// 해당 게시물의 댓글 가져오기
+		List<SnsReplyVO> replyView =snsDetailsService.replyView(start,end,spk);
 		
-		if(ct.getCt()/2!=0){
-			model.addAttribute("ct",ct.getCt()/10+1);			
-		}else{
-			model.addAttribute("ct",ct.getCt()/10);
-		}
+		System.out.println(start+":확인:"+end);
 		
+		//model.addAttribute("replyView",replyView);
+		model.addAttribute("pager",pager);
 		model.addAttribute("replyView",replyView);
 		model.addAttribute("fileList",contentViewFile);
 		model.addAttribute("contenlist", contentView);
@@ -118,15 +123,17 @@ public class SnsDetailsController {
 	//추가
 	@RequestMapping("in.do")
 	public String PostContent(Model model, SnsReplyVO vo){
+		System.out.println("댓글 추가");
 		snsDetailsService.reply(vo);
-		return "redirect:/snsdetails/contentview.do?spk="+vo.getSpk()+"&mname="+vo.getMname();
+		System.out.println("test:"+vo.getMname());
+		return "redirect:/snsdetails/contentview.do?spk="+vo.getSpk();
 	}
 	
 	//댓글삭제
 	@RequestMapping("delete.do")
 	public String delete(Model model, @ModelAttribute SnsReplyVO vo){
 		snsDetailsService.delete(vo.getRpk()); //댓글 삭제 
-		return "redirect:/snsdetails/contentview.do?spk="+vo.getSpk()+"&mname="+vo.getMname();
+		return "redirect:/snsdetails/contentview.do?spk="+vo.getSpk();
 	}
 	
 	//댓글수정 view

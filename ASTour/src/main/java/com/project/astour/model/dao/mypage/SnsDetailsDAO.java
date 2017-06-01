@@ -1,3 +1,4 @@
+
 package com.project.astour.model.dao.mypage;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public interface SnsDetailsDAO {
 	public List<SnsFileVO> contentViewFile(int spk);
 	public void reply(SnsReplyVO vo);
 	
-	public List<SnsReplyVO> replyView(int spk);
+	//public List<SnsReplyVO> replyView(int spk);
 	public void hitsView(int spk);
 	
 	public SnsReplyVO count(int spk);
@@ -28,4 +29,6 @@ public interface SnsDetailsDAO {
 	public SnsReplyVO upselect(int rpk);
 	public void replyupdate(SnsReplyVO vo);
 	
+	public List<SnsReplyVO> replyView(int start,int end,int spk); // 댓글 10개만 뽑아오기
+	public String nameone(int spk);//상세보기에 이름 하나만 가지고오기 
 }

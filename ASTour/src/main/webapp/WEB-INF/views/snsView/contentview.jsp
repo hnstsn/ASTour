@@ -36,15 +36,13 @@ $(document).ready(function() {
 
 function f1(rpk,spk){
     if(confirm("삭제하시겠습니까?")){
-    	var mname = $("#mname").val();
-    	location.href="${path}/snsdetails/delete.do?rpk="+rpk+"&spk="+spk+"&mname="+mname;
+    	location.href="${path}/snsdetails/delete.do?rpk="+rpk+"&spk="+spk;
     }
 };
 
 //수정
 function f2(rpk,spk){
-	var mname = $("#mname").val();
-   window.open("${path}/snsdetails/up.do?rpk="+rpk+"&spk="+spk+"&mname="+mname, "댓글", "width=800, height=500");
+   window.open("${path}/snsdetails/up.do?rpk="+rpk+"&spk="+spk, "댓글", "width=800, height=500");
 };
 </script>
 </head>
@@ -139,18 +137,25 @@ function f2(rpk,spk){
 										</small>
 										${re.rcontent }
 									</div>
-									
 								</div>
 							</c:forEach>
 							<!-- AST : 페이지 넘기기 -->
 							<div class="text-center">
 								<ul class="pagination">
-	
-									<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-									<c:forEach var="ct" begin="1" end="${ct }">
-										<li><a href="#">${ct }</a></li>
+									<c:if test="${pager.curBlock > 1}">
+									<li><a href="${path}/snsdetails/contentview.do?spk=${pager.spk}&curPage1=${pager.prevPage}"><i class="fa fa-chevron-left"></i></a></li>
+									</c:if>
+									<c:forEach var="num" begin="${pager.blockBegin}" end="${pager.blockEnd}">
+											<c:if test="${num == pager.curPage }">
+											<li><a style="background: red;" href="${path}/snsdetails/contentview.do?spk=${pager.spk}&curPage1=${num}">${num }</a></li>
+											</c:if>
+											<c:if test="${num != pager.curPage }">
+											<li><a href="${path}/snsdetails/contentview.do?spk=${pager.spk}&curPage1=${num}">${num }</a></li>
+											</c:if>
 									</c:forEach>
-									<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+									<c:if test="${pager.curBlock <= pager.totBlock}">
+									<li><a href="${path}/snsdetails/contentview.do?spk=${pager.spk}&curPage1=${pager.nextPage}"><i class="fa fa-chevron-right"></i></a></li>
+									</c:if>
 								</ul>
 							</div>
 							<!-- / AST : 페이지 넘기기 -->
@@ -176,7 +181,6 @@ function f2(rpk,spk){
 										<button class="btn btn-primary">등록</button>
 										<input type="hidden" name="spk" value="${contenlist.spk }">
 										<input type="hidden" name="mpk" value="${sessionScope.member.mpk}" />
-										<input type="hidden" name="mname" id="mname" value="${mname}" />
 									</p>
 								</div>
 							</div>

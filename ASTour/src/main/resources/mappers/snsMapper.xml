@@ -101,7 +101,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO reply_tbl VALUES (rep_seq.nextval, #{rcontent}, sysdate, #{spk}, #{mpk})
 	</insert>
 
-	<select id="replyView" resultType="SnsReplyVO">
+	<!-- 댓글 불러오기 test 용 나중에 삭제할것 -->
+	<select id="test" resultType="SnsReplyVO">
 		select rt.*, nvl(af.pfile,'mu.jpg') as pfile ,nvl(af.ppath,'mu.jpg') as ppath,
 		am.mname, am.mid from ASTMember am, ASTProfile af, reply_tbl rt
 		where am.mpk=af.mpk(+) and am.mpk=rt.mpk and spk=#{spk} order by rpk desc
@@ -134,5 +135,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <update id="replyupdate">
 		update reply_tbl set rcontent=#{rcontent},rtime=sysdate where rpk=#{rpk}
    </update>
+   
+   <!-- test -->
+	<select id="replyView" resultType="SnsReplyVO">
+	SELECT * FROM(
+	SELECT rownum rnum, a.*
+	FROM(
+	select rt.*, nvl(af.pfile,'mu.jpg') as pfile ,nvl(af.ppath,'mu.jpg') as
+	ppath,
+	am.mname, am.mid from ASTMember am, ASTProfile af, reply_tbl rt
+	where am.mpk=af.mpk(+) and am.mpk=rt.mpk and spk=#{spk} order by rpk desc ) a
+	)WHERE rnum between #{start} and #{end}
+	</select>
+	
+	<!-- 글쓴이의 이름만 가지고오기 -->
+	<select id="nameone" resultType="String">
+	SELECT ab.mname FROM ASTMember ab,sns_tbl st where ab.mpk=st.mpk and st.spk=#{spk}
+	</select>
 
 </mapper>
