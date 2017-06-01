@@ -163,7 +163,7 @@ public class SnsController {
 		int start = pager.getPageBegin();
 		int end = pager.getPageEnd();
 		pager.setMpk(mpk);
-		
+		 
 		List<snsVO> snsList = snsService.snsList(start,end,mpk);
 		MemberVO member = snsService.memList(mpk);
 
