@@ -25,9 +25,16 @@ public class Pager {
 	private int blockEnd; // 현재 페이지 블록의 끝번호
 	private int spk;
 	private int mpk;
+	private String ssort;
 	
 	
 	
+	public String getSsort() {
+		return ssort;
+	}
+	public void setSsort(String ssort) {
+		this.ssort = ssort;
+	}
 	public int getMpk() { return mpk; }
 	public void setMpk(int mpk) { this.mpk = mpk; }
 	public int getSpk() { return spk; }
