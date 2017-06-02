@@ -1,5 +1,8 @@
 package com.project.astour;
 
+import java.util.List;
+
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -10,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.astour.model.dto.member.MemberVO;
+import com.project.astour.model.dto.mypage.snsVO;
+import com.project.astour.service.mypage.SnsService;
 
 /**
  * Handles requests for the application home page.
@@ -18,11 +23,25 @@ import com.project.astour.model.dto.member.MemberVO;
 public class HomeController {
 //	AST(CSW) : 초기 페이지와 메뉴 탭 이동
 	
+	@Inject
+	SnsService snsService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
+//	@RequestMapping(value = "/")
+//	public String home(Model model) {
+//		logger.info("처음 main화면인 home.jsp 이동 Home Controller");
+//		model.addAttribute("curPage", "main.jsp");
+//		return "home";
+//	}
 	
 	@RequestMapping(value = "/")
 	public String home(Model model) {
 		logger.info("처음 main화면인 home.jsp 이동 Home Controller");
+		
+		List<snsVO> rankList = snsService.rankList();
+		
+		model.addAttribute("rankList",rankList);
 		model.addAttribute("curPage", "main.jsp");
 		return "home";
 	}

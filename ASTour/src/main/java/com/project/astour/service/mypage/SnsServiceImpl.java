@@ -122,6 +122,22 @@ public class SnsServiceImpl implements SnsService {
 		return snsDao.countSsort(map);
 	}
 
+	
+	
+	//랭크 보여주기
+	@Override
+	public List<snsVO> rankList() {
+		return snsDao.rankList();
+	}
+
+	//게시물 댓글수 구해오기
+	@Override
+	public int replycountList(int mpk, int spk) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("mpk", mpk);
+		map.put("spk", spk);
+		return snsDao.replycountList(map);
+	}
 
 	
 }

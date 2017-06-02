@@ -80,5 +80,15 @@ public class SnsDAOImpl implements SnsDAO {
 		return sqlSession.selectOne("sns.countSsort",map);
 	}
 
+	@Override
+	public List<snsVO> rankList() {
+		return sqlSession.selectList("sns.rankList");
+	}
+
+	//게시물 댓글 갯수 조회
+	@Override
+	public int replycountList(Map<String, Object> map) {
+		return sqlSession.selectOne("sns.replycountList",map);
+	}
 
 }

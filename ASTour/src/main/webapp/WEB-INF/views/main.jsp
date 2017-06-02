@@ -779,16 +779,19 @@
      <!-- FEATURED BOXES 4 -->
      <div class="row featured-box-minimal margin-bottom30">
         <div class="col-md-4">
-           <h4><i class="fa fa-group"></i> Development</h4>
-           <p>조회수 금은동 트로피 - 리뷰</p>
+           <h4><i style="color: #704405;" class="fa fa-trophy"></i>　1등 금메달</h4>
+           <p>${rankList[0].stitle }</p>
+           <p>${rankList[0].scontent }</p>
         </div>
         <div class="col-md-4">
-           <h4> <i class="fa fa-book"></i> HTML5</h4>
-           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla.</p>
+           <h4><img alt="" src="${path}/resources/assets/images/rankimg/sliver.png">    은메달</h4>
+           <p>${rankList[1].stitle }</p>
+           <p>${rankList[1].scontent }</p>
         </div>
         <div class="col-md-4">
-           <h4><i class="fa fa-trophy"></i> CSS3</h4>
-           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla.</p>
+           <h4><img alt="" src="${path}/resources/assets/images/rankimg/ddong.png">    동메달</h4>
+           <p>${rankList[2].stitle }</p>
+           <p>${rankList[2].scontent }</p>
         </div>
      </div>
      <!-- /FEATURED BOXES 4 -->

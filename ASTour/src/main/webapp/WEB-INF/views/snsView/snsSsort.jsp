@@ -134,7 +134,7 @@ $(function(){
 									<i class="fa fa-dot-circle-o"></i>${sns.ssort}
 								</a>
 								<a href="blog-post.html#comments" class="scrollTo label label-default light">
-									<i class="fa fa-comment-o"></i> 3 Comments</a>
+                           			<i class="fa fa-comment-o"></i> ${sns.reCnt} Comments</a>
 								<span class="label label-default light">
 									<fmt:formatDate value="${sns.sdate }" pattern="yyyy-MM-dd a HH:mm:ss" />
 								</span>

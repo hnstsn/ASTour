@@ -134,7 +134,7 @@ $(function(){
 									<i class="fa fa-dot-circle-o"></i>${sns.ssort}
 								</a>
 								<a href="blog-post.html#comments" class="scrollTo label label-default light">
-									<i class="fa fa-comment-o"></i> 3 Comments</a>
+                           			<i class="fa fa-comment-o"></i> ${sns.reCnt} Comments</a>
 								<span class="label label-default light">
 									<fmt:formatDate value="${sns.sdate }" pattern="yyyy-MM-dd a HH:mm:ss" />
 								</span>
@@ -163,6 +163,9 @@ $(function(){
 					<div class="text-center">
 						<ul class="pagination">
 						<c:if test="${pager.curBlock > 1 }">
+                      		  <li><a href = "${path }/sns/initSns.do?mpk=${pager.mpk}&curPage1=1"><i class="fa fa-angle-double-left"></i></a></li>
+                      	</c:if>
+						<c:if test="${pager.curBlock > 1 }">
 							<li><a href="${path }/sns/initSns.do?mpk=${pager.mpk}&curPage1=${pager.prevPage}"><i class="fa fa-chevron-left"></i></a></li>
 						</c:if>
 							<c:forEach var="num" begin="${pager.blockBegin }" end="${pager.blockEnd }">
@@ -173,13 +176,16 @@ $(function(){
 							<li><a href="${path }/sns/initSns.do?mpk=${pager.mpk}&curPage1=${num} ">${num }</a></li>
 							</c:if>
 							</c:forEach>
-						<c:if test="${pager.curBlock <= pager.totBlock}">
-                           <li><a href="${path }/sns/initSns.do?mpk=${pager.mpk}&curPage1=${pager.nextPage}"><i class="fa fa-chevron-right"></i></a></li>
+						<%-- <c:if test="${pager.curBlock <= pager.totBlock}"> --%>
+						<c:if test="${pager.curPage <= pager.totPage }">
+                           <li><a href="${path }/sns/initSns.do?mpk=${pager.mpk}&curPage1=${pager.nextPage}}"><i class="fa fa-chevron-right"></i></a></li>
+                        </c:if>
+                        <c:if test="${pager.curPage <= pager.totPage }">
+                           <li><a href = "${path }/sns/initSns.do?mpk=${pager.mpk}&curPage1=${pager.totPage}"><i class="fa fa-angle-double-right"></i></a></li>
                         </c:if>
 						</ul>
 					</div>
 					<!-- / AST : 페이지 넘기기 -->
-
 				</div>
 				<!-- / AST : 타임라인  -->
 			</div>

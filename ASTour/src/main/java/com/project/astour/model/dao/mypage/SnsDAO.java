@@ -21,4 +21,10 @@ public interface SnsDAO {
 	// 게시물 갯수 조회 
 	public int count(int mpk);
 	public int countSsort(Map<String, Object> map);
+	
+	
+	// 랭크 보여주기
+	public List<snsVO> rankList();
+	public int replycountList(Map<String, Object> map);
+	
 }

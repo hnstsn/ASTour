@@ -175,5 +175,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) from sns_tbl where mpk=#{mpk }
 	</select>
 	
+	
+	<!-- ranklist -->
+	<select id="rankList" resultType="snsVO">
+		select spk, stitle, scontent, stag, ssort, shits, mpk, 
+		rank() over (order by shits desc) as rank from sns_tbl
+	</select>	
+	
+	<!-- 게시판 댓글 갯수 조회 -->
+   <select id="replycountList" resultType="int">
+      select nvl(count(*),0) as ct from reply_tbl where mpk=#{mpk} and spk=#{spk}
+   </select>
 
 </mapper>
