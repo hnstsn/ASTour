@@ -1,6 +1,7 @@
 package com.project.astour.service.mypage;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,4 +22,5 @@ public interface SnsService {
 	
 	// 게시물 갯수 조회
 	public int count(int mpk);
+	public int countSsort(int mpk,String ssort);
 }

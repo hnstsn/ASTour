@@ -191,7 +191,7 @@ public class SnsController {
 			@RequestParam String ssort, Model model,
 			@RequestParam(defaultValue="1") int curPage1) {
 		
-		int count = snsService.count(mpk);
+		int count = snsService.countSsort(mpk, ssort);
 
 		Pager pager = new Pager(count, curPage1);
 		int start = pager.getPageBegin();
