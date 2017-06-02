@@ -47,10 +47,15 @@ public class SnsServiceImpl implements SnsService {
 	}
 	
 	@Override
-	public List<snsVO> reviewSelect(int mpk, String ssort) {
+	public List<snsVO> reviewSelect(int start, int end, int mpk, String ssort) {
+		
 		Map<String, Object> map = new HashMap<String, Object>();
+		
 		map.put("mpk", mpk);
 		map.put("ssort", ssort);
+		map.put("start", start);
+		map.put("end", end);
+		
 		return snsDao.reviewSelect(map);
 	}
 	

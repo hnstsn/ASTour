@@ -187,8 +187,20 @@ public class SnsController {
 
 	// 리뷰 게시물인지 나의 게시물인지 확인
 	@RequestMapping("reviewSelect.do")
-	public String reviewSelect(@RequestParam int mpk, @RequestParam String ssort, Model model) {
-		List<snsVO> snsList = snsService.reviewSelect(mpk, ssort);
+	public String reviewSelect(@RequestParam int mpk,
+			@RequestParam String ssort, Model model,
+			@RequestParam(defaultValue="1") int curPage1) {
+		
+		int count = snsService.count(mpk);
+
+		Pager pager = new Pager(count, curPage1);
+		int start = pager.getPageBegin();
+		int end = pager.getPageEnd();
+		pager.setMpk(mpk);
+		pager.setSsort(ssort);
+		
+		
+		List<snsVO> snsList = snsService.reviewSelect(start, end, mpk, ssort);
 		MemberVO member = snsService.memList(mpk);
 		List<SnsFileVO> snsFileList = new ArrayList<SnsFileVO>();
 
@@ -197,14 +209,16 @@ public class SnsController {
 			System.out.println("보내줄 spk : " + vo.getSpk());
 			snsFileVO = snsService.snsFileList(vo.getSpk());
 			if (snsFileVO != null) {
-				snsFileList.add(snsFileVO);
+				snsFileList.add(snsFileVO);	
 			}
 		}
-
+		
+		model.addAttribute("pager", pager);
+		model.addAttribute("ssort",ssort);
 		model.addAttribute("snsFileList", snsFileList); // 파일 리스트
 		model.addAttribute("member", member);
 		model.addAttribute("list", snsList);
-		model.addAttribute("curPage", "snsView/sns.jsp");
+		model.addAttribute("curPage", "snsView/snsSsort.jsp");
 
 		return "home";
 	}
