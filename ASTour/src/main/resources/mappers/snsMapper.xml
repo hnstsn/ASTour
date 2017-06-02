@@ -97,7 +97,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 메뉴에서 게시글이나 리뷰에 맞게 보여줌 -->
 	<select id="reviewSelect" resultType="snsVO">
-		SELECT * FROM sns_tbl where mpk = #{mpk} and ssort = #{ssort}
+		SELECT * FROM(
+			SELECT rownum rnum, a.*
+			FROM(
+				SELECT substr(st.scontent,1,10) as sct,st.* 
+				FROM sns_tbl st
+				where mpk = #{mpk } and ssort = #{ssort } order by spk desc
+			)a
+		)WHERE rnum between #{start } and #{end }
+	</select>
+	<!-- 게시글이나 리뷰에 맞게 보여주기 위한 카운트 -->
+	<select id="countSsort" resultType="int">
+		SELECT count(*) as count
+		FROM sns_tbl
+		where mpk = #{mpk} and ssort = #{ssort} order by spk desc
 	</select>
 
 	<!-- 댓글추가 -->

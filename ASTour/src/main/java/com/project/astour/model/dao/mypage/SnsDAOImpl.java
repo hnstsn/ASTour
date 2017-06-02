@@ -75,5 +75,10 @@ public class SnsDAOImpl implements SnsDAO {
 		return sqlSession.selectOne("sns.count", mpk);
 	}
 
+	@Override
+	public int countSsort(Map<String, Object> map) {
+		return sqlSession.selectOne("sns.countSsort",map);
+	}
+
 
 }

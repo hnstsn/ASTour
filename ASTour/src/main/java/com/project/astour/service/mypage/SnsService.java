@@ -1,6 +1,7 @@
 package com.project.astour.service.mypage;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,7 +14,7 @@ public interface SnsService {
 	public List<snsVO> snsList(int start,int end,int mpk);
 	public MemberVO memList(int mpk);
 	public List<MemberVO> peopleList(String mname);
-	public List<snsVO> reviewSelect(int mpk, String ssort);
+	public List<snsVO> reviewSelect(int start, int end, int mpk, String ssort);
 	public SnsFileVO snsFileList(int spk);
 	public void insBrd(snsVO sns) throws Exception;
 	public int getSpk();
@@ -21,4 +22,5 @@ public interface SnsService {
 	
 	// 게시물 갯수 조회
 	public int count(int mpk);
+	public int countSsort(int mpk,String ssort);
 }
