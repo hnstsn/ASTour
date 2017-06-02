@@ -390,7 +390,7 @@
                var mousePosition = mouseEvent.latLng;
                circle = new daum.maps.Circle({
                   center : mousePosition, // 원의 중심좌표 입니다 
-                  radius : 3000, // 미터 단위의 원의 반지름입니다 
+                  radius : 7000, // 미터 단위의 원의 반지름입니다 
                   strokeWeight : 5, // 선의 두께입니다 
                   strokeColor : '#75B8FA', // 선의 색깔입니다
                   strokeOpacity : 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다

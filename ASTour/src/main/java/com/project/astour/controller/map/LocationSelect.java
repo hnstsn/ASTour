@@ -40,7 +40,7 @@ public class LocationSelect {
 	@RequestMapping("selectBox")
 	@ResponseBody
 	public List<sigunVO> f1(HttpServletResponse response,
-			@RequestParam(value="name") String name,
+			@RequestParam(value="name" ) String name,
 			HttpServletRequest re, Model model){
 		System.out.println(name);
 		//List<sigunVO> gunList = mapService.gunList(name);
@@ -51,12 +51,13 @@ public class LocationSelect {
 	@RequestMapping("searchLocation")
 	@ResponseBody
 	public List<attraction_tbl> f2(HttpServletResponse response,
-			attraction_tbl vo,
+			attraction_tbl vo
 			/*@RequestParam(value="selectedSi") String si,
 			@RequestParam(value="selectedGun") String gun,
 			@RequestParam(value="selectedEvent") String event,
 			@RequestParam(value="selectedAttraction") String input,*/
-			HttpServletRequest re, Model model) {
+			//HttpServletRequest re, Model model
+			) {
 		/*System.out.println(si);
 		System.out.println(gun);
 		System.out.println(event);
