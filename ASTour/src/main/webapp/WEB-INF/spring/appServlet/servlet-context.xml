@@ -35,11 +35,11 @@
 	</beans:bean>
 	<!-- 프로필 사진 업로드 경로 -->
 	<beans:bean id="pfUploadPath" class="java.lang.String">
-		<beans:constructor-arg value="D:/STS_Workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ASTour/WEB-INF/views/upload/profile/" />
+		<beans:constructor-arg value="C:/Users/bit-user/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ASTour/WEB-INF/views/upload/profile/" />
 	</beans:bean>
 	<!-- 게시글 사진 업로드 경로 -->
 	<beans:bean id="brdUploadPath" class="java.lang.String">
-		<beans:constructor-arg value="D:\\STS_Workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\ASTour\\WEB-INF\\views\\upload\\sns\\" />
+		<beans:constructor-arg value="C:/Users/bit-user/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ASTour/WEB-INF/views/upload/sns/" />
 	</beans:bean>
 	<!-- csw 주소
 	"D:/STS_Workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ASTour/WEB-INF/views/upload/profile/" -->
