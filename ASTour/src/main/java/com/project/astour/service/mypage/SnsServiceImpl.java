@@ -114,6 +114,14 @@ public class SnsServiceImpl implements SnsService {
 		return snsDao.count(mpk);
 	}
 
+	@Override
+	public int countSsort(int mpk,String ssort) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("mpk", mpk);
+		map.put("ssort", ssort);
+		return snsDao.countSsort(map);
+	}
+
 
 	
 }

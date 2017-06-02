@@ -159,12 +159,11 @@ $(function(){
 					</c:forEach>
 					<!-- / AST : 타임라인 게시물  -->
 
-					<c:if test="${list.size() > 0 }">
 					<!-- AST : 페이지 넘기기 -->
 					<div class="text-center">
 						<ul class="pagination">
 						<c:if test="${pager.curBlock > 1 }">
-                      		  <a href = "${path }/sns/reviewSelect.do?mpk=${pager.mpk}&curPage1=1&ssort=${pager.ssort }"><i class="fa fa-angle-double-left"></i></a>
+                      		  <li><a href = "${path }/sns/reviewSelect.do?mpk=${pager.mpk}&curPage1=1&ssort=${pager.ssort }"><i class="fa fa-angle-double-left"></i></a></li>
                       	</c:if>
 						<c:if test="${pager.curBlock > 1 }">
 							<li><a href="${path }/sns/reviewSelect.do?mpk=${pager.mpk}&curPage1=${pager.prevPage}&ssort=${pager.ssort }"><i class="fa fa-chevron-left"></i></a></li>
@@ -177,7 +176,8 @@ $(function(){
 							<li><a href="${path }/sns/reviewSelect.do?mpk=${pager.mpk}&curPage1=${num}&ssort=${pager.ssort } ">${num }</a></li>
 							</c:if>
 							</c:forEach>
-						<c:if test="${pager.curBlock <= pager.totBlock}">
+						<%-- <c:if test="${pager.curBlock <= pager.totBlock}"> --%>
+						<c:if test="${pager.curPage <= pager.totPage }">
                            <li><a href="${path }/sns/reviewSelect.do?mpk=${pager.mpk}&curPage1=${pager.nextPage}&ssort=${pager.ssort }"><i class="fa fa-chevron-right"></i></a></li>
                         </c:if>
                         <c:if test="${pager.curPage <= pager.totPage }">
@@ -186,9 +186,6 @@ $(function(){
 						</ul>
 					</div>
 					<!-- / AST : 페이지 넘기기 -->
-					</c:if>
-					
-
 				</div>
 				<!-- / AST : 타임라인  -->
 			</div>

@@ -106,6 +106,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			)a
 		)WHERE rnum between #{start } and #{end }
 	</select>
+	<!-- 게시글이나 리뷰에 맞게 보여주기 위한 카운트 -->
+	<select id="countSsort" resultType="int">
+		SELECT count(*) as count
+		FROM sns_tbl
+		where mpk = #{mpk} and ssort = #{ssort} order by spk desc
+	</select>
 
 	<!-- 댓글추가 -->
 	<insert id="addReply">
