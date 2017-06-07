@@ -78,7 +78,7 @@
 						</form>
 						<!-- product detail -->
 						<div style="margin-top: 10%" align="center">
-							<form action="${path }/reViewList" method="post">
+							<form action="${path }/reViewList.do" method="post">
 									<input type="hidden" name="review_AIMAGE" value="${list[0].aimage }"> 
 									<input type="hidden" name="review_ATITLE" value="${list[0].atitle }"> 
 									<input type="submit" class="btn btn-success" value="관련리뷰보기">

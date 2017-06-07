@@ -26,9 +26,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT *FROM attraction_tbl WHERE ASORT = #{ATITLE }
 	</select>
 	
-	<select id="reviewattraction"
+	<select id="reviewattraction2"
 		resultType="com.project.astour.model.dto.attraction.attraction_tbl">
 		SELECT *FROM sns_tbl WHERE stag =#{title }
 	</select>
+	
+	<!-- 리뷰 리스트 가지고오기 최신순 -->
+	<select id="reviewattraction"
+		resultType="com.project.astour.model.dto.attraction.reViewListVO">
+		SELECT * FROM(
+		SELECT rownum rnum, a.*
+		FROM(
+		select st.shits,st.stitle,mem.mpk,st.spk,st.sdate,mem.mid,mem.mname 
+		from sns_tbl st,ASTMember mem 
+		where st.mpk=mem.mpk and stag=#{title} and st.ssort='review'
+		order by spk desc ) a
+		)WHERE rnum between #{start } and #{end}
+	</select>
+	
+	<!-- 리뷰 리스트 가지고오기 조회수순-->
+	<select id="reviewattractionhits"
+		resultType="com.project.astour.model.dto.attraction.reViewListVO">
+		SELECT * FROM(
+		SELECT rownum rnum, a.*
+		FROM(
+		select st.shits,st.stitle,mem.mpk,st.spk,st.sdate,mem.mid,mem.mname 
+		from sns_tbl st,ASTMember mem 
+		where st.mpk=mem.mpk and stag=#{title} and st.ssort='review'
+		order by shits desc ) a
+		)WHERE rnum between #{start } and #{end}
+	</select>
+	
+	<!-- 사진 하나만 가지고 -->
+	<select id="attractionname" resultType="String">
+		select sffile from snsFile_tbl 
+		where sfpk in (select min(sfpk) from snsFile_tbl group by spk) and spk = #{spk}
+	</select>
+	
+	<!-- 댓글수 가지고오기  -->
+	<select id="recount" resultType="int">
+		select count(*) from reply_tbl where spk=#{spk}
+	</select>
+	
+	<!-- 해당 리뷰 갯수 구하기 -->
+	<select id="allcount" resultType="int">
+		select count(*) from sns_tbl where ssort = 'review' and stag=#{title}
+	</select>
+
 
 </mapper>
