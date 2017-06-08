@@ -32,7 +32,8 @@ public class SnsDAOImpl implements SnsDAO {
 
 	@Override
 	public MemberVO memList(int mpk) {
-		return sqlSession.selectOne("sns.memList",mpk);
+		List<MemberVO> list = sqlSession.selectList("sns.memList",mpk);
+		return list.get(0);
 	}
 
 	//사람찾기
