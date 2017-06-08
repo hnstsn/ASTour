@@ -14,16 +14,17 @@
   <!-- REVOLUTION SLIDER -->
   <div class="fullwidthbanner-container roundedcorners">
      <div class="fullwidthbanner">
-        <ul>   
+<ul>   
   
            <!-- SLIDE  -->
            <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
   
               <!-- COVER IMAGE -->
-              <img src="${path}/resources/assets/images/demo/revolution_slider/mainimg1.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+              <!-- data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" -->
+              <img src="${path}/resources/image/main/go3.jpg" alt="">
   
               <!-- LAYER NR. 1 -->
-              <div class="tp-caption lightgrey_divider skewfromrightshort customout"
+             <!--  <div class="tp-caption lightgrey_divider skewfromrightshort customout"
                  data-x="85"
                  data-y="224"
                  data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
@@ -34,9 +35,9 @@
                  data-endeasing="Power4.easeIn"
                  data-captionhidden="off"
                  style="z-index: 2">
-              </div>
+              </div> -->
   
-              <!-- LAYER NR. 2 -->
+             <%--  <!-- LAYER NR. 2 -->
               <div class="tp-caption customin customout"
                  data-x="right" data-hoffset="-220"
                  data-y="bottom" data-voffset="0"
@@ -164,7 +165,7 @@
                  data-endeasing="Power4.easeIn"
                  data-captionhidden="off"
                  style="z-index: 21">ㅎㅎㅎㅎ
-              </div>
+              </div> --%>
   
            </li>
   
@@ -172,9 +173,38 @@
            <li data-transition="3dcurtain-vertical" data-slotamount="14"  data-masterspeed="300" data-delay="10000">
   
               <!-- COVER IMAGE -->
-              <img src="${path}/resources/assets/images/demo/revolution_slider/slider7.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" />
+              <img src="${path}/resources/image/main/go4.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" />
+              
+              
+             <!--  <div class="tp-caption large_text sft"
+                 data-x="center"
+                 data-y="130"
+                 data-speed="300"
+                 data-start="1000"
+                 data-endspeed="500"
+                 data-easing="easeOutBack"><h1>전주 한옥마을</h1>
+              </div> -->
+              
+              <div class="tp-caption very_large_text lfl stl"
+                 data-x="right" data-hoffset="-30"
+                 data-y="293"
+                 data-speed="300"
+                 data-start="500"
+                 data-easing="easeOutExpo" 
+                 data-endspeed="300" 
+                 data-endeasing="easeInSine">한옥마을 
+              </div>
   
-              <div class="tp-caption lft boxshadow" 
+              <!-- <div class="tp-caption large_text sft"
+                 data-x="center"
+                 data-y="260"
+                 data-speed="300"
+                 data-start="1700"
+                 data-endspeed="500"
+                 data-easing="easeOutBack"><h2>전주 한옥마을</h2>
+              </div> -->
+  
+              <!-- <div class="tp-caption lft boxshadow" 
                  data-x="70" 
                  data-y="70" 
                  data-speed="900" 
@@ -238,7 +268,7 @@
                  data-start="1600" 
                  data-easing="easeOutExpo"><i class="fa fa-css3"></i> CSS3
               </div>
-  
+   -->
            </li>
   
            <!-- SLIDE -->
@@ -772,46 +802,50 @@
         <i class="fa fa-star"></i>
      </div>
   
-     <!-- <p class="lead">여기다가 무엇을 적을까?</p>
+     <p class="lead"></p>
   
-     <hr />separator -->
+     <hr /><h3>조회순</h3>
   
      <!-- FEATURED BOXES 4 -->
+     
      <div class="row featured-box-minimal margin-bottom30">
         <div class="col-md-4">
-           <h4><i style="color: #704405;" class="fa fa-trophy"></i>　1등 금메달</h4>
-           <p>${rankList[0].stitle }</p>
-           <p>${rankList[0].scontent }</p>
+           <h4><i style="color: #D9C91D;" class="fa fa-trophy"></i>금메달</h4>
+            <a href="${path}/snsdetails/contentview.do?spk=${rankList[0].spk }"><h3><p>${rankList[0].stitle }</p></h3></a>  
         </div>
         <div class="col-md-4">
-           <h4><img alt="" src="${path}/resources/assets/images/rankimg/sliver.png">    은메달</h4>
-           <p>${rankList[1].stitle }</p>
-           <p>${rankList[1].scontent }</p>
+           <h4><i style="color: lightgrey;" class="fa fa-trophy"></i>은메달</h4>
+            <a href="${path}/snsdetails/contentview.do?spk=${rankList[1].spk }"><h3><p>${rankList[1].stitle }</p></h3></a>
         </div>
         <div class="col-md-4">
-           <h4><img alt="" src="${path}/resources/assets/images/rankimg/ddong.png">    동메달</h4>
-           <p>${rankList[2].stitle }</p>
-           <p>${rankList[2].scontent }</p>
+           <h4><i style="color: #704405;" class="fa fa-trophy"></i>동메달</h4>
+           <a href="${path}/snsdetails/contentview.do?spk=${rankList[2].spk }"><h3><p>${rankList[2].stitle }</p></h3></a> 
         </div>
      </div>
      <!-- /FEATURED BOXES 4 -->
+ 
   
+     <hr /><h3>태그순</h2>
      <!-- FEATURED BOXES 4 -->
      <div class="row featured-box-minimal margin-bottom30">
         <div class="col-md-4">
-           <h4><i class="fa fa-group"></i> Customer Support</h4>
+           <h4><i style="color: #D9C91D;" class="fa fa-trophy"></i>금메달</h4>
            <p>평점순 금은동 트로피 - 리뷰</p>
         </div>
         <div class="col-md-4">
-           <h4> <i class="fa fa-book"></i> Sliders</h4>
+           <h4><i style="color: lightgrey;" class="fa fa-trophy"></i>은메달</h4>
            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla.</p>
         </div>
         <div class="col-md-4">
-           <h4><i class="fa fa-trophy"></i> Elite</h4>
+           <h4><i style="color: #704405;" class="fa fa-trophy"></i>동메달</h4>
            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla.</p>
         </div>
      </div>
      <!-- /FEATURED BOXES 4 -->
+     
+     <div class="divider"><!-- divider -->
+        <i class="fa fa-star"></i>
+     </div>
   
   </section>
   <!-- /WELCOME -->

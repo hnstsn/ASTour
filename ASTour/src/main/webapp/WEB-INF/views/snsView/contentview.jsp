@@ -14,6 +14,7 @@
 <!-- mobile settings -->
 <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 <%@ include file="../include/bootstap_collect.jsp"%>
+<%@ include file="../include/sessionCheck.jsp"%>
 <!-- Morenizr -->
 <script type="text/javascript" src="assets/plugins/modernizr.min.js"></script>
 <script>
@@ -77,6 +78,7 @@ function f2(rpk,spk){
 									<fmt:formatDate value="${contenlist.sdate}" pattern="yyyy-MM-dd a HH:mm:ss" />
 								</span>
 								<span class="label label-default light">조회수 : ${contenlist.shits}</span>
+								<a href="${path }/sns/initSns.do?mpk=${contenlist.mpk}"><span class="label label-default light">HOME</span></a>
 							</small>
 						</header>
 	
@@ -131,7 +133,7 @@ function f2(rpk,spk){
 	                              			<a class="scrollTo replyBtn" onclick="f1(${re.rpk},${re.spk})">삭제</a>
 											<a class="scrollTo replyBtn" style="margin-right: 1%;" onclick="f2(${re.rpk},${re.spk})">수정</a>
 										</c:if>
-										<h4 class="media-heading bold">${re.mname}</h4>
+										<a href="${path }/sns/initSns.do?mpk=${re.mpk}"><h4 class="media-heading bold">${re.mname}</h4></a>
 										<small class="block"> 
 											<fmt:formatDate value="${re.rtime }" pattern="yyyy-MM-dd a HH:mm:ss" />
 										</small>
