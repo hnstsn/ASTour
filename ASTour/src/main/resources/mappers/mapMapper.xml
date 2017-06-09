@@ -21,9 +21,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT gun FROM SIGUN WHERE si = #{name}	
 	</select>
 	
+	<!-- 예전본  #을 $로 바꿈 
 	<select id="searchLocation"
 		resultType="com.project.astour.model.dto.attraction.attraction_tbl">
 		SELECT * FROM attraction_tbl WHERE acity like #{acity} and agu like #{agu} and asort like #{asort} and atitle like #{atitle}
+			
+	</select> -->
+	
+	<select id="searchLocation"
+		resultType="com.project.astour.model.dto.attraction.attraction_tbl">
+		SELECT * FROM attraction_tbl WHERE acity like '${acity}%' and agu like '${agu}%' and asort like '%${asort}%' and atitle like '%${atitle}%'
 			
 	</select>
 		

@@ -66,4 +66,6 @@ public class LocationSelect {
 		return attractionService.attractionList(); 
 	}
 	
+	
+	
 }

@@ -97,11 +97,11 @@
 				 	overlayArr[i].setMap(null);
 				}
    			 
-   			// AST : like 쓰기위해 % 직접 넣음
- 		   var selectedSi = $("#siSelect option:selected").val()+"%";
- 		   var selectedGun = $("#gunSelect option:selected").val()+"%";
- 		   var selectedEvent= "%"+$("#eventSelect option:selected").val()+"%";
- 		   var selectedAttraction = "%"+$("#attractionName").val()+"%";
+   			// AST : like 쓰기위해 % 직접 넣음(안씀)
+ 		   var selectedSi = $("#siSelect option:selected").val(); 			
+ 		   var selectedGun = $("#gunSelect option:selected").val();			
+ 		   var selectedEvent= $("#eventSelect option:selected").val();	
+ 		   var selectedAttraction = $("#attractionName").val();			
  		   
  		  $.ajax({
  				url:"${path}/searchLocation",

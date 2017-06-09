@@ -13,7 +13,7 @@
 <!-- mobile settings -->
 <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <%@ include file="../include/bootstap_collect.jsp"%>
 <meta charset="utf-8" />
@@ -30,9 +30,6 @@
 
 $(document).ready(function() {
 	
-	//AST : submit을 막는다.
-
-
 	// 파일 추가 누르면
 	$("#addFiles").click(function() {
 		var add = "<input type='file' name='files' class='files'><font class='deFile'>[X]</font><br>";
@@ -48,8 +45,50 @@ $(document).ready(function() {
 			$(this).remove();
 		});
 	});
+	
+	
+	// AST: 선택한 지역의 세부지역select를 바꿉니다
+	$("#siSelect").change(function (){
+		var name = $("#siSelect option:selected").val();
+		// AST : 지역이바뀌니 초기화
+		$("#gunSelect").html("<option>"+"선택하세요!"+"</option>");
+		$("#attractionName").html("<option>"+"선택하세요!"+"</option>");
+			$.ajax({
+				url:"${path}/searchLocation",
+				type : "post",
+				data : {"acity": name},
+				dataType : 'json',
+				success : function(Data){
+					console.log(Data);
+					for(var i=0; i<Data.length; i++){
+						$("#gunSelect").append("<option value="+Data[i].agu+">"+Data[i].agu+"</option>");
+					}
+					for(var i=0; i<Data.length; i++){
+						$("#attractionName").append("<option value="+Data[i].atitle+">"+Data[i].atitle+"</option>");
+					}
+				}
+			});
+	});
+	
+	$("#gunSelect").change(function (){
+		var name1 = $("#siSelect option:selected").val();
+		var name2 = $("#gunSelect option:selected").val();
+			$("#attractionName").html("<option>"+"선택하세요!"+"</option>");
+			$.ajax({
+				url:"${path}/searchLocation",
+				type : "post",
+				data : {"agu" : name2},
+				dataType : 'json',
+				success : function(Data){
+					console.log(Data);
+					for(var i=0; i<Data.length; i++){
+						$("#attractionName").append("<option value="+Data[i].atitle+">"+Data[i].atitle+"</option>");
+					}
+				}
+			});
+	});
+	
 });
-
 
 
 
@@ -65,6 +104,49 @@ $(document).ready(function() {
 .files { float:left; }
 .addFileDiv 	{ margin-top : 5px; }
 .deFile:hover { cursor:pointer; }
+	
+	 html,body
+            {
+                margin: 0;
+                padding: 0;
+
+            }
+            
+    body{
+        /* background-color: aquamarine; */
+        position: relative;
+    }
+	#tagLocationBack{
+		 top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         margin: auto;
+         padding: auto;
+         z-index: 1;
+         background:rgba(0,0,0,0.8);
+         width: 100%;
+         height: 100%;
+         display: none;
+         position: absolute;
+         text-align: center;
+	}
+	#tagLocation
+	{
+		 position: absolute;
+         top: 0;
+	     left: 0;
+	     right: 0;
+	     bottom: 0;
+	     margin: auto;
+	     padding: auto;
+	     z-index: 3;
+	     width: 500px;
+	     height: 300px;
+	     background-color:white; 
+	     display: none;
+	}
+	
 </style>
 </head>
 <body>
@@ -98,9 +180,9 @@ $(document).ready(function() {
 									<!-- <input type="text" class="form-control"  name="stag" id="stag"> -->
 									<select class="form-control"  name="stag" id="stag">
 										<option>선택하세요</option>
-										<c:forEach var="list" items="${list}">
+										<%-- <c:forEach var="list" items="${list}">
 											<option>${list.atitle}</option>	
-										</c:forEach>
+										</c:forEach> --%>
 									</select>
 								</div>
 							</div>
@@ -139,7 +221,79 @@ $(document).ready(function() {
 		</div>
 
 	</section>
+	
+<!--AST : 태그용 선택창  -->
+	<div id="tagLocationBack">
+	<!--검은뒷배경 -->
+	</div> 
+	<div id="tagLocation">
+			 <section class="container re-filterbox no-top" style="margin-top: 30px;">
+         <!-- add "styleBackground" class for colored box -->
 
+         <div id="re-filter">
+            <div class="row">
+               <div class="form-group">
+
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                     <label>지역</label> 
+	                     <select id="siSelect" class="form-control" name="re_location">
+	                        <option>선택하세요</option>
+	                        <option value="서울">서울</option>
+	                        <option value="부산">부산</option>
+	                        <option value="대구">대구</option>
+	                        <option value="인천">인천</option>
+	                        <option value="광주">광주</option>
+	                        <option value="대전">대전</option>
+	                        <option value="울산">울산</option>
+	                        <option value="세종">세종</option>
+	                        <option value="강원">강원</option>
+	                        <option value="경기">경기</option>
+	                        <option value="경남">경남</option>
+	                        <option value="경북">경북</option>
+	                        <option value="전남">전남</option>
+	                        <option value="전북">전북</option>
+	                        <option value="제주">제주</option>
+	                        <option value="충청남도">충남</option>
+	                        <option value="충청북도">충북</option>
+	                     </select>
+                  </div>
+                  
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                     <label>지역세부</label> 
+	                     <select id="gunSelect" class="form-control" name="re_type">
+	                     	<option >선택전</option>
+	                     
+	                     </select>
+                  </div>
+                  </div>
+                  </div>
+                  <div class="row" >
+                  <div class="col-md-3 col-sm-6 col-xs-12" align="center">
+                     <label>이름</label>
+                     <select id="attractionName" class="form-control" name="re_status">
+                        <option selected>선택전</option>
+                     </select>
+                  </div>
+               </div>
+            
+
+            <div class="row">
+               <div class="form-group">
+                  
+
+                  <div class="col-md-2 col-sm-6 col-xs-6">
+                     <label>&nbsp;</label>
+                     <button id = "confirmBtn" class="btn btn-primary fullwidth">확인</button>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+
+
+      </section>
+	</div>
+	
 </div>
 
 <script>
@@ -165,17 +319,44 @@ $("#writeForm").submit(function() {
 				}
 			}
 		}
-	   
 	});
 	//alert(check);
 	if(check){
 		return true;
 	}else{
+		//AST : submit을 막는다.
 		alert('태그가 올바르지 않습니다')
 		return false;
 	}
-		
 });
+
+$(function(){
+	/* AST : 태그 선택창 눌렀을 때 div 보이게 설정  */
+	$("#stag").click(function(){
+		//alert('눌름');
+		$("#tagLocationBack").fadeIn(800);
+		$("#tagLocation").fadeIn(800);
+	})
+	
+	/* AST : 태그 선택창 뒷 배경을 눌렀을 시 종료  */
+	$("#tagLocationBack").click(function(){
+		$("#tagLocationBack").fadeOut(500);
+		$("#tagLocation").fadeOut(500);
+	})
+	
+	/* AST : 태그 선택창 확인을 눌렀을 때 사용  */
+	 $("#confirmBtn").click(function(){
+		var selectedTag = $("#attractionName option:selected").val();
+		if(selectedTag == "선택하세요!" || selectedTag == "선택전"){
+			alert('다시 선택하세요');
+		}else{
+			$("#tagLocationBack").fadeOut(500);
+			$("#tagLocation").fadeOut(500);
+			$("#stag").html("<option>"+selectedTag+"</option>");
+		}
+		
+	})
+})
 </script>
 
 </body>
