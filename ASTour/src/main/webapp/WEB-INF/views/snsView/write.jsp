@@ -125,8 +125,8 @@ $(document).ready(function() {
 	     margin: auto;
 	     padding: auto;
 	     z-index: 3;
-	     width: 500px;
-	     height: 300px;
+	     width: 600px;
+	     height: 400px;
 	     background-color:white; 
 	     display: none;
 	}
@@ -162,12 +162,13 @@ $(document).ready(function() {
 								<div class="col-md-5">
 									<label>태그*</label> 
 									<!-- <input type="text" class="form-control"  name="stag" id="stag"> -->
-									<select class="form-control"  name="stag" id="stag">
+									<input type="text" class="form-control"  name="stag" id="stag" />
+									<%-- <select class="form-control"  name="stag" id="stag">
 										<option>선택하세요</option>
-										<%-- <c:forEach var="list" items="${list}">
+										<c:forEach var="list" items="${list}">
 											<option>${list.atitle}</option>	
-										</c:forEach> --%>
-									</select>
+										</c:forEach> 
+									</select> --%>
 								</div>
 							</div>
 							<div class="col-md-4">
@@ -211,14 +212,14 @@ $(document).ready(function() {
 	<!--검은뒷배경 -->
 	</div> 
 	<div id="tagLocation">
-			 <section class="container re-filterbox no-top" style="margin-top: 30px;">
+			 <section style="margin-top: 30px;"> <!-- <section class="container re-filterbox no-top" style="margin-top: 30px;"> -->
          <!-- add "styleBackground" class for colored box -->
 
-         <div id="re-filter">
-            <div class="row">
-               <div class="form-group">
+         <div> <!-- <div id="re-filter"> -->
+            <div><!-- <div class="row"> -->
+               <div>
 
-                  <div class="col-md-2 col-sm-4 col-xs-6">
+                  <div class="col-md-6 col-sm-12 col-xs-12">
                      <label>지역</label> 
 	                     <select id="siSelect" class="form-control" name="re_location">
 	                        <option>선택하세요</option>
@@ -242,7 +243,7 @@ $(document).ready(function() {
 	                     </select>
                   </div>
                   
-                  <div class="col-md-2 col-sm-4 col-xs-6">
+                  <div class="col-md-6 col-sm-12 col-xs-12">
                      <label>지역세부</label> 
 	                     <select id="gunSelect" class="form-control" name="re_type">
 	                     	<option >선택전</option>
@@ -251,23 +252,33 @@ $(document).ready(function() {
                   </div>
                   </div>
                   </div>
-                  <div class="row" >
-                  <div class="col-md-3 col-sm-6 col-xs-12" align="center">
+                  <div><!-- <div class="row" > -->
+                  <div class="col-md-8 col-sm-12 col-xs-12" >
                      <label>이름</label>
                      <select id="attractionName" class="form-control" name="re_status">
                         <option selected>선택전</option>
                      </select>
                   </div>
+                  
+                  <div class="col-md-8 col-sm-12 col-xs-12" >
+                     <label>직접입력</label>
+                     <input id="tagSelfInput" type="text" class="form-control" />
+                  </div>
                </div>
             
 
-            <div class="row">
-               <div class="form-group">
+            <div><!-- <div class="row"> -->
+               <div >
                   
 
-                  <div class="col-md-2 col-sm-6 col-xs-6">
-                     <label>&nbsp;</label>
+                  <div class="col-md-6 col-sm-8 col-xs-12">
+                  <label>&nbsp;</label>
                      <button id = "confirmBtn" class="btn btn-primary fullwidth">확인</button>
+                  </div>
+                  
+                  <div class="col-md-6 col-sm-8 col-xs-12">
+                     <label>&nbsp;</label>
+                     <button id = "cancelBtn" class="btn btn-primary fullwidth">취소</button>
                   </div>
                </div>
             </div>
@@ -341,7 +352,7 @@ $("#writeForm").submit(function() {
 		return true;
 	}else{
 		//AST : submit을 막는다.
-		alert('태그가 올바르지 않습니다')
+		alert('태그명이 올바르지 않습니다')
 		return false;
 	}
 });
@@ -363,14 +374,25 @@ $(function(){
 	/* AST : 태그 선택창 확인을 눌렀을 때 사용  */
 	 $("#confirmBtn").click(function(){
 		var selectedTag = $("#attractionName option:selected").val();
-		if(selectedTag == "선택하세요!" || selectedTag == "선택전"){
+		var selfInput = $("#tagSelfInput").val();
+		if(selfInput!=""){
+			$("#tagLocationBack").fadeOut(500);
+			$("#tagLocation").fadeOut(500);
+			$("#stag").val(selfInput);
+			$("#tagSelfInput").val("");
+		}else if(selectedTag == "선택하세요!" || selectedTag == "선택전"){
 			alert('다시 선택하세요');
 		}else{
 			$("#tagLocationBack").fadeOut(500);
 			$("#tagLocation").fadeOut(500);
-			$("#stag").html("<option>"+selectedTag+"</option>");
+			$("#stag").val(selectedTag);
 		}
 		
+	})
+	
+	$("#cancelBtn").click(function(){
+		 $("#tagLocationBack").fadeOut(500);
+			$("#tagLocation").fadeOut(500);
 	})
 })
 </script>
