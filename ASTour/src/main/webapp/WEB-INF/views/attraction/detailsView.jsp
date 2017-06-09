@@ -24,7 +24,9 @@
 <!-- mobile settings -->
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
-
+<style>
+	hr.two {width: 100%; color: green; border: thin solid red; }
+</style>
 </head>
 	
 <%--  <jsp:include page="../include/menu.jsp" /> --%>
@@ -44,12 +46,9 @@
 					<div class="col-sm-6 col-md-6">
 						<div class="owl-carousel controlls-over product-image"
 							data-plugin-options='{"items": 1, "singleItem": true, "navigation": true, "pagination": true, "transitionStyle":"fadeUp"}'>
-
-							<div>
-								<img alt="" class="img-responsive"
-									src="${path}/resources/image/culture/${list[0].aimage }">
+						   	<div class="container">               
+  								<img src="${path}/resources/image/culture/${list[0].aimage }" class="img-rounded" width="525" height="400"> 
 							</div>
-
 						</div>
 					</div>
 
@@ -62,17 +61,39 @@
 							<input type="hidden" name="action" value="cart_add" /> <input
 								type="hidden" name="product_id" value="1" />
 
-							<h2 class="product-title">${list[0].atitle }</h2>
-
 							<!-- product description -->
-							<div class="desc">
-								<h3>주소 : ${list[0].acity } ${list[0].agu } ${list[0].aaddress }</h3>
-								<h3>문의 : ${list[0].atel }</h3>
-								<h2>
-									홈페이지: <a href="${list[0].ahomepage }">${list[0].ahomepage }</a>
-								</h2>
-								
+							<div class="container">
+  							<h2>${list[0].atitle }</h2>
+  							</div>
+  							<div class="well well-sm" style="width: 100%">
+  								<ul>
+									<li>
+									<h5>주소 : ${list[0].acity } ${list[0].agu } ${list[0].aaddress }</h5>
+									</li>
+								</ul>
 							</div>
+							<div class="well well-sm" style="width: 100%">
+								<ul>
+									<li>
+									<h5>문의 : ${list[0].atel }</h5>
+									</li>
+								</ul>
+							</div>
+							<div class="well well-sm" style="width: 100%">
+  								<ul>
+									<li>
+									<h5>${list[0].aintro}</h5>
+									</li>
+								</ul>
+							</div>
+							<div class="well well-sm" style="width: 100%">
+								<ul>
+									<li>
+									<h5>홈페이지: <a href="${list[0].ahomepage }">${list[0].ahomepage }</a></h5>
+									</li>	
+								</ul>
+  							</div>
+  							
 							
 							<!-- /product description -->
 						</form>
@@ -86,11 +107,10 @@
 						</div>
 					</div>
 				</div>
-
-				<hr />
-				<div>
+				<hr class="two" />
+				<div class="well well-sm" style="width: 100%;">
 					<h4>${list[0].acontent }</h4>
-				</div>
+  				</div>
 				<hr />
 			</section>
 		</div>
