@@ -48,26 +48,8 @@ $(document).ready(function() {
 	
 	
 	// AST: 선택한 지역의 세부지역select를 바꿉니다
-	$("#siSelect").change(function (){
-		var name = $("#siSelect option:selected").val();
-		// AST : 지역이바뀌니 초기화
-		$("#gunSelect").html("<option>"+"선택하세요!"+"</option>");
-		$("#attractionName").html("<option>"+"선택하세요!"+"</option>");
-			$.ajax({
-				url:"${path}/searchLocation",
-				type : "post",
-				data : {"acity": name},
-				dataType : 'json',
-				success : function(Data){
-					console.log(Data);
-					for(var i=0; i<Data.length; i++){
-						$("#gunSelect").append("<option value="+Data[i].agu+">"+Data[i].agu+"</option>");
-					}
-					for(var i=0; i<Data.length; i++){
-						$("#attractionName").append("<option value="+Data[i].atitle+">"+Data[i].atitle+"</option>");
-					}
-				}
-			});
+	$("#siSelect").change(function(){
+		sisi();
 	});
 	
 	$("#gunSelect").change(function (){
@@ -80,14 +62,16 @@ $(document).ready(function() {
 				data : {"agu" : name2},
 				dataType : 'json',
 				success : function(Data){
-					console.log(Data);
-					for(var i=0; i<Data.length; i++){
-						$("#attractionName").append("<option value="+Data[i].atitle+">"+Data[i].atitle+"</option>");
+					if(name2=="선택하세요!"){
+						sisi();
+					}else{
+						for(var i=0; i<Data.length; i++){
+							$("#attractionName").append("<option value="+Data[i].atitle+">"+Data[i].atitle+"</option>");
+						}
 					}
 				}
 			});
 	});
-	
 });
 
 
@@ -297,6 +281,38 @@ $(document).ready(function() {
 </div>
 
 <script>
+function sisi(){
+	var name = $("#siSelect option:selected").val();
+	// AST : 지역이바뀌니 초기화
+	$("#gunSelect").html("<option>"+"선택하세요!"+"</option>");
+	$("#attractionName").html("<option>"+"선택하세요!"+"</option>");
+		$.ajax({
+			url:"${path}/searchLocation",
+			type : "post",
+			data : {"acity": name},
+			dataType : 'json',
+			success : function(Data){
+				
+				for(var i=0; i<Data.length; i++){
+					var dupCheck=true;
+					var count=i+1;
+					while(count<Data.length){
+						
+						if(Data[i].agu == Data[count++].agu){
+							dupCheck = false;
+							break;
+						}
+					}
+					if(dupCheck){
+						$("#gunSelect").append("<option value="+Data[i].agu+">"+Data[i].agu+"</option>");
+					}
+				}
+				for(var i=0; i<Data.length; i++){
+					$("#attractionName").append("<option value="+Data[i].atitle+">"+Data[i].atitle+"</option>");
+				}
+			}
+		});
+};
 /*AST : form 태그가 적절한지 판단  */
 $("#writeForm").submit(function() {
 	var tag_text = $("#stag").val();
