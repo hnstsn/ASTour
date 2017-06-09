@@ -72,6 +72,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="allcount" resultType="int">
 		select count(*) from sns_tbl where ssort = 'review' and stag=#{title}
 	</select>
+	
+	<!-- 메인화면 꺼 명소 -->
+	<select id="tagrank" 
+	resultType = "com.project.astour.model.dto.attraction.tagrankVO">
+		select at.attpk, at.atitle, r.rn, r.cnt
+			from attraction_tbl at, 
+  				(select *  from (
+      				select rownum rn, t.*
+      		from 
+        		(select (count(s.spk)) as cnt, s.stag
+           			from sns_tbl s, attraction_tbl a
+          			where s.stag in a.atitle
+         			group by (s.stag) order by cnt desc) t)
+      				where rn between 1 and 3) r
+			where at.atitle in r.stag
+			order by r.rn
+	</select>
 
 
 </mapper>

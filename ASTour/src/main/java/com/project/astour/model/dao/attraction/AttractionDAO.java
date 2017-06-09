@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.project.astour.model.dto.attraction.attraction_tbl;
 import com.project.astour.model.dto.attraction.reViewListVO;
+import com.project.astour.model.dto.attraction.tagrankVO;
 
 
 public interface AttractionDAO {
@@ -21,4 +22,6 @@ public interface AttractionDAO {
 	public int recount(int spk);
 	//전채 댓글수 구하기
 	public int allCount(String title);
+	//태그 순위
+	public List<tagrankVO> tagrank();
 }

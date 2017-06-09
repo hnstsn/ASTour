@@ -181,6 +181,8 @@ function f2(rpk,spk){
 								<div class="col-md-12">
 									<p align="right">
 										<button class="btn btn-primary">등록</button>
+										<input type="text" value="${contenlist.spk }">
+										<input type="text" value="${sessionScope.member.mpk}" />
 										<input type="hidden" name="spk" value="${contenlist.spk }">
 										<input type="hidden" name="mpk" value="${sessionScope.member.mpk}" />
 									</p>

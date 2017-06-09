@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.project.astour.model.dao.attraction.AttractionDAO;
 import com.project.astour.model.dto.attraction.attraction_tbl;
 import com.project.astour.model.dto.attraction.reViewListVO;
+import com.project.astour.model.dto.attraction.tagrankVO;
 import com.project.astour.model.dto.mypage.snsVO;
 
 @Service
@@ -70,6 +71,12 @@ public class AttractionServiceImpl implements AttractionService{
 	@Override
 	public int allCount(String title) {
 		return attractionDao.allCount(title);
+	}
+
+	@Override
+	public List<tagrankVO> tagrank() {
+		
+		return attractionDao.tagrank();
 	}
 
 	

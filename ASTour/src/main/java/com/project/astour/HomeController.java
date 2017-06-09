@@ -12,8 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.astour.model.dto.attraction.tagrankVO;
 import com.project.astour.model.dto.member.MemberVO;
 import com.project.astour.model.dto.mypage.snsVO;
+import com.project.astour.service.attraction.AttractionService;
 import com.project.astour.service.mypage.SnsService;
 
 /**
@@ -25,6 +27,9 @@ public class HomeController {
 	
 	@Inject
 	SnsService snsService;
+	
+	@Inject
+	AttractionService attractionservice;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -40,8 +45,10 @@ public class HomeController {
 		logger.info("처음 main화면인 home.jsp 이동 Home Controller");
 		
 		List<snsVO> rankList = snsService.rankList();
+		List<tagrankVO> tagrank = attractionservice.tagrank();
 		
 		model.addAttribute("rankList",rankList);
+		model.addAttribute("tagrank", tagrank);
 		model.addAttribute("curPage", "main.jsp");
 		return "home";
 	}

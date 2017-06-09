@@ -123,7 +123,7 @@ public class SnsDetailsController {
 	//추가
 	@RequestMapping("in.do")
 	public String PostContent(Model model, SnsReplyVO vo){
-		System.out.println("댓글 추가");
+		//System.out.println("댓글 추가");
 		snsDetailsService.reply(vo);
 		System.out.println("test:"+vo.getMname());
 		return "redirect:/snsdetails/contentview.do?spk="+vo.getSpk();

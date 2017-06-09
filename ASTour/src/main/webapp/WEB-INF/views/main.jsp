@@ -23,149 +23,6 @@
               <!-- data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" -->
               <img src="${path}/resources/image/main/go3.jpg" alt="">
   
-              <!-- LAYER NR. 1 -->
-             <!--  <div class="tp-caption lightgrey_divider skewfromrightshort customout"
-                 data-x="85"
-                 data-y="224"
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="500"
-                 data-start="1200"
-                 data-easing="Power4.easeOut"
-                 data-endspeed="500"
-                 data-endeasing="Power4.easeIn"
-                 data-captionhidden="off"
-                 style="z-index: 2">
-              </div> -->
-  
-             <%--  <!-- LAYER NR. 2 -->
-              <div class="tp-caption customin customout"
-                 data-x="right" data-hoffset="-220"
-                 data-y="bottom" data-voffset="0"
-                 data-customin="x:50;y:150;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="800"
-                 data-start="700"
-                 data-easing="Power4.easeOut"
-                 data-endspeed="500"
-                 data-endeasing="Power4.easeIn"
-                 style="z-index: 3"><img src="${path}/resources/assets/images/demo/revolution_slider/mainimg1.1.png" alt="">
-              </div>
-  
-              <!-- LAYER NR. 2 -->
-              <div class="tp-caption customin customout"
-                 data-x="right" data-hoffset="-100"
-                 data-y="bottom" data-voffset="0"
-                 data-customin="x:50;y:150;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="1500"
-                 data-start="700"
-                 data-easing="Elastic.easeInOut"
-                 data-endspeed="500"
-                 data-endeasing="Power1.easeIn"
-                 style="z-index: 3"><img src="${path}/resources/assets/images/demo/revolution_slider/slider_run.png" alt="">
-              </div>
-  
-              <!-- LAYER NR. 3 -->
-              <div class="tp-caption large_bold_grey skewfromrightshort customout"
-                 data-x="80"
-                 data-y="66"
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="500"
-                 data-start="800"
-                 data-easing="Back.easeOut"
-                 data-endspeed="500"
-                 data-endeasing="Power4.easeIn"
-                 data-captionhidden="off"
-                 style="z-index: 4">설악산
-              </div>
-  
-              <!-- LAYER NR. 4 -->
-              <div class="tp-caption large_bold_grey skewfromleftshort customout"
-                 data-x="80"
-                 data-y="122"
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="300"
-                 data-start="1100"
-                 data-easing="Back.easeOut"
-                 data-endspeed="500"
-                 data-endeasing="Power4.easeIn"
-                 data-captionhidden="off"
-                 style="z-index: 7">벚꽃축제
-              </div>
-  
-              <!-- LAYER NR. 5 -->
-              <div class="tp-caption small_thin_grey customin customout"
-                 data-x="80"
-                 data-y="230"
-                 data-customin="x:0;y:100;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:3;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:0% 0%;"
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="500"
-                 data-start="1300"
-                 data-easing="Power4.easeOut"
-                 data-endspeed="500"
-                 data-endeasing="Power4.easeIn"
-                 data-captionhidden="off"
-                 style="z-index: 8">
-                 설악산 벚꽃축제 어쩌고저쩌고 나불나불 샬라샬라샬라 얄리얄리 얄라숑<br /> 
-                 어쩌고저쩌고 나불나불 샬라샬라샬라 얄리얄리 얄라숑<br /> 
-                 <strong>설악산 짱짱맨!</strong><br />
-                 <a href="index-more.html">Read more...</a>
-              </div>
-  
-              <!-- LAYER NR. 6 -->
-              <div class="tp-caption large_bold_darkblue skewfromleftshort customout"
-                 data-x="80" data-hoffset="-90"
-                 data-y="350"
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="500"
-                 data-start="1600"
-                 data-easing="Back.easeOut"
-                 data-endspeed="500"
-                 data-endeasing="Power4.easeIn"
-                 data-captionhidden="off"
-                 style="z-index: 10">ㅎㅎㅎㅎ
-              </div>
-  
-              <!-- LAYER NR. 7 -->
-              <div class="tp-caption medium_bg_darkblue skewfromleftshort customout"
-                 data-x="80" data-hoffset="-90"
-                 data-y="410"
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="500"
-                 data-start="1650"
-                 data-easing="Back.easeOut"
-                 data-endspeed="500"
-                 data-endeasing="Power4.easeIn"
-                 data-captionhidden="off"
-                 style="z-index: 11">ㅎㅎㅎㅎ
-              </div>
-  
-              <div class="tp-caption medium_bold_orange skewfromleftshort customout start font300"
-                 data-x="230" data-hoffset="-90"
-                 data-y="370"
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="500"
-                 data-start="1850"
-                 data-easing="Back.easeOut"
-                 data-endspeed="500"
-                 data-endeasing="Power4.easeIn"
-                 data-captionhidden="off"
-                 style="z-index: 13;">ㅎㅎㅎ<strong>ㅎㅎ</strong>
-              </div> 
-  
-              <!-- LAYER NR. 8 -->
-              <div class="tp-caption medium_bg_orange skewfromleftshort customout"
-                 data-x="230" data-hoffset="-90"
-                 data-y="410"
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="500"
-                 data-start="2300"
-                 data-easing="Back.easeOut"
-                 data-endspeed="500"
-                 data-endeasing="Power4.easeIn"
-                 data-captionhidden="off"
-                 style="z-index: 21">ㅎㅎㅎㅎ
-              </div> --%>
   
            </li>
   
@@ -194,88 +51,14 @@
                  data-endspeed="300" 
                  data-endeasing="easeInSine">한옥마을 
               </div>
-  
-              <!-- <div class="tp-caption large_text sft"
-                 data-x="center"
-                 data-y="260"
-                 data-speed="300"
-                 data-start="1700"
-                 data-endspeed="500"
-                 data-easing="easeOutBack"><h2>전주 한옥마을</h2>
-              </div> -->
-  
-              <!-- <div class="tp-caption lft boxshadow" 
-                 data-x="70" 
-                 data-y="70" 
-                 data-speed="900" 
-                 data-start="500" 
-                 data-easing="easeOutBack">
-                 <iframe src='http://player.vimeo.com/video/8408210?title=0&amp;byline=0&amp;portrait=0;api=1' width='640' height='360' style='width:640px; height:360px;'></iframe>
-              </div>
-  
-              <div class="tp-caption sft large_bold_grey" 
-                 data-x="750" 
-                 data-y="70" 
-                 data-speed="300" 
-                 data-start="1200" 
-                 data-easing="easeOutExpo">FEATURED
-              </div>
-  
-              <div class="tp-caption sft modern_big_redbg" 
-                 data-x="750" 
-                 data-y="164" 
-                 data-speed="300" 
-                 data-start="1300" 
-                 data-easing="easeOutExpo">Best With Atropos
-              </div>
-  
-              <div class="tp-caption lfb thinheadline_dark" 
-                 data-x="750" 
-                 data-y="210" 
-                 data-speed="300" 
-                 data-start="1400" 
-                 data-easing="easeOutExpo">You can easily add
-              </div>
-  
-              <div class="tp-caption lfb thinheadline_dark" 
-                 data-x="750" 
-                 data-y="244" 
-                 data-speed="300" 
-                 data-start="1500" 
-                 data-easing="easeOutExpo">Vimeo &amp; Youtube Videos
-              </div>
-  
-              <div class="tp-caption lfb thinheadline_dark" 
-                 data-x="750" 
-                 data-y="278" 
-                 data-speed="300" 
-                 data-start="1600" 
-                 data-easing="easeOutExpo">to your Slides
-              </div>
-  
-              <div class="tp-caption lfb medium_bg_darkblue" 
-                 data-x="750" 
-                 data-y="390" 
-                 data-speed="300" 
-                 data-start="1600" 
-                 data-easing="easeOutExpo"><i class="fa fa-html5"></i> HTML5
-              </div>
-  
-              <div class="tp-caption lfb medium_bg_orange" 
-                 data-x="860" 
-                 data-y="390" 
-                 data-speed="300" 
-                 data-start="1600" 
-                 data-easing="easeOutExpo"><i class="fa fa-css3"></i> CSS3
-              </div>
-   -->
            </li>
   
            <!-- SLIDE -->
            <li data-transition="incube-horizontal" data-slotamount="5" data-masterspeed="700" >
   
               <!-- COVER IMAGE -->
-              <img src="${path}/resources/assets/images/demo/revolution_slider/church_parallax.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+               <!-- data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" -->
+              <img src="${path}/resources/image/main/go7.png" alt="">
   
               <div class="tp-caption large_text sft"
                  data-x="center"
@@ -811,14 +594,17 @@
      <div class="row featured-box-minimal margin-bottom30">
         <div class="col-md-4">
            <h4><i style="color: #D9C91D;" class="fa fa-trophy"></i>금메달</h4>
+        	<h5>${rankList[0].stag }</h5>
             <a href="${path}/snsdetails/contentview.do?spk=${rankList[0].spk }"><h3><p>${rankList[0].stitle }</p></h3></a>  
         </div>
         <div class="col-md-4">
            <h4><i style="color: lightgrey;" class="fa fa-trophy"></i>은메달</h4>
+        	<h5>${rankList[1].stag }</h5>
             <a href="${path}/snsdetails/contentview.do?spk=${rankList[1].spk }"><h3><p>${rankList[1].stitle }</p></h3></a>
         </div>
         <div class="col-md-4">
            <h4><i style="color: #704405;" class="fa fa-trophy"></i>동메달</h4>
+        	<h5>${rankList[2].stag }</h5>
            <a href="${path}/snsdetails/contentview.do?spk=${rankList[2].spk }"><h3><p>${rankList[2].stitle }</p></h3></a> 
         </div>
      </div>
@@ -830,15 +616,15 @@
      <div class="row featured-box-minimal margin-bottom30">
         <div class="col-md-4">
            <h4><i style="color: #D9C91D;" class="fa fa-trophy"></i>금메달</h4>
-           <p>평점순 금은동 트로피 - 리뷰</p>
+           <a href="${path}/attraction/initDetails.do?name=${tagrank[0].atitle }"><h3><p>${tagrank[0].atitle }</p></h3></a>
         </div>
         <div class="col-md-4">
            <h4><i style="color: lightgrey;" class="fa fa-trophy"></i>은메달</h4>
-           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla.</p>
+           <a href="${path}/attraction/initDetails.do?name=${tagrank[1].atitle }"><h3><p>${tagrank[1].atitle }</p></h3></a>
         </div>
         <div class="col-md-4">
            <h4><i style="color: #704405;" class="fa fa-trophy"></i>동메달</h4>
-           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla.</p>
+           <a href="${path}/attraction/initDetails.do?name=${tagrank[2].atitle }"><h3><p>${tagrank[2].atitle }</p></h3></a>
         </div>
      </div>
      <!-- /FEATURED BOXES 4 -->

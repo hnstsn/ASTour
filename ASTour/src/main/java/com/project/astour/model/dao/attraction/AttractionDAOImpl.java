@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.astour.model.dto.attraction.attraction_tbl;
 import com.project.astour.model.dto.attraction.reViewListVO;
+import com.project.astour.model.dto.attraction.tagrankVO;
 import com.project.astour.model.dto.mypage.snsVO;
 
 @Repository
@@ -80,6 +81,11 @@ public class AttractionDAOImpl implements AttractionDAO{
 	@Override
 	public int allCount(String title) {
 		return sqlSession.selectOne("attractionmap.allcount",title);
+	}
+
+	@Override
+	public List<tagrankVO> tagrank() {
+		return sqlSession.selectList("attractionmap.tagrank");
 	}
 	
 	

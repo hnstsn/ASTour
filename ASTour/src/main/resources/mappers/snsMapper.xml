@@ -83,7 +83,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="memList" resultType="MemberVO">
 		SELECT m.mpk,m.mname,p.ppk,nvl(p.pfile,'mu.jpg') as pfile,
 		nvl(p.ppath,'WEB-INF/views/upload/profile') as ppath
-		FROM ASTMember m, ASTProfile p WHERE m.mpk=p.mpk(+) and m.mpk=#{mpk }
+		FROM ASTMember m, ASTProfile p WHERE m.mpk=p.mpk(+) and m.mpk=#{mpk}
 		order by ppk desc
 	</select>
 
@@ -180,6 +180,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="rankList" resultType="snsVO">
 		select spk, stitle, scontent, stag, ssort, shits, mpk, 
 		rank() over (order by shits desc) as rank from sns_tbl
+		where ssort='review'
 	</select>	
 	
 	<!-- 게시판 댓글 갯수 조회 -->
