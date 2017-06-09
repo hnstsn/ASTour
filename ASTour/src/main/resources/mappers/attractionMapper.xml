@@ -6,9 +6,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
 
 <mapper namespace="attractionmap">
+
+	<!-- 행사&명소 리스트 -->
 	<select id="attractionselect"
 		resultType="com.project.astour.model.dto.attraction.attraction_tbl">
 		SELECT *FROM attraction_tbl
+	</select>
+	<!-- 행사&명소 리스트 -->
+	<select id="attractionselect2"
+		resultType="com.project.astour.model.dto.attraction.attraction_tbl">
+		SELECT * FROM(
+		SELECT rownum rnum, a.*
+		FROM(
+		SELECT *FROM attraction_tbl
+    	) a
+		)WHERE rnum between #{start} and #{end}
+	</select>
+	<!-- 행사&명소 리스트 카운트 -->
+	<select id="attractionselectCount" resultType="int">
+		SELECT count(*) FROM attraction_tbl
 	</select>
 	
 	<select id="detailsselect"
@@ -16,14 +32,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT *FROM attraction_tbl WHERE ATITLE=#{ATITLE }
 	</select>
 	
+	<!-- 검색 -->
 	<select id="attractionATITLE"
 		resultType="com.project.astour.model.dto.attraction.attraction_tbl">
-		SELECT *FROM attraction_tbl WHERE ATITLE LIKE #{ATITLE }
+		SELECT * FROM(
+		SELECT rownum rnum, a.*
+		FROM(
+		SELECT *FROM attraction_tbl WHERE ATITLE LIKE #{ATITLE}) a
+		)WHERE rnum between #{start} and #{end}
+	</select>
+
+	<!-- 검색 카운트 -->
+	<select id="attractionAtitleCount" resultType="int">
+		SELECT count(*)
+		FROM attraction_tbl WHERE ATITLE LIKE #{ATITLE }
 	</select>
 	
+	<!-- 행사 혹은 명소인지 검색 -->
 	<select id="attractionASORT"
 		resultType="com.project.astour.model.dto.attraction.attraction_tbl">
-		SELECT *FROM attraction_tbl WHERE ASORT = #{ATITLE }
+		SELECT * FROM(
+		SELECT rownum rnum, a.*
+		FROM(
+		SELECT *FROM attraction_tbl WHERE ASORT = #{ASORT} ) a
+		)WHERE rnum between #{start} and #{end}
+	</select>
+	<!-- 행사 혹은 명소인지 검색 후 카운트-->
+	<select id="attractionASORTCount" resultType="int">
+		SELECT count(*)
+		FROM attraction_tbl WHERE ASORT = #{ASORT }
 	</select>
 	
 	<select id="reviewattraction2"
@@ -71,6 +108,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 해당 리뷰 갯수 구하기 -->
 	<select id="allcount" resultType="int">
 		select count(*) from sns_tbl where ssort = 'review' and stag=#{title}
+	</select>
+	
+	<!-- 메인화면 꺼 명소 -->
+	<select id="tagrank" 
+	resultType = "com.project.astour.model.dto.attraction.tagrankVO">
+		select at.attpk, at.atitle, r.rn, r.cnt
+			from attraction_tbl at, 
+  				(select *  from (
+      				select rownum rn, t.*
+      		from 
+        		(select (count(s.spk)) as cnt, s.stag
+           			from sns_tbl s, attraction_tbl a
+          			where s.stag in a.atitle
+         			group by (s.stag) order by cnt desc) t)
+      				where rn between 1 and 3) r
+			where at.atitle in r.stag
+			order by r.rn
 	</select>
 
 

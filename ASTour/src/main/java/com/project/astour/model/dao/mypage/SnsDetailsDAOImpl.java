@@ -64,8 +64,12 @@ public class SnsDetailsDAOImpl implements SnsDetailsDAO{
 
 	//뎃글추가
 	@Override
-	public void reply(SnsReplyVO vo) {
-		sqlSession.insert("sns.addReply",vo);
+	public void reply(int mpk,int spk,String rcontent) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("mpk", mpk);
+		map.put("spk", spk);
+		map.put("rcontent", rcontent);
+		sqlSession.insert("sns.addReply",map);
 	}
 
 	/*@Override
@@ -111,11 +115,18 @@ public class SnsDetailsDAOImpl implements SnsDetailsDAO{
 		map.put("spk",spk);
 		return sqlSession.selectList("sns.replyView",map);
 	}
+	//댓글 해당하는 사진 가지고오기
+	@Override
+	public String replyViewFile(int mpk) {
+		return sqlSession.selectOne("sns.replyViewFile",mpk);
+	}
 
 	//상세보기에 이름가지고오기 
 	@Override
 	public String nameone(int spk) {
 		return sqlSession.selectOne("sns.nameone",spk);
 	}
+
+	
 	
 }

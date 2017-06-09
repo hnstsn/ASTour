@@ -1,6 +1,7 @@
 package com.project.astour.controller.mypage;
 
-import java.util.List; 
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -53,8 +54,11 @@ public class SnsDetailsController {
 		int end=pager.getPageEnd();
 		// 해당 게시물의 댓글 가져오기
 		List<SnsReplyVO> replyView =snsDetailsService.replyView(start,end,spk);
-		
-		System.out.println(start+":확인:"+end);
+		//해당 게시물의 댓글 프로필사진을 가지고 오기 위함
+		for(SnsReplyVO vo : replyView){
+			String fileName=snsDetailsService.replyViewFile(vo.getMpk());
+			vo.setPfile(fileName);
+		}
 		
 		//model.addAttribute("replyView",replyView);
 		model.addAttribute("pager",pager);
@@ -122,11 +126,18 @@ public class SnsDetailsController {
 	
 	//추가
 	@RequestMapping("in.do")
-	public String PostContent(Model model, SnsReplyVO vo){
-		System.out.println("댓글 추가");
-		snsDetailsService.reply(vo);
-		System.out.println("test:"+vo.getMname());
-		return "redirect:/snsdetails/contentview.do?spk="+vo.getSpk();
+	public String PostContent(Model model,
+			@RequestParam(value="rcontent") String rcontent,
+			@RequestParam(value="mpk") int mpk,
+			@RequestParam(value="spk") int spk){
+		System.out.println("확인용");
+		System.out.println(mpk);
+		System.out.println(spk);
+		System.out.println(rcontent);
+		
+		snsDetailsService.reply(mpk,spk,rcontent);
+		
+		return "redirect:/snsdetails/contentview.do?spk="+spk;
 	}
 	
 	//댓글삭제
@@ -139,7 +150,12 @@ public class SnsDetailsController {
 	//댓글수정 view
     @RequestMapping("up.do")
 	public String up(Model model,@ModelAttribute SnsReplyVO vo){
+    	//댓글 추가 할때 하나만 가지고오기
        SnsReplyVO snsReplyVO = snsDetailsService.upselect(vo.getRpk());
+       //댓글 추가 할때 해당하는 사람의 사진 하나만 가지고오기 
+       String fileName=snsDetailsService.replyViewFile(vo.getMpk());
+       System.out.println("view 확인"+fileName);
+       model.addAttribute("file",fileName);
        model.addAttribute("rpk",vo.getRpk());
        model.addAttribute("list",snsReplyVO);
        model.addAttribute("mname",vo.getMname());

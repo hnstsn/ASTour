@@ -83,16 +83,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="memList" resultType="MemberVO">
 		SELECT m.mpk,m.mname,p.ppk,nvl(p.pfile,'mu.jpg') as pfile,
 		nvl(p.ppath,'WEB-INF/views/upload/profile') as ppath
-		FROM ASTMember m, ASTProfile p WHERE m.mpk=p.mpk(+) and m.mpk=#{mpk }
+		FROM ASTMember m, ASTProfile p WHERE m.mpk=p.mpk(+) and m.mpk=#{mpk}
 		order by ppk desc
 	</select>
 
-	<!-- 사람검색 -->
-	<select id="peopleList" resultType="MemberVO">
-		SELECT m.mpk, m.mid, m.mname, p.ppk, nvl(p.pfile,'mu.jpg') AS pfile,
+		<!-- SELECT m.mpk, m.mid, m.mname, p.ppk, nvl(p.pfile,'mu.jpg') AS pfile,
 			   nvl(p.ppath,'WEB-INF/views/upload/profile') AS ppath
 		FROM ASTMember m, ASTProfile p 
-		WHERE m.mpk=p.mpk(+) AND m.mname LIKE #{mname}
+		WHERE m.mpk=p.mpk(+) AND m.mname LIKE #{mname} -->
+	<!-- 사람검색 -->
+	<select id="peopleList" resultType="MemberVO">
+	SELECT m.mpk, m.mid, m.mname
+	FROM ASTMember m 
+	WHERE m.mname LIKE #{mname}
 	</select>
 
 	<!-- 메뉴에서 게시글이나 리뷰에 맞게 보여줌 -->
@@ -143,9 +146,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 댓글수정 하기위해 정보불러오기 -->
    <select id="replyselect" resultType="SnsReplyVO">
-	   select am.mpk,am.mname,nvl(af.pfile,'mu.jpg') as pfile, rt.* 
+	   select mem.mname,rt.* from reply_tbl rt,ASTMember mem 
+	   where rt.mpk=mem.mpk and rpk=#{rpk}
+	   <!-- select am.mpk,am.mname,nvl(af.pfile,'mu.jpg') as pfile, rt.* 
 	   from ASTMember am,ASTProfile af, reply_tbl rt
-	   where am.mpk=af.mpk(+) and rt.mpk=am.mpk and rpk=#{rpk}
+	   where am.mpk=af.mpk(+) and rt.mpk=am.mpk and rpk=#{rpk} -->
    </select>
    
    <!-- 댓글업데이트 -->
@@ -153,16 +158,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update reply_tbl set rcontent=#{rcontent},rtime=sysdate where rpk=#{rpk}
    </update>
    
-   <!-- test -->
+   <!-- 댓글 리스트 보여주기 -->
 	<select id="replyView" resultType="SnsReplyVO">
 	SELECT * FROM(
+	SELECT rownum rnum, a.*
+	FROM(
+	select rt.*,am.mname, am.mid from ASTMember am,reply_tbl rt
+	where am.mpk=rt.mpk and spk=#{spk} order by rpk desc ) a
+	)WHERE rnum between #{start} and ${end}
+	<!-- SELECT * FROM(
 	SELECT rownum rnum, a.*
 	FROM(
 	select rt.*, nvl(af.pfile,'mu.jpg') as pfile ,nvl(af.ppath,'mu.jpg') as
 	ppath,
 	am.mname, am.mid from ASTMember am, ASTProfile af, reply_tbl rt
 	where am.mpk=af.mpk(+) and am.mpk=rt.mpk and spk=#{spk} order by rpk desc ) a
-	)WHERE rnum between #{start} and #{end}
+	)WHERE rnum between #{start} and #{end} -->
+	</select>
+	<!-- 댓글 리스트 올른사람 사진 가지고오기  -->
+	<select id="replyViewFile" resultType="String">
+	SELECT nvl(pfile,'mu.jpg')as pfile FROM ASTProfile WHERE MPK = #{mpk} and 
+	ppk = (SELECT max(ppk) from ASTProfile where mpk=#{mpk})
+	order by ppk desc
 	</select>
 	
 	<!-- 글쓴이의 이름만 가지고오기 -->
@@ -180,6 +197,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="rankList" resultType="snsVO">
 		select spk, stitle, scontent, stag, ssort, shits, mpk, 
 		rank() over (order by shits desc) as rank from sns_tbl
+		where ssort='review'
 	</select>	
 	
 	<!-- 게시판 댓글 갯수 조회 -->

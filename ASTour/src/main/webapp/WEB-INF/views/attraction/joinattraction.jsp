@@ -67,7 +67,7 @@
       <!-- PAGE TITLE -->
       <header id="page-title">
       <div class="container" style="margin-left: 20%; margin-right: 20%">
-         <h1>추천장소 & 행사</h1>
+         <h1>명소 & 행사</h1>
       </div>
       </header>
 
@@ -111,7 +111,45 @@
          </ul>
       </div>
       <!-- /.masonry-container -->
-   </div>
-   <!-- /WRAPPER -->
+      <!-- AST : 페이지 넘기기 -->
+	<div class="text-center">
+		<ul class="pagination">
+			<c:if test="${pager.curBlock > 1 }">
+				<li><a
+					href="${path }/attraction/${controller}?curPage1=1&loc=${loc}"><i
+						class="fa fa-angle-double-left"></i></a></li>
+			</c:if>
+			<c:if test="${pager.curBlock > 1 }">
+				<li><a
+					href="${path }/attraction/${controller}?curPage1=${pager.prevPage}&loc=${loc}"><i
+						class="fa fa-chevron-left"></i></a></li>
+			</c:if>
+			<c:forEach var="num" begin="${pager.blockBegin }"
+				end="${pager.blockEnd }">
+				<c:if test="${num == pager.curPage }">
+					<li><a style="background: GREEN;"
+						href="${path }/attraction/${controller}?curPage1=${num}&loc=${loc}">${num }</a></li>
+				</c:if>
+				<c:if test="${num != pager.curPage }">
+					<li><a
+						href="${path }/attraction/${controller}?curPage1=${num}&loc=${loc}">${num }</a></li>
+				</c:if>
+			</c:forEach>
+			<%-- <c:if test="${pager.curBlock <= pager.totBlock}"> --%>
+			<c:if test="${pager.curPage <= pager.totPage }">
+				<li><a
+					href="${path }/attraction/${controller}?curPage1=${pager.nextPage}&loc=${loc}"><i
+						class="fa fa-chevron-right"></i></a></li>
+			</c:if>
+			<c:if test="${pager.curPage <= pager.totPage }">
+				<li><a
+					href="${path }/attraction/${controller}?curPage1=${pager.totPage}&loc=${loc}"><i
+						class="fa fa-angle-double-right"></i></a></li>
+			</c:if>
+		</ul>
+	</div>
+	<!-- / AST : 페이지 넘기기 -->
 
+</div>
+   <!-- /WRAPPER -->
 </html>

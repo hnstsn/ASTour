@@ -19,7 +19,9 @@ public interface SnsDetailsService {
 	public void deletePic(int sfpk);
 	public void deleteReplys(int spk);
 	public void upContent(snsVO sns);
-	public void reply(SnsReplyVO vo);
+	
+	
+	public void reply(int mpk,int spk,String rcontent);
 	//public List<SnsReplyVO> replyView(int spk);
 	public void hitsView(int spk, HttpSession session);
 	
@@ -30,5 +32,6 @@ public interface SnsDetailsService {
 	public void replyupdate(SnsReplyVO vo);
 	
 	public List<SnsReplyVO> replyView(int start,int end,int spk);//댓글 보여주기
+	public String replyViewFile(int mpK); //댓글 해당하는 사진 가지고오기 
 	public String nameone(int spk); //상세보기 이름 하나 가지고오기 
 }

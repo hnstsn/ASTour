@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.astour.model.dto.attraction.attraction_tbl;
 import com.project.astour.model.dto.member.MemberVO;
 import com.project.astour.model.dto.mypage.Pager;
 import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.snsVO;
+import com.project.astour.service.attraction.AttractionService;
 import com.project.astour.service.member.MemberService;
+import com.project.astour.service.mypage.SnsDetailsService;
 import com.project.astour.service.mypage.SnsService;
 
 @Controller
@@ -24,9 +27,14 @@ public class SnsController {
 
 	@Inject
 	SnsService snsService;
+	@Inject
+	AttractionService attractionService;
 
 	@Inject
 	MemberService memberService;
+	
+	@Inject
+	SnsDetailsService snsDetailsService;
 
 	// 처음화면 (0)
 	@RequestMapping("initSns.do")
@@ -39,8 +47,7 @@ public class SnsController {
 		int start = pager.getPageBegin();
 		int end = pager.getPageEnd();
 		pager.setMpk(mpk);
-		
-		
+				
 		// 회원정보 가져오기
 		MemberVO member = snsService.memList(mpk);
 		// sns 게시글 가져오기
@@ -69,6 +76,8 @@ public class SnsController {
 	@RequestMapping("writeview.do")
 	public String writeview(Model model, @RequestParam(value = "mpk") int mpk) {
 		model.addAttribute("mpk", mpk);
+		List<attraction_tbl> attractionList = attractionService.attractionList(); 
+		model.addAttribute("list", attractionList);
 		model.addAttribute("curPage", "snsView/write.jsp");
 		return "home";
 	}
@@ -112,6 +121,12 @@ public class SnsController {
 	@RequestMapping("snsPeople.do")
 	public String pepole(Model model, @RequestParam(value = "people_id") String people_id) {
 		List<MemberVO> peopleList = snsService.peopleList(people_id);
+		
+		for(MemberVO vo :peopleList){
+			String fileName=snsDetailsService.replyViewFile(vo.getMpk());
+			vo.setPfile(fileName);
+		}
+		
 		model.addAttribute("peopleList", peopleList);
 		model.addAttribute("curPage", "snsView/snsPeopleView.jsp");
 		return "home";

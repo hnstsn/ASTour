@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.astour.model.dto.attraction.attraction_tbl;
 import com.project.astour.model.dto.map.sigunVO;
+import com.project.astour.service.attraction.AttractionService;
 import com.project.astour.service.map.MapService;
 
 @Controller
@@ -21,6 +22,8 @@ public class LocationSelect {
 	
 	@Inject
 	MapService mapService;
+	@Inject
+	AttractionService attractionService;
 	
 	@RequestMapping("locationSelect")
 	public String locaSelect(Model model) {
@@ -37,6 +40,7 @@ public class LocationSelect {
 		return "home";
 	}
 	
+	
 	@RequestMapping("selectBox")
 	@ResponseBody
 	public List<sigunVO> f1(HttpServletResponse response,
@@ -51,19 +55,17 @@ public class LocationSelect {
 	@RequestMapping("searchLocation")
 	@ResponseBody
 	public List<attraction_tbl> f2(HttpServletResponse response,
-			attraction_tbl vo
-			/*@RequestParam(value="selectedSi") String si,
-			@RequestParam(value="selectedGun") String gun,
-			@RequestParam(value="selectedEvent") String event,
-			@RequestParam(value="selectedAttraction") String input,*/
-			//HttpServletRequest re, Model model
-			) {
-		/*System.out.println(si);
-		System.out.println(gun);
-		System.out.println(event);
-		System.out.println(input);*/
-		
+			attraction_tbl vo) {
 		
 	return mapService.searchLocation(vo);
 	}
+	
+	@RequestMapping("allLocation")
+	@ResponseBody
+	public List<attraction_tbl> f3(HttpServletResponse response){
+		return attractionService.attractionList(); 
+	}
+	
+	
+	
 }

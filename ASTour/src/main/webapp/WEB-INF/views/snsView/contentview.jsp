@@ -42,8 +42,8 @@ function f1(rpk,spk){
 };
 
 //수정
-function f2(rpk,spk){
-   window.open("${path}/snsdetails/up.do?rpk="+rpk+"&spk="+spk, "댓글", "width=800, height=500");
+function f2(rpk,spk,mpk){
+   window.open("${path}/snsdetails/up.do?rpk="+rpk+"&spk="+spk+"&mpk="+mpk, "댓글", "width=800, height=500");
 };
 </script>
 </head>
@@ -131,7 +131,7 @@ function f2(rpk,spk){
 									<div>
 										<c:if test="${sessionScope.member.mpk eq re.mpk}">
 	                              			<a class="scrollTo replyBtn" onclick="f1(${re.rpk},${re.spk})">삭제</a>
-											<a class="scrollTo replyBtn" style="margin-right: 1%;" onclick="f2(${re.rpk},${re.spk})">수정</a>
+											<a class="scrollTo replyBtn" style="margin-right: 1%;" onclick="f2(${re.rpk},${re.spk},${re.mpk})">수정</a>
 										</c:if>
 										<a href="${path }/sns/initSns.do?mpk=${re.mpk}"><h4 class="media-heading bold">${re.mname}</h4></a>
 										<small class="block"> 
@@ -168,7 +168,6 @@ function f2(rpk,spk){
 
 						<!-- COMMENT FORM -->
 						<form id="commentForm" action="${path}/snsdetails/in.do" method="post" >
-
 							<div class="row">
 								<!-- comment -->
 								<div class="col-md-12">
@@ -176,7 +175,6 @@ function f2(rpk,spk){
 										name="rcontent" rows="5" placeholder="댓글을 남겨주세요"></textarea>
 								</div>
 								<br />
-
 								<!-- btn -->
 								<div class="col-md-12">
 									<p align="right">
@@ -186,7 +184,6 @@ function f2(rpk,spk){
 									</p>
 								</div>
 							</div>
-
 						</form>
 						<!-- /COMMENT FORM -->
 					</div>

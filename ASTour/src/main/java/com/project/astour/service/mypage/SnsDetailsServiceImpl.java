@@ -62,8 +62,8 @@ public class SnsDetailsServiceImpl implements SnsDetailsService{
 	}
 		
 	@Override
-	public void reply(SnsReplyVO vo) {
-		snsDetailsDao.reply(vo);
+	public void reply(int mpk,int spk,String rcontent) {
+		snsDetailsDao.reply(mpk,spk,rcontent);
 	}
 
 	/*@Override
@@ -114,11 +114,18 @@ public class SnsDetailsServiceImpl implements SnsDetailsService{
 	public List<SnsReplyVO> replyView(int start,int end,int spk){
 		return snsDetailsDao.replyView(start, end,spk);
 	}
+	//댓글 쓴사람 사진 가지고오기
+	@Override
+	public String replyViewFile(int mpk) {
+		return snsDetailsDao.replyViewFile(mpk);
+	}
 	//상세보기 이름 하나 가지고오기
 	@Override
 	public String nameone(int spk) {
 		return snsDetailsDao.nameone(spk);
 	}
+
 	
 
+	
 }

@@ -75,10 +75,10 @@ $(function(){
 						<div class="container">
 
 							<!--  AST : 프로필 사진 클릭시 확대 -->
-							<a href="${path }/resources/assets/images/prof.png" target=_blank>
+							<!-- <a href="${path}/profile/${member.pfile}" target=_blank></a> -->
 								<img src="${path}/profile/${member.pfile}"
 								class="img-circle" alt="Cinque Terre" width="200" height="160">
-							</a>
+							
 							<!--  / AST : 프로필 사진 클릭시 확대 -->
 
 						</div>
@@ -178,7 +178,7 @@ $(function(){
 							</c:forEach>
 						<%-- <c:if test="${pager.curBlock <= pager.totBlock}"> --%>
 						<c:if test="${pager.curPage <= pager.totPage }">
-                           <li><a href="${path }/sns/initSns.do?mpk=${pager.mpk}&curPage1=${pager.nextPage}}"><i class="fa fa-chevron-right"></i></a></li>
+                           <li><a href="${path }/sns/initSns.do?mpk=${pager.mpk}&curPage1=${pager.nextPage}"><i class="fa fa-chevron-right"></i></a></li>
                         </c:if>
                         <c:if test="${pager.curPage <= pager.totPage }">
                            <li><a href = "${path }/sns/initSns.do?mpk=${pager.mpk}&curPage1=${pager.totPage}"><i class="fa fa-angle-double-right"></i></a></li>
