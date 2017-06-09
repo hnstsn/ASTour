@@ -1,6 +1,6 @@
 package com.project.astour.controller.mypage;
 
-import java.util.List; 
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -53,6 +53,12 @@ public class SnsDetailsController {
 		int end=pager.getPageEnd();
 		// 해당 게시물의 댓글 가져오기
 		List<SnsReplyVO> replyView =snsDetailsService.replyView(start,end,spk);
+		
+		//해당 게시물의 댓글 프로필사진을 가지고 오기 위함
+		for(SnsReplyVO vo : replyView){
+			String fileNmae=snsDetailsService.replyViewFile(vo.getCt());
+			vo.setPfile(fileNmae);
+		}
 		
 		System.out.println(start+":확인:"+end);
 		
@@ -130,6 +136,7 @@ public class SnsDetailsController {
 		System.out.println(mpk);
 		System.out.println(spk);
 		System.out.println(rcontent);
+		
 		snsDetailsService.reply(mpk,spk,rcontent);
 		
 		return "redirect:/snsdetails/contentview.do?spk="+spk;
@@ -145,7 +152,11 @@ public class SnsDetailsController {
 	//댓글수정 view
     @RequestMapping("up.do")
 	public String up(Model model,@ModelAttribute SnsReplyVO vo){
+    	//댓글 추가 할때 하나만 가지고오기
        SnsReplyVO snsReplyVO = snsDetailsService.upselect(vo.getRpk());
+       //댓글 추가 할때 해당하는 사람의 사진 하나만 가지고오기 
+       String fileName=snsDetailsService.replyViewFile(vo.getMpk());
+       vo.setPfile(fileName);
        model.addAttribute("rpk",vo.getRpk());
        model.addAttribute("list",snsReplyVO);
        model.addAttribute("mname",vo.getMname());

@@ -32,5 +32,6 @@ public interface SnsDetailsService {
 	public void replyupdate(SnsReplyVO vo);
 	
 	public List<SnsReplyVO> replyView(int start,int end,int spk);//댓글 보여주기
+	public String replyViewFile(int mpK); //댓글 해당하는 사진 가지고오기 
 	public String nameone(int spk); //상세보기 이름 하나 가지고오기 
 }
