@@ -223,6 +223,7 @@ $(document).ready(function() {
                      <label>지역</label> 
 	                     <select id="siSelect" class="form-control" name="re_location">
 	                        <option>선택하세요</option>
+	                        <option value="기타">기타(직접입력)</option>
 	                        <option value="서울">서울</option>
 	                        <option value="부산">부산</option>
 	                        <option value="대구">대구</option>
@@ -262,7 +263,7 @@ $(document).ready(function() {
                   
                   <div class="col-md-8 col-sm-12 col-xs-12" >
                      <label>직접입력</label>
-                     <input id="tagSelfInput" type="text" class="form-control" />
+                     <input id="tagSelfInput" type="text" class="form-control" disabled="disabled" />
                   </div>
                </div>
             
@@ -294,9 +295,21 @@ $(document).ready(function() {
 <script>
 function sisi(){
 	var name = $("#siSelect option:selected").val();
+	
 	// AST : 지역이바뀌니 초기화
+	$("#gunSelect").attr("disabled",false);
+	$("#attractionName").attr("disabled",false);
 	$("#gunSelect").html("<option>"+"선택하세요!"+"</option>");
 	$("#attractionName").html("<option>"+"선택하세요!"+"</option>");
+	$("#tagSelfInput").val("");
+	$("#tagSelfInput").attr("disabled",true);
+	if(name=="기타"){
+		$("#tagSelfInput").attr("disabled",false);
+		$("#gunSelect").attr("disabled",true);
+		$("#gunSelect").val("");
+		$("#attractionName").attr("disabled",true);
+		$("#attractionName").val("");
+	}else{
 		$.ajax({
 			url:"${path}/searchLocation",
 			type : "post",
@@ -323,9 +336,10 @@ function sisi(){
 				}
 			}
 		});
+	}
 };
-/*AST : form 태그가 적절한지 판단  */
-$("#writeForm").submit(function() {
+//AST : form 태그가 적절한지 판단 -(안씀?) 
+/* $("#writeForm").submit(function() {
 	var tag_text = $("#stag").val();
 	//alert("태그"+tag_text);
 	var check = false;
@@ -355,7 +369,7 @@ $("#writeForm").submit(function() {
 		alert('태그명이 올바르지 않습니다')
 		return false;
 	}
-});
+}); */
 
 $(function(){
 	/* AST : 태그 선택창 눌렀을 때 div 보이게 설정  */
