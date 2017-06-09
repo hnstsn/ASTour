@@ -1,5 +1,6 @@
 package com.project.astour.controller.mypage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -53,14 +54,11 @@ public class SnsDetailsController {
 		int end=pager.getPageEnd();
 		// 해당 게시물의 댓글 가져오기
 		List<SnsReplyVO> replyView =snsDetailsService.replyView(start,end,spk);
-		
 		//해당 게시물의 댓글 프로필사진을 가지고 오기 위함
 		for(SnsReplyVO vo : replyView){
-			String fileNmae=snsDetailsService.replyViewFile(vo.getCt());
-			vo.setPfile(fileNmae);
+			String fileName=snsDetailsService.replyViewFile(vo.getMpk());
+			vo.setPfile(fileName);
 		}
-		
-		System.out.println(start+":확인:"+end);
 		
 		//model.addAttribute("replyView",replyView);
 		model.addAttribute("pager",pager);
@@ -156,7 +154,8 @@ public class SnsDetailsController {
        SnsReplyVO snsReplyVO = snsDetailsService.upselect(vo.getRpk());
        //댓글 추가 할때 해당하는 사람의 사진 하나만 가지고오기 
        String fileName=snsDetailsService.replyViewFile(vo.getMpk());
-       vo.setPfile(fileName);
+       System.out.println("view 확인"+fileName);
+       model.addAttribute("file",fileName);
        model.addAttribute("rpk",vo.getRpk());
        model.addAttribute("list",snsReplyVO);
        model.addAttribute("mname",vo.getMname());

@@ -45,7 +45,7 @@ function f1(){
       <div class="comment">
          <!-- user-avatar -->
          <span class="user-avatar">
-         <img style="margin: 2%" class="pull-left media-object" src="${path}/profile/${list.pfile}" width="64" height="64" alt="">
+         <img style="margin: 2%" class="pull-left media-object" src="${path}/profile/${file}" width="64" height="64" alt="">
          </span>
          <div class="media-body-1">
             <h4 class="media-heading bold">${list.mname}</h4>
