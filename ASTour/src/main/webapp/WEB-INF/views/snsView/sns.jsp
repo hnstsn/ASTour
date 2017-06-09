@@ -178,7 +178,7 @@ $(function(){
 							</c:forEach>
 						<%-- <c:if test="${pager.curBlock <= pager.totBlock}"> --%>
 						<c:if test="${pager.curPage <= pager.totPage }">
-                           <li><a href="${path }/sns/initSns.do?mpk=${pager.mpk}&curPage1=${pager.nextPage}}"><i class="fa fa-chevron-right"></i></a></li>
+                           <li><a href="${path }/sns/initSns.do?mpk=${pager.mpk}&curPage1=${pager.nextPage}"><i class="fa fa-chevron-right"></i></a></li>
                         </c:if>
                         <c:if test="${pager.curPage <= pager.totPage }">
                            <li><a href = "${path }/sns/initSns.do?mpk=${pager.mpk}&curPage1=${pager.totPage}"><i class="fa fa-angle-double-right"></i></a></li>

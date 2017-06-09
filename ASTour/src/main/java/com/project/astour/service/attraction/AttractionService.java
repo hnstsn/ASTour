@@ -11,9 +11,13 @@ import com.project.astour.model.dto.attraction.tagrankVO;
 @Service
 public interface AttractionService {
 	
-	public List<attraction_tbl> attractionList();
-	public List<attraction_tbl> attractionAtitle(String ATITLE);
-	public List<attraction_tbl> attractionAsort(String ASORT);
+	public List<attraction_tbl> attractionList();//전체리스트
+	public List<attraction_tbl> attractionList2(int start,int end);//전체리스트
+	public int attractionselectCount();//전체리스트카운트
+	public List<attraction_tbl> attractionAtitle(String ATITLE,int start,int end); //검색
+	public int attractionAtitleCount(String ATITLE);
+	public List<attraction_tbl> attractionAsort(String ASORT,int start,int end);//명소 행사 구분
+	public int attractionASORTCount(String ASORT);//명소 행사 구분후 카운트
 	
 	//리뷰 리스트 가지고오기 
 	public List<reViewListVO> reviewattraction(int start,int end,String title);

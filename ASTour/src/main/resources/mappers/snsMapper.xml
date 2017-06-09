@@ -87,12 +87,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by ppk desc
 	</select>
 
-	<!-- 사람검색 -->
-	<select id="peopleList" resultType="MemberVO">
-		SELECT m.mpk, m.mid, m.mname, p.ppk, nvl(p.pfile,'mu.jpg') AS pfile,
+		<!-- SELECT m.mpk, m.mid, m.mname, p.ppk, nvl(p.pfile,'mu.jpg') AS pfile,
 			   nvl(p.ppath,'WEB-INF/views/upload/profile') AS ppath
 		FROM ASTMember m, ASTProfile p 
-		WHERE m.mpk=p.mpk(+) AND m.mname LIKE #{mname}
+		WHERE m.mpk=p.mpk(+) AND m.mname LIKE #{mname} -->
+	<!-- 사람검색 -->
+	<select id="peopleList" resultType="MemberVO">
+	SELECT m.mpk, m.mid, m.mname
+	FROM ASTMember m 
+	WHERE m.mname LIKE #{mname}
 	</select>
 
 	<!-- 메뉴에서 게시글이나 리뷰에 맞게 보여줌 -->

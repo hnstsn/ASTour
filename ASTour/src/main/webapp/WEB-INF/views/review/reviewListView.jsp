@@ -64,7 +64,7 @@
 										<span class="overlay color2"></span> <span class="inner">
 											<span class="block fa fa-plus fsize20"></span> <strong>제목:</strong>${list.stitle }
 									</span>
-									</a> <img class="img-responsive"
+									</a> <img
 										src="${path}/sns/${list.filename }" width="260" height="260"
 										alt=""> </figure>
 									<div class="item-box-desc">

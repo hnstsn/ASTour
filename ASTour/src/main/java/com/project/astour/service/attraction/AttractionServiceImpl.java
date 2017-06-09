@@ -18,27 +18,50 @@ public class AttractionServiceImpl implements AttractionService{
 
 	@Inject
 	AttractionDAO attractionDao;
-	
+
 	//전부
 	@Override
 	public List<attraction_tbl> attractionList() {
 		return attractionDao.attractionList();
 	}
-	
+	//전부
+	@Override
+	public List<attraction_tbl> attractionList2(int start,int end) {
+		return attractionDao.attractionList2(start,end);
+	}
+	//전부 카운
+	@Override
+	public int attractionselectCount() {
+		return attractionDao.attractionselectCount();
+	}
+
 	//검색
 	@Override
 	public List<attraction_tbl> attractionAtitle(
-			@RequestParam(value="ATITLE") String ATITLE){
-		return attractionDao.attractionAtitle("%"+ATITLE+"%");
+			@RequestParam(value="ATITLE") String ATITLE,
+			int start,int end){
+		return attractionDao.attractionAtitle("%"+ATITLE+"%",start,end);
 	}
-	
+	//검색 카운트
+	@Override
+	public int attractionAtitleCount(
+			@RequestParam(value="ATITLE") String ATITLE){
+		return attractionDao.attractionAtitleCount("%"+ATITLE+"%");
+	}
+
 	//명소,행사
 	@Override
 	public List<attraction_tbl> attractionAsort(
-			@RequestParam(value="ASORT") String ASORT){
-		return attractionDao.attractionAsort(ASORT);
+			@RequestParam(value="ASORT") String ASORT,
+			int start,int end){
+		return attractionDao.attractionAsort(ASORT,start,end);
 	}
-	
+	//명소 행사 구분후 카운트
+	@Override
+	public int attractionASORTCount(String ASORT) {
+		return attractionDao.attractionASORTCount(ASORT);
+	}
+
 	//최신순 리스트 가지고오기
 	@Override
 	public List<reViewListVO> reviewattraction(
@@ -47,7 +70,7 @@ public class AttractionServiceImpl implements AttractionService{
 			@RequestParam(value="title") String title){
 		return attractionDao.reviewattraction(start,end,title);
 	}
-	
+
 	//조회순 리스트 가지고오기
 	@Override
 	public List<reViewListVO> reviewattractionhits(
@@ -75,9 +98,9 @@ public class AttractionServiceImpl implements AttractionService{
 
 	@Override
 	public List<tagrankVO> tagrank() {
-		
+
 		return attractionDao.tagrank();
 	}
 
-	
+
 }

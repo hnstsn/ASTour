@@ -18,6 +18,7 @@ import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.snsVO;
 import com.project.astour.service.attraction.AttractionService;
 import com.project.astour.service.member.MemberService;
+import com.project.astour.service.mypage.SnsDetailsService;
 import com.project.astour.service.mypage.SnsService;
 
 @Controller
@@ -31,6 +32,9 @@ public class SnsController {
 
 	@Inject
 	MemberService memberService;
+	
+	@Inject
+	SnsDetailsService snsDetailsService;
 
 	// 처음화면 (0)
 	@RequestMapping("initSns.do")
@@ -117,6 +121,12 @@ public class SnsController {
 	@RequestMapping("snsPeople.do")
 	public String pepole(Model model, @RequestParam(value = "people_id") String people_id) {
 		List<MemberVO> peopleList = snsService.peopleList(people_id);
+		
+		for(MemberVO vo :peopleList){
+			String fileName=snsDetailsService.replyViewFile(vo.getMpk());
+			vo.setPfile(fileName);
+		}
+		
 		model.addAttribute("peopleList", peopleList);
 		model.addAttribute("curPage", "snsView/snsPeopleView.jsp");
 		return "home";
