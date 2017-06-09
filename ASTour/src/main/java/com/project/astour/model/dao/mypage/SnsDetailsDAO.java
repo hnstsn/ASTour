@@ -18,7 +18,9 @@ public interface SnsDetailsDAO {
 	public void deletePic(int sfpk);
 	public void upContent(snsVO sns);
 	public List<SnsFileVO> contentViewFile(int spk);
-	public void reply(SnsReplyVO vo);
+	
+	//
+	public void reply(int mpk,int spk,String rcontent);
 	
 	//public List<SnsReplyVO> replyView(int spk);
 	public void hitsView(int spk);

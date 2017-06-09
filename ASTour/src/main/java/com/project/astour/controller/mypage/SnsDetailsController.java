@@ -122,11 +122,17 @@ public class SnsDetailsController {
 	
 	//추가
 	@RequestMapping("in.do")
-	public String PostContent(Model model, SnsReplyVO vo){
-		//System.out.println("댓글 추가");
-		snsDetailsService.reply(vo);
-		System.out.println("test:"+vo.getMname());
-		return "redirect:/snsdetails/contentview.do?spk="+vo.getSpk();
+	public String PostContent(Model model,
+			@RequestParam(value="rcontent") String rcontent,
+			@RequestParam(value="mpk") int mpk,
+			@RequestParam(value="spk") int spk){
+		System.out.println("확인용");
+		System.out.println(mpk);
+		System.out.println(spk);
+		System.out.println(rcontent);
+		snsDetailsService.reply(mpk,spk,rcontent);
+		
+		return "redirect:/snsdetails/contentview.do?spk="+spk;
 	}
 	
 	//댓글삭제

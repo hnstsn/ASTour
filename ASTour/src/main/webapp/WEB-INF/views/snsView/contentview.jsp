@@ -168,7 +168,6 @@ function f2(rpk,spk){
 
 						<!-- COMMENT FORM -->
 						<form id="commentForm" action="${path}/snsdetails/in.do" method="post" >
-
 							<div class="row">
 								<!-- comment -->
 								<div class="col-md-12">
@@ -176,19 +175,15 @@ function f2(rpk,spk){
 										name="rcontent" rows="5" placeholder="댓글을 남겨주세요"></textarea>
 								</div>
 								<br />
-
 								<!-- btn -->
 								<div class="col-md-12">
 									<p align="right">
 										<button class="btn btn-primary">등록</button>
-										<input type="text" value="${contenlist.spk }">
-										<input type="text" value="${sessionScope.member.mpk}" />
 										<input type="hidden" name="spk" value="${contenlist.spk }">
 										<input type="hidden" name="mpk" value="${sessionScope.member.mpk}" />
 									</p>
 								</div>
 							</div>
-
 						</form>
 						<!-- /COMMENT FORM -->
 					</div>

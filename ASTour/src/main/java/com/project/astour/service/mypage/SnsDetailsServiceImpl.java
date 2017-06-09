@@ -62,8 +62,8 @@ public class SnsDetailsServiceImpl implements SnsDetailsService{
 	}
 		
 	@Override
-	public void reply(SnsReplyVO vo) {
-		snsDetailsDao.reply(vo);
+	public void reply(int mpk,int spk,String rcontent) {
+		snsDetailsDao.reply(mpk,spk,rcontent);
 	}
 
 	/*@Override

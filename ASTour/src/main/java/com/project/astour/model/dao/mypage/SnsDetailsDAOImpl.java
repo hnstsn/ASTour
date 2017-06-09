@@ -64,8 +64,12 @@ public class SnsDetailsDAOImpl implements SnsDetailsDAO{
 
 	//뎃글추가
 	@Override
-	public void reply(SnsReplyVO vo) {
-		sqlSession.insert("sns.addReply",vo);
+	public void reply(int mpk,int spk,String rcontent) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("mpk", mpk);
+		map.put("spk", spk);
+		map.put("rcontent", rcontent);
+		sqlSession.insert("sns.addReply",map);
 	}
 
 	/*@Override
