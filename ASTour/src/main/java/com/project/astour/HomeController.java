@@ -1,5 +1,6 @@
 package com.project.astour;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.astour.model.dto.attraction.attraction_tbl;
 import com.project.astour.model.dto.attraction.tagrankVO;
 import com.project.astour.model.dto.member.MemberVO;
 import com.project.astour.model.dto.mypage.snsVO;
@@ -46,7 +48,10 @@ public class HomeController {
 		
 		List<snsVO> rankList = snsService.rankList();
 		List<tagrankVO> tagrank = attractionservice.tagrank();
+		List<attraction_tbl> attracionList=attractionservice.attractionList();
+		Collections.shuffle(attracionList);
 		
+		model.addAttribute("list",attracionList);
 		model.addAttribute("rankList",rankList);
 		model.addAttribute("tagrank", tagrank);
 		model.addAttribute("curPage", "main.jsp");

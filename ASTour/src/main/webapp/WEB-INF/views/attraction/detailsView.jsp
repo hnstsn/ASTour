@@ -89,7 +89,7 @@
 							<div class="well well-sm" style="width: 100%">
 								<ul>
 									<li>
-									<h5>홈페이지: <a href="${list[0].ahomepage }">${list[0].ahomepage }</a></h5>
+									<h5>홈페이지: <a href="${list[0].ahomepage }" target=_blank>${list[0].ahomepage }</a></h5>
 									</li>	
 								</ul>
   							</div>

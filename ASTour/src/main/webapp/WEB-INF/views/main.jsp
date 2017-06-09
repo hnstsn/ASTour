@@ -644,7 +644,7 @@
   
            <ul class="sort-destination isotope" data-sort-id="isotope-list">
   
-              <li class="isotope-item col-sm-6 col-md-4 development"><!-- item -->
+             <%--  <li class="isotope-item col-sm-6 col-md-4 development"><!-- item -->
                  <div class="item-box">
                     <figure>
                        <a class="item-hover lightbox" href="${path}/resources/images/demo/portfolio/scouter.jpg" data-plugin-options='{"type":"image"}'>
@@ -654,7 +654,7 @@
                              <strong>VIEW</strong> IMAGE 
                           </span>
                        </a>
-                       <img class="img-responsive" src="${path}/resources/assets/images/demo/portfolio/scouter-600x403.jpg" width="260" height="260" alt="">
+                       <img class="img-responsive" src="${path}/sns/${list.get(0).aimage}" width="260" height="260" alt="">
                     </figure>
                     <div class="item-box-desc">
                        <h4>관리자제공 - 메인페이지 하단에 3개의 이미지부분은 명소 top3</h4>
@@ -673,35 +673,37 @@
                              <strong>VIEW</strong> VIDEO
                           </span>
                        </a>
-                       <img class="img-responsive" src="${path}/resources/assets/images/demo/portfolio/black-kitty-600x403.jpg" width="260" height="260" alt="">
+                       <img class="img-responsive" src="${path}/sns/${list.get(1).aimage}" width="260" height="260" alt="">
                     </figure>
                     <div class="item-box-desc">
                        <h4>Video</h4>
                        <small class="styleColor">29 June, 2014</small>
                     </div>
                  </div>
-              </li>
-  
-              <li class="isotope-item col-sm-6 col-md-4 design"><!-- item 3 -->
-                 <div class="item-box">
-                    <figure>
-                       <a class="item-hover" href="portfolio-single-full-slider.html">
-                          <span class="overlay color2"></span>
-                          <span class="inner">
-                             <span class="block fa fa-plus fsize20"></span>
-                             <strong>PROJECT</strong> DETAIL
-                          </span>
-                       </a>
-                       <img class="img-responsive" src="${path}/resources/assets/images/demo/portfolio/merchant2-600x403.jpg" width="260" height="260" alt="">
-                    </figure>
-                    <div class="item-box-desc">
-                       <h4>Detailed Project</h4>
-                       <small class="styleColor">29 June, 2014</small>
-                    </div>
-                 </div>
-              </li>
-  
-           </ul>
+              </li> --%>
+<!--  -->
+					<c:forEach var="num" begin="0" end="2">
+						<li class="isotope-item col-sm-6 col-md-4 design">
+							<!-- item 3 -->
+							<div class="item-box">
+								<figure>
+									<a class="item-hover" href="${path}/attraction/initDetails.do?name=${list.get(num).atitle}">
+										<span class="overlay color2"></span> <span class="inner">
+											<span class="block fa fa-plus fsize20"></span> <strong>상세보기</strong>
+									</span>
+									</a>
+									<img src="${path}/sns/${list.get(num).aimage}" width="360"
+										height="260" alt="">
+								</figure>
+								<div class="item-box-desc">
+									<h4>${list.get(num).atitle}</h4>
+									<small class="styleColor">${list.get(num).asort}</small>
+								</div>
+							</div>
+						</li>
+					</c:forEach>
+<!--  -->
+				</ul>
   
         </div>
   

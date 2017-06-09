@@ -65,7 +65,7 @@
 											<span class="block fa fa-plus fsize20"></span> <strong>제목:</strong>${list.stitle }
 									</span>
 									</a> <img
-										src="${path}/sns/${list.filename }" width="260" height="260"
+										src="${path}/sns/${list.filename }" width="360" height="260"
 										alt=""> </figure>
 									<div class="item-box-desc">
 										<h4>${list.mname }(${list.ct })</h4>
