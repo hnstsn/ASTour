@@ -62,6 +62,9 @@
    </bean>
    <!-- 트랜잭션 어노테이션 자동 인식 -->
    <tx:annotation-driven/>
+   
+   <!-- 채팅 chatHandler -->
+   <bean id="chatHandler" class="com.project.astour.controller.chat.ChatHandler" />
 
 </beans>
 

@@ -5,11 +5,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.project.astour.model.dto.attraction.attraction_tbl;
 import com.project.astour.model.dto.member.MemberVO;
@@ -24,6 +27,8 @@ import com.project.astour.service.mypage.SnsService;
 @Controller
 @RequestMapping("sns")
 public class SnsController {
+	
+	private static final Logger logger = LoggerFactory.getLogger("SnsController.class");
 
 	@Inject
 	SnsService snsService;
@@ -241,6 +246,15 @@ public class SnsController {
 		model.addAttribute("curPage", "snsView/snsSsort.jsp");
 
 		return "home";
+	}
+	
+	// AST(CSW) : 채팅
+	@RequestMapping("chat.do")
+	public ModelAndView chatting(@RequestParam String mname, ModelAndView mav) {
+		logger.info("메세지 받는 사람 이름 : " + mname);
+		mav.addObject("mname", mname);
+		mav.setViewName("snsView/chatting");
+		return mav;
 	}
 
 }

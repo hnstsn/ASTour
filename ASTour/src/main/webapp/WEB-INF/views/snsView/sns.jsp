@@ -16,7 +16,6 @@
 <%@ include file="../include/bootstap_collect.jsp"%>
 <%@ include file="../include/sessionCheck.jsp"%>
 <!-- Morenizr -->
-<script type="text/javascript" src="assets/plugins/modernizr.min.js"></script>
 <script type="text/javascript">
 $(function(){
 	$("#schBtn").click(function() {
@@ -30,6 +29,11 @@ $(function(){
 		}
 	});
 });
+
+//채팅창 띄우는 팝업 함수
+function doChat(mname) {
+	window.open("${path}/sns/chat.do?mname="+mname, "채팅", "width=500, height=600, left=200, top=100");
+}
 </script>
 </head>
 
@@ -108,6 +112,14 @@ $(function(){
 										<i class="fa fa-circle-o"></i> 글쓰기
 									</a>
 								</li>
+							</c:if>
+							<!-- 자기 자신과는 채팅을 하지 않는다. -->
+							<c:if test="${sessionScope.member.mpk ne member.mpk}">
+							<li>
+								<a href="#" onclick="doChat('${member.mname}')">
+									<i class="fa fa-circle-o"></i> ${member.mname}님과 채팅하기
+								</a>
+							</li>
 							</c:if>
 						</ul>
 

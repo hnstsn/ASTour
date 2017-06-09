@@ -49,19 +49,19 @@ function login() {
       else {
          // 다 입력했으면 ajax로 처리
          $.ajax({
-               type: "post",
-               url: "${path}/member/loginCheck.do",
-               data: "mid="+mid+"&mpw="+mpw,
-               success: function(result) {
-                  // result가  true이면
-                  if (result) {
-                     alert("로그인 되었습니다.");
-                     // 초기화면으로 보내준다. result 받아온거까지 실행되고 화면 전환이 안되기 때문
-                     location.href="${path}";
-                  } else
-                     alert("아이디 혹은 비밀번호가 틀렸습니다.");
-               }
-            });
+            type: "post",
+            url: "${path}/member/loginCheck.do",
+            data: "mid="+mid+"&mpw="+mpw,
+            success: function(result) {
+               // result가  true이면
+               if (result) {
+                  alert("로그인 되었습니다.");
+                  // 초기화면으로 보내준다. result 받아온거까지 실행되고 화면 전환이 안되기 때문
+                  location.href="${path}";
+               } else
+                  alert("아이디 혹은 비밀번호가 틀렸습니다.");
+            }
+         });
       }
    }
    
@@ -78,7 +78,6 @@ function signin_popup() {
 function searchIdPw() {
    window.open("${path}/member/searchIdPw.do", "아이디 비밀번호 찾기", "width=600, height=500, left=200, top=100");
 }
-
 </script>
 
 <!-- Top Bar -->
@@ -152,6 +151,7 @@ function searchIdPw() {
                <div class="pull-right nav signin-dd">
                   <a id="quick_sign_in" class="log_out">
                      <span class="hidden-xs"> ${sessionScope.member.mname}님 로그인 중</span>
+                     <input type="hidden" id="from" value="${sessionScope.member.mname}" />
                   </a>
                </div>
             </div>
