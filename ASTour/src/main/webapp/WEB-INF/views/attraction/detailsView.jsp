@@ -26,6 +26,7 @@
 	content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 <style>
 	hr.two {width: 100%; color: green; border: thin solid red; }
+	p.thicker {font-weight: 900;}
 </style>
 </head>
 	
@@ -109,7 +110,7 @@
 				</div>
 				<hr class="two" />
 				<div class="well well-sm" style="width: 100%;">
-					<h4>${list[0].acontent }</h4>
+					<p class="thicker">${list[0].acontent }</p>
   				</div>
 				<hr />
 			</section>
