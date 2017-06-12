@@ -30,10 +30,6 @@ $(function(){
 	});
 });
 
-//채팅창 띄우는 팝업 함수
-function doChat(mname) {
-	window.open("${path}/sns/chat.do?mname="+mname, "채팅", "width=500, height=600, left=200, top=100");
-}
 </script>
 </head>
 
@@ -45,7 +41,7 @@ function doChat(mname) {
 		<!-- AST : 페이지 타이틀 -->
 		<header id="page-title">
 			<div class="container">
-				<h1>${member.mname }블로그</h1>
+				<h1>${member.mname}블로그</h1>
 			</div>
 		</header>
 		<!-- / AST : 페이지 타이틀 -->
@@ -116,7 +112,7 @@ function doChat(mname) {
 							<!-- 자기 자신과는 채팅을 하지 않는다. -->
 							<c:if test="${sessionScope.member.mpk ne member.mpk}">
 							<li>
-								<a href="#" onclick="doChat('${member.mname}')">
+								<a href="#" onclick="doChat('${sessionScope.member.mname}', '${member.mname}')">
 									<i class="fa fa-circle-o"></i> ${member.mname}님과 채팅하기
 								</a>
 							</li>

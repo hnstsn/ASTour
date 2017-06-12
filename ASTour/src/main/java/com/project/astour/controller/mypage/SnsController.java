@@ -250,11 +250,13 @@ public class SnsController {
 	
 	// AST(CSW) : 채팅
 	@RequestMapping("chat.do")
-	public ModelAndView chatting(@RequestParam String mname, ModelAndView mav) {
-		logger.info("메세지 받는 사람 이름 : " + mname);
-		mav.addObject("mname", mname);
+	public ModelAndView chatting(@RequestParam String from, @RequestParam String to,
+								 ModelAndView mav) {
+		logger.info("from : " + from + ", to : " + to);
+		mav.addObject("from", from);
+		mav.addObject("to", to);
 		mav.setViewName("snsView/chatting");
 		return mav;
 	}
-
+	
 }

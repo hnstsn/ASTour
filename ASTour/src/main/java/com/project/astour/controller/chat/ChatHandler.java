@@ -65,30 +65,36 @@ public class ChatHandler extends TextWebSocketHandler {
 		// 로그인 했는지 확인
 		boolean log_in = false;
 		
-		// map. key는 session.getId, value는 메세지를 보내려는 사람
-		session.getAttributes().put(session.getId(), from);
-		
-		// 로그인 했는지 확인
-		for (WebSocketSession wss : users) {
-			if (to.equals(wss.getAttributes().get(wss.getId()))) {
-				log_in = true;
-				System.out.println("로그인 함");
-			} else {
-				System.out.println("로그아웃 상탱");
-			}
-		}
-		
-		// 로그아웃 상태이면 - 로그아웃 상태라고 보여준다
-		//if (!log_in) {
+		// map. key는 메세지를 보내려는 사람, value는 session.getId
+		session.getAttributes().put(from, session.getId());
+
+		// 받는 사람이 있을 경우 메세지 전송
+		if (to != null) {
+			// 로그인 했는지 확인
 			for (WebSocketSession wss : users) {
-				// from으로 시작 : 나, to로 시작 : 상대방
-				if (from.equals(wss.getAttributes().get(wss.getId()))) {
-					
-					wss.sendMessage(new TextMessage(msg + "."));
-					System.out.println("로그아웃 상태!!!");
+				if (wss.getId().equals(wss.getAttributes().get(to)))
+					log_in = true;
+			}
+			
+			// 로그인 상태면
+			if (log_in) {
+				for (WebSocketSession wss : users) {
+					// from으로 시작 : 나, to로 시작 : 상대방
+					if ( wss.getId().equals(wss.getAttributes().get(from)) ||
+						 wss.getId().equals(wss.getAttributes().get(to)) ) {
+						// to와 from msg를 보내준다. to와 from 구분자는 - from과 msg 구분자는 : 
+						wss.sendMessage(new TextMessage(to + "-" + from + ":" + msg));
+					}
+				}
+			// 로그아웃 상태이면
+			} else {
+				for (WebSocketSession wss : users) {
+					if ( wss.getId().equals(wss.getAttributes().get(from))) {
+						wss.sendMessage(new TextMessage(to + "님은 로그아웃 중입니다."));
+					}
 				}
 			}
-		//}
+		}
 	}
 
 }
