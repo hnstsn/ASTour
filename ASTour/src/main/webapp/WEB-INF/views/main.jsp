@@ -6,6 +6,7 @@
 	<meta charset="utf-8" />
 	<!-- AST : bootstrap을 위한 것들을 모아놓은  jsp page -->
 	<%@ include file="include/bootstap_collect.jsp" %>
+
 </head>
 
 <!-- WRAPPER -->
@@ -14,15 +15,27 @@
   <!-- REVOLUTION SLIDER -->
   <div class="fullwidthbanner-container roundedcorners">
      <div class="fullwidthbanner">
-<ul>   
+		<ul>   
   
            <!-- SLIDE  -->
            <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
   
               <!-- COVER IMAGE -->
               <!-- data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" -->
-              <img src="${path}/resources/image/main/go3.jpg" alt="">
+              <img src="${path}/resources/image/main/mainimg1.jpg" alt="">
   
+  			<div class="tp-caption large_text sft"
+                 data-x="right"
+                 data-y="360"
+                 data-customin="x:-150;y:-280;z:0;rotationX:-140;rotationY:-280;rotationZ:-220;scaleX:1.5;scaleY:0;skewX:57;skewY:60;opacity:0;transformPerspective:600;transformOrigin:120% 190%;"
+                 data-customout="x:-450;y:-430;z:-30;rotationX:90;rotationY:-290;rotationZ:-20;scaleX:1;scaleY:2.8;skewX:59;skewY:4;opacity:0;transformPerspective:600;transformOrigin:70% 0%;"
+                 data-speed="1500"
+                 data-endspeed="500"
+                 data-start="1400"
+                 data-endeasing="Bounce.easeOut"
+                 data-easing="Back.easeInOut">
+                 <a class="btn btn-primary btn-lg" href="${path}/attraction/initDetails.do?name=장호항">장호항 바로가기</a>
+              </div>
   
            </li>
   
@@ -30,7 +43,7 @@
            <li data-transition="3dcurtain-vertical" data-slotamount="14"  data-masterspeed="300" data-delay="10000">
   
               <!-- COVER IMAGE -->
-              <img src="${path}/resources/image/main/go4.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" />
+              <img src="${path}/resources/image/main/mainimg2.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" />
               
               
              <!--  <div class="tp-caption large_text sft"
@@ -43,13 +56,26 @@
               </div> -->
               
               <div class="tp-caption very_large_text lfl stl"
-                 data-x="right" data-hoffset="-30"
+                 data-x="right"   
                  data-y="293"
-                 data-speed="300"
+                 data-speed="1300"
                  data-start="500"
                  data-easing="easeOutExpo" 
                  data-endspeed="300" 
-                 data-endeasing="easeInSine">한옥마을 
+                 data-endeasing="easeInSine">전주한옥마을 
+              </div>
+              
+              <div class="tp-caption large_text sft"
+                 data-x="right"
+                 data-y="360"
+                 data-customin="x:-150;y:-280;z:0;rotationX:-140;rotationY:-280;rotationZ:-220;scaleX:1.5;scaleY:0;skewX:57;skewY:60;opacity:0;transformPerspective:600;transformOrigin:120% 190%;"
+                 data-customout="x:-450;y:-430;z:-30;rotationX:90;rotationY:-290;rotationZ:-20;scaleX:1;scaleY:2.8;skewX:59;skewY:4;opacity:0;transformPerspective:600;transformOrigin:70% 0%;"
+                 data-speed="1500"
+                 data-endspeed="500"
+                 data-start="1400"
+                 data-endeasing="Bounce.easeOut"
+                 data-easing="Back.easeInOut">
+                 <a class="btn btn-primary btn-lg" href="${path}/attraction/initDetails.do?name=전주한옥마을">전주한옥마을 바로가기</a>
               </div>
            </li>
   
@@ -58,194 +84,45 @@
   
               <!-- COVER IMAGE -->
                <!-- data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" -->
-              <img src="${path}/resources/image/main/go7.png" alt="">
+              <img src="${path}/resources/image/main/mainimg3.jpg" alt="">
   
               <div class="tp-caption large_text sft"
-                 data-x="center"
+                 data-x="right"
                  data-y="130"
                  data-speed="300"
                  data-start="1000"
                  data-endspeed="500"
-                 data-easing="easeOutBack"><h1>ATROPOS</h1>
+                 data-easing="easeOutBack"><h1>대관령</h1>
               </div>
   
               <div class="tp-caption large_text sft"
-                 data-x="center"
+                 data-x="right"
                  data-y="260"
                  data-speed="300"
                  data-start="1700"
                  data-endspeed="500"
-                 data-easing="easeOutBack"><h2>MULTIPURPOSE TEMPLATE</h2>
+                 data-easing="easeOutBack"><h2>양떼목장</h2>
               </div>
   
               <div class="tp-caption large_text sft"
-                 data-x="center"
+                 data-x="right"
                  data-y="360"
                  data-customin="x:-150;y:-280;z:0;rotationX:-140;rotationY:-280;rotationZ:-220;scaleX:1.5;scaleY:0;skewX:57;skewY:60;opacity:0;transformPerspective:600;transformOrigin:120% 190%;"
                  data-customout="x:-450;y:-430;z:-30;rotationX:90;rotationY:-290;rotationZ:-20;scaleX:1;scaleY:2.8;skewX:59;skewY:4;opacity:0;transformPerspective:600;transformOrigin:70% 0%;"
                  data-speed="1500"
                  data-endspeed="500"
-                 data-start="2700"
+                 data-start="2000"
                  data-endeasing="Bounce.easeOut"
                  data-easing="Back.easeInOut">
-                 <a class="btn btn-primary btn-lg" target="_blank" href="https://wrapbootstrap.com/theme/atropos-responsive-website-template-WB05SR527">BUY ATROPOS</a>
+                 <a class="btn btn-primary btn-lg" href="${path}/attraction/initDetails.do?name=대관령 양떼목장">대관령 양떼목장 바로가기</a>
               </div>
   
            </li>
-  
-           <!-- SLIDE  -->
-           <li data-transition="fade" data-slotamount="7" data-masterspeed="1000" data-delay="13000" >
-              <!-- MAIN IMAGE -->
-              <img src="${path}/resources/assets/images/demo/revolution_slider/text_slider.jpg"  alt="newslide2014_1"  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-              <!-- LAYERS -->
-        
-              <!-- LAYER NR. 1 -->
-              <div class="tp-caption finewide_large_white customin customout tp-resizeme"
-                 data-x="center" data-hoffset="0"
-                 data-y="center" data-voffset="-40"
-                 data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="500"
-                 data-start="500"
-                 data-easing="Power3.easeInOut"
-                 data-splitin="chars"
-                 data-splitout="chars"
-                 data-elementdelay="0.08"
-                 data-endelementdelay="0.08"
-                 data-end="4000"
-                 data-endspeed="500"
-                 style="z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;">ATROPOS
-              </div>
-  
-        
-              <!-- LAYER NR. 3 -->
-              <div class="tp-caption finewide_medium_white randomrotate customout tp-resizeme"
-                 data-x="center" data-hoffset="0"
-                 data-y="center" data-voffset="30"
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="500"
-                 data-start="500"
-                 data-easing="Power3.easeInOut"
-                 data-splitin="chars"
-                 data-splitout="chars"
-                 data-elementdelay="0.08"
-                 data-endelementdelay="0.08"
-                 data-end="4000"
-                 data-endspeed="500"
-                 style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">FRESH NEW VERSION
-              </div>
-        
-              <!-- LAYER NR. 4 -->
-              <div class="tp-caption boldwide_small_white customin customout tp-resizeme"
-                 data-x="240"
-                 data-y="120" 
-                 data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="300"
-                 data-start="5000"
-                 data-easing="Power3.easeInOut"
-                 data-splitin="none"
-                 data-splitout="none"
-                 data-elementdelay="0.08"
-                 data-endelementdelay="0.08"
-                 data-endspeed="300"
-                 style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;"><strong>Atropos</strong>
-              </div>
-        
-              <!-- LAYER NR. 5 -->
-              <div class="tp-caption whitedivider3px_vertical customin tp-resizeme"
-                 data-x="420"
-                 data-y="110" 
-                 data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="300"
-                 data-start="5500"
-                 data-easing="Power3.easeInOut"
-                 data-splitin="none"
-                 data-splitout="none"
-                 data-elementdelay="0.1"
-                 data-endelementdelay="0.1"
-                 data-endspeed="300"
-                 style="z-index: 6; max-width: auto; max-height: auto; white-space: nowrap;">&nbsp;
-              </div>
-        
-              <!-- LAYER NR. 6 -->
-              <div class="tp-caption finewide_small_white randomrotate customout tp-resizeme"
-                 data-x="460"
-                 data-y="120" 
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="500"
-                 data-start="6400"
-                 data-easing="Power3.easeInOut"
-                 data-splitin="chars"
-                 data-splitout="chars"
-                 data-elementdelay="0.08"
-                 data-endelementdelay="0.08"
-                 data-endspeed="300"
-                 style="z-index: 7; max-width: auto; max-height: auto; white-space: nowrap;">POWERFUL
-              </div>
-        
-              <!-- LAYER NR. 7 -->
-              <div class="tp-caption finewide_small_white customin customout tp-resizeme"
-                 data-x="460"
-                 data-y="160" 
-                 data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="500"
-                 data-start="7200"
-                 data-easing="Power3.easeInOut"
-                 data-splitin="words"
-                 data-splitout="words"
-                 data-elementdelay="0.12"
-                 data-endelementdelay="0.12"
-                 data-endspeed="300"
-                 style="z-index: 8; max-width: auto; max-height: auto; white-space: nowrap;">MULTIPURPOSE
-              </div>
-        
-              <!-- LAYER NR. 8 -->
-              <div class="tp-caption finewide_small_white customin customout tp-resizeme"
-                 data-x="460"
-                 data-y="200" 
-                 data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="500"
-                 data-start="8000"
-                 data-easing="Power3.easeInOut"
-                 data-splitin="none"
-                 data-splitout="none"
-                 data-elementdelay="0.08"
-                 data-endelementdelay="0.08"
-                 data-endspeed="300"
-                 style="z-index: 9; max-width: auto; max-height: auto; white-space: nowrap;">V1.2
-              </div>
-        
-              <!-- LAYER NR. 9 -->
-              <div class="tp-caption finewide_verysmall_white_mw customin customout tp-resizeme"
-                 data-x="460"
-                 data-y="250" 
-                 data-customin="x:0;y:50;z:0;rotationX:-120;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 0%;"
-                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                 data-speed="900"
-                 data-start="8000"
-                 data-easing="Power3.easeInOut"
-                 data-splitin="lines"
-                 data-splitout="lines"
-                 data-elementdelay="0.2"
-                 data-endelementdelay="0.08"
-                 data-endspeed="300"
-                 style="z-index: 10; max-width: auto; max-height: auto; white-space: nowrap;">
-                    Atropos is a multipurpose template for<br /> 
-                    business or portfolio website. It is <br />
-                    fully responsive design ready for<br /> 
-                    PC, Tablet and Mobile.
-              </div>
-        
-           </li>
-  
            <!-- SLIDE  -->
            <li data-transition="boxslide" data-slotamount="5" data-link="https://wrapbootstrap.com/theme/atropos-responsive-website-template-WB05SR527" data-target="_blank" data-slideindex="back">
   
               <!-- COVER IMAGE -->
-              <img src="${path}/resources/assets/images/demo/revolution_slider/5378467111_e8b9e98f8f_o.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" />
+              <img src="${path}/resources/image/main/go.jpg" />
   
               <div class="tp-caption very_large_text lfl stl"
                  data-x="right" data-hoffset="-30"
@@ -254,7 +131,7 @@
                  data-start="500"
                  data-easing="easeOutExpo" 
                  data-endspeed="300" 
-                 data-endeasing="easeInSine">ATROPOS PORTFOLIO
+                 data-endeasing="easeInSine">ASTOUR
               </div>
   
               <div class="tp-caption large_bold_grey medium_thin_grey lfl stl"
@@ -265,7 +142,7 @@
                  data-easing="easeOutExpo" 
                  data-endspeed="300" 
                  data-endeasing="easeInSine">
-                 <a target="_blank" href="https://wrapbootstrap.com/theme/atropos-responsive-website-template-WB05SR527">BUY NOW ATROPOS</a>
+                 <a href="#"></a>
               </div>
   
               <div class="tp-caption randomrotate"
@@ -274,7 +151,7 @@
                  data-speed="600"
                  data-start="1100"
                  data-easing="easeOutExpo">
-                 <img src="${path}/resources/assets/images/demo/portfolio/slider/1.jpg" width="140" height="140" alt="Image 2">
+                 <img src="${path}/resources/image/culture/Cheonggyecheon.jpg" width="140" height="140" alt="Image 2">
               </div>
   
               <div class="tp-caption randomrotate"
@@ -283,7 +160,7 @@
                  data-speed="600"
                  data-start="1200"
                  data-easing="easeOutExpo">
-                 <img src="${path}/resources/assets/images/demo/portfolio/slider/2.jpg" width="140" height="140" alt="Image 3">
+                 <img src="${path}/resources/image/culture/jungdong.jpg" width="140" height="140" alt="Image 3">
               </div>
   
               <div class="tp-caption randomrotate"
@@ -292,7 +169,7 @@
                  data-speed="600"
                  data-start="1300"
                  data-easing="easeOutExpo">
-                 <img src="${path}/resources/assets/images/demo/portfolio/slider/3.jpg" width="140" height="140" alt="Image 4">
+                 <img src="${path}/resources/image/culture/jangtaesan.jpg" width="140" height="140" alt="Image 4">
               </div>
   
               <div class="tp-caption randomrotate"
@@ -301,7 +178,7 @@
                  data-speed="300"
                  data-start="1400"
                  data-easing="easeOutExpo">
-                 <img src="${path}/resources/assets/images/demo/portfolio/slider/4.jpg" width="140" height="140" alt="Image 5">
+                 <img src="${path}/resources/image/culture/junju.jpg" width="140" height="140" alt="Image 5">
               </div>
   
               <div class="tp-caption randomrotate"
@@ -310,7 +187,7 @@
                  data-speed="600"
                  data-start="1500"
                  data-easing="easeOutExpo">
-                 <img src="${path}/resources/assets/images/demo/portfolio/slider/5.jpg" width="140" height="140" alt="Image 6">
+                 <img src="${path}/resources/image/culture/janghohang.jpg" width="140" height="140" alt="Image 6">
               </div>
   
               <div class="tp-caption randomrotate"
@@ -319,7 +196,7 @@
                  data-speed="300"
                  data-start="1600"
                  data-easing="easeOutExpo">
-                 <img src="${path}/resources/assets/images/demo/portfolio/slider/6.jpg" width="140" height="140" alt="Image 7">
+                 <img src="${path}/resources/image/culture/LotteTower.jpg" width="140" height="140" alt="Image 7">
               </div>
   
               <div class="tp-caption randomrotate"
@@ -328,7 +205,7 @@
                  data-speed="300"
                  data-start="1700"
                  data-easing="easeOutExpo">
-                 <img src="${path}/resources/assets/images/demo/portfolio/slider/7.jpg" width="140" height="140" alt="Image 8">
+                 <img src="${path}/resources/image/culture/sukmodo.jpg" width="140" height="140" alt="Image 8">
               </div>
   
               <div class="tp-caption randomrotate"
@@ -337,7 +214,7 @@
                  data-speed="300"
                  data-start="1800"
                  data-easing="easeOutExpo">
-                 <img src="${path}/resources/assets/images/demo/portfolio/slider/8.jpg" width="140" height="140" alt="Image 9">
+                 <img src="${path}/resources/image/culture/park.jpg" width="140" height="140" alt="Image 9">
               </div>
   
               <div class="tp-caption randomrotate"
@@ -346,7 +223,7 @@
                  data-speed="300"
                  data-start="1900"
                  data-easing="easeOutExpo">
-                 <img src="${path}/resources/assets/images/demo/portfolio/slider/5.jpg" width="140" height="140" alt="Image 10">
+                 <img src="${path}/resources/image/culture/Namsan.jpg" width="140" height="140" alt="Image 10">
               </div>
   
               <div class="tp-caption randomrotate"
@@ -355,7 +232,7 @@
                  data-speed="300"
                  data-start="2000"
                  data-easing="easeOutExpo">
-                 <img src="${path}/resources/assets/images/demo/portfolio/slider/4.jpg" width="140" height="140" alt="Image 11">
+                 <img src="${path}/resources/image/culture/jejupark.jpg" width="140" height="140" alt="Image 11">
               </div>
   
               <div class="tp-caption randomrotate"
@@ -364,7 +241,7 @@
                  data-speed="300"
                  data-start="2100"
                  data-easing="easeOutExpo">
-                 <img src="${path}/resources/assets/images/demo/portfolio/slider/3.jpg" width="140" height="140" alt="Image 12">
+                 <img src="${path}/resources/image/culture/Cheonggyecheon.jpg" width="140" height="140" alt="Image 12">
               </div>
   
               <div class="tp-caption randomrotate"
@@ -373,198 +250,10 @@
                  data-speed="300"
                  data-start="2200"
                  data-easing="easeOutExpo">
-                 <img src="${path}/resources/assets/images/demo/portfolio/slider/2.jpg" width="140" height="140" alt="Image 13">
+                 <img src="${path}/resources/image/culture/sheepranch.jpg" width="140" height="140" alt="Image 13">
               </div>
            </li>
-  
-           <!-- SLIDE  -->
-           <li data-transition="3dcurtain-vertical" ddata-slotamount="15" data-masterspeed="300" data-delay="9400">
-  
-              <!-- COVER IMAGE -->
-              <img src="${path}/resources/assets/images/demo/revolution_slider/sliderbg.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-  
-              <div class="tp-caption large_bold_grey lfl stl"
-                 data-x="18"
-                 data-y="233"
-                 data-speed="300"
-                 data-start="500"
-                 data-easing="easeOutExpo" data-end="8800" data-endspeed="300" data-endeasing="easeInSine">ATROPOS SHOP
-              </div>
-  
-              <div class="tp-caption large_bold_grey medium_thin_grey lfl stl"
-                 data-x="18"
-                 data-y="200"
-                 data-speed="300"
-                 data-start="800"
-                 data-easing="easeOutExpo" data-end="9100" data-endspeed="300" data-endeasing="easeInSine">
-                 <a target="_blank" href="https://wrapbootstrap.com/theme/atropos-responsive-website-template-WB05SR527">BUY NOW ATROPOS</a>
-              </div>
-  
-              <div class="tp-caption lft"
-                 data-x="right" data-hoffset="-20"
-                 data-y="0"
-                 data-speed="600"
-                 data-start="1100"
-                 data-easing="easeOutExpo" data-end="3100" data-endspeed="600" data-endeasing="easeInSine">
-                 <a href="shop-product-full-width.html"><img src="${path}/resources/assets/images/demo/shop/slider/1.jpg" alt="Image 1"></a>
-              </div>
-  
-              <div class="tp-caption medium_bg_darkblue sft stb"
-                 data-x="720"
-                 data-y="200"
-                 data-speed="300"
-                 data-start="1400"
-                 data-easing="easeOutExpo" data-end="3300" data-endspeed="300" data-endeasing="easeInSine">MAN CHERRY SHIRT
-              </div>
-  
-              <div class="tp-caption medium_bg_orange sfb stb"
-                 data-x="720"
-                 data-y="160"
-                 data-speed="300"
-                 data-start="1700"
-                 data-easing="easeOutExpo" data-end="3200" data-endspeed="300" data-endeasing="easeInSine">$ 7.49
-              </div>
-  
-              <div class="tp-caption lft ltb"
-                 data-x="right" data-hoffset="-20"
-                 data-y="0"
-                 data-speed="600"
-                 data-start="3600"
-                 data-easing="easeOutExpo" data-end="5600" data-endspeed="600" data-endeasing="easeInSine">
-                 <a href="shop-product-full-width.html"><img src="${path}/resources/assets/images/demo/shop/slider/5.jpg" alt="Image 2"></a>
-              </div>
-  
-              <div class="tp-caption medium_bg_darkblue sft stb"
-                 data-x="720"
-                 data-y="200"
-                 data-speed="300"
-                 data-start="3900"
-                 data-easing="easeOutExpo" data-end="5800" data-endspeed="300" data-endeasing="easeInSine">YELLOW WOMAN DRESS
-              </div>
-  
-              <div class="tp-caption medium_bg_orange sfb stb"
-                 data-x="720"
-                 data-y="160"
-                 data-speed="300"
-                 data-start="4200"
-                 data-easing="easeOutExpo" data-end="5700" data-endspeed="300" data-endeasing="easeInSine">$ 5.99
-              </div>
-  
-              <div class="tp-caption lft ltb"
-                 data-x="right" data-hoffset="-20"
-                 data-y="0"
-                 data-speed="600"
-                 data-start="6100"
-                 data-easing="easeOutExpo" data-end="8100" data-endspeed="300" data-endeasing="easeInSine">
-                 <a href="shop-product-full-width.html"><img src="${path}/resources/assets/images/demo/shop/slider/9.jpg" alt="Image 3"></a>
-              </div>
-  
-              <div class="tp-caption medium_bg_darkblue sft stb"
-                 data-x="720"
-                 data-y="200"
-                 data-speed="300"
-                 data-start="6400"
-                 data-easing="easeOutExpo" data-end="8300" data-endspeed="300" data-endeasing="easeInSine">COOL RED CHIAR
-              </div>
-  
-              <div class="tp-caption medium_bg_orange sfb stb"
-                 data-x="720"
-                 data-y="160"
-                 data-speed="300"
-                 data-start="6700"
-                 data-easing="easeOutExpo" data-end="8200" data-endspeed="300" data-endeasing="easeInSine">$ 6.79
-              </div>
-  
-           </li>
-  
-           <!-- SLIDE -->
-           <li data-transition="curtain-2" data-slotamount="5" data-masterspeed="700">
-  
-              <!-- COVER IMAGE -->
-              <img src="${path}/resources/assets/images/demo/revolution_slider/slider7.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-  
-              <div class="tp-caption large_text sft"
-                 data-x="center"
-                 data-y="100"
-                 data-speed="300"
-                 data-start="800"
-                 data-easing="easeOutExpo">TODAY BEST DEAL
-              </div>
-  
-              <div class="tp-caption medium_bold_red medium_light_red sfr"
-                 data-x="center"
-                 data-y="75"
-                 data-speed="300"
-                 data-start="1100"
-                 data-easing="easeOutExpo">
-                 <a href="https://wrapbootstrap.com/theme/atropos-responsive-website-template-WB05SR527" target="_blank">PURCHASE NOW ATROPOS</a>
-              </div>
-  
-              <div class="tp-caption lfb text-center" 
-                 data-x="270" 
-                 data-y="200" 
-                 data-speed="900" 
-                 data-start="1700" 
-                 data-easing="easeOutBack">
-                 <a class="fsize20" href="shop-product-full-width.html">
-                    <img class="block hover-scale" src="${path}/resources/assets/images/demo/shop/7.jpg" width="200" height="200" alt="" />
-                    <strong>$ 32.00</strong>
-                 </a>
-              </div>
-  
-              <div class="tp-caption lfb text-center" 
-                 data-x="480" 
-                 data-y="200" 
-                 data-speed="900" 
-                 data-start="2000" 
-                 data-easing="easeOutBack">
-                 <a class="fsize20" href="shop-product-full-width.html">
-                    <img class="block hover-scale" src="${path}/resources/assets/images/demo/shop/5.jpg" width="200" height="200" alt="" />
-                    <strong>$ 45.87</strong>
-                 </a>
-              </div>
-  
-              <div class="tp-caption lfb text-center" 
-                 data-x="690" 
-                 data-y="200" 
-                 data-speed="900" 
-                 data-start="2300" 
-                 data-easing="easeOutBack">
-                 <a class="fsize20" href="shop-product-full-width.html">
-                    <img class="block hover-scale" src="${path}/resources/assets/images/demo/shop/1.jpg" width="200" height="200" alt="" />
-                    <strong>$ 64.00</strong>
-                 </a>
-              </div>
-           </li>
-  
-           <!-- SLIDER -->
-           <li data-transition="fade" data-slotamount="7" data-masterspeed="300" >
-              <img src="${path}/resources/assets/images/dummy.png"  alt="church1" data-lazyload="${path}/resources/images/demo/home/church_1.jpg" data-fullwidthcentering="on">
-              <div class="tp-caption medium_text lft"
-              data-x="90" 
-              data-y="180"
-              data-speed="300" 
-              data-start="500" 
-              data-easing="easeOutExpo">Religion and Church
-              </div>
-  
-              <div class="tp-caption large_text lfb"
-              data-x="90" 
-              data-y="222"
-              data-speed="300" 
-              data-start="800" 
-              data-easing="easeOutExpo">Giving you guidance and light <br/> during lifes uncertainty.
-              </div>
-  
-              <div class="tp-caption lfb"
-              data-x="90" 
-              data-y="330"
-              data-speed="300" 
-              data-start="1100" 
-              data-easing="easeOutExpo">
-              <a href="https://wrapbootstrap.com/theme/atropos-responsive-website-template-WB05SR527" target="_blank" class="btn btn-primary btn-lg">Buy This Theme</a>
-              </div>
-           </li>
+ 
   
         </ul>
         <div class="tp-bannertimer"></div>
@@ -692,8 +381,7 @@
 											<span class="block fa fa-plus fsize20"></span> <strong>상세보기</strong>
 									</span>
 									</a>
-									<img src="${path}/sns/${list.get(num).aimage}" width="360"
-										height="260" alt="">
+									<img class="img-responsive" src="${path}/sns/${list.get(num).aimage}" alt="">
 								</figure>
 								<div class="item-box-desc">
 									<h4>${list.get(num).atitle}</h4>
