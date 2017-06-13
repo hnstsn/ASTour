@@ -31,19 +31,19 @@
 	<div id="wrapper">
 		<!-- PAGE TITLE -->
 		<header id="page-title">
-		<div class="container" style="margin-left: 20%; margin-right: 20%">
+		<div class="container">
 			<h1>${title }리뷰목록</h1>
 		</div>
 		</header>
+		<section id="portfolio" class="container">
 		<c:choose>
 			<c:when test="${list.size() < 1}">
-				<div class="row" style="margin-left: 20%; margin-right: 20%">
+				<div class="row">
 					<h2>${title} 리뷰가 없습니다</h2>
 				</div>
 			</c:when>
 			<c:otherwise>
-				<ul class="nav nav-pills isotope-filter isotope-filter"
-					style="margin-left: 20%; margin-right: 20%">
+				<ul class="nav nav-pills isotope-filter isotope-filter">
 					<!-- data-option-value="*".culture .event class="active" 빼버림 -->
 					<li><a
 						href="${path }/reViewList.do?review_ATITLE=${title}&review_AIMAGE=${image}">최신순</a></li>
@@ -51,7 +51,7 @@
 						href="${path }/hitslist.do?review_ATITLE=${title}&review_AIMAGE=${image}">조회순</a></li>
 				</ul>
 
-				<div class="row" style="margin-left: 20%; margin-right: 20%">
+				<div class="row">
 					<ul class="sort-destination isotope" data-sort-id="isotope-list">
 						<!-- 수정 -->
 						<%-- <c:forEach var="attraction" items="${list}"> --%>
@@ -118,6 +118,7 @@
 				<!-- / AST : 페이지 넘기기 -->
 			</c:otherwise>
 		</c:choose>
+		</section>
 	</div>
 	<!-- /WRAPPER -->
 
