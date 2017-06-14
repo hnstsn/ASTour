@@ -63,6 +63,31 @@ $(document).ready(function() {
 		document.upForm.submit();
 	});
 	
+	// AST: 선택한 지역의 세부지역select를 바꿉니다
+		$("#siSelect").change(function(){
+			sisi();
+		});
+		$("#gunSelect").change(function (){
+			var name1 = $("#siSelect option:selected").val();
+			var name2 = $("#gunSelect option:selected").val();
+				$("#attractionName").html("<option>"+"선택하세요!"+"</option>");
+				$.ajax({
+					url:"${path}/searchLocation",
+					type : "post",
+					data : {"agu" : name2},
+					dataType : 'json',
+					success : function(Data){
+						if(name2=="선택하세요!"){
+							sisi();
+						}else{
+							for(var i=0; i<Data.length; i++){
+								$("#attractionName").append("<option value="+Data[i].atitle+">"+Data[i].atitle+"</option>");
+							}
+						}
+					}
+				});
+		});
+ 	
 });
 </script>
 <style>
@@ -70,6 +95,38 @@ $(document).ready(function() {
 .files { float:left; }
 .addFileDiv 	{ margin-top : 5px; }
 .deFile:hover, .dePic:hover { cursor:pointer; }
+
+	#tagLocationBack{
+		 top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         margin: auto;
+         padding: auto;
+         z-index: 1;
+         background:rgba(0,0,0,0.8);
+         width: 100%;
+         height: 100%;
+         display: none;
+         position: absolute;
+         text-align: center;
+	}
+	#tagLocation
+	{
+		 position: absolute;
+         top: 0;
+	     left: 0;
+	     right: 0;
+	     bottom: 0;
+	     margin: auto;
+	     padding: auto;
+	     z-index: 3;
+	     width: 600px;
+	     height: 400px;
+	     background-color:white; 
+	     display: none;
+	}
+
 </style>
 </head>
 <!-- WRAPPER -->
@@ -150,7 +207,179 @@ $(document).ready(function() {
 		</div>
 
 	</section>
+	
+	<!--AST : 태그용 선택창  -->
+	<div id="tagLocationBack">
+	<!--검은뒷배경 -->
+	</div> 
+	<div id="tagLocation">
+			 <section style="margin-top: 30px;"> <!-- <section class="container re-filterbox no-top" style="margin-top: 30px;"> -->
+         <!-- add "styleBackground" class for colored box -->
 
+         <div> <!-- <div id="re-filter"> -->
+            <div><!-- <div class="row"> -->
+               <div>
+
+                  <div class="col-md-6 col-sm-12 col-xs-12">
+                     <label>지역</label> 
+	                     <select id="siSelect" class="form-control" name="re_location">
+	                        <option>선택하세요</option>
+	                        <option value="기타">기타(직접입력)</option>
+	                        <option value="서울">서울</option>
+	                        <option value="부산">부산</option>
+	                        <option value="대구">대구</option>
+	                        <option value="인천">인천</option>
+	                        <option value="광주">광주</option>
+	                        <option value="대전">대전</option>
+	                        <option value="울산">울산</option>
+	                        <option value="세종">세종</option>
+	                        <option value="강원">강원</option>
+	                        <option value="경기">경기</option>
+	                        <option value="경남">경남</option>
+	                        <option value="경북">경북</option>
+	                        <option value="전남">전남</option>
+	                        <option value="전북">전북</option>
+	                        <option value="제주">제주</option>
+	                        <option value="충청남도">충남</option>
+	                        <option value="충청북도">충북</option>
+	                     </select>
+                  </div>
+                  
+                  <div class="col-md-6 col-sm-12 col-xs-12">
+                     <label>지역세부</label> 
+	                     <select id="gunSelect" class="form-control" name="re_type">
+	                     	<option >선택전</option>
+	                     
+	                     </select>
+                  </div>
+                  </div>
+                  </div>
+                  <div><!-- <div class="row" > -->
+                  <div class="col-md-8 col-sm-12 col-xs-12" >
+                     <label>이름</label>
+                     <select id="attractionName" class="form-control" name="re_status">
+                        <option selected>선택전</option>
+                     </select>
+                  </div>
+                  
+                  <div class="col-md-8 col-sm-12 col-xs-12" >
+                     <label>직접입력</label>
+                     <input id="tagSelfInput" type="text" class="form-control" disabled="disabled" />
+                  </div>
+               </div>
+            
+
+            <div><!-- <div class="row"> -->
+               <div >
+                  
+
+                  <div class="col-md-6 col-sm-8 col-xs-12">
+                  <label>&nbsp;</label>
+                     <button id = "confirmBtn" class="btn btn-primary fullwidth">확인</button>
+                  </div>
+                  
+                  <div class="col-md-6 col-sm-8 col-xs-12">
+                     <label>&nbsp;</label>
+                     <button id = "cancelBtn" class="btn btn-primary fullwidth">취소</button>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+
+
+      </section>
+	</div>
+	
+</div>  <!--wrapper /div-->	
+	
+	<script>
+	function sisi(){
+		var name = $("#siSelect option:selected").val();
+		
+		// AST : 지역이바뀌니 초기화
+		$("#gunSelect").attr("disabled",false);
+		$("#attractionName").attr("disabled",false);
+		$("#gunSelect").html("<option>"+"선택하세요!"+"</option>");
+		$("#attractionName").html("<option>"+"선택하세요!"+"</option>");
+		$("#tagSelfInput").val("");
+		$("#tagSelfInput").attr("disabled",true);
+		if(name=="기타"){
+			$("#tagSelfInput").attr("disabled",false);
+			$("#gunSelect").attr("disabled",true);
+			$("#gunSelect").val("");
+			$("#attractionName").attr("disabled",true);
+			$("#attractionName").val("");
+		}else{
+			$.ajax({
+				url:"${path}/searchLocation",
+				type : "post",
+				data : {"acity": name},
+				dataType : 'json',
+				success : function(Data){
+					
+					for(var i=0; i<Data.length; i++){
+						var dupCheck=true;
+						var count=i+1;
+						while(count<Data.length){
+							
+							if(Data[i].agu == Data[count++].agu){
+								dupCheck = false;
+								break;
+							}
+						}
+						if(dupCheck){
+							$("#gunSelect").append("<option value="+Data[i].agu+">"+Data[i].agu+"</option>");
+						}
+					}
+					for(var i=0; i<Data.length; i++){
+						$("#attractionName").append("<option value="+Data[i].atitle+">"+Data[i].atitle+"</option>");
+					}
+				}
+			});
+		}
+	};
+	
+	$(function(){
+		/* AST : 태그 선택창 눌렀을 때 div 보이게 설정  */
+		$("#stag").click(function(){
+			//alert('눌름');
+			$("#tagLocationBack").fadeIn(800);
+			$("#tagLocation").fadeIn(800);
+		})
+		
+		/* AST : 태그 선택창 뒷 배경을 눌렀을 시 종료  */
+		$("#tagLocationBack").click(function(){
+			$("#tagLocationBack").fadeOut(500);
+			$("#tagLocation").fadeOut(500);
+		})
+		
+		/* AST : 태그 선택창 확인을 눌렀을 때 사용  */
+		 $("#confirmBtn").click(function(){
+			var selectedTag = $("#attractionName option:selected").val();
+			var selfInput = $("#tagSelfInput").val();
+			if(selfInput!=""){
+				$("#tagLocationBack").fadeOut(500);
+				$("#tagLocation").fadeOut(500);
+				$("#stag").val(selfInput);
+				$("#tagSelfInput").val("");
+			}else if(selectedTag == "선택하세요!" || selectedTag == "선택전"){
+				alert('다시 선택하세요');
+			}else{
+				$("#tagLocationBack").fadeOut(500);
+				$("#tagLocation").fadeOut(500);
+				$("#stag").val(selectedTag);
+			}
+			
+		})
+		
+		$("#cancelBtn").click(function(){
+			 $("#tagLocationBack").fadeOut(500);
+				$("#tagLocation").fadeOut(500);
+		})
+	})
+	</script>
 </div>
+<
 <!-- /WRAPPER -->
 </html>

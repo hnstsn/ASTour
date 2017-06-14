@@ -100,6 +100,7 @@ $(document).ready(function() {
         /* background-color: aquamarine; */
         position: relative;
     }
+    
 	#tagLocationBack{
 		 top: 0;
          left: 0;
