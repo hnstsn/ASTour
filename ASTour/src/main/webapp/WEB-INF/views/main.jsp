@@ -267,7 +267,7 @@
   <!-- WELCEOME -->
   <section class="container">
      <h1 class="text-center">
-        <strong>Welcome</strong> to ASTour
+        <strong>Welcome</strong> to <strong>AS TOUR</strong>
      </h1>
   
      <div class="divider"><!-- divider -->

@@ -26,7 +26,7 @@
 	content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 <style>
 	hr.two {width: 100%; color: green; border: thin solid red; }
-	p.thicker {font-weight: 900;}
+	p.thicker {font-weight: 900; line-height: 2.0em;}
 </style>
 </head>
 	
