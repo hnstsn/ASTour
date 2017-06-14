@@ -237,6 +237,67 @@ section div {
 	-webkit-transform: translate(-30px, -2px);
 }
 
+.button {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font: 14px/100% Arial, Helvetica, sans-serif;
+    padding: .5em 1em .55em;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    -webkit-border-radius: .5em; 
+    -moz-border-radius: .5em;
+    border-radius: .5em;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.button:hover {
+    text-decoration: none;
+}
+.button:active {
+    position: relative;
+    top: 1px;
+}
+
+.bigrounded {
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+}
+
+.orange {
+    color: #fef4e9;
+    border: solid 1px #da7c0c;
+    background: #f78d1d;
+    background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+    background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+.orange:hover {
+    background: #f47c20;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+    background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+.orange:active {
+    color: #fcd3a5;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+    background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+
+.textarea {
+	width: 80%;
+	height: 25px;
+   	border: 1px solid red;
+   	border-radius: 10px;
+   	padding: 5px;
+   	padding-left: 10px;
+   	margin-left: 5px;
+   	margin-right: 2px; 
+}
 </style>
 </head>
 <body>
@@ -255,9 +316,26 @@ section div {
 	
 	<div>
 		<input type="hidden" id="to" value="${to}" />
-		<input type="text" id="msg" />
-		<input type="button" id="sendBtn" value="전송" />
+		<input class="textarea" type="text" id="msg" />
+		<button type="button" class="button bigrounded orange" id="sendBtn">전송</button>
 	</div>
+	
+	
+	
+	
+<!-- 	<style>
+.button {
+border:1x solid #ff0080;    /*---테두리 정의---*/
+background-Color:#ffe6f2;   /*--백그라운드 정의---*/
+font:12px 굴림;      /*--폰트 정의---*/
+font-weight:bold;   /*--폰트 굵기---*/
+color:#ff0080;    /*--폰트 색깔---*/
+width:130;height:30;  /*--버튼 크기---*/
+}
+</style>
+
+<input type="button" value="잠탱이버튼 (∩_∩)" class="button"> -->
+	
 	
 </body>
 </html>
