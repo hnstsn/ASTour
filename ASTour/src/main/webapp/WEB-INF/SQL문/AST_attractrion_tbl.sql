@@ -109,6 +109,7 @@ INSERT INTO attraction_tbl VALUES (ATT_SEQ.NEXTVAL,'청계천','명소','Cheonggyeche
 <br/>
 * 청계천복원구간 1/100의 미니어쳐캔들(촛불)분수, 4m 2단 폭포, 팔도석',37.571374,127.024387);
 
+select * from attraction_tbl;
 
 
 // 추가
