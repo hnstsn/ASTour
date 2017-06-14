@@ -255,7 +255,7 @@ public class SnsController {
 		logger.info("from : " + from + ", to : " + to);
 		mav.addObject("from", from);
 		mav.addObject("to", to);
-		mav.setViewName("snsView/chatting");
+		mav.setViewName("chatting/chat");
 		return mav;
 	}
 	

@@ -14,6 +14,7 @@
 <!-- mobile settings -->
 <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- AST : 채팅 기능 CSW 디자인 HSB -->
 <!-- 채팅 -->
 <script type="text/javascript" src="${path}/resources/chat/sockjs.min.js"></script>
 <script>
@@ -52,17 +53,20 @@ function sendMsg() {
 }
 
 function apdMsg(msg) {
-	
+	// 보내는 사람을 찾기 위해
 	var idx = msg.indexOf(":");
-	var me = msg.substring(0, idx-1);
+	// 보내는 사람
+	var me = msg.substring(0, idx);
+	// 내용
+	var message = msg.substring(idx+1);
 	
+	// 내가 보내는 것이라면
 	if (me == "${sessionScope.member.mname}") {
-		$("#chatMsgArea").append('<div class="from-me" align="right">' + '<p>' + msg + '</p>' +  "</div>" + '<div class="clear"></div>');
+		$("#chatMsgArea").append('<div class="from_me" align="right">' + '<p>' + message + '</p>' +  "</div>" + '<div class="clear"></div>');
+	// 상대방이 보내는 것이라면
 	} else{
-		$("#chatMsgArea").append('<div class="from-them" align="left">' + '<p>' + msg + '</p>' +  "</div>" + '<div class="clear"></div>');
+		$("#chatMsgArea").append('<div class="from_you" align="left">' + '<p>' + message + '</p>' +  "</div>" + '<div class="clear"></div>');
 	}
-	
-
 	
 	// 채팅글의 크기
 	var ht = $("#chatArea").height();
@@ -81,7 +85,6 @@ function conn() {
 	wsocket.onopen = onOpen;
 	wsocket.onmessage = onMessage;
 	wsocket.onclose = onClose;
-	
 } 
 
  //웹 소켓 접속
@@ -107,7 +110,6 @@ function onMessage(evt) {
 		$("#msg").hide();
 		$("#sendBtn").hide();
 		apdMsg(evt.data);
-		
 	// 상대방이 로그인 상태라면
 	} else {
 		// to를 찾기 위한 idx
@@ -117,8 +119,9 @@ function onMessage(evt) {
 		var fidx = evt.data.indexOf(":");
 		var from = evt.data.substring(tidx+1, fidx);
 		var msg = evt.data.substring(fidx+1);
+		// 처음 접속시 
 		if (msg != "null") {
-			apdMsg(from + " : " + msg);
+			apdMsg(from + ":" + msg);
 		}
 	}
 }
@@ -126,120 +129,124 @@ function onMessage(evt) {
 // 종료
 function onClose(evt) {
 }
+
 </script>	
 <style>
 #chatArea {
 	width: 100%;
-	height: 450px;
+	height: 430px;
 	text-align: left;
 	overflow-y: auto;
 }
 
+hr.two {
+	width: 100%;
+	color: green;
+	border: thin solid green;
+}
 
-hr.two {width: 100%; color: green; border: thin solid red; }
+body {
+	font-family: "Helvetica Neue";
+	font-size: 20px;
+	font-weight: normal;
+}
 
+section {
+	max-width: 450px;
+	margin: 50px auto;
+}
 
-<style>
- body {
-   font-family: "Helvetica Neue";
-   font-size: 20px;
-   font-weight: normal;
- }
+section div {
+	max-width: 255px;
+	word-wrap: break-word;
+	margin-bottom: 20px;
+	line-height: 24px;
+}
 
- section {
-   max-width: 450px;
-   margin: 50px auto;
- }
- section div {
-   max-width: 255px;
-   word-wrap: break-word;
-   margin-bottom: 20px;
-   line-height: 24px;
- }
+.clear {
+	clear: both;
+}
 
- .clear {
-   clear: both;
- }
+.from_me {
+	position: relative;
+	padding: 0px 10px;
+	margin: 5px;
+	color: white;
+	background: #0B93F6;
+	border-radius: 20px;
+	float: right;
+}
 
- .from-me {
-   position: relative;
-   padding: 0px 10px;
-   margin: 5px;
-   color: white;
-   background: #0B93F6;
-   border-radius: 20px;
-   float: right;
- }
- 
- .from-me:before {
-   content: "";
-   position: absolute;
-   z-index: -1;
-   bottom: -2px;
-   right: -7px;
-   height: 20px;
-   border-right: 20px solid #0B93F6;
-   border-bottom-left-radius: 16px 14px;
-   -webkit-transform: translate(0, -2px);
- }
- 
- .from-me:after {
-   content: "";
-   position: absolute;
-   z-index: 1;
-   bottom: -2px;
-   right: -56px;
-   width: 26px;
-   height: 20px;
-   background: white;
-   border-bottom-left-radius: 10px;
-   -webkit-transform: translate(-30px, -2px);
- }
+.from_me:before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	bottom: -2px;
+	right: -7px;
+	height: 20px;
+	border-right: 20px solid #0B93F6;
+	border-bottom-left-radius: 16px 14px;
+	-webkit-transform: translate(0, -2px);
+}
 
- .from-them {
-   position: relative;
-   padding: 0px 10px;
-   margin: 1px;
-   background: #E5E5EA;
-   border-radius: 25px;
-   color: black;
-   float: left;
- }
- .from-them:before {
-   content: "";
-   position: absolute;
-   z-index: 2;
-   bottom: -2px;
-   left: -7px;
-   height: 20px;
-   border-left: 20px solid #E5E5EA;
-   border-bottom-right-radius: 16px 14px;
-   -webkit-transform: translate(0, -2px);
- }
- .from-them:after {
-   content: "";
-   position: absolute;
-   z-index: 3;
-   bottom: -2px;
-   left: 4px;
-   width: 26px;
-   height: 20px;
-   background: white;
-   border-bottom-right-radius: 10px;
-   -webkit-transform: translate(-30px, -2px);
- }
+.from_me:after {
+	content: "";
+	position: absolute;
+	z-index: 1;
+	bottom: -2px;
+	right: -56px;
+	width: 26px;
+	height: 20px;
+	background: white;
+	border-bottom-left-radius: 10px;
+	-webkit-transform: translate(-30px, -2px);
+}
+
+.from_you {
+	position: relative;
+	padding: 0px 10px;
+	margin: 1px;
+	background: #E5E5EA;
+	border-radius: 25px;
+	color: black;
+	float: left;
+}
+
+.from_you:before {
+	content: "";
+	position: absolute;
+	z-index: 2;
+	bottom: -2px;
+	left: -7px;
+	height: 20px;
+	border-left: 20px solid #E5E5EA;
+	border-bottom-right-radius: 16px 14px;
+	-webkit-transform: translate(0, -2px);
+}
+
+.from_you:after {
+	content: "";
+	position: absolute;
+	z-index: 3;
+	bottom: -2px;
+	left: 4px;
+	width: 26px;
+	height: 20px;
+	background: white;
+	border-bottom-right-radius: 10px;
+	-webkit-transform: translate(-30px, -2px);
+}
 
 </style>
 </head>
 <body>
-
 	
-		<div class="well well-sm" style="width: 100%;">
-			<h2>${to}님과 채팅</h2>
- 		</div>
-		<hr class="two" />
+	<div class="well well-sm" style="width: 100%; text-align: center;">
+		<h2>${to}님과 채팅</h2>
+		</div>
+	<hr class="two" />
 	
-	<div id="chatArea">
+	<div id="chatArea" style="overflow-x:hidden">
 		<div id="chatMsgArea">
 		</div>
 	</div>
@@ -252,11 +259,5 @@ hr.two {width: 100%; color: green; border: thin solid red; }
 		<input type="button" id="sendBtn" value="전송" />
 	</div>
 	
-	
-	
-	
-
-
-
 </body>
 </html>

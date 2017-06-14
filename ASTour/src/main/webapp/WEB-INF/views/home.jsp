@@ -53,8 +53,6 @@ function onMessage(evt) {
 	var from = evt.data.substring(tidx+1, fidx);
 	// 보내는 대상이 내가 맞는지 && 열려있는 지 확인
 	if (to == "${sessionScope.member.mname}" && !is_open) {
-		
-		//window.open("${path}/sns/chat.do?from="+to + "&to=" + from, "채팅", "width=500, height=600, left=200, top=100");
 		doChat(to, from);
 		// 열려있으면 true로
 		is_open = true;
@@ -63,7 +61,9 @@ function onMessage(evt) {
 
 // 종료
 function onClose(evt) {
+	console.log(evt.data);
 	is_open = false;
+	window.close();
 }
 
 //채팅창 띄우는 팝업 함수

@@ -165,7 +165,7 @@ $(document).ready(function() {
 								</div>
 								<div class="col-md-5">
 									<label>태그*</label> 
-									<input type="text" class="form-control" name="stag" id="stag">
+									<input type="text" class="form-control" name="stag" id="stag" value="${brd.stag}">
 								</div>
 							</div>
 							<div class="col-md-4">

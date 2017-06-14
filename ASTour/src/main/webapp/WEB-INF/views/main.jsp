@@ -257,11 +257,7 @@
   <!-- WELCEOME -->
   <section class="container">
      <h1 class="text-center">
-<<<<<<< HEAD
-        <strong>Welcome</strong> to <strong>AS TOUR</strong>
-=======
         Welcome to <strong>ASTour</strong>
->>>>>>> branch 'master' of https://github.com/hnstsn/ASTour.git
      </h1>
   
      <div class="divider"><!-- divider -->
