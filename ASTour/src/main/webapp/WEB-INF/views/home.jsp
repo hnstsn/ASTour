@@ -93,7 +93,7 @@ function onClose(evt) {
 	wsocket.close();
 }
 
-function doChat(to, from) {
+function doChat(from, to) {
 	window.open("${path}/sns/chat.do?from="+from+"&to="+to, "채팅", "width=500, height=600, left=200, top=100");
 }
 
