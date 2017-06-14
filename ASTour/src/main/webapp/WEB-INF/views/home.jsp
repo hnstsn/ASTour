@@ -16,6 +16,17 @@
 <!-- 채팅 -->
 <script type="text/javascript" src="${path}/resources/chat/sockjs.min.js"></script>	
 <script>
+
+//모바일과 pc 구별하는 코드 중요함 아무도 지우지마셈
+/* var filter = "win32|win64|mac|macintel";
+if (navigator.platform) {
+   if (filter.indexOf(navigator.platform.toLowerCase()) < 0) { //mobile 
+      alert('mobile 접속');
+   } else { //pc 
+      alert('pc 접속');
+   }
+} */
+
 $(function(){
 	conn();
 });
@@ -45,31 +56,48 @@ function onOpen() {
 }
 
 var is_open = false;
+var doChatOpen;
+
 //메세지 전송
 function onMessage(evt) {
 	var tidx = evt.data.indexOf("-");
 	var to = evt.data.substring(0, tidx);
 	var fidx = evt.data.indexOf(":");
 	var from = evt.data.substring(tidx+1, fidx);
-	// 보내는 대상이 내가 맞는지 && 열려있는 지 확인
-	if (to == "${sessionScope.member.mname}" && !is_open) {
-		doChat(to, from);
-		// 열려있으면 true로
-		is_open = true;
+	
+	// 처음 띄우는 것이면
+	if (!is_open) {
+		// 보내는 대상이 내가 맞으면
+		if (to == "${sessionScope.member.mname}") {
+			doChatOpen = window.open("${path}/sns/chat.do?from="+to+"&to="+from, "채팅", "width=500, height=600, left=200, top=100");
+			console.log("doChatOpen : " + doChatOpen);
+			is_open = true;
+		}
+	// 처음이 아니면
+	} else {
+		// 채팅창이 켜져있으면
+		if (!doChatOpen.closed) 
+			 doChatOpen.focus();
+		// 채팅창이 꺼져있으면
+		else { 
+			if (to == "${sessionScope.member.mname}") {
+				doChatOpen = window.open("${path}/sns/chat.do?from="+to+"&to="+from, "채팅", "width=500, height=600, left=200, top=100");
+				is_open = true;
+			}
+		}
 	}
 }
 
 // 종료
 function onClose(evt) {
-	console.log(evt.data);
-	is_open = false;
-	window.close();
+	wsocket.close();
 }
 
-//채팅창 띄우는 팝업 함수
-function doChat(from, to) {
+function doChat(to, from) {
 	window.open("${path}/sns/chat.do?from="+from+"&to="+to, "채팅", "width=500, height=600, left=200, top=100");
 }
+
+
 </script>	
 </head>
 <body>
