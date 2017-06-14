@@ -75,13 +75,12 @@ public class ChatHandler extends TextWebSocketHandler {
 				if (wss.getId().equals(wss.getAttributes().get(to)))
 					log_in = true;
 			}
-			
 			// 로그인 상태면
 			if (log_in) {
 				for (WebSocketSession wss : users) {
 					// from으로 시작 : 나, to로 시작 : 상대방
 					if ( wss.getId().equals(wss.getAttributes().get(from)) ||
-						 wss.getId().equals(wss.getAttributes().get(to)) ) {
+							wss.getId().equals(wss.getAttributes().get(to)) ) {
 						// to와 from msg를 보내준다. to와 from 구분자는 - from과 msg 구분자는 : 
 						wss.sendMessage(new TextMessage(to + "-" + from + ":" + msg));
 					}

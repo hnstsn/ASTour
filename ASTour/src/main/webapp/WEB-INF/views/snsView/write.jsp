@@ -46,6 +46,15 @@ $(document).ready(function() {
 		});
 	});
 	
+	$("#delFile").click(function() {
+		// input tag 삭제
+		$(this).prev().remove();
+		// br tag 삭제
+		$(this).next().remove();
+		// font tag 삭제
+		$(this).remove();
+	});
+	
 	
 	// AST: 선택한 지역의 세부지역select를 바꿉니다
 	$("#siSelect").change(function(){
@@ -176,7 +185,7 @@ $(document).ready(function() {
 								<label id="addFiles">이미지사진 (추가)</label>
 								<div id="filesDiv">
 									<input type="file" name="files" class="files">
-									<font class="deFile">[X]</font><br>
+									<font class="deFile" id="delFile">[X]</font><br>
 								</div>
 							</div>
 

@@ -36,6 +36,10 @@ $(document).ready(function() {
 			sendMsg();
 		}
 	});
+	
+	$("#chatEndBtn").click(function() {
+		chatEnd();
+	});
 });
 
 function sendMsg() {
@@ -131,6 +135,20 @@ function onMessage(evt) {
 // 종료
 function onClose(evt) {
 }
+
+function chatEnd() {
+ 	// 보내는 사람
+	var from = "${sessionScope.member.mname}";
+	// 받는 사람
+	var to = $("#to").val();
+	
+	message = {};
+	message.message = "채팅방을 나갔습니다.";
+	message.from = from;
+	message.to = to;
+	wsocket.send(JSON.stringify(message));
+}
+
 </script>	
 </head>
 <body>
@@ -151,6 +169,7 @@ function onClose(evt) {
 		<input type="hidden" id="to" value="${to}" />
 		<input class="textarea" type="text" id="msg" />
 		<button type="button" class="button bigrounded orange" id="sendBtn">전송</button>
+		<input type="button" id="chatEndBtn" value="종료" />
 	</div>
 	
 </body>
