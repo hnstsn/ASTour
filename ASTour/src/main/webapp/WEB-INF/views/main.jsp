@@ -45,16 +45,6 @@
               <!-- COVER IMAGE -->
               <img src="${path}/resources/image/main/mainimg2.jpg" alt="" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat" />
               
-              
-             <!--  <div class="tp-caption large_text sft"
-                 data-x="center"
-                 data-y="130"
-                 data-speed="300"
-                 data-start="1000"
-                 data-endspeed="500"
-                 data-easing="easeOutBack"><h1>전주 한옥마을</h1>
-              </div> -->
-              
               <div class="tp-caption very_large_text lfl stl"
                  data-x="right"   
                  data-y="293"
@@ -267,7 +257,7 @@
   <!-- WELCEOME -->
   <section class="container">
      <h1 class="text-center">
-        <strong>Welcome</strong> to ASTour
+        Welcome to <strong>ASTour</strong>
      </h1>
   
      <div class="divider"><!-- divider -->
@@ -332,66 +322,27 @@
         <div class="row">
   
            <ul class="sort-destination isotope" data-sort-id="isotope-list">
-  
-             <%--  <li class="isotope-item col-sm-6 col-md-4 development"><!-- item -->
-                 <div class="item-box">
-                    <figure>
-                       <a class="item-hover lightbox" href="${path}/resources/images/demo/portfolio/scouter.jpg" data-plugin-options='{"type":"image"}'>
-                          <span class="overlay color2"></span>
-                          <span class="inner">
-                             <span class="block fa fa-plus fsize20"></span>
-                             <strong>VIEW</strong> IMAGE 
-                          </span>
-                       </a>
-                       <img class="img-responsive" src="${path}/sns/${list.get(0).aimage}" width="260" height="260" alt="">
-                    </figure>
-                    <div class="item-box-desc">
-                       <h4>관리자제공 - 메인페이지 하단에 3개의 이미지부분은 명소 top3</h4>
-                       <small class="styleColor">클릭하면 페이지 전환(날짜 X)</small>
-                    </div>
-                 </div>
-              </li>
-  
-              <li class="isotope-item col-sm-6 col-md-4 photography"><!-- item 2 -->
-                 <div class="item-box">
-                    <figure>
-                       <a class="item-hover lightbox" href="http://www.youtube.com/watch?v=W7Las-MJnJo" data-plugin-options='{"type":"iframe"}'>
-                          <span class="overlay color2"></span>
-                          <span class="inner">
-                             <span class="block fa fa-plus fsize20"></span>
-                             <strong>VIEW</strong> VIDEO
-                          </span>
-                       </a>
-                       <img class="img-responsive" src="${path}/sns/${list.get(1).aimage}" width="260" height="260" alt="">
-                    </figure>
-                    <div class="item-box-desc">
-                       <h4>Video</h4>
-                       <small class="styleColor">29 June, 2014</small>
-                    </div>
-                 </div>
-              </li> --%>
-<!--  -->
-					<c:forEach var="num" begin="0" end="2">
-						<li class="isotope-item col-sm-6 col-md-4 design">
-							<!-- item 3 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="${path}/attraction/initDetails.do?name=${list.get(num).atitle}">
-										<span class="overlay color2"></span> <span class="inner">
-											<span class="block fa fa-plus fsize20"></span> <strong>상세보기</strong>
-									</span>
-									</a>
-									<img class="img-responsive" src="${path}/sns/${list.get(num).aimage}" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>${list.get(num).atitle}</h4>
-									<small class="styleColor">${list.get(num).asort}</small>
-								</div>
+				<c:forEach var="num" begin="0" end="2">
+					<li class="isotope-item col-sm-6 col-md-4 design">
+						<!-- item 3 -->
+						<div class="item-box">
+							<figure>
+								<a class="item-hover" href="${path}/attraction/initDetails.do?name=${list.get(num).atitle}">
+									<span class="overlay color2"></span> <span class="inner">
+										<span class="block fa fa-plus fsize20"></span> <strong>상세보기</strong>
+								</span>
+								</a>
+								<img class="img-responsive" src="${path}/sns/${list.get(num).aimage}" alt="">
+							</figure>
+							<div class="item-box-desc">
+								<h4>${list.get(num).atitle}</h4>
+								<small class="styleColor">${list.get(num).asort}</small>
 							</div>
-						</li>
-					</c:forEach>
+						</div>
+					</li>
+				</c:forEach>
 <!--  -->
-				</ul>
+			</ul>
   
         </div>
   

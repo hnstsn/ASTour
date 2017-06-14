@@ -63,6 +63,7 @@ function onMessage(evt) {
 
 // 종료
 function onClose(evt) {
+	is_open = false;
 }
 
 //채팅창 띄우는 팝업 함수
