@@ -254,3 +254,5 @@ Insert into SIGUN (SI,GUN) values ('面合','澜己焙');
 Insert into SIGUN (SI,GUN) values ('面合','刘乞焙');
 Insert into SIGUN (SI,GUN) values ('面合','柳玫焙');
 Insert into SIGUN (SI,GUN) values ('面合','没盔焙');
+
+select * from sigun;

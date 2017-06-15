@@ -21,6 +21,8 @@ CREATE TABLE attraction_tbl(
 
 CREATE SEQUENCE ATT_SEQ START WITH 1 INCREMENT BY 1;
 
+select * from attraction_tbl;
+
 INSERT INTO attraction_tbl VALUES (ATT_SEQ.NEXTVAL,'태안 백합꽃축제 2017', '행사', 'lily.jpg', 'http://www.ffestival.co.kr', '충청남도', '태안군','남면 마검포길 200 (남면)','041-675-9200', '행사기간 : 2017.07.24 ~ 2017.08.03', '·행사소개 코 끝 진한 향기를 품은 귀족의 꽃 백합이 7월24일부터 8월 3일까지 충남 태안에서 화려하게 펼쳐진다. 야간빛축제와 캠핑장까지 어우러져 일석삼조의 힐링을 느껴보자.<br/>·행사내용 백합 뿐만이 아닌 다양한 볼거리의 화훼, 야간에는 빛축제, 하루의 마무리는 캠핑장에서!', 36.615839, 126.300864);
 INSERT INTO attraction_tbl VALUES (ATT_SEQ.NEXTVAL,'숭례문','명소','Sungnyemun.jpg','http://www.junggu.seoul.kr/tour/','서울특별시','중구','세종대로 40 (남대문로4가)','02-779-8547~8','이용시간 : [개방시간] 09:00~18:00<br/>
  ※ 6~8월은 18:30까지 개방<br/>

@@ -12,3 +12,6 @@ create table reply_tbl (
 
 -- 댓글 테이블 용 sequence
 create sequence rep_seq start with 1 increment by 1;
+
+-- 조회
+select * from reply_tbl;
