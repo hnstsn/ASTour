@@ -37,11 +37,16 @@ $(document).ready(function() {
 });
 
 function f1(){
-	var spk = $('#spk').val();
-	opener.parent.location='${path}/snsdetails/contentview.do?spk='+spk;
-   	window.close();
-   	
-   	//window.android.test2();
+	 var filter = "win32|win64|mac|macintel";
+	 if (navigator.platform) {
+	    if (filter.indexOf(navigator.platform.toLowerCase()) < 0) { //mobile 
+	       var spk = $('#spk').val();
+	   		opener.parent.location='${path}/snsdetails/contentview.do?spk='+spk;
+	      	window.close();
+	    } else { //pc 
+	   		window.close();
+	    }
+	 }
 }
 </script>
 </head>
