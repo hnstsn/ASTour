@@ -27,7 +27,6 @@
 //alert('${fn:length(list)} ');
 
 
-
 $(document).ready(function() {
 	
 	// 파일 추가 누르면
@@ -46,6 +45,7 @@ $(document).ready(function() {
 		});
 	});
 	
+	// 초기 파일 삭제할 수 있게
 	$("#delFile").click(function() {
 		// input tag 삭제
 		$(this).prev().remove();
@@ -53,6 +53,27 @@ $(document).ready(function() {
 		$(this).next().remove();
 		// font tag 삭제
 		$(this).remove();
+	});
+	
+	// 확인 버튼을 누르면 - 유효성 검사
+	$("#submitBtn").click(function() {
+		if ($("#stitle").val() == '') {
+			alert("제목을 입력하세요");
+			$("#stitle").focus();
+			return false;
+		} else if ($("#stag").val() == '') {
+			alert("태그를 선택하세요");
+			$("#stag").focus();
+			return false;
+		} else if ($("#scontent").val() == '') {
+			alert("내용을 입력하세요");
+			$("#scontent").focus();
+			return false;
+		// 충족했을 경우 submit
+		} else {
+			$("#writeForm").attr("action", "${path}/sns/insert.do");
+			$("#writeForm").submit();
+		}
 	});
 	
 	
@@ -64,22 +85,22 @@ $(document).ready(function() {
 	$("#gunSelect").change(function (){
 		var name1 = $("#siSelect option:selected").val();
 		var name2 = $("#gunSelect option:selected").val();
-			$("#attractionName").html("<option>"+"선택하세요!"+"</option>");
-			$.ajax({
-				url:"${path}/searchLocation",
-				type : "post",
-				data : {"agu" : name2},
-				dataType : 'json',
-				success : function(Data){
-					if(name2=="선택하세요!"){
-						sisi();
-					}else{
-						for(var i=0; i<Data.length; i++){
-							$("#attractionName").append("<option value="+Data[i].atitle+">"+Data[i].atitle+"</option>");
-						}
+		$("#attractionName").html("<option>"+"선택하세요!"+"</option>");
+		$.ajax({
+			url:"${path}/searchLocation",
+			type : "post",
+			data : {"agu" : name2},
+			dataType : 'json',
+			success : function(Data){
+				if(name2=="선택하세요!"){
+					sisi();
+				}else{
+					for(var i=0; i<Data.length; i++){
+						$("#attractionName").append("<option value="+Data[i].atitle+">"+Data[i].atitle+"</option>");
 					}
 				}
-			});
+			}
+		});
 	});
 });
 
@@ -97,50 +118,38 @@ $(document).ready(function() {
 .files { float:left; }
 .addFileDiv 	{ margin-top : 5px; }
 .deFile:hover { cursor:pointer; }
-	
-	 html,body
-            {
-                margin: 0;
-                padding: 0;
+ html,body { margin: 0; padding: 0; }
+ body{ /* background-color: aquamarine; */ position: relative; }
+#tagLocationBack {
+	 top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     margin: auto;
+     padding: auto;
+     z-index: 1;
+     background:rgba(0,0,0,0.8);
+     width: 100%;
+     height: 100%;
+     display: none;
+     position: absolute;
+     text-align: center;
+}
 
-            }
-            
-    body{
-        /* background-color: aquamarine; */
-        position: relative;
-    }
-    
-	#tagLocationBack{
-		 top: 0;
-         left: 0;
-         right: 0;
-         bottom: 0;
-         margin: auto;
-         padding: auto;
-         z-index: 1;
-         background:rgba(0,0,0,0.8);
-         width: 100%;
-         height: 100%;
-         display: none;
-         position: absolute;
-         text-align: center;
-	}
-	#tagLocation
-	{
-		 position: absolute;
-         top: 0;
-	     left: 0;
-	     right: 0;
-	     bottom: 0;
-	     margin: auto;
-	     padding: auto;
-	     z-index: 3;
-	     width: 600px;
-	     height: 400px;
-	     background-color:white; 
-	     display: none;
-	}
-	
+#tagLocation {
+	 position: absolute;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     margin: auto;
+     padding: auto;
+     z-index: 3;
+     width: 600px;
+     height: 400px;
+     background-color:white; 
+     display: none;
+}
 </style>
 </head>
 <body>
@@ -153,15 +162,14 @@ $(document).ready(function() {
 			<!-- FORM -->
 			<div class="col-md-12">
 				<h2>글쓰기</h2>
-				<form id="writeForm" action="${path}/sns/insert.do" method="post" enctype="multipart/form-data">
+				<form id="writeForm" method="post" enctype="multipart/form-data">
 					<!-- 작성자가 누군지 알아야지 저장할수 있기 때문에 mpk 받고 또 넘겨줌 -->
 					<input type="hidden" name="mpk" value="${mpk}" />
 					<div class="row">
 						<div class="form-group">
 							<div class="col-md-6">
 								<label>제목 *</label> 
-								<input type="text" class="form-control"name="stitle" id="stitle"
-								style="width: 505px">
+								<input type="text" class="form-control" name="stitle" id="stitle" style="width: 505px">
 								<div class="col-md-5">
 								<label>리뷰&나의게시물 *</label> 
 									<select class="form-control" name="ssort" id="ssort">
@@ -171,14 +179,7 @@ $(document).ready(function() {
 								</div>
 								<div class="col-md-5">
 									<label>태그*</label> 
-									<!-- <input type="text" class="form-control"  name="stag" id="stag"> -->
-									<input type="text" class="form-control"  name="stag" id="stag" />
-									<%-- <select class="form-control"  name="stag" id="stag">
-										<option>선택하세요</option>
-										<c:forEach var="list" items="${list}">
-											<option>${list.atitle}</option>	
-										</c:forEach> 
-									</select> --%>
+									<input type="text" class="form-control" name="stag" id="stag" />
 								</div>
 							</div>
 							<div class="col-md-4">
@@ -204,7 +205,7 @@ $(document).ready(function() {
 
 					<div class="row">
 						<div class="col-md-12">
-							<input type="submit" class="btn btn-primary btn-lg" value="확인">
+							<input type="button" class="btn btn-primary btn-lg" id="submitBtn" value="확인">
 						</div>
 					</div>
 
@@ -258,7 +259,6 @@ $(document).ready(function() {
                      <label>지역세부</label> 
 	                     <select id="gunSelect" class="form-control" name="re_type">
 	                     	<option >선택전</option>
-	                     
 	                     </select>
                   </div>
                   </div>
@@ -276,11 +276,9 @@ $(document).ready(function() {
                      <input id="tagSelfInput" type="text" class="form-control" disabled="disabled" />
                   </div>
                </div>
-            
 
             <div><!-- <div class="row"> -->
                <div >
-                  
 
                   <div class="col-md-6 col-sm-8 col-xs-12">
                   <label>&nbsp;</label>
