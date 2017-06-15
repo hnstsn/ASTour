@@ -77,12 +77,28 @@ public class ChatHandler extends TextWebSocketHandler {
 			}
 			// 로그인 상태면
 			if (log_in) {
-				for (WebSocketSession wss : users) {
-					// from으로 시작 : 나, to로 시작 : 상대방
-					if ( wss.getId().equals(wss.getAttributes().get(from)) ||
-							wss.getId().equals(wss.getAttributes().get(to)) ) {
-						// to와 from msg를 보내준다. to와 from 구분자는 - from과 msg 구분자는 : 
-						wss.sendMessage(new TextMessage(to + "-" + from + ":" + msg));
+				// 상대방이 채팅방을 나갔는지 확인
+				boolean is_logout = false;
+				if (msg != null && msg.equals("채팅방을 나갔습니다.")) 
+					is_logout = true;
+
+				// 채팅방을 나갔으면
+				if (is_logout) {
+					for (WebSocketSession wss : users) {
+						// 상대방에게 나갔다는 메세지를 보내준다.
+						if (wss.getId().equals(wss.getAttributes().get(to))) {
+							wss.sendMessage(new TextMessage(to + "-" + from + ":" + msg));
+						}
+					}
+				// 채팅방을 나가지 않았으면
+				} else {
+					for (WebSocketSession wss : users) {
+						// from으로 시작 : 나, to로 시작 : 상대방
+						if ( wss.getId().equals(wss.getAttributes().get(from)) ||
+							 wss.getId().equals(wss.getAttributes().get(to)) ) {
+							// to와 from msg를 보내준다. to와 from 구분자는 - from과 msg 구분자는 : 
+							wss.sendMessage(new TextMessage(to + "-" + from + ":" + msg));
+						}
 					}
 				}
 			// 로그아웃 상태이면

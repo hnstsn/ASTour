@@ -37,8 +37,10 @@ $(document).ready(function() {
 		}
 	});
 	
+	// 종료버튼을 누르면
 	$("#chatEndBtn").click(function() {
 		chatEnd();
+		window.close();
 	});
 });
 
@@ -107,9 +109,9 @@ function onOpen() {
  
 // 메세지 전송
 function onMessage(evt) {
-	//console.log(evt.data);
 	// 로그아웃이란 글자가 있는지 확인
 	var is_log_out = evt.data.indexOf("로그아웃");
+	
 	// 로그아웃 상태이면
 	if (is_log_out != -1) {
 		// 메시지 입력란을 숨긴다
@@ -125,10 +127,32 @@ function onMessage(evt) {
 		var fidx = evt.data.indexOf(":");
 		var from = evt.data.substring(tidx+1, fidx);
 		var msg = evt.data.substring(fidx+1);
-		// 처음 접속시 
-		if (msg != "null") {
-			apdMsg(from + ":" + msg);
+		
+		// 채팅방을 나갔는지 확인
+		var is_chat_out = false;
+		if (msg == "채팅방을 나갔습니다.") {
+			is_chat_out = true;
 		}
+		
+		console.log("채팅창jsp의 is_chat_out : " + is_chat_out);
+		
+		// 상대방이 채팅방을 나갔으면
+		if (is_chat_out) {
+			// 메시지 입력란을 숨긴다
+			$("#msg").hide();
+			$("#sendBtn").hide();
+			apdMsg(to + "님이 " + msg);
+			return;
+		// 채팅중이면
+		} else {
+			// 처음 접속시 
+			if (msg != "null") {
+				apdMsg(from + ":" + msg);
+			}
+		}
+		
+		
+		
 	}
 }
 
