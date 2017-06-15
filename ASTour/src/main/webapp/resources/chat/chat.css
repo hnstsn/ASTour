@@ -189,10 +189,28 @@ section div {
    font-family: Tahoma, 돋움체;
    font-size: 11pt;
    line-height: 100%;
-   color: #489cdf;
+   color: #000000;
+   border-radius: 10px;
 }
 
 .chattingtext {
    font-family: Tahoma, 돋움체;
    font-size: 10pt;
+}
+
+.btn {
+	position: fixed;
+	right: 10px;
+	top: 15px;
+}
+
+.btntest {
+	position: fixed;
+	right: 10px;
+	top: 15px;
+	color: #000000;
+ 	background: rgba(0,0,0,0);
+ 	border: solid 2px rgba(0, 0, 0, .3);
+ 	border-radius: 10px;
+ 	
 }

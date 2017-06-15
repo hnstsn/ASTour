@@ -174,12 +174,17 @@ function chatEnd() {
 }
 
 </script>	
+
 </head>
 <body>
 
-	<div class="blockquote" style="width: 100%; text-align: center;">
-		<h2 class="titletext">${to}님과 채팅</h2>
-		</div>
+	<div style="width: 100%; text-align: center;">
+		<h2 class="titletext">${to}님과 채팅
+		<input class="btntest" type="button" id="chatEndBtn" value="나가기" />	
+		</h2>
+	</div>
+	
+	
 	<hr class="two" />
 	
 	<div id="chatArea" style="overflow-x:hidden">
@@ -193,7 +198,6 @@ function chatEnd() {
 		<input type="hidden" id="to" value="${to}" />
 		<input class="textarea" type="text" id="msg" />
 		<button type="button" class="button bigrounded orange" id="sendBtn">전송</button>
-		<input type="button" id="chatEndBtn" value="종료" />
 	</div>
 	
 </body>

@@ -22,8 +22,10 @@ public interface SnsService {
 	// 게시물 갯수 조회
 	public int count(int mpk);
 	public int countSsort(int mpk,String ssort);
-	
-	
+
+	// 랭크 이미지 파일
+	public String rankListfile(int spk);
+
 	// 랭크 보여주기
 	public List<snsVO> rankList();
 	public int replycountList(int mpk,int spk);

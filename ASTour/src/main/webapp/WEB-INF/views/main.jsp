@@ -269,22 +269,24 @@
      <hr /><h3>조회순</h3>
   
      <!-- FEATURED BOXES 4 -->
-     
      <div class="row featured-box-minimal margin-bottom30">
         <div class="col-md-4">
            <h4><i style="color: #D9C91D;" class="fa fa-trophy"></i>금메달</h4>
         	<h5>${rankList[0].stag }</h5>
             <a href="${path}/snsdetails/contentview.do?spk=${rankList[0].spk }"><h3><p>${rankList[0].stitle }</p></h3></a>  
+        	<img src="${path}/sns/${rankList[0].sffile}" class="img-rounded" alt=${rankList[0].sffile } width="300" height="200" />
         </div>
         <div class="col-md-4">
            <h4><i style="color: lightgrey;" class="fa fa-trophy"></i>은메달</h4>
         	<h5>${rankList[1].stag }</h5>
             <a href="${path}/snsdetails/contentview.do?spk=${rankList[1].spk }"><h3><p>${rankList[1].stitle }</p></h3></a>
+           <img src="${path}/sns/${rankList[1].sffile}" class="img-rounded" alt="${rankList[1].sffile }" width="300" height="200" />
         </div>
         <div class="col-md-4">
            <h4><i style="color: #704405;" class="fa fa-trophy"></i>동메달</h4>
         	<h5>${rankList[2].stag }</h5>
            <a href="${path}/snsdetails/contentview.do?spk=${rankList[2].spk }"><h3><p>${rankList[2].stitle }</p></h3></a> 
+           <img src="${path}/sns/${rankList[2].sffile}" class="img-rounded" alt="${rankList[2].sffile }" width="300" height="200" />
         </div>
      </div>
      <!-- /FEATURED BOXES 4 -->

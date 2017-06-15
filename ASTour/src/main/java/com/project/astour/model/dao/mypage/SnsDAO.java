@@ -22,7 +22,9 @@ public interface SnsDAO {
 	public int count(int mpk);
 	public int countSsort(Map<String, Object> map);
 	
-	
+	//랭크 리스트 파일 사진
+	public String rankListfile(int spk);
+		
 	// 랭크 보여주기
 	public List<snsVO> rankList();
 	public int replycountList(Map<String, Object> map);

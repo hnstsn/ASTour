@@ -195,10 +195,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- ranklist -->
 	<select id="rankList" resultType="snsVO">
-		select spk, stitle, scontent, stag, ssort, shits, mpk, 
+		SELECT * FROM(
+		SELECT rownum rnum, a.*
+		FROM(
+		select spk, stitle, scontent, stag, ssort, shits, mpk,
 		rank() over (order by shits desc) as rank from sns_tbl
-		where ssort='review'
+		where ssort='review') a
+		)WHERE rnum between 1 and 3
 	</select>	
+	
+	<!-- ranklist filename -->
+	<select id="rankListfile" resultType="String">
+		select sffile from snsFile_tbl 
+		where sfpk in (select min(sfpk) from snsFile_tbl group by spk) and spk = #{spk}
+	</select>
 	
 	<!-- 게시판 댓글 갯수 조회 -->
    <select id="replycountList" resultType="int">
