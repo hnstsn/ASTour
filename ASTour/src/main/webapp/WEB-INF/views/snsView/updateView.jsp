@@ -35,8 +35,13 @@ $(document).ready(function() {
           window.close();
       });
 });
+
 function f1(){
-   window.close();
+	var spk = $('#spk').val();
+	opener.parent.location='${path}/snsdetails/contentview.do?spk='+spk;
+   	window.close();
+   	
+   	//window.android.test2();
 }
 </script>
 </head>
@@ -68,7 +73,7 @@ function f1(){
                <input type="hidden" name="spk" id="spk" value="${spk}">
                <input type="hidden" name="mname" id="mname" value="${mname}">
                <input type="button" id="up" value="수정" class="btn btn-success">
-               <button onclick="f1()" class="btn btn-success">취소</button>
+               <input type="button" onclick="f1()" class="btn btn-success" value="취소"/>
             </p>
             <p align="right"></p>
          </div>
