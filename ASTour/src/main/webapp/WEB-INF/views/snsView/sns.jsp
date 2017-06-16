@@ -61,7 +61,7 @@ $(function(){
 					<!-- AST : 사람찾기  -->
 					<div class="widget" style="margin-right: 20px; ">
 
-						<h3 class="jg">사람 찾기</h3>
+						<h3 class="jg">친구 찾기</h3>
 
 						<form method="post" name="schForm" class="input-group">
 							<input type="text" class="form-control" name="people_id"
@@ -145,11 +145,9 @@ $(function(){
 								<h2 class="jg" style="font-size: 30px">
 									<a href="${path}/snsdetails/contentview.do?spk=${sns.spk}&mname=${member.mname}">${sns.stitle}</a>
 								</h2>
-								<a href="blog.html" class="label label-default light">
-									<i class="fa fa-dot-circle-o"></i>${sns.ssort}
-								</a>
-								<a href="blog-post.html#comments" class="scrollTo label label-default light">
-                           			<i class="fa fa-comment-o"></i> ${sns.reCnt} Comments</a>
+								<span class="label label-default light">ⓞ${sns.ssort}</span>
+								<span class="label label-default light">${sns.stag }</span>
+								<span class="label label-default light">${sns.reCnt} Comments</span>
 								<span class="label label-default light">
 									<fmt:formatDate value="${sns.sdate }" pattern="yyyy-MM-dd a HH:mm:ss" />
 								</span>
