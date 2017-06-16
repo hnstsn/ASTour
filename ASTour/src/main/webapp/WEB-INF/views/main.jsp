@@ -3,6 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <head>
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.hn {font-family: 'Hanna'; font-size: 30px;}
+.jg { font-family: 'Jeju Gothic'; font-size: 30px;}
+
+</style>
 	<meta charset="utf-8" />
 	<!-- AST : bootstrap을 위한 것들을 모아놓은  jsp page -->
 	<%@ include file="include/bootstap_collect.jsp" %>
@@ -257,7 +265,7 @@
   <!-- WELCEOME -->
   <section class="container">
      <h1 class="text-center">
-        Welcome to <strong>ASTour</strong>
+        <h5 class="hn" align="center" style="font-size: 65px;">Welcome to ASTOUR</h5>
      </h1>
   
      <div class="divider"><!-- divider -->
@@ -266,46 +274,46 @@
   
      <p class="lead"></p>
   
-     <hr /><h3>조회순</h3>
+     <hr /><h3 class="hn">조회순</h3>
   
      <!-- FEATURED BOXES 4 -->
      <div class="row featured-box-minimal margin-bottom30">
         <div class="col-md-4">
            <h4><i style="color: #D9C91D;" class="fa fa-trophy"></i>금메달</h4>
         	<h5>${rankList[0].stag }</h5>
-            <a href="${path}/snsdetails/contentview.do?spk=${rankList[0].spk }"><h3><p>${rankList[0].stitle }</p></h3></a>  
+            <a href="${path}/snsdetails/contentview.do?spk=${rankList[0].spk }"><h3 class="jg"><p>${rankList[0].stitle }</p></h3></a>  
         	<img src="${path}/sns/${rankList[0].sffile}" class="img-rounded" alt=${rankList[0].sffile } width="300" height="200" />
         </div>
         <div class="col-md-4">
            <h4><i style="color: lightgrey;" class="fa fa-trophy"></i>은메달</h4>
         	<h5>${rankList[1].stag }</h5>
-            <a href="${path}/snsdetails/contentview.do?spk=${rankList[1].spk }"><h3><p>${rankList[1].stitle }</p></h3></a>
+            <a href="${path}/snsdetails/contentview.do?spk=${rankList[1].spk }"><h3 class="jg"><p>${rankList[1].stitle }</p></h3></a>
            <img src="${path}/sns/${rankList[1].sffile}" class="img-rounded" alt="${rankList[1].sffile }" width="300" height="200" />
         </div>
         <div class="col-md-4">
            <h4><i style="color: #704405;" class="fa fa-trophy"></i>동메달</h4>
         	<h5>${rankList[2].stag }</h5>
-           <a href="${path}/snsdetails/contentview.do?spk=${rankList[2].spk }"><h3><p>${rankList[2].stitle }</p></h3></a> 
+           <a href="${path}/snsdetails/contentview.do?spk=${rankList[2].spk }"><h3 class="jg"><p>${rankList[2].stitle }</p></h3></a> 
            <img src="${path}/sns/${rankList[2].sffile}" class="img-rounded" alt="${rankList[2].sffile }" width="300" height="200" />
         </div>
      </div>
      <!-- /FEATURED BOXES 4 -->
  
   
-     <hr /><h3>태그순</h2>
+     <hr /><h3 class="hn">태그순</h2>
      <!-- FEATURED BOXES 4 -->
      <div class="row featured-box-minimal margin-bottom30">
         <div class="col-md-4">
-           <h4><i style="color: #D9C91D;" class="fa fa-trophy"></i>금메달</h4>
-           <a href="${path}/attraction/initDetails.do?name=${tagrank[0].atitle }"><h3><p>${tagrank[0].atitle }</p></h3></a>
+           <h4><i style="color: #D9C91D;" class="fa fa-trophy"></i>
+           <a class="jg" href="${path}/attraction/initDetails.do?name=${tagrank[0].atitle }">${tagrank[0].atitle }</a></h4>
         </div>
         <div class="col-md-4">
-           <h4><i style="color: lightgrey;" class="fa fa-trophy"></i>은메달</h4>
-           <a href="${path}/attraction/initDetails.do?name=${tagrank[1].atitle }"><h3><p>${tagrank[1].atitle }</p></h3></a>
+           <h4><i style="color: lightgrey;" class="fa fa-trophy"></i>
+           <a class="jg" href="${path}/attraction/initDetails.do?name=${tagrank[1].atitle }">${tagrank[1].atitle }</a></h4>
         </div>
         <div class="col-md-4">
-           <h4><i style="color: #704405;" class="fa fa-trophy"></i>동메달</h4>
-           <a href="${path}/attraction/initDetails.do?name=${tagrank[2].atitle }"><h3><p>${tagrank[2].atitle }</p></h3></a>
+           <h4><i style="color: #704405;" class="fa fa-trophy"></i>
+           <a class="jg" href="${path}/attraction/initDetails.do?name=${tagrank[2].atitle }">${tagrank[2].atitle }</a></h4>
         </div>
      </div>
      <!-- /FEATURED BOXES 4 -->
@@ -337,7 +345,7 @@
 								<img class="img-responsive" src="${path}/sns/${list.get(num).aimage}" alt="">
 							</figure>
 							<div class="item-box-desc">
-								<h4>${list.get(num).atitle}</h4>
+								<h4 class="jg" style="font-size: 23px">${list.get(num).atitle}</h4>
 								<small class="styleColor">${list.get(num).asort}</small>
 							</div>
 						</div>

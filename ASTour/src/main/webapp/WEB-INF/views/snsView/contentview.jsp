@@ -6,6 +6,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.hn {font-family: 'Hanna'; font-size: 40px;}
+.jg { font-family: 'Jeju Gothic'; font-size: 30px;}
+</style>
 <meta charset="utf-8" />
 <title>Atropos - Responsive Multipurpose</title>
 <meta name="keywords" content="HTML5,CSS3,Template" />
@@ -56,7 +63,7 @@ function f2(rpk,spk,mpk){
 		<header id="page-title">
 			<div class="container">
 				<!-- 이름 디비에서 불러와서 처리하기 -->
-				<h1>${mname}블로그</h1>
+				<h1 class="hn">${mname}블로그</h1>
 			</div>
 		</header>
 
@@ -68,7 +75,7 @@ function f2(rpk,spk,mpk){
 					<form method="post" name="conForm">
 						<!-- article title -->
 						<header class="blog-post">
-							<h1><input type="hidden" name="stitle" value="${contenlist.stitle}" />${contenlist.stitle}</h1>
+							<h1 class="jg" style="font-size: 35px"><input type="hidden" name="stitle" value="${contenlist.stitle}" />${contenlist.stitle}</h1>
 							<small class="fsize13">
 								<a href="#" class="label label-default light">
 									<i class="fa fa-dot-circle-o"></i>
@@ -96,7 +103,7 @@ function f2(rpk,spk,mpk){
 	
 						<!-- article content -->
 						<article style="margin-left: 3%; margin-right: 3%">
-							<h4><input type="hidden" name="scontent" value="${contenlist.scontent}" />${contenlist.scontent}</h4>
+							<h4 class="jg" style="font-size: 20px"><input type="hidden" name="scontent" value="${contenlist.scontent}" />${contenlist.scontent}</h4>
 						</article>
 						<p align="right">
 							<c:if test="${sessionScope.member.mpk eq contenlist.mpk}">
@@ -119,7 +126,7 @@ function f2(rpk,spk,mpk){
 	
 						<!-- COMMENTS -->
 						<div id="comments">
-							<h2>댓글</h2>
+							<h2 class="jg" style="font-size: 20px">댓글</h2>
 	
 							<c:forEach var="re" items="${replyView }">
 								<div class="comment">
@@ -137,7 +144,7 @@ function f2(rpk,spk,mpk){
 										<small class="block"> 
 											<fmt:formatDate value="${re.rtime }" pattern="yyyy-MM-dd a HH:mm:ss" />
 										</small>
-										${re.rcontent }
+										<h5 class="jg" style="font-size: 20px">${re.rcontent }</h5>
 									</div>
 								</div>
 							</c:forEach>
@@ -164,7 +171,7 @@ function f2(rpk,spk,mpk){
 							<hr />
 						</c:if>
 
-						<h4>댓글</h4>
+						<h4 class="jg" style="font-size: 20px">댓글</h4>
 
 						<!-- COMMENT FORM -->
 						<form id="commentForm" action="${path}/snsdetails/in.do" method="post" >

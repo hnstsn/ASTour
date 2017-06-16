@@ -6,6 +6,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.hn {font-family: 'Hanna'; font-size: 40px;}
+.jg { font-family: 'Jeju Gothic'; font-size: 30px;}
+</style>
 <meta charset="utf-8" />
 <title>Atropos - Responsive Multipurpose</title>
 <meta name="keywords" content="HTML5,CSS3,Template" />
@@ -41,7 +48,7 @@ $(function(){
 		<!-- AST : 페이지 타이틀 -->
 		<header id="page-title">
 			<div class="container">
-				<h1>${member.mname}블로그</h1>
+				<h1 class="hn">${member.mname}블로그</h1>
 			</div>
 		</header>
 		<!-- / AST : 페이지 타이틀 -->
@@ -54,7 +61,7 @@ $(function(){
 					<!-- AST : 사람찾기  -->
 					<div class="widget" style="margin-right: 20px; ">
 
-						<h3>사람 찾기</h3>
+						<h3 class="jg">사람 찾기</h3>
 
 						<form method="post" name="schForm" class="input-group">
 							<input type="text" class="form-control" name="people_id"
@@ -71,7 +78,7 @@ $(function(){
 					<!-- AST : 개인 프로필  -->
 					<div class="widget">
 
-						<h4>프로필</h4>
+						<h4 class="jg" style="font-size: 20px">프로필</h4>
 						<div class="container">
 
 							<!--  AST : 프로필 사진 클릭시 확대 -->
@@ -89,7 +96,7 @@ $(function(){
 					<!-- AST : 골라보기 목록  -->
 					<div class="widget">
 
-						<h4>게시물 보기</h4>
+						<h4 class="jg" style="font-size: 22px">게시물 보기</h4>
 						<ul class="nav nav-list">
 							<li>
 								<a href="${path}/sns/snsSelect.do?mpk=${member.mpk}">
@@ -135,7 +142,7 @@ $(function(){
 
 							<!-- AST : 타임라인 타이틀  -->
 							<div class="item-title">
-								<h2>
+								<h2 class="jg" style="font-size: 30px">
 									<a href="${path}/snsdetails/contentview.do?spk=${sns.spk}&mname=${member.mname}">${sns.stitle}</a>
 								</h2>
 								<a href="blog.html" class="label label-default light">
@@ -161,7 +168,7 @@ $(function(){
 							<!-- / AST : 타임라인 이미지  -->
 
 							<!-- AST : 타임라인 내용  -->
-							<p>${sns.scontent }</p>
+							<p class="jg" style="font-size: 17px">${sns.scontent }</p>
 							<!-- / AST : 타임라인 내용  -->
 						</div>
 					</c:forEach>

@@ -210,6 +210,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where sfpk in (select min(sfpk) from snsFile_tbl group by spk) and spk = #{spk}
 	</select>
 	
+	<select id="noimage" resultType="String">
+		select aimage from attraction_tbl where atitle=#{stag}
+	</select>
+	
 	<!-- 게시판 댓글 갯수 조회 -->
    <select id="replycountList" resultType="int">
       select nvl(count(*),0) as ct from reply_tbl where mpk=#{mpk} and spk=#{spk}

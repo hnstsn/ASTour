@@ -25,6 +25,9 @@ public interface SnsService {
 
 	// 랭크 이미지 파일
 	public String rankListfile(int spk);
+	
+	// 랭크 이미지 없을때
+	public String noimage(String stag);
 
 	// 랭크 보여주기
 	public List<snsVO> rankList();

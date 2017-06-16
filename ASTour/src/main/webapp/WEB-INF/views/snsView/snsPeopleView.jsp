@@ -10,6 +10,14 @@
 <!--<![endif]-->
 
 <head>
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.hn {font-family: 'Hanna'}
+.jg { font-family: 'Jeju Gothic'; font-size: 28px;}
+
+</style>
 <meta charset="utf-8" />
 <meta name="keywords" content="HTML5,CSS3,Template" />
 <meta name="description" content="" />
@@ -24,7 +32,7 @@
 	<!-- PAGE TITLE -->
 	<header id="page-title">
 	<div class="container" style="margin-left: 20%; margin-right: 20%">
-		<h1>사람찾기</h1>
+		<h1 class="hn" style="font-size: 35px">사람찾기</h1>
 	</div>
 	</header>
 
@@ -33,8 +41,8 @@
 		<ul class="sort-destination isotope" data-sort-id="isotope-list">
 			<c:choose>
 				<c:when test="${peopleList.size() < 1}">
-					<h2>찾고 계신 사람이 없습니다.</h2>
-					<h2>이름을 다시 한번 확인해주세요.</h2>
+					<h2 class="jg">찾고 계신 사람이 없습니다.</h2>
+					<h2 class="jg">이름을 다시 한번 확인해주세요.</h2>
 				</c:when>
 				<c:otherwise>
 					<c:forEach var="people" items="${peopleList}">
@@ -46,18 +54,17 @@
 										<span class="overlay color3"></span> 
 										<span class="inner"></span>
 									</a>
-									<img src="${path}/profile/${people.pfile}" width="260" height="260" alt="프로필 사진 없음">
+									<img src="${path}/profile/${people.pfile}" width="340" height="260" alt="프로필 사진 없음">
 								</figure> 
 								<div class="item-box-desc">
-									<h4>${people.mname}님</h4>
-									<h5>${people.mid}</h5>
+									<h4 class="jg" style="font-size: 23px">${people.mname}님</h4>
+									<h5 class="jg" style="font-size: 15px">${people.mid}</h5>
 								</div>
 							</div>
 						</li>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>
-			
 		</ul>
 	</div>
 	<!-- /.masonry-container -->

@@ -56,9 +56,12 @@ public class HomeController {
 			String sffile=snsService.rankListfile(vo.getSpk());
 			if(sffile!=null){
 				vo.setSffile(sffile);
-			}else
-				vo.setSffile("사진없음");
+			}else{
+				sffile = snsService.noimage(vo.getStag());
+				vo.setSffile(sffile);
+			}
 		}
+			
 		
 		
 		//랜덤으로 순선 정함

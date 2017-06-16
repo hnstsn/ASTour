@@ -92,11 +92,18 @@ public class SnsDAOImpl implements SnsDAO {
 	public String rankListfile(int spk) {
 		return sqlSession.selectOne("sns.rankListfile",spk);
 	}
+	
+	//랭크 이미지 없을때
+	@Override
+	public String noimage(String stag) {
+		return sqlSession.selectOne("sns.noimage",stag);
+	}
 
 	//게시물 댓글 갯수 조회
 	@Override
 	public int replycountList(Map<String, Object> map) {
 		return sqlSession.selectOne("sns.replycountList",map);
 	}
+
 
 }

@@ -8,6 +8,13 @@
 <html>
 <!--<![endif]-->
 <head>
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.hn {font-family: 'Hanna';}
+.jg { font-family: 'Jeju Gothic'; font-size: 30px;}
+</style>
 <meta charset="utf-8" />
 <meta name="keywords" content="HTML5,CSS3,Template" />
 <meta name="description" content="" />
@@ -35,7 +42,7 @@
             -->
 
 			<div class="container">
-				<h1>고객센터</h1>
+				<h1 class="hn" style="font-size: 35px">고객센터</h1>
 				<!-- <ul class="breadcrumb">
                   <li><a href="index.html">Home</a></li>
                   <li><a href="#">Pages</a></li>
