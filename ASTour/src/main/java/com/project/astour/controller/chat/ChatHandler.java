@@ -58,15 +58,16 @@ public class ChatHandler extends TextWebSocketHandler {
 		// 메세지 내용
 		String msg = vo.getMessage();
 		// 보내는 사람
-		String from = vo.getFrom();
+		String from = String.valueOf(vo.getFrom());
 		// 받는 사람
-		String to = vo.getTo();
+		String to = String.valueOf(vo.getTo());
 		
 		// 로그인 했는지 확인
 		boolean log_in = false;
 		
 		// map. key는 메세지를 보내려는 사람, value는 session.getId
 		session.getAttributes().put(from, session.getId());
+		System.out.println("from : " + from + " - " + session.getAttributes().get(from));
 
 		// 받는 사람이 있을 경우 메세지 전송
 		if (to != null) {

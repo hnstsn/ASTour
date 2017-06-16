@@ -47,7 +47,7 @@ $(document).ready(function() {
 function sendMsg() {
 	var msg = $("#msg").val();
 	// 보내는 사람
-	var from = "${sessionScope.member.mname}";
+	var from = "${sessionScope.member.mpk}";
 	// 받는 사람
 	var to = $("#to").val();
 	
@@ -69,7 +69,7 @@ function apdMsg(msg) {
 	var message = msg.substring(idx+1);
 	
 	// 내가 보내는 것이라면
-	if (me == "${sessionScope.member.mname}") {
+	if (me == "${sessionScope.member.mpk}") {
 		$("#chatMsgArea").append('<div class="from_me" align="right">' + '<p class="chattingtext">' + message + '</p>' +  "</div>" + '<div class="clear"></div>');
 	// 상대방이 보내는 것이라면
 	} else{
@@ -98,7 +98,7 @@ function conn() {
  //웹 소켓 접속
 function onOpen() {
 	// 보내는 사람
-	var from = "${from}";
+	var from = "${from.mpk}";
 	// 받는 사람
 	var to = $("#to").val();
 	message={};
@@ -138,6 +138,7 @@ function onMessage(evt) {
 		
 		// 상대방이 채팅방을 나갔으면
 		if (is_chat_out) {
+			to = "${to.mname}";
 			// 메시지 입력란을 숨긴다
 			$("#msg").hide();
 			$("#sendBtn").hide();
@@ -151,8 +152,6 @@ function onMessage(evt) {
 			}
 		}
 		
-		
-		
 	}
 }
 
@@ -160,9 +159,10 @@ function onMessage(evt) {
 function onClose(evt) {
 }
 
+// 채팅방을 나갔을 경우 호출되는 함수
 function chatEnd() {
  	// 보내는 사람
-	var from = "${sessionScope.member.mname}";
+	var from = "${sessionScope.member.mpk}";
 	// 받는 사람
 	var to = $("#to").val();
 	
@@ -179,11 +179,10 @@ function chatEnd() {
 <body>
 
 	<div style="width: 100%; text-align: center;">
-		<h2 class="titletext">${to}님과 채팅
+		<h2 class="titletext">${to.mname}님과 채팅
 		<input class="btntest" type="button" id="chatEndBtn" value="나가기" />	
 		</h2>
 	</div>
-	
 	
 	<hr class="two" />
 	
@@ -195,7 +194,7 @@ function chatEnd() {
 	<hr class="two"/>
 	
 	<div>
-		<input type="hidden" id="to" value="${to}" />
+		<input type="hidden" id="to" value="${to.mpk}" />
 		<input class="textarea" type="text" id="msg" />
 		<button type="button" class="button bigrounded orange" id="sendBtn">전송</button>
 	</div>
