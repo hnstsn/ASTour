@@ -41,7 +41,7 @@ function f1(){
 	 if (navigator.platform) {
 	    if (filter.indexOf(navigator.platform.toLowerCase()) < 0) { //mobile 
 	       var spk = $('#spk').val();
-	   		opener.parent.location='${path}/snsdetails/contentview.do?spk='+spk;
+			location.onclick=history.back();
 	      	window.close();
 	    } else { //pc 
 	   		window.close();
