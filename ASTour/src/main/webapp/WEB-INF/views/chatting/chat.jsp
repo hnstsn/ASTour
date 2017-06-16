@@ -40,7 +40,17 @@ $(document).ready(function() {
 	// 종료버튼을 누르면
 	$("#chatEndBtn").click(function() {
 		chatEnd();
-		window.close();
+		window.close(); */
+		var filter = "win32|win64|mac|macintel";
+		 if (navigator.platform) {
+		    if (filter.indexOf(navigator.platform.toLowerCase()) < 0) { //mobile 
+		    	chatEnd();
+		    	location.onclick=history.back();
+		    } else { //pc 
+		    	chatEnd();
+		    	window.close();
+		    }
+		 }
 	});
 });
 
