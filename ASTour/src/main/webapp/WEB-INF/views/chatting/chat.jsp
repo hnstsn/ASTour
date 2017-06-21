@@ -40,14 +40,13 @@ $(document).ready(function() {
 	// 종료버튼을 누르면
 	$("#chatEndBtn").click(function() {
 		chatEnd();
-		window.close(); */
 		var filter = "win32|win64|mac|macintel";
-		 if (navigator.platform) {
+		if (navigator.platform) {
 		    if (filter.indexOf(navigator.platform.toLowerCase()) < 0) { //mobile 
-		    	chatEnd();
+		    	//chatEnd();
 		    	location.onclick=history.back();
 		    } else { //pc 
-		    	chatEnd();
+		    	//chatEnd();
 		    	window.close();
 		    }
 		 }
@@ -121,22 +120,23 @@ function onOpen() {
 function onMessage(evt) {
 	// 로그아웃이란 글자가 있는지 확인
 	var is_log_out = evt.data.indexOf("로그아웃");
+	// to를 찾기 위한 idx
+	var tidx = evt.data.indexOf("-");
+	var to = evt.data.substring(0, tidx);
+	// from을 찾기 위해
+	var fidx = evt.data.indexOf(":");
+	var from = evt.data.substring(tidx+1, fidx);
+	var msg = evt.data.substring(fidx+1);
 	
 	// 로그아웃 상태이면
 	if (is_log_out != -1) {
+		to = "${to.mname}";
 		// 메시지 입력란을 숨긴다
 		$("#msg").hide();
 		$("#sendBtn").hide();
-		apdMsg(evt.data);
+		apdMsg(to + "님은 " + msg);
 	// 상대방이 로그인 상태라면
 	} else {
-		// to를 찾기 위한 idx
-		var tidx = evt.data.indexOf("-");
-		var to = evt.data.substring(0, tidx);
-		// from을 찾기 위해
-		var fidx = evt.data.indexOf(":");
-		var from = evt.data.substring(tidx+1, fidx);
-		var msg = evt.data.substring(fidx+1);
 		
 		// 채팅방을 나갔는지 확인
 		var is_chat_out = false;
@@ -152,8 +152,8 @@ function onMessage(evt) {
 			// 메시지 입력란을 숨긴다
 			$("#msg").hide();
 			$("#sendBtn").hide();
+			console.log("??????");
 			apdMsg(to + "님이 " + msg);
-			return;
 		// 채팅중이면
 		} else {
 			// 처음 접속시 
@@ -161,7 +161,6 @@ function onMessage(evt) {
 				apdMsg(from + ":" + msg);
 			}
 		}
-		
 	}
 }
 
@@ -171,7 +170,7 @@ function onClose(evt) {
 
 // 채팅방을 나갔을 경우 호출되는 함수
 function chatEnd() {
- 	// 보내는 사람
+  	// 보내는 사람
 	var from = "${sessionScope.member.mpk}";
 	// 받는 사람
 	var to = $("#to").val();

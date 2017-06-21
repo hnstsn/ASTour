@@ -106,7 +106,7 @@ public class ChatHandler extends TextWebSocketHandler {
 			} else {
 				for (WebSocketSession wss : users) {
 					if ( wss.getId().equals(wss.getAttributes().get(from))) {
-						wss.sendMessage(new TextMessage(to + "님은 로그아웃 중입니다."));
+						wss.sendMessage(new TextMessage("로그아웃 중입니다."));
 					}
 				}
 			}
