@@ -31,12 +31,17 @@ create sequence sfile_seq start with 1 increment by 1 nocache;
 -- sffile sffile 200byte로 변경
 ALTER TABLE snsFile_tbl MODIFY (sffile VARCHAR2(200));
 
+--좋아요 칼럼 삭제
+ALTER TABLE sns_tbl drop (slikes);
+
 --sns table 조회
 select * from sns_tbl;
 
 --sns file table 조회
 select * from snsfile_tbl;
-  
+
+--좋아요 칼럼 삭제
+ALTER TABLE sns_tbl drop (slikes);
 
 select sns_seq.currval from dual;
 select sfile_seq.currval from dual;
