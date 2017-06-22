@@ -62,7 +62,8 @@ public class SnsController {
 		SnsFileVO snsFileVO;
 		for (snsVO vo : snsList) {
 			vo.setReCnt(snsService.replycountList(mpk, vo.getSpk()));;
-			System.out.println("보내줄 spk : " + vo.getSpk());
+			
+			vo.setSlikes(snsDetailsService.likecount(vo.getSpk()));
 			snsFileVO = snsService.snsFileList(vo.getSpk());
 			if (snsFileVO != null) {
 				snsFileList.add(snsFileVO);
@@ -108,6 +109,7 @@ public class SnsController {
 		SnsFileVO snsFileVO;
 		for (snsVO vo : snsList) {
 			vo.setReCnt(snsService.replycountList(mpk, vo.getSpk()));;
+			vo.setSlikes(snsDetailsService.likecount(vo.getSpk()));
 			snsFileVO = snsService.snsFileList(vo.getSpk());
 			if (snsFileVO != null) {
 				snsFileList.add(snsFileVO);
@@ -160,6 +162,7 @@ public class SnsController {
 		SnsFileVO snsFileVO;
 		for (snsVO vo : snsList) {
 			vo.setReCnt(snsService.replycountList(mpk, vo.getSpk()));;
+			vo.setSlikes(snsDetailsService.likecount(vo.getSpk()));
 			// System.out.println("보내줄 spk : " + vo.getSpk());
 			snsFileVO = snsService.snsFileList(vo.getSpk());
 			if (snsFileVO != null) {
@@ -194,7 +197,8 @@ public class SnsController {
 		System.out.println("snsLIst크기 : " + snsList.size());
 		SnsFileVO snsFileVO;
 		for (snsVO vo : snsList) {
-			vo.setReCnt(snsService.replycountList(mpk, vo.getSpk()));;
+			vo.setReCnt(snsService.replycountList(mpk, vo.getSpk()));
+			vo.setSlikes(snsDetailsService.likecount(vo.getSpk()));
 			System.out.println("보내줄 spk : " + vo.getSpk());
 			snsFileVO = snsService.snsFileList(vo.getSpk());
 			if (snsFileVO != null) {
@@ -231,6 +235,7 @@ public class SnsController {
 		SnsFileVO snsFileVO;
 		for (snsVO vo : snsList) {
 			vo.setReCnt(snsService.replycountList(mpk, vo.getSpk()));;
+			vo.setSlikes(snsDetailsService.likecount(vo.getSpk()));
 			System.out.println("보내줄 spk : " + vo.getSpk());
 			snsFileVO = snsService.snsFileList(vo.getSpk());
 			if (snsFileVO != null) {

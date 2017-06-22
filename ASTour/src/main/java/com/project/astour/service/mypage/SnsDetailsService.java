@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.astour.model.dto.mypage.LikeVO;
 import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.SnsReplyVO;
 import com.project.astour.model.dto.mypage.snsVO;
@@ -23,7 +24,12 @@ public interface SnsDetailsService {
 	
 	public void reply(int mpk,int spk,String rcontent);
 	//public List<SnsReplyVO> replyView(int spk);
-	public void hitsView(int spk, HttpSession session);
+	public void hitsView(int spk, HttpSession session); // 조회수
+	public void likeinsert(int mpk, int spk); // 좋아요 추가
+	public void likedelete(int mpk, int spk); // 좋아요 삭제
+	public int likecount(int spk); // 좋아요 개수
+	
+	public LikeVO likeSelect(LikeVO vo);
 	
 	public SnsReplyVO count(int spk);
 	public void delete(int rpk);

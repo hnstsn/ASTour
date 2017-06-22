@@ -12,6 +12,9 @@
 
 .hn {font-family: 'Hanna'; font-size: 40px;}
 .jg { font-family: 'Jeju Gothic'; font-size: 30px;}
+
+.test{text-align: center;}
+
 </style>
 <meta charset="utf-8" />
 <title>Atropos - Responsive Multipurpose</title>
@@ -24,6 +27,8 @@
 <%@ include file="../include/sessionCheck.jsp"%>
 <!-- Morenizr -->
 <script type="text/javascript">
+
+ 
 $(function(){
 	$("#schBtn").click(function() {
 		var people_id = $("#people_id").val();
@@ -74,6 +79,8 @@ $(function(){
 						</form>
 					</div>
 					<!-- / AST : 사람찾기  -->
+<!-- 여기서부터 -->
+<div id="test">
 
 					<!-- AST : 개인 프로필  -->
 					<div class="widget">
@@ -91,13 +98,11 @@ $(function(){
 						</div>
 					</div>
 					<!-- / AST : 개인 프로필  -->
-
-
 					<!-- AST : 골라보기 목록  -->
 					<div class="widget">
 
 						<h4 class="jg" style="font-size: 22px">게시물 보기</h4>
-						<ul class="nav nav-list">
+						<ul class="nav nav-list" id="test2">
 							<li>
 								<a href="${path}/sns/snsSelect.do?mpk=${member.mpk}">
 								<i class="fa fa-circle-o"></i>전체 보기</a>
@@ -129,9 +134,9 @@ $(function(){
 					</div>
 					<!-- / AST : 골라보기 목록  -->
 
+</div>
 				</div>
 				<!-- / AST : 프로필 또는 그 외 전체 틀   -->
-
 				<!-- AST : 타임라인  -->
 				<div class="col-md-9">
 
@@ -147,11 +152,12 @@ $(function(){
 								</h2>
 								<span class="label label-default light">ⓞ${sns.ssort}</span>
 								<span class="label label-default light">${sns.stag }</span>
-								<span class="label label-default light">${sns.reCnt} Comments</span>
 								<span class="label label-default light">
 									<fmt:formatDate value="${sns.sdate }" pattern="yyyy-MM-dd a HH:mm:ss" />
 								</span>
-								<span class="label label-default light">${sns.shits }</span>
+								<span class="label label-default light">댓글:${sns.reCnt}</span>
+								<span class="label label-default light">조회수:${sns.shits }</span>
+								<span class="label label-default light">좋아요:${sns.slikes }</span>
 							</div>
 							<!-- / AST : 타임라인 타이틀  -->
 
@@ -206,5 +212,15 @@ $(function(){
 	</div>
 </div>
 <!-- / AST : 블로그 전체 틀 -->
+<script type="text/javascript">
+var filter = "win32|win64|mac|macintel";
+if (navigator.platform) {
+	    if (filter.indexOf(navigator.platform.toLowerCase()) < 0) { //mobile 
+	    	document.getElementById('test2').style="text-align: center;";
+	    	document.getElementById('test').style="text-align: center;";
+	    } else { //pc 
+	    }
+}	
+</script>
 
 </html>

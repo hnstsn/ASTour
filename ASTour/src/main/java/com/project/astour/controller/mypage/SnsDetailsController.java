@@ -1,6 +1,5 @@
 package com.project.astour.controller.mypage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -11,8 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.project.astour.model.dto.member.MemberVO;
+import com.project.astour.model.dto.mypage.LikeVO;
 import com.project.astour.model.dto.mypage.Pager;
 import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.SnsReplyVO;
@@ -46,6 +48,11 @@ public class SnsDetailsController {
 		// 해당 게시글의 파일 가져오기
 		List<SnsFileVO> contentViewFile = snsDetailsService.contentViewFile(spk);
 		//List<SnsReplyVO> replyView = snsDetailsService.replyView(spk);
+		MemberVO mem = (MemberVO) session.getAttribute("member");
+		int mpk = mem.getMpk();
+		
+		LikeVO like = new LikeVO(mpk, spk);
+		
 		
 		SnsReplyVO ct = snsDetailsService.count(spk);
 		Pager pager = new Pager(ct.getCt(),curPage1);
@@ -61,6 +68,15 @@ public class SnsDetailsController {
 		}
 		
 		//model.addAttribute("replyView",replyView);
+		
+		if (snsDetailsService.likeSelect(like) == null) {
+			System.out.println("nononnono");
+			model.addAttribute("likeChk", "no");
+		} else {
+			System.out.println("yeseyseysesyesyeseyseyseysesyesy");
+			model.addAttribute("likeChk", "yes");
+		}
+		
 		model.addAttribute("pager",pager);
 		model.addAttribute("replyView",replyView);
 		model.addAttribute("fileList",contentViewFile);
@@ -169,5 +185,42 @@ public class SnsDetailsController {
        System.out.println("접속했다111111111111");
        snsDetailsService.replyupdate(vo);
     }
+    
+    //좋아요 컨트롤
+    @RequestMapping("likeinsert.do")
+    @ResponseBody
+    public String likeinsert(Model model,
+    		@RequestParam(value="mpk") int mpk,
+    		@RequestParam(value="spk") int spk){
+    	
+    	snsDetailsService.likeinsert(mpk, spk);
+    	LikeVO like = new LikeVO(mpk, spk);
+    	System.out.println("??!!!!!!!!!!!!!" + snsDetailsService.likeSelect(like));
+    	if (snsDetailsService.likeSelect(like) == null) {
+			return "no";
+		} else {
+			return "yes";
+		}
+    }
+    
+    //좋아요 해제 컨트롤
+    @RequestMapping("likeDelete.do")
+    @ResponseBody
+    public String likeDelete(Model model,
+    		@RequestParam(value="mpk") int mpk,
+    		@RequestParam(value="spk") int spk){
+    	
+    	snsDetailsService.likedelete(mpk, spk);
+    	LikeVO like = new LikeVO(mpk, spk);
+    	if (snsDetailsService.likeSelect(like) == null) {
+			return "no";
+		} else {
+			return "yes";
+		}
+    }
+    
+    
+    
+    
 
 }

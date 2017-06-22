@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.astour.model.dto.mypage.LikeVO;
 import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.SnsReplyVO;
 import com.project.astour.model.dto.mypage.snsVO;
@@ -23,7 +24,13 @@ public interface SnsDetailsDAO {
 	public void reply(int mpk,int spk,String rcontent);
 	
 	//public List<SnsReplyVO> replyView(int spk);
-	public void hitsView(int spk);
+	public void hitsView(int spk); // 조회수
+	public void likeinsert(int mpk, int spk); // 좋아요 추가
+	public void likedelete(int mpk, int spk); // 좋아요 삭제
+	public int likecount(int spk);
+	
+	public LikeVO likeSelect(LikeVO vo);
+	
 	
 	public SnsReplyVO count(int spk);
 	public void delete(int rpk);

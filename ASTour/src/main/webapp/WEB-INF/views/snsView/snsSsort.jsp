@@ -147,6 +147,7 @@ $(function(){
 									<fmt:formatDate value="${sns.sdate }" pattern="yyyy-MM-dd a HH:mm:ss" />
 								</span>
 								<span class="label label-default light">${sns.shits }</span>
+								<span class="label label-default light">${sns.slikes }</span>
 							</div>
 							<!-- / AST : 타임라인 타이틀  -->
 

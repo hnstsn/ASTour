@@ -45,6 +45,7 @@ $(document).ready(function() {
 		    if (filter.indexOf(navigator.platform.toLowerCase()) < 0) { //mobile 
 		    	//chatEnd();
 		    	location.onclick=history.back();
+		    	window.close();
 		    } else { //pc 
 		    	//chatEnd();
 		    	window.close();
