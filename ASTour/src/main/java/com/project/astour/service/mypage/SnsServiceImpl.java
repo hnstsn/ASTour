@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.project.astour.model.dao.mypage.SnsDAO;
 import com.project.astour.model.dto.member.MemberVO;
+import com.project.astour.model.dto.mypage.Profile;
 import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.snsVO;
 
@@ -151,6 +152,16 @@ public class SnsServiceImpl implements SnsService {
 		return snsDao.replycountList(map);
 	}
 
+	//사진첩(프로필) 정보 가지고오기
+	@Override
+	public List<Profile> profileList(int mpk) {
+		return snsDao.profileList(mpk);
+	}
+	//사진첩(게시판) 정보 가지고오기
+	@Override
+	public List<Profile> blogList(int mpk) {
+		return snsDao.blogList(mpk);
+	}
 
 	
 }

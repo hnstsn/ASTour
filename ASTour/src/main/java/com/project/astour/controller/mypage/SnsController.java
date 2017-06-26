@@ -1,10 +1,13 @@
 package com.project.astour.controller.mypage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.ietf.jgss.Oid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -14,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.project.astour.model.dto.attraction.attraction_tbl;
 import com.project.astour.model.dto.member.MemberVO;
 import com.project.astour.model.dto.mypage.Pager;
+import com.project.astour.model.dto.mypage.Profile;
 import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.snsVO;
 import com.project.astour.service.attraction.AttractionService;
@@ -255,33 +260,21 @@ public class SnsController {
 	
 	// 사진첩 가져오기
 	@RequestMapping("gallery.do")
-	public ModelAndView gallery(@RequestParam int mpk, ModelAndView mav,
-								@RequestParam(defaultValue = "1") int curPage) {
+	public String gallery(Model model,@RequestParam(value="mpk") int mpk) {
+		// 회원정보 가져오기
+		MemberVO member = snsService.memList(mpk);
+		List<Profile> blogList = snsService.blogList(mpk);//블로그 파일 리스트 
+		List<Profile> profileList = snsService.profileList(mpk);//프로필 파일 리스트 
 
-		// mpk로 모든 sns 게시물과 프로필 사진 가져오고 보여주기
-//		int count = snsService.count(mpk);
-//
-//		Pager pager = new Pager(count, curPage);
-//		int start = pager.getPageBegin();
-//		int end = pager.getPageEnd();
-//		pager.setMpk(mpk);
-//				
-//		// 회원정보 가져오기
-//		MemberVO member = snsService.memList(mpk);
-//		// sns 게시글 가져오기
-//		List<snsVO> snsList = snsService.snsList(start, end, mpk);
-//		// 게시글에 해당하는 사진 가져오기
-//		List<SnsFileVO> snsFileList = new ArrayList<SnsFileVO>();
-//		SnsFileVO snsFileVO;
-//		for (snsVO vo : snsList) {
-//			snsFileVO = snsService.snsFileList(vo.getSpk());
-//			if (snsFileVO != null) {
-//				snsFileList.add(snsFileVO);
-//			}
-//		}
+		Map<String, Object> map = new HashMap<String, Object>();
 		
-		mav.setViewName("snsView/gallery");
-		return mav;
+		map.put("member", member);
+		map.put("blog", blogList);
+		map.put("profile", profileList);
+		
+		model.addAttribute("map",map);
+		model.addAttribute("curPage", "snsView/gallery.jsp");
+		return "home";
 	}
 	
 	// AST(CSW) : 채팅

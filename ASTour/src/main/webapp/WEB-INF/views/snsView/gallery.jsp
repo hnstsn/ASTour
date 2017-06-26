@@ -11,263 +11,85 @@
 <%@ include file="../include/bootstap_collect.jsp"%>
 <%@ include file="../include/sessionCheck.jsp"%>
 </head>
+
 <body>
-	<section id="portfolio" class="container">
+<!-- WRAPPER -->
+		<div id="wrapper">
 
-				<h2>누구누구님의 사진첩</h2>
+			<!-- PAGE TITLE -->
+			<header id="page-title">
+				<div class="container">
+					<h1>${map.member.mname }님의 사진첩</h1>
+				</div>
+			</header>
 
+		<c:if test="${map.blog.size()<=0&&map.profile.size()<=0}">
+			<section id="portfolio" class="container">
+				<h1>프로필사진이없습니다</h1>
+				<!-- CALLOUT -->
+				<div class="bs-callout text-center nomargin-bottom">
+					<h3><a href="${path}/sns/initSns.do?mpk=${map.member.mpk}" class="btn btn-primary btn-lg">돌아가기</a></h3>
+				</div>
+				<!-- /CALLOUT -->
+			</section>
+		</c:if>
 
+		<c:if test="${map.blog.size()>0||map.profile.size()>0}">
+			<section id="portfolio" class="container">
 				<ul class="nav nav-pills isotope-filter isotope-filter" data-sort-id="isotope-list" data-option-key="filter">
-					<li data-option-value="*" class="active"><a href="#">전체보기</a></li>
-					<li data-option-value=".development"><a href="#">프로필</a></li>
-					<li data-option-value=".photography"><a href="#">리뷰 게시판</a></li>
-					<li data-option-value=".design"><a href="#">나의 게시물</a></li>
+					<li data-option-value="*" class="active"><a href="#">전체</a></li>
+					<li data-option-value=".blog"><a href="#">게시물사진</a></li>
+					<li data-option-value=".profile"><a href="#">프로필사진</a></li>
 				</ul>
 
-
 				<div class="row">
-
 					<ul class="sort-destination isotope" data-sort-id="isotope-list">
-
-						<li class="isotope-item col-sm-6 col-md-4 development"><!-- item -->
+						<c:forEach var="blog" items="${map.blog}">
+						<li class="isotope-item col-sm-6 col-md-4 blog"><!-- item 2 -->
 							<div class="item-box">
 								<figure>
-									<a class="item-hover" href="portfolio-single.html">
+									<a class="item-hover lightbox" href="${path}/sns/${blog.pfile}" target=_blank data-plugin-options='{"type":"iframe"}'>
 										<span class="overlay color2"></span>
 										<span class="inner">
 											<span class="block fa fa-plus fsize20"></span>
-											<strong>PROJECT</strong> DETAIL
 										</span>
 									</a>
-									<img class="img-responsive" src="assets/images/demo/portfolio/scouter-600x403.jpg" width="260" height="260" alt="">
+									<img src="${path}/sns/${blog.pfile}" width="260" height="260" alt="">
 								</figure>
-								<div class="item-box-desc">
-									<h4>Atropos Project</h4>
-									<small class="styleColor">29 June, 2014</small>
-								</div>
 							</div>
 						</li>
-
-						<li class="isotope-item col-sm-6 col-md-4 photography"><!-- item 2 -->
+						</c:forEach>
+						
+						<c:forEach var="profile" items="${map.profile}">
+						<li class="isotope-item col-sm-6 col-md-4 profile"><!-- item 2 -->
 							<div class="item-box">
 								<figure>
-									<a class="item-hover lightbox" href="http://www.youtube.com/watch?v=W7Las-MJnJo" data-plugin-options='{"type":"iframe"}'>
+									<a class="item-hover lightbox" href="${path}/profile/${profile.pfile}" target=_blank data-plugin-options='{"type":"iframe"}'>
 										<span class="overlay color2"></span>
 										<span class="inner">
 											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> VIDEO
 										</span>
 									</a>
-									<img class="img-responsive" src="assets/images/demo/portfolio/black-kitty-600x403.jpg" width="260" height="260" alt="">
+									<img src="${path}/profile/${profile.pfile}" width="260" height="260" alt="">
 								</figure>
-								<div class="item-box-desc">
-									<h4>Video Project</h4>
-									<small class="styleColor">29 June, 2014</small>
-								</div>
 							</div>
 						</li>
-
-						<li class="isotope-item col-sm-6 col-md-4 design"><!-- item 3 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="portfolio-single.html">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>PROJECT</strong> DETAIL
-										</span>
-									</a>
-									<img class="img-responsive" src="assets/images/demo/portfolio/merchant2-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>Atropos Project</h4>
-									<small class="styleColor">29 June, 2014</small>
-								</div>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-4 photography"><!-- item 4 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="portfolio-single.html">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>PROJECT</strong> DETAIL
-										</span>
-									</a>
-									<img class="img-responsive" src="assets/images/demo/portfolio/flippin-the-bird1-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>Atropos Project</h4>
-									<small class="styleColor">29 June, 2014</small>
-								</div>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-4 development"><!-- item 5 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover lightbox" href="http://www.youtube.com/watch?v=W7Las-MJnJo" data-plugin-options='{"type":"iframe"}'>
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> VIDEO
-										</span>
-									</a>
-									<img class="img-responsive" src="assets/images/demo/portfolio/night_to_remember1-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>Video Project</h4>
-									<small class="styleColor">29 June, 2014</small>
-								</div>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-4 design"><!-- item 6 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="portfolio-single.html">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>PROJECT</strong> DETAIL
-										</span>
-									</a>
-									<img class="img-responsive" src="assets/images/demo/portfolio/spacebound-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>Atropos Project</h4>
-									<small class="styleColor">29 June, 2014</small>
-								</div>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-4 photography design"><!-- item 7 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover lightbox" href="http://www.youtube.com/watch?v=W7Las-MJnJo" data-plugin-options='{"type":"iframe"}'>
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> VIDEO
-										</span>
-									</a>
-									<img class="img-responsive" src="assets/images/demo/portfolio/be-my-guest1-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>Atropos Project</h4>
-									<small class="styleColor">29 June, 2014</small>
-								</div>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-4 development"><!-- item 8 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="portfolio-single.html">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>PROJECT</strong> DETAIL
-										</span>
-									</a>
-									<img class="img-responsive" src="assets/images/demo/portfolio/black-box5-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>Atropos Project</h4>
-									<small class="styleColor">29 June, 2014</small>
-								</div>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-4 development"><!-- item -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="portfolio-single.html">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>PROJECT</strong> DETAIL
-										</span>
-									</a>
-									<img class="img-responsive" src="assets/images/demo/portfolio/weather-app-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>Atropos Project</h4>
-									<small class="styleColor">29 June, 2014</small>
-								</div>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-4 photography"><!-- item 2 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover lightbox" href="http://www.youtube.com/watch?v=W7Las-MJnJo" data-plugin-options='{"type":"iframe"}'>
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> VIDEO
-										</span>
-									</a>
-									<img class="img-responsive" src="assets/images/demo/portfolio/theMoose-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>Atropos Project</h4>
-									<small class="styleColor">29 June, 2014</small>
-								</div>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-4 design"><!-- item 3 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover" href="portfolio-single.html">
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>PROJECT</strong> DETAIL
-										</span>
-									</a>
-									<img class="img-responsive" src="assets/images/demo/portfolio/tumblr_mopqj9QUeq1st5lhmo1_12801-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>Atropos Project</h4>
-									<small class="styleColor">29 June, 2014</small>
-								</div>
-							</div>
-						</li>
-
-						<li class="isotope-item col-sm-6 col-md-4 photography"><!-- item 4 -->
-							<div class="item-box">
-								<figure>
-									<a class="item-hover lightbox" href="http://www.youtube.com/watch?v=W7Las-MJnJo" data-plugin-options='{"type":"iframe"}'>
-										<span class="overlay color2"></span>
-										<span class="inner">
-											<span class="block fa fa-plus fsize20"></span>
-											<strong>VIEW</strong> VIDEO
-										</span>
-									</a>
-									<img class="img-responsive" src="assets/images/demo/portfolio/scouter-600x403.jpg" width="260" height="260" alt="">
-								</figure>
-								<div class="item-box-desc">
-									<h4>Atropos Project</h4>
-									<small class="styleColor">29 June, 2014</small>
-								</div>
-							</div>
-						</li>
-
+						</c:forEach>
 					</ul>
 
 				</div><!-- /.masonry-container -->
 
 				<!-- CALLOUT -->
 				<div class="bs-callout text-center nomargin-bottom">
-					<h3>Do you like what you see? <a href="contact-us.html" target="_blank" class="btn btn-primary btn-lg">Yes, let's work together!</a></h3>
+					<h3><a href="${path}/sns/initSns.do?mpk=${map.member.mpk}" class="btn btn-primary btn-lg">돌아가기</a></h3>
 				</div>
 				<!-- /CALLOUT -->
 
 
 			</section>
+</c:if>
+
+		</div>
+		<!-- /WRAPPER -->
 </body>
 </html>

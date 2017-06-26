@@ -236,8 +236,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 게시판 댓글 갯수 조회 -->
    <select id="replycountList" resultType="int">
-      select nvl(count(*),0) as ct from reply_tbl where mpk=#{mpk} and spk=#{spk}
+		select nvl(count(*),0) as ct from reply_tbl where mpk=#{mpk} and spk=#{spk}
    </select>
 
+	<!-- 사진첩 (프로필사진) -->
+	<select id="profileList" resultType="com.project.astour.model.dto.mypage.Profile">
+		select ppk as pk,pfile from ASTProfile where mpk=#{mpk} order by pk desc
+	</select>
+
+	<!-- 사진첩 (게사판 사진들) -->
+	<select id="blogList" resultType="com.project.astour.model.dto.mypage.Profile">
+		select sf.sfpk as pk,sf.sffile as pfile from snsfile_tbl sf,sns_tbl st where sf.spk=st.spk and st.mpk=#{mpk} order by pk desc
+	</select>
 	
 </mapper>

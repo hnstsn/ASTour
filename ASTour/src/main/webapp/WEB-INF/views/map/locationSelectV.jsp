@@ -148,7 +148,8 @@
  						         '                <div class="overLink"><a href="https://github.com/hnstsn/ASTour" target="_blank" class="link">홈페이지</a>'+  
  						         '             	  <a href="'+
  						         					detailView+
- 						         '					"	target="_blank" class="link">상세보기</a></div>' +
+ 						         '					"	target="_blank" class="link">상세보기</a>' +
+ 						         '				  <a href="${path}/find?tt='+data[i].alatitude+'&tt2='+data[i].alongitude+'">상세보기'+data[i].alatitude+' 확인'+data[i].alongitude+'</a></div>'+
  						         '            </div>' +
  						         '        </div>' +
  						         '    </div>' +
@@ -397,6 +398,7 @@
                   strokeStyle : 'dashed', // 선의 스타일 입니다
                   fillColor : '#CFE7FF', // 채우기 색깔입니다
                   fillOpacity : 0.2 // 채우기 불투명도 입니다   
+
                });
                circle.setMap(map);
           
