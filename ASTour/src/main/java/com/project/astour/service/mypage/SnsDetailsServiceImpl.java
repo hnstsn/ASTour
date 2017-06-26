@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.project.astour.model.dao.mypage.SnsDetailsDAO;
+import com.project.astour.model.dto.mypage.LikeVO;
 import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.SnsReplyVO;
 import com.project.astour.model.dto.mypage.snsVO;
@@ -114,18 +115,38 @@ public class SnsDetailsServiceImpl implements SnsDetailsService{
 	public List<SnsReplyVO> replyView(int start,int end,int spk){
 		return snsDetailsDao.replyView(start, end,spk);
 	}
+	
 	//댓글 쓴사람 사진 가지고오기
 	@Override
 	public String replyViewFile(int mpk) {
 		return snsDetailsDao.replyViewFile(mpk);
 	}
+	
 	//상세보기 이름 하나 가지고오기
 	@Override
 	public String nameone(int spk) {
 		return snsDetailsDao.nameone(spk);
 	}
 
-	
+	@Override
+	public void likeinsert(int mpk, int spk) {
+		snsDetailsDao.likeinsert(mpk, spk);
+	}
 
+	@Override
+	public LikeVO likeSelect(LikeVO vo) {
+		return snsDetailsDao.likeSelect(vo);
+	}
+
+	@Override
+	public void likedelete(int mpk, int spk) {
+		snsDetailsDao.likedelete(mpk,spk);
+	}
+
+	@Override
+	public int likecount(int spk) {
+		System.out.println("spk!! : " + spk + " - " + snsDetailsDao.likecount(spk));
+		return snsDetailsDao.likecount(spk);
+	}
 	
 }

@@ -13,6 +13,14 @@
 
 
 <head>
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.hn {font-family: 'Hanna'}
+.jg { font-family: 'Jeju Gothic'; font-size: 28px;}
+
+</style>
 <meta charset="utf-8" />
 <meta name="keywords" content="HTML5,CSS3,Template" />
 <meta name="description" content="" />
@@ -32,14 +40,14 @@
 		<!-- PAGE TITLE -->
 		<header id="page-title">
 		<div class="container">
-			<h1>${title }리뷰목록</h1>
+			<h1 class="hn" style="font-size: 35px">${title } 리뷰목록</h1>
 		</div>
 		</header>
 		<section id="portfolio" class="container">
 		<c:choose>
 			<c:when test="${list.size() < 1}">
 				<div class="row">
-					<h2>${title} 리뷰가 없습니다</h2>
+					<h2 class="jg">${title} 리뷰가 없습니다</h2>
 				</div>
 			</c:when>
 			<c:otherwise>
@@ -68,8 +76,9 @@
 										src="${path}/sns/${list.filename }" width="360" height="260"
 										alt=""> </figure>
 									<div class="item-box-desc">
-										<h4>${list.mname }(${list.ct })</h4>
-										<span>조회수 :${list.shits}</span> <small class="styleColor">${list.mid }</small>
+										<h4 class="jg" style="font-size: 23px">${list.mname }(${list.ct })</h4>
+										<span class="jg" style="font-size: 15px">조회수 :${list.shits}</span> 
+										<small class="jg" style="font-size: 15px">${list.mid }</small>
 									</div>
 								</div>
 							</li>

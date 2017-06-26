@@ -44,7 +44,7 @@ function conn() {
 	wsocket.onclose = onClose;
 }
 
-var from = "${sessionScope.member.mname}";
+var from = "${sessionScope.member.mpk}";
 
 //웹 소켓 접속
 function onOpen() {
@@ -64,11 +64,19 @@ function onMessage(evt) {
 	var to = evt.data.substring(0, tidx);
 	var fidx = evt.data.indexOf(":");
 	var from = evt.data.substring(tidx+1, fidx);
+	var msg = evt.data.substring(fidx+1);
+	
+	// 채팅중인지 확인
+	var is_chat_out = false;
+	if (msg == "채팅방을 나갔습니다.") {
+		is_chat_out = true;
+	}
+	console.log("msg : " + msg + ", home_chatout ? " + is_chat_out);
 	
 	// 처음 띄우는 것이면
 	if (!is_open) {
 		// 보내는 대상이 내가 맞으면
-		if (to == "${sessionScope.member.mname}") {
+		if (to == "${sessionScope.member.mpk}") {
 			doChatOpen = window.open("${path}/sns/chat.do?from="+to+"&to="+from, "채팅", "width=500, height=600, left=200, top=100");
 			console.log("doChatOpen : " + doChatOpen);
 			is_open = true;
@@ -78,9 +86,10 @@ function onMessage(evt) {
 		// 채팅창이 켜져있으면
 		if (!doChatOpen.closed) 
 			 doChatOpen.focus();
-		// 채팅창이 꺼져있으면
+		// 내 채팅창이 꺼져있으면
 		else { 
-			if (to == "${sessionScope.member.mname}") {
+			// 상대방이 채팅방을 나가지 않았으면
+			if (to == "${sessionScope.member.mpk}" && !is_chat_out) {
 				doChatOpen = window.open("${path}/sns/chat.do?from="+to+"&to="+from, "채팅", "width=500, height=600, left=200, top=100");
 				is_open = true;
 			}
@@ -93,10 +102,10 @@ function onClose(evt) {
 	wsocket.close();
 }
 
+// from : 채팅을 시작하는 사람, to : 채팅을 받는 사람  from → to
 function doChat(from, to) {
 	window.open("${path}/sns/chat.do?from="+from+"&to="+to, "채팅", "width=500, height=600, left=200, top=100");
 }
-
 
 </script>	
 </head>

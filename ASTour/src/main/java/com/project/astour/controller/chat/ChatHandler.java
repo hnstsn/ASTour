@@ -58,15 +58,16 @@ public class ChatHandler extends TextWebSocketHandler {
 		// 메세지 내용
 		String msg = vo.getMessage();
 		// 보내는 사람
-		String from = vo.getFrom();
+		String from = String.valueOf(vo.getFrom());
 		// 받는 사람
-		String to = vo.getTo();
+		String to = String.valueOf(vo.getTo());
 		
 		// 로그인 했는지 확인
 		boolean log_in = false;
 		
 		// map. key는 메세지를 보내려는 사람, value는 session.getId
 		session.getAttributes().put(from, session.getId());
+		System.out.println("from : " + from + " - " + session.getAttributes().get(from));
 
 		// 받는 사람이 있을 경우 메세지 전송
 		if (to != null) {
@@ -77,19 +78,35 @@ public class ChatHandler extends TextWebSocketHandler {
 			}
 			// 로그인 상태면
 			if (log_in) {
-				for (WebSocketSession wss : users) {
-					// from으로 시작 : 나, to로 시작 : 상대방
-					if ( wss.getId().equals(wss.getAttributes().get(from)) ||
-							wss.getId().equals(wss.getAttributes().get(to)) ) {
-						// to와 from msg를 보내준다. to와 from 구분자는 - from과 msg 구분자는 : 
-						wss.sendMessage(new TextMessage(to + "-" + from + ":" + msg));
+				// 상대방이 채팅방을 나갔는지 확인
+				boolean is_logout = false;
+				if (msg != null && msg.equals("채팅방을 나갔습니다.")) 
+					is_logout = true;
+
+				// 채팅방을 나갔으면
+				if (is_logout) {
+					for (WebSocketSession wss : users) {
+						// 상대방에게 나갔다는 메세지를 보내준다.
+						if (wss.getId().equals(wss.getAttributes().get(to))) {
+							wss.sendMessage(new TextMessage(to + "-" + from + ":" + msg));
+						}
+					}
+				// 채팅방을 나가지 않았으면
+				} else {
+					for (WebSocketSession wss : users) {
+						// from으로 시작 : 나, to로 시작 : 상대방
+						if ( wss.getId().equals(wss.getAttributes().get(from)) ||
+							 wss.getId().equals(wss.getAttributes().get(to)) ) {
+							// to와 from msg를 보내준다. to와 from 구분자는 - from과 msg 구분자는 : 
+							wss.sendMessage(new TextMessage(to + "-" + from + ":" + msg));
+						}
 					}
 				}
 			// 로그아웃 상태이면
 			} else {
 				for (WebSocketSession wss : users) {
 					if ( wss.getId().equals(wss.getAttributes().get(from))) {
-						wss.sendMessage(new TextMessage(to + "님은 로그아웃 중입니다."));
+						wss.sendMessage(new TextMessage("로그아웃 중입니다."));
 					}
 				}
 			}

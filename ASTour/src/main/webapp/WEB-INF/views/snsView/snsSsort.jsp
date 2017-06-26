@@ -109,6 +109,14 @@ $(function(){
 									</a>
 								</li>
 							</c:if>
+							<!-- 자기 자신과는 채팅을 하지 않는다. -->
+							<c:if test="${sessionScope.member.mpk ne member.mpk}">
+							<li>
+								<a href="#" onclick="doChat('${sessionScope.member.mpk}', '${member.mpk}')">
+									<i class="fa fa-circle-o"></i> ${member.mname}님과 채팅하기
+								</a>
+							</li>
+							</c:if>
 						</ul>
 
 					</div>
@@ -139,6 +147,7 @@ $(function(){
 									<fmt:formatDate value="${sns.sdate }" pattern="yyyy-MM-dd a HH:mm:ss" />
 								</span>
 								<span class="label label-default light">${sns.shits }</span>
+								<span class="label label-default light">${sns.slikes }</span>
 							</div>
 							<!-- / AST : 타임라인 타이틀  -->
 

@@ -129,6 +129,18 @@ public class SnsServiceImpl implements SnsService {
 	public List<snsVO> rankList() {
 		return snsDao.rankList();
 	}
+	
+	//랭크 이미지 보여주기
+	@Override
+	public String rankListfile(int spk) {
+		return snsDao.rankListfile(spk);
+	}
+	
+	//랭크 이미지 없을떼
+	@Override
+	public String noimage(String stag) {
+		return snsDao.noimage(stag);
+	}
 
 	//게시물 댓글수 구해오기
 	@Override
@@ -138,6 +150,7 @@ public class SnsServiceImpl implements SnsService {
 		map.put("spk", spk);
 		return snsDao.replycountList(map);
 	}
+
 
 	
 }

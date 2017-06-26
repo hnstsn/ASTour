@@ -17,6 +17,13 @@
 
 
 <head>
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.hn {font-family: 'Hanna';}
+.jg { font-family: 'Jeju Gothic'; font-size: 30px;}
+</style>
 <meta charset="utf-8" />
 <meta name="keywords" content="HTML5,CSS3,Template" />
 <meta name="description" content="" />
@@ -67,7 +74,7 @@
 	<!-- PAGE TITLE -->
 	<header id="page-title">
 	<div class="container">
-		<h1>명소 & 행사</h1>
+		<h1 class="hn" style="font-size: 35px">명소 & 행사</h1>
 	</div>
 	</header>
 	<section id="portfolio" class="container">
@@ -92,9 +99,9 @@
 							src="${path}/resources/image/culture/${attraction.aimage }"
 							width="263" height="263" alt=""> </figure>
 						<div class="item-box-desc">
-							<h5>${attraction.atitle }</h5>
+							<h5 class="jg" style="font-size: 17px">${attraction.atitle }</h5>
 							<small class="styleColor">${attraction.asort }</small>
-							<p>${attraction.aintro }</p>
+							<p class="jg" style="font-size: 15px">${attraction.aintro }</p>
 							<div class="text-center">
 								<form
 									action="${path}/attraction/initDetails.do?name=${attraction.atitle }">

@@ -15,6 +15,13 @@
 <html>
 <!--<![endif]-->
 <head>
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.hn {font-family: 'Hanna';}
+.jg { font-family: 'Jeju Gothic'; font-size: 30px;}
+</style>
 <%@ include file="../include/bootstap_collect.jsp"%>
 <meta charset="utf-8" />
 <meta name="keywords" content="HTML5,CSS3,Template" />
@@ -37,7 +44,7 @@
 			<!-- PAGE TITLE -->
 			<header id="page-title">
 				<div class="container">
-					<h1>상세보기</h1>
+					<h1 class="hn" style="font-size: 35px">상세보기</h1>
 				</div>
 			</header>
 
@@ -64,33 +71,33 @@
 
 							<!-- product description -->
 							<div class="container">
-  							<h2>${list[0].atitle }</h2>
+  							<h2 class="jg" style="font-size: 35px">${list[0].atitle }</h2>
   							</div>
   							<div class="well well-sm" style="width: 100%">
   								<ul>
 									<li>
-									<h5>주소 : ${list[0].acity } ${list[0].agu } ${list[0].aaddress }</h5>
+									<h5 class="jg" style="font-size: 15px">주소 : ${list[0].acity } ${list[0].agu } ${list[0].aaddress }</h5>
 									</li>
 								</ul>
 							</div>
 							<div class="well well-sm" style="width: 100%">
 								<ul>
 									<li>
-									<h5>문의 : ${list[0].atel }</h5>
+									<h5 class="jg" style="font-size: 15px">문의 : ${list[0].atel }</h5>
 									</li>
 								</ul>
 							</div>
 							<div class="well well-sm" style="width: 100%">
   								<ul>
 									<li>
-									<h5>${list[0].aintro}</h5>
+									<h5 class="jg" style="font-size: 15px">${list[0].aintro}</h5>
 									</li>
 								</ul>
 							</div>
 							<div class="well well-sm" style="width: 100%">
 								<ul>
 									<li>
-									<h5>홈페이지: <a href="${list[0].ahomepage }" target=_blank>${list[0].ahomepage }</a></h5>
+									<h5 class="jg" style="font-size: 15px">홈페이지: <a href="${list[0].ahomepage }" target=_blank>${list[0].ahomepage }</a></h5>
 									</li>	
 								</ul>
   							</div>
@@ -110,7 +117,7 @@
 				</div>
 				<hr class="two" />
 				<div class="well well-sm" style="width: 100%;">
-					<p class="thicker">${list[0].acontent }</p>
+					<p class="jg" style="font-size: 17px; line-height: 2.0em;">${list[0].acontent }</p>
   				</div>
 				<hr />
 			</section>

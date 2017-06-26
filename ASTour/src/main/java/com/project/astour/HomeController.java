@@ -42,6 +42,7 @@ public class HomeController {
 //		return "home";
 //	}
 	
+
 	@RequestMapping(value = "/")
 	public String home(Model model) {
 		logger.info("처음 main화면인 home.jsp 이동 Home Controller");
@@ -49,8 +50,22 @@ public class HomeController {
 		List<snsVO> rankList = snsService.rankList();
 		List<tagrankVO> tagrank = attractionservice.tagrank();
 		List<attraction_tbl> attracionList=attractionservice.attractionList();
-		Collections.shuffle(attracionList);
 		
+		//해당하는 사진 하나만 가지고 오기 위함
+		for(snsVO vo: rankList){
+			String sffile=snsService.rankListfile(vo.getSpk());
+			if(sffile!=null){
+				vo.setSffile(sffile);
+			}else{
+				sffile = snsService.noimage(vo.getStag());
+				vo.setSffile(sffile);
+			}
+		}
+			
+		
+		
+		//랜덤으로 순선 정함
+		Collections.shuffle(attracionList);
 		model.addAttribute("list",attracionList);
 		model.addAttribute("rankList",rankList);
 		model.addAttribute("tagrank", tagrank);

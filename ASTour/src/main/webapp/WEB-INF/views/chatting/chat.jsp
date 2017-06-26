@@ -37,15 +37,27 @@ $(document).ready(function() {
 		}
 	});
 	
+	// 종료버튼을 누르면
 	$("#chatEndBtn").click(function() {
 		chatEnd();
+		var filter = "win32|win64|mac|macintel";
+		if (navigator.platform) {
+		    if (filter.indexOf(navigator.platform.toLowerCase()) < 0) { //mobile 
+		    	//chatEnd();
+		    	location.onclick=history.back();
+		    	window.close();
+		    } else { //pc 
+		    	//chatEnd();
+		    	window.close();
+		    }
+		 }
 	});
 });
 
 function sendMsg() {
 	var msg = $("#msg").val();
 	// 보내는 사람
-	var from = "${sessionScope.member.mname}";
+	var from = "${sessionScope.member.mpk}";
 	// 받는 사람
 	var to = $("#to").val();
 	
@@ -67,7 +79,7 @@ function apdMsg(msg) {
 	var message = msg.substring(idx+1);
 	
 	// 내가 보내는 것이라면
-	if (me == "${sessionScope.member.mname}") {
+	if (me == "${sessionScope.member.mpk}") {
 		$("#chatMsgArea").append('<div class="from_me" align="right">' + '<p class="chattingtext">' + message + '</p>' +  "</div>" + '<div class="clear"></div>');
 	// 상대방이 보내는 것이라면
 	} else{
@@ -96,7 +108,7 @@ function conn() {
  //웹 소켓 접속
 function onOpen() {
 	// 보내는 사람
-	var from = "${from}";
+	var from = "${from.mpk}";
 	// 받는 사람
 	var to = $("#to").val();
 	message={};
@@ -107,27 +119,48 @@ function onOpen() {
  
 // 메세지 전송
 function onMessage(evt) {
-	//console.log(evt.data);
 	// 로그아웃이란 글자가 있는지 확인
 	var is_log_out = evt.data.indexOf("로그아웃");
+	// to를 찾기 위한 idx
+	var tidx = evt.data.indexOf("-");
+	var to = evt.data.substring(0, tidx);
+	// from을 찾기 위해
+	var fidx = evt.data.indexOf(":");
+	var from = evt.data.substring(tidx+1, fidx);
+	var msg = evt.data.substring(fidx+1);
+	
 	// 로그아웃 상태이면
 	if (is_log_out != -1) {
+		to = "${to.mname}";
 		// 메시지 입력란을 숨긴다
 		$("#msg").hide();
 		$("#sendBtn").hide();
-		apdMsg(evt.data);
+		apdMsg(to + "님은 " + msg);
 	// 상대방이 로그인 상태라면
 	} else {
-		// to를 찾기 위한 idx
-		var tidx = evt.data.indexOf("-");
-		var to = evt.data.substring(0, tidx);
-		// from을 찾기 위해
-		var fidx = evt.data.indexOf(":");
-		var from = evt.data.substring(tidx+1, fidx);
-		var msg = evt.data.substring(fidx+1);
-		// 처음 접속시 
-		if (msg != "null") {
-			apdMsg(from + ":" + msg);
+		
+		// 채팅방을 나갔는지 확인
+		var is_chat_out = false;
+		if (msg == "채팅방을 나갔습니다.") {
+			is_chat_out = true;
+		}
+		
+		console.log("채팅창jsp의 is_chat_out : " + is_chat_out);
+		
+		// 상대방이 채팅방을 나갔으면
+		if (is_chat_out) {
+			to = "${to.mname}";
+			// 메시지 입력란을 숨긴다
+			$("#msg").hide();
+			$("#sendBtn").hide();
+			console.log("??????");
+			apdMsg(to + "님이 " + msg);
+		// 채팅중이면
+		} else {
+			// 처음 접속시 
+			if (msg != "null") {
+				apdMsg(from + ":" + msg);
+			}
 		}
 	}
 }
@@ -136,9 +169,10 @@ function onMessage(evt) {
 function onClose(evt) {
 }
 
+// 채팅방을 나갔을 경우 호출되는 함수
 function chatEnd() {
- 	// 보내는 사람
-	var from = "${sessionScope.member.mname}";
+  	// 보내는 사람
+	var from = "${sessionScope.member.mpk}";
 	// 받는 사람
 	var to = $("#to").val();
 	
@@ -150,12 +184,16 @@ function chatEnd() {
 }
 
 </script>	
+
 </head>
 <body>
 
-	<div class="blockquote" style="width: 100%; text-align: center;">
-		<h2 class="titletext">${to}님과 채팅</h2>
-		</div>
+	<div style="width: 100%; text-align: center;">
+		<h2 class="titletext">${to.mname}님과 채팅
+		<input class="btntest" type="button" id="chatEndBtn" value="나가기" />	
+		</h2>
+	</div>
+	
 	<hr class="two" />
 	
 	<div id="chatArea" style="overflow-x:hidden">
@@ -166,10 +204,9 @@ function chatEnd() {
 	<hr class="two"/>
 	
 	<div>
-		<input type="hidden" id="to" value="${to}" />
+		<input type="hidden" id="to" value="${to.mpk}" />
 		<input class="textarea" type="text" id="msg" />
 		<button type="button" class="button bigrounded orange" id="sendBtn">전송</button>
-		<input type="button" id="chatEndBtn" value="종료" />
 	</div>
 	
 </body>

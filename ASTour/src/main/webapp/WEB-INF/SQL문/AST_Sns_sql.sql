@@ -1,42 +1,47 @@
--- sns ï¿½ï¿½ï¿½Ìºï¿½
+-- sns TABLE
 create table sns_tbl (
   spk number primary key,		-- pk
-  stitle varchar2(50),			-- ï¿½ï¿½ï¿½ï¿½
-  scontent varchar2(4000),		-- ï¿½ï¿½ï¿½ï¿½
-  sdate date default sysdate,	-- ï¿½Û¼ï¿½ï¿½ï¿½
-  stag varchar2(20),			-- ï¿½Â±ï¿½(ï¿½Ë»ï¿½ï¿½ï¿½)
-  ssort varchar(10),			-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(review, myboard)
-  shits number default 0,		-- ï¿½ï¿½È¸ï¿½ï¿½
-  slikes number default 0,		-- ï¿½ï¿½ï¿½Æ¿ï¿½
+  stitle varchar2(50),			-- Á¦¸ñ
+  scontent varchar2(4000),		-- ³»¿ë
+  sdate date default sysdate,	-- °Ô½ÃÀÏ
+  stag varchar2(20),			-- ¸í¼Ò, Çà»ç ÅÃ
+  ssort varchar(10),			-- ¸®ºä, ³ªÀÇ°Ô½Ã±Û ÅÃ(review, myboard)
+  shits number default 0,		-- Á¶È¸¼ö
+  slikes number default 0,		-- ÁÁ¾Æ¿ä¼ö
   mpk number,  					-- fk
   constraint sns_fk foreign key (mpk) references ASTMember (mpk)
 );
 
--- sns ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ sequence
+-- sns TABLE sequence
 create sequence sns_seq start with 1 increment by 1 nocache;
 
--- sns ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½
+-- sns file table
 create table snsFile_tbl(
-  sfpk number,          --ï¿½âº»Å°
-  sffile varchar2(50),  --snsFile ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
-  sfpath varchar2(30),  --snsFile ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡
-  spk number,           --ï¿½ï¿½ï¿½ï¿½Å°
+  sfpk number,          --pk
+  sffile varchar2(50),  --ÆÄÀÏ¸í
+  sfpath varchar2(30),  --ÆÄÀÏ°æ·Î
+  spk number,           --fk(sns pk)
   constraint snsFile_pk primary key (sfpk),
   constraint snsFile_fk foreign key (spk) references sns_tbl (spk) on delete CASCADE 
 );
 
--- snsFile ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ sequence
+-- snsFile sequence
 create sequence sfile_seq start with 1 increment by 1 nocache;
 
--- sffile Å©ï¿½ï¿½ 200byteï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+-- sffile sffile 200byte·Î º¯°æ
 ALTER TABLE snsFile_tbl MODIFY (sffile VARCHAR2(200));
 
---sns table ï¿½ï¿½È¸
+--ÁÁ¾Æ¿ä Ä®·³ »èÁ¦
+ALTER TABLE sns_tbl drop (slikes);
+
+--sns table Á¶È¸
 select * from sns_tbl;
 
---sns file table ï¿½ï¿½È¸
+--sns file table Á¶È¸
 select * from snsfile_tbl;
-  
+
+--ÁÁ¾Æ¿ä Ä®·³ »èÁ¦
+ALTER TABLE sns_tbl drop (slikes);
 
 select sns_seq.currval from dual;
 select sfile_seq.currval from dual;

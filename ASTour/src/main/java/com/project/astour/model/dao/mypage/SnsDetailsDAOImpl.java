@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.project.astour.model.dto.mypage.LikeVO;
 import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.SnsReplyVO;
 import com.project.astour.model.dto.mypage.snsVO;
@@ -126,6 +127,40 @@ public class SnsDetailsDAOImpl implements SnsDetailsDAO{
 	public String nameone(int spk) {
 		return sqlSession.selectOne("sns.nameone",spk);
 	}
+
+	@Override
+	public LikeVO likeSelect(LikeVO vo) {
+		return sqlSession.selectOne("sns.likeselect", vo);
+	}
+
+	// 좋아요 클릭
+	@Override
+	public void likeinsert(int mpk, int spk) {
+		
+		Map<String, Object> map= new HashMap<String, Object>();
+		map.put("mpk",mpk);
+		map.put("spk",spk);
+		
+		sqlSession.insert("sns.likeinsert",map);
+	}
+	
+	// 좋아요 해제
+	@Override
+	public void likedelete(int mpk, int spk) {
+		Map<String, Object> map= new HashMap<String, Object>();
+		map.put("mpk",mpk);
+		map.put("spk",spk);
+		
+		sqlSession.delete("sns.likedelete",map);
+	}
+
+	// 좋아요 갯수
+	@Override
+	public int likecount(int spk) {
+		return sqlSession.selectOne("sns.likecount",spk);
+	}
+	
+	
 
 	
 	

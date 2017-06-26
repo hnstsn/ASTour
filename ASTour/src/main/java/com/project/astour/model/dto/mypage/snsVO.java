@@ -17,8 +17,16 @@ public class snsVO {
 	private int slikes;			// 좋아요수
 	private MultipartFile[] files;	// 파일
 	private int reCnt;               // 댓글 개수
+	private String sffile;
 	
-	
+	public String getSffile() {
+		return sffile;
+	}
+
+	public void setSffile(String sffile) {
+		this.sffile = sffile;
+	}
+
 	public int getReCnt() {
 		return reCnt;
 	}
