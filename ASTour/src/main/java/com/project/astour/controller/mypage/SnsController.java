@@ -62,7 +62,7 @@ public class SnsController {
 		SnsFileVO snsFileVO;
 		for (snsVO vo : snsList) {
 			vo.setReCnt(snsService.replycountList(mpk, vo.getSpk()));;
-			
+			// 좋아요 세팅
 			vo.setSlikes(snsDetailsService.likecount(vo.getSpk()));
 			snsFileVO = snsService.snsFileList(vo.getSpk());
 			if (snsFileVO != null) {
@@ -251,6 +251,37 @@ public class SnsController {
 		model.addAttribute("curPage", "snsView/snsSsort.jsp");
 
 		return "home";
+	}
+	
+	// 사진첩 가져오기
+	@RequestMapping("gallery.do")
+	public ModelAndView gallery(@RequestParam int mpk, ModelAndView mav,
+								@RequestParam(defaultValue = "1") int curPage) {
+
+		// mpk로 모든 sns 게시물과 프로필 사진 가져오고 보여주기
+//		int count = snsService.count(mpk);
+//
+//		Pager pager = new Pager(count, curPage);
+//		int start = pager.getPageBegin();
+//		int end = pager.getPageEnd();
+//		pager.setMpk(mpk);
+//				
+//		// 회원정보 가져오기
+//		MemberVO member = snsService.memList(mpk);
+//		// sns 게시글 가져오기
+//		List<snsVO> snsList = snsService.snsList(start, end, mpk);
+//		// 게시글에 해당하는 사진 가져오기
+//		List<SnsFileVO> snsFileList = new ArrayList<SnsFileVO>();
+//		SnsFileVO snsFileVO;
+//		for (snsVO vo : snsList) {
+//			snsFileVO = snsService.snsFileList(vo.getSpk());
+//			if (snsFileVO != null) {
+//				snsFileList.add(snsFileVO);
+//			}
+//		}
+		
+		mav.setViewName("snsView/gallery");
+		return mav;
 	}
 	
 	// AST(CSW) : 채팅

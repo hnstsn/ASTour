@@ -100,8 +100,8 @@
 					</strong>
 				</h3>
 
-				<div class="divider">
-					<!-- divider -->
+				<!-- <div class="divider">
+					divider
 					<i class="fa fa-chevron-down"></i>
 
 				</div>
@@ -111,7 +111,7 @@
 						style="margin-top: 10px" href="contact-us.html" target="_blank"
 						class="btn btn-primary btn-lg">문의하기</a>
 
-				</h3>
+				</h3> -->
 			</div>
 			<!-- /CALLOUT -->
 
