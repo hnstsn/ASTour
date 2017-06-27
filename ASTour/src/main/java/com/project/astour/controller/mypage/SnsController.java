@@ -1,10 +1,13 @@
 package com.project.astour.controller.mypage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.ietf.jgss.Oid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -14,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 import com.project.astour.model.dto.attraction.attraction_tbl;
 import com.project.astour.model.dto.member.MemberVO;
 import com.project.astour.model.dto.mypage.Pager;
+import com.project.astour.model.dto.mypage.Profile;
 import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.snsVO;
 import com.project.astour.service.attraction.AttractionService;
@@ -62,7 +67,7 @@ public class SnsController {
 		SnsFileVO snsFileVO;
 		for (snsVO vo : snsList) {
 			vo.setReCnt(snsService.replycountList(mpk, vo.getSpk()));;
-			
+			// 좋아요 세팅
 			vo.setSlikes(snsDetailsService.likecount(vo.getSpk()));
 			snsFileVO = snsService.snsFileList(vo.getSpk());
 			if (snsFileVO != null) {
@@ -250,6 +255,25 @@ public class SnsController {
 		model.addAttribute("list", snsList);
 		model.addAttribute("curPage", "snsView/snsSsort.jsp");
 
+		return "home";
+	}
+	
+	// 사진첩 가져오기
+	@RequestMapping("gallery.do")
+	public String gallery(Model model,@RequestParam(value="mpk") int mpk) {
+		// 회원정보 가져오기
+		MemberVO member = snsService.memList(mpk);
+		List<Profile> blogList = snsService.blogList(mpk);//블로그 파일 리스트 
+		List<Profile> profileList = snsService.profileList(mpk);//프로필 파일 리스트 
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("member", member);
+		map.put("blog", blogList);
+		map.put("profile", profileList);
+		
+		model.addAttribute("map",map);
+		model.addAttribute("curPage", "snsView/gallery.jsp");
 		return "home";
 	}
 	

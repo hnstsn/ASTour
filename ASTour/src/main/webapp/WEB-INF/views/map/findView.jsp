@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <script language="javascript" src="https://apis.skplanetx.com/tmap/js?version=1&format=javascript&appKey=fd655e71-f3de-3d91-bff1-dc590c5bb30c"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@ include file="../include/bootstap_collect.jsp" %>
 <title>Insert title here</title>
 
 <script type="text/javascript">
 var map;
 //초기화 함수
 function initTmap(){
-  centerLL = new Tmap.LonLat("&resCoordType=EPSG3857",126.975303, 37.55995);
   map = new Tmap.Map({div:'map_div',
                       width:'100%', 
                       height:'400px',
@@ -26,18 +27,17 @@ function initTmap(){
 function searchRoute(){
   var routeFormat = new Tmap.Format.KML({extractStyles:true, extractAttributes:true});
 
-/*   var startX = 14129105.461214;
+  var startX = 14129105.461214;
   var startY = 4517042.1926406;
   var endX = 14136027.789587;
-  var endY = 4517572.4745242; */
-  
+  var endY = 4517572.4745242;
   var startName = "출발";
   var endName = "도착";
   var urlStr = "https://apis.skplanetx.com/tmap/routes/pedestrian?version=1&format=xml";
-      urlStr += "&startX="+126.975303;
-      urlStr += "&startY="+37.55995;
-      urlStr += "&endX="+127.027651;
-      urlStr += "&endY="+37.497914;
+ 	  urlStr += "&startX="+126.975303;
+ 	  urlStr += "&startY="+37.55995;
+  	  urlStr += "&endX="+127.027651;
+  	  urlStr += "&endY="+37.497914;
       urlStr += "&startName="+encodeURIComponent(startName);
       urlStr += "&endName="+encodeURIComponent(endName);
       urlStr += "&reqCoordType=EPSG3857";
@@ -59,7 +59,6 @@ function searchRoute(){
 function onDrawnFeatures(e){
   map.zoomToExtent(this.getDataExtent());
 }
-//37.494512, 127.027651      // 37.497914, 127.027651 //T맵은 WGS84 가 없다.  WGS84GEO 이다.
 
 
 /* var map;

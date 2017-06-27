@@ -111,8 +111,13 @@ $(function(){
 								<a href="${path}/sns/reviewSelect.do?mpk=${member.mpk}&ssort=review">
 								<i class="fa fa-circle-o"></i> 리뷰 게시물</a>
 							</li>
-							<li><a href="${path}/sns/reviewSelect.do?mpk=${member.mpk}&ssort=mybrd">
+							<li>
+								<a href="${path}/sns/reviewSelect.do?mpk=${member.mpk}&ssort=mybrd">
 								<i class="fa fa-circle-o"></i> 나의 게시물</a>
+							</li>
+							<li>
+								<a href="${path}/sns/gallery.do?mpk=${member.mpk}">
+								<i class="fa fa-circle-o"></i> 사진첩</a>
 							</li>
 							<c:if test="${sessionScope.member.mpk eq member.mpk}">
 								<li>

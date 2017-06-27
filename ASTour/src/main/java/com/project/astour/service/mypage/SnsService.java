@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.project.astour.model.dto.member.MemberVO;
+import com.project.astour.model.dto.mypage.Profile;
 import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.snsVO;
 
@@ -33,5 +34,10 @@ public interface SnsService {
 	public List<snsVO> rankList();
 	public int replycountList(int mpk,int spk);
 
+	//사진첩(프로필) 정보가지고오기
+	public List<Profile> profileList(int mpk);
+
+	//사진첩(게시판) 정보가지고오기
+	public List<Profile> blogList(int mpk);
 	
 }

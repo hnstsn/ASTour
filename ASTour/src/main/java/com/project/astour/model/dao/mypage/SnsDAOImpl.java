@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.project.astour.model.dto.member.MemberVO;
+import com.project.astour.model.dto.mypage.Profile;
 import com.project.astour.model.dto.mypage.SnsFileVO;
 import com.project.astour.model.dto.mypage.snsVO;
 
@@ -105,5 +106,18 @@ public class SnsDAOImpl implements SnsDAO {
 		return sqlSession.selectOne("sns.replycountList",map);
 	}
 
+	//사진첩(프로필) 정보 가지고오기
+	@Override
+	public List<Profile> profileList(int mpk) {
+		return sqlSession.selectList("sns.profileList",mpk);
+	}
+	//사진첩(게시판) 정보 가지고오기
+	@Override
+	public List<Profile> blogList(int mpk) {
+		return sqlSession.selectList("sns.blogList",mpk);
+	}
 
+	
+
+	
 }

@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 게시글 삽입 -->
     <insert id="insBrd">
       INSERT INTO sns_tbl 
-      VALUES (sns_seq.nextval, #{stitle}, #{scontent}, sysdate, #{stag}, #{ssort}, 0, 0, #{mpk})
+      VALUES (sns_seq.nextval, #{stitle}, #{scontent}, sysdate, #{stag}, #{ssort}, 0, #{mpk})
     </insert>
     
     <!-- 게시글 쓸때 파일 테이블의 spk를 사용해야 돼서 -->
@@ -87,10 +87,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by ppk desc
 	</select>
 
-		<!-- SELECT m.mpk, m.mid, m.mname, p.ppk, nvl(p.pfile,'mu.jpg') AS pfile,
-			   nvl(p.ppath,'WEB-INF/views/upload/profile') AS ppath
-		FROM ASTMember m, ASTProfile p 
-		WHERE m.mpk=p.mpk(+) AND m.mname LIKE #{mname} -->
 	<!-- 사람검색 -->
 	<select id="peopleList" resultType="MemberVO">
 	SELECT m.mpk, m.mid, m.mname
@@ -236,8 +232,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 게시판 댓글 갯수 조회 -->
    <select id="replycountList" resultType="int">
-      select nvl(count(*),0) as ct from reply_tbl where mpk=#{mpk} and spk=#{spk}
+		select nvl(count(*),0) as ct from reply_tbl where mpk=#{mpk} and spk=#{spk}
    </select>
 
+	<!-- 사진첩 (프로필사진) -->
+	<select id="profileList" resultType="com.project.astour.model.dto.mypage.Profile">
+		select ppk as pk,pfile from ASTProfile where mpk=#{mpk} order by pk desc
+	</select>
+
+	<!-- 사진첩 (게사판 사진들) -->
+	<select id="blogList" resultType="com.project.astour.model.dto.mypage.Profile">
+		select sf.sfpk as pk,sf.sffile as pfile from snsfile_tbl sf,sns_tbl st where sf.spk=st.spk and st.mpk=#{mpk} order by pk desc
+	</select>
 	
 </mapper>
