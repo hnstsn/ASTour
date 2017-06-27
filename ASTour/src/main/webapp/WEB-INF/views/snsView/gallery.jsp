@@ -13,17 +13,17 @@
 </head>
 
 <body>
-<!-- WRAPPER -->
-		<div id="wrapper">
+	<!-- WRAPPER -->
+	<div id="wrapper">
 
-			<!-- PAGE TITLE -->
-			<header id="page-title">
-				<div class="container">
-					<h1>${map.member.mname }님의 사진첩</h1>
-				</div>
-			</header>
-
-		<c:if test="${map.blog.size()<=0&&map.profile.size()<=0}">
+	<!-- PAGE TITLE -->
+	<header id="page-title">
+		<div class="container">
+			<h1>${map.member.mname}님의 사진첩</h1>
+		</div>
+	</header>
+	<c:choose>
+		<c:when test="${map.blog.size() < 1 && map.profile.size() < 1}">
 			<section id="portfolio" class="container">
 				<h1>프로필사진이없습니다</h1>
 				<!-- CALLOUT -->
@@ -32,16 +32,16 @@
 				</div>
 				<!-- /CALLOUT -->
 			</section>
-		</c:if>
-
-		<c:if test="${map.blog.size()>0||map.profile.size()>0}">
+		</c:when>
+		
+		<c:otherwise>
 			<section id="portfolio" class="container">
 				<ul class="nav nav-pills isotope-filter isotope-filter" data-sort-id="isotope-list" data-option-key="filter">
 					<li data-option-value="*" class="active"><a href="#">전체</a></li>
 					<li data-option-value=".blog"><a href="#">게시물사진</a></li>
 					<li data-option-value=".profile"><a href="#">프로필사진</a></li>
 				</ul>
-
+	
 				<div class="row">
 					<ul class="sort-destination isotope" data-sort-id="isotope-list">
 						<c:forEach var="blog" items="${map.blog}">
@@ -76,20 +76,22 @@
 						</li>
 						</c:forEach>
 					</ul>
-
+	
 				</div><!-- /.masonry-container -->
-
+	
 				<!-- CALLOUT -->
 				<div class="bs-callout text-center nomargin-bottom">
 					<h3><a href="${path}/sns/initSns.do?mpk=${map.member.mpk}" class="btn btn-primary btn-lg">돌아가기</a></h3>
 				</div>
 				<!-- /CALLOUT -->
-
-
+	
 			</section>
-</c:if>
+		
+		</c:otherwise>
+	</c:choose>
 
-		</div>
-		<!-- /WRAPPER -->
+
+	</div>
+	<!-- /WRAPPER -->
 </body>
 </html>
