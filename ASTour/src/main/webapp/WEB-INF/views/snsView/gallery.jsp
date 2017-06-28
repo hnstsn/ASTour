@@ -30,17 +30,16 @@
 	<!-- WRAPPER -->
 	<div id="wrapper">
 	<!-- Modal for full size images on click-->
-	<div id="modal01" class="w3-modal w3-black" style="margin-top: 10%"
-		onclick="this.style.display='none'">
-		<span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
-		<div
-			class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-			<img id="img01" class="w3-image">
-			<p id="caption"></p>
+		<div id="modal01" class="w3-modal w3-black" style="margin-top: 10%"
+			onclick="this.style.display='none'">
+			<span class="w3-button w3-black w3-xlarge w3-display-topright">×</span>
+			<div
+				class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+				<img id="img01" class="w3-image">
+			</div>
 		</div>
-	</div>
-	
-	<!-- PAGE TITLE -->
+
+		<!-- PAGE TITLE -->
 	<header id="page-title">
 		<div class="container">
 			<h1>${map.member.mname}님의 사진첩</h1>
@@ -113,8 +112,6 @@
 	function onClick(element) {
 	  document.getElementById("img01").src = element.src;
 	  document.getElementById("modal01").style.display = "block";
-	  var captionText = document.getElementById("caption");
-	  captionText.innerHTML = element.alt;
 	}
 
 	var filter = "win16|win32|win64|mac|macintel";
