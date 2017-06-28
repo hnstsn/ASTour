@@ -340,7 +340,7 @@ function sisi(){
 					}
 				}
 				for(var i=0; i<Data.length; i++){
-					$("#attractionName").append("<option value="+Data[i].atitle+">"+Data[i].atitle+"</option>");
+					$("#attractionName").append("<option value=\""+Data[i].atitle+"\">"+Data[i].atitle+"</option>");
 				}
 			}
 		});
@@ -385,17 +385,17 @@ $(function(){
 		//alert('눌름');
 		$("#tagLocationBack").fadeIn(800);
 		$("#tagLocation").fadeIn(800);
-	})
+	});
 	
 	/* AST : 태그 선택창 뒷 배경을 눌렀을 시 종료  */
 	$("#tagLocationBack").click(function(){
 		$("#tagLocationBack").fadeOut(500);
 		$("#tagLocation").fadeOut(500);
-	})
+	});
 	
 	/* AST : 태그 선택창 확인을 눌렀을 때 사용  */
 	 $("#confirmBtn").click(function(){
-		var selectedTag = $("#attractionName option:selected").val();
+		var selectedTag = $("#attractionName option:selected").text();
 		var selfInput = $("#tagSelfInput").val();
 		if(selfInput!=""){
 			$("#tagLocationBack").fadeOut(500);
@@ -410,12 +410,12 @@ $(function(){
 			$("#stag").val(selectedTag);
 		}
 		
-	})
+	});
 	
 	$("#cancelBtn").click(function(){
 		 $("#tagLocationBack").fadeOut(500);
 			$("#tagLocation").fadeOut(500);
-	})
+	});
 })
 </script>
 
