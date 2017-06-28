@@ -382,7 +382,8 @@
       //마커가 클릭된 상태이면 지도클릭이벤트를 막는다. // clickable : true 로 대체 되었다
       
       //지도 클릭 이벤트 : 클릭된 중심으로부터 원그리기
-      var circle;
+      
+      /* var circle;
       daum.maps.event.addListener(map, 'click', function(mouseEvent) {
             
                
@@ -405,7 +406,7 @@
                circle.setMap(map);
           
          });
-   
+    */
     
    
    	  /* //마커 위에 커스텀오버레이를 표시합니다
