@@ -162,7 +162,7 @@ $(function(){
 								</span>
 								<span class="label label-default light">댓글:${sns.reCnt}</span>
 								<span class="label label-default light">조회수:${sns.shits }</span>
-								<span class="label label-default light">좋아요:${sns.slikes }</span>
+								<span class="label label-default light">♥ ${sns.slikes }</span>
 							</div>
 							<!-- / AST : 타임라인 타이틀  -->
 
