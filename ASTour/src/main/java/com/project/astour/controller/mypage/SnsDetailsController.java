@@ -89,7 +89,11 @@ public class SnsDetailsController {
 	// AST(CSW) : 게시글 삭제
 	@RequestMapping("deContent.do")
 	public String deleteContent(@ModelAttribute snsVO sns) {
+		// 해당 게시글의 댓글 삭제
 		snsDetailsService.deleteReplys(sns.getSpk());
+		// 해당 게시물의 좋아요 삭제
+		snsDetailsService.likedelete(sns.getMpk(), sns.getSpk());
+		// 해당 게시글 삭제
 		snsDetailsService.contentDelete(sns);
 		return "redirect:/chgPage.do?cpage=30";
 	}
