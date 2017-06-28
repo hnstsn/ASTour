@@ -207,6 +207,11 @@ function searchIdPw() {
                      고객센터
                   </a>
                </li>
+               <li class="dropdown">
+               		<a class="dropdown-toggle" href="${path}/chgPage.do?cpage=60">
+               			일정
+               		</a>
+               </li>
                
             </ul>
          </nav>

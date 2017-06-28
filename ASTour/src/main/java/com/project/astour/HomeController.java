@@ -99,8 +99,11 @@ public class HomeController {
 			int mpk = member.getMpk();
 			return "redirect:/modify/getPriInfo.do?mpk=" + mpk;
 //		고객선터 페이지 전환
-		} else if (cpage == 50)
+		} else if (cpage == 50){
 			return "redirect:/faq.do";
+		}else if(cpage == 60){
+			return "redirect:/calendar/calendar.do";
+		}
 //		기본 main로
 		return "redirect:/";
 	}
