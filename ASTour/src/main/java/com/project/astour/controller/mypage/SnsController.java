@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.ietf.jgss.Oid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -258,19 +259,39 @@ public class SnsController {
 		return "home";
 	}
 	
-	// 사진첩 가져오기
+	// 사진첩 가져오기(전부)
 	@RequestMapping("gallery.do")
-	public String gallery(Model model,@RequestParam(value="mpk") int mpk) {
+	public String gallery(Model model,@RequestParam(value="mpk") int mpk,
+			@RequestParam(defaultValue="all") String sort) {
+		
 		// 회원정보 가져오기
 		MemberVO member = snsService.memList(mpk);
 		List<Profile> blogList = snsService.blogList(mpk);//블로그 파일 리스트 
 		List<Profile> profileList = snsService.profileList(mpk);//프로필 파일 리스트 
 
 		Map<String, Object> map = new HashMap<String, Object>();
+		/*List<Profile> test = new ArrayList<Profile>();
+		Profile profile;
+		for(Profile pf : blogList){
+			profile = pf;
+			test.add(profile);
+		}
+		for(Profile pf:profileList){
+			profile = pf;
+			test.add(profile);
+		}
+		*/
+		
+		if(sort.equals("all")){
+			map.put("blog", blogList);
+			map.put("profile", profileList);
+		}else if(sort.equals("profile")){
+			map.put("profile", profileList);
+		}else{
+			map.put("blog", blogList);
+		}
 		
 		map.put("member", member);
-		map.put("blog", blogList);
-		map.put("profile", profileList);
 		
 		model.addAttribute("map",map);
 		model.addAttribute("curPage", "snsView/gallery.jsp");

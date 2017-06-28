@@ -123,7 +123,8 @@
  						var aaddress = data[i].acity+" "+data[i].agu;
  						var aaddress2 =data[i].aaddress;
  						var detailView = "${path}/attraction/initDetails.do?name="+data[i].atitle;
- 						
+ 						var markerLat = data[i].alatitude;
+ 						var markerLon = data[i].alongitude;
  						 
  						var position = {
  								content: '<div class="wrap">' +
@@ -145,11 +146,13 @@
  						         '                <div class="ellipsis">'+
  						         					aaddress2+
  						         '			      </div>' +
- 						         '                <div class="overLink"><a href="https://github.com/hnstsn/ASTour" target="_blank" class="link">홈페이지</a>'+  
+ 						         '                <div class="overLink">'+  
  						         '             	  <a href="'+
  						         					detailView+
  						         '					"	target="_blank" class="link">상세보기</a>' +
- 						         '				  <a href="${path}/find?tt='+data[i].alatitude+'&tt2='+data[i].alongitude+'">상세보기'+data[i].alatitude+' 확인'+data[i].alongitude+'</a></div>'+
+ 						       	 '             	  <a href="http://map.daum.net/link/to/'+
+ 						       						atitle+','+markerLat+','+markerLon+
+		       					 '					"	target="_blank" class="link">길찾기</a></div>' +
  						         '            </div>' +
  						         '        </div>' +
  						         '    </div>' +
@@ -398,7 +401,6 @@
                   strokeStyle : 'dashed', // 선의 스타일 입니다
                   fillColor : '#CFE7FF', // 채우기 색깔입니다
                   fillOpacity : 0.2 // 채우기 불투명도 입니다   
-
                });
                circle.setMap(map);
           
