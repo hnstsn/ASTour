@@ -23,6 +23,7 @@
 <script type='text/javascript'
 	src='http://arshaw.com/js/fullcalendar-1.6.3/fullcalendar/fullcalendar.min.js'></script>
 
+
 <script src="resources/js/moment.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>	
 
