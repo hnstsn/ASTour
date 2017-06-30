@@ -19,6 +19,7 @@
 		<mapper resource="mappers/attractionMapper.xml"></mapper>
 		<mapper resource="mappers/mapMapper.xml"></mapper>
 		<mapper resource="mappers/faqMapper.xml"></mapper>
+		<mapper resource="mappers/calendarMapper.xml"></mapper>
 	</mappers>
 	
 </configuration>
