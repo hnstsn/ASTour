@@ -101,8 +101,13 @@ public class HomeController {
 //		고객선터 페이지 전환
 		} else if (cpage == 50){
 			return "redirect:/faq.do";
+		//일정가기 패이지 
 		}else if(cpage == 60){
-			return "redirect:/calendar/calendar.do";
+//			회원정보 수정 페이지로 이동하는데 로그인한 사람의 정보를 넘겨주기 위해 세션에서 값을 받는다.
+			MemberVO member = (MemberVO) session.getAttribute("member");
+//			로그인 하지 않았다면(세션이 없다면)
+			int mpk = member.getMpk();
+			return "redirect:/calendar/calendar.do?mpk="+mpk;
 		}
 //		기본 main로
 		return "redirect:/";
