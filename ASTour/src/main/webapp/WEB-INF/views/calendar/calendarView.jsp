@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,6 +22,11 @@
 	src='http://arshaw.com/js/fullcalendar-1.6.3/jquery/jquery-ui-1.10.3.custom.min.js'></script>
 <script type='text/javascript'
 	src='http://arshaw.com/js/fullcalendar-1.6.3/fullcalendar/fullcalendar.min.js'></script>
+
+<script src="resources/js/moment.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>	
+
+
 <script type='text/javascript'>
 	$(document).ready(function() {
 		var date = new Date();
@@ -52,43 +59,37 @@
 			},
 			//<!--/한글 설정-->
 			//일정 내용들
-			events : [ {
-				title : 'All Day Event',
-				start : new Date(y, m, 1)
-			}, {
-				title : 'Long Event',
-				start : new Date(y, m, d - 5),
-				end : new Date(y, m, d - 2)
-			}, {
-				id : 999,
-				title : 'Repeating Event',
-				start : new Date(y, m, d - 3, 16, 0),
-				allDay : false
-			}, {
-				id : 999,
-				title : 'Repeating Event',
-				start : new Date(y, m, d + 4, 16, 0),
-				allDay : false
-			}, {
-				title : 'Meeting',
-				start : new Date(y, m, d, 10, 30),
-				allDay : false
-			}, {
-				title : 'Lunch',
-				start : new Date(y, m, d, 12, 0),
-				end : new Date(y, m, d, 14, 0),
-				allDay : false
-			}, {
-				title : 'Birthday Party',
-				start : new Date(y, m, d + 1, 19, 0),
-				end : new Date(y, m, d + 1, 22, 30),
-				allDay : false
-			}, {
-				title : 'Click for Google1122',
-				start : '2017-06-28T10:00',
-				end : '2017-06-29T12:00',
-				allDay : false
-			} ],
+			events : function(start, end, timezone, callback) {
+				$.ajax({
+					url : '${path}/calendar/selelctList',
+					data : "mpk="+"${sessionScope.member.mpk}",
+					dataType : 'json',
+					success : function(doc) {
+						var events = [];
+						/* $(doc).find('event').each(function() {
+ 							events.push({
+ 								title : 'Click for Google1122',
+ 								start : '2017-06-28T10:00',
+ 								end : '2017-06-29T12:00',
+ 								allDay : false
+							});
+						}); */
+						for(var i=0;i<2;i++){
+							events.push({
+ 								title : 'aa',
+ 								start : new Date(y, m, d + 1, 19, 0),
+ 								end : new Date(y, m, d + 1, 19, 0),
+ 								allDay : false
+							});
+						}
+						alert(events[0].title);
+						alert(events[1].title);
+						
+						callback(events);
+						
+					}
+				});
+			},
 			//일정 기간 클릭시
 			eventClick :  function(calEvent, jsEvent, view) {
 				
@@ -162,16 +163,6 @@
 				$("#updata_3").val(enddate);
 				document.getElementById('id02').style.display='block';
 				
-/* 				$.ajax({
-				     type:"post",
-				     url:"../prcs/schd-schd-add/",
-				     data:{"act":act,"schd_idx":schd_idx,"title":title,"content":content,"start":dt_start,"end":dt_end},
-				     success:function(data){
-				      //calendar.fullCalendar('updateEvent',event);
-				      $('#calendar').fullCalendar('unselect');
-				     }
-				    });    
- */
 			},
 			
 			//일정 기간 사이즈 변경시
@@ -243,16 +234,15 @@
 				alert(enddate);
 				alert(ctitle);
 				
-				/* 				$.ajax({
-				     type:"post",
-				     url:"../prcs/schd-schd-add/",
-				     data:{"act":act,"schd_idx":schd_idx,"title":title,"content":content,"start":dt_start,"end":dt_end},
-				     success:function(data){
-				      //calendar.fullCalendar('updateEvent',event);
-				      $('#calendar').fullCalendar('unselect');
-				     }
-				    });    
- */			},
+				/* $.ajax({
+				    url:"selectBox",
+					type : "post", //전송방식
+					dataType : "json", //json타입으로 요청
+					success : function(Data) {  //날라온 데이터를 받아줌
+						alert();
+					}
+				    });    */ 
+ 			},
  
 			//일정 기간 이동시 
 		    eventDrop: function(event, delta, revertFunc) {
@@ -337,6 +327,24 @@
 		});
 	});
 	
+	$(document).ready(function(){
+		$("#calendar_data").click(function(){
+			var loc1= $("#data_1")
+			var loc2 = $("#data_2").val();
+			var loc3= $("#data_3").val();
+			var startDate = new Date(loc2);
+			var endDate = new Date(loc3);
+			var datetime = endDate.getTime()-startDate.getTime();
+			if(datetime=='NaN'){
+				alert("잘못입력");
+			}else if(datetime<1800000){
+				alert("30분 미만 확인");
+			}else if(datetime>=1800000){
+				alert("30분 이상 확인")
+			}
+		});
+	});
+	
 </script>
 </head>
 <body>
@@ -355,20 +363,18 @@
 				</div>
 
 					<div class="w3-section w3-container">
-					<form action="#">
 						<label><b>제목:</b></label>
-						<input class="w3-input w3-border w3-margin-bottom" type="text" name="data_1" id="data_1" required> 
+						<input class="w3-input w3-border w3-margin-bottom" type="text" name="data_1" id="data_1" > 
 						<label><b>일정 시작</b></label>
 						<!-- value="2017-06-29T12:00" 이런식으로 데이터  -->
-						<input class="w3-input w3-border" type="datetime-local" name="data_2" id="data_2" required> 
+						<input class="w3-input w3-border" type="datetime-local" name="data_2" id="data_2" > 
 						<label><b>일정 끝</b></label>
 						<!-- value="2017-06-29T12:00" 이런식으로 데이터  -->
-						<input class="w3-input w3-border" type="datetime-local" name="data_3" id="data_3" required> 
+						<input class="w3-input w3-border" type="datetime-local" name="data_3" id="data_3" > 
 						<label><b>내용</b></label>
-						<input class="w3-input w3-border" type="text" name="data_4" id="data_4" required>
+						<input class="w3-input w3-border" type="text" name="data_4" id="data_4" >
 						<input  class="w3-button w3-block w3-green w3-section w3-padding"
 							type="submit" id="calendar_data" value="작성">
-					</form>
 					</div>
 
 				<div class="w3-container w3-border-top w3-padding-16 w3-light-grey" align="right">
