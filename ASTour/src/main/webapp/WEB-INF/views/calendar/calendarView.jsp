@@ -22,6 +22,7 @@
 	src='http://arshaw.com/js/fullcalendar-1.6.3/jquery/jquery-ui-1.10.3.custom.min.js'></script>
 <script type='text/javascript'
 	src='http://arshaw.com/js/fullcalendar-1.6.3/fullcalendar/fullcalendar.min.js'></script>
+<script src='../lib/moment.min.js'></script>
 
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
@@ -34,6 +35,23 @@
 		var d = date.getDate();
 		var m = date.getMonth();
 		var y = date.getFullYear();
+		var events1=[];
+			$.ajax({
+				url : '${path}/calendar/selelctList',
+				data : "mpk="+"${sessionScope.member.mpk}",
+				dataType : 'json',
+				async: false,
+				success : function(doc) {
+					for(var i=0;i<1;i++){
+						events1.push({
+								title : doc[i].ctitle,
+								start : doc[i].startdate,
+								end   : doc[i].enddate,
+								allDay: false
+						});
+					}
+				}
+			});
 		$('#calendar').fullCalendar({
 			header : {
 				left : 'prev,next today',
@@ -61,38 +79,7 @@
 			},
 			//<!--/한글 설정-->
 			//일정 내용들
-			events : function(start, end, timezone, callback) {
-				$.ajax({
-					url : '${path}/calendar/selelctList',
-					data : "mpk="+"${sessionScope.member.mpk}",
-					dataType : 'json',
-					success : function(doc) {
-						var events = [];
-						/* $(doc).find('event').each(function() {
- 							events.push({
- 								title : 'Click for Google1122',
- 								start : '2017-06-28T10:00',
- 								end : '2017-06-29T12:00',
- 								allDay : false
-							});
-						}); */
-						
-						for(var i=0;i<2;i++){
-							events.push({
- 								title : 'aa',
- 								start : new Date(y, m, d + 1, 19, 0),
- 								end : new Date(y, m, d + 1, 19, 0),
- 								allDay : false
-							});
-						}
-						alert(events[0].start);
-						alert(events[1].end);
-						
-						callback(events);
-						
-					}
-				});
-			},
+			events : events1,
 			//일정 기간 클릭시
 			eventClick :  function(calEvent, jsEvent, view) {
 				
@@ -444,5 +431,6 @@
 		<!-- /달력 -->
 		
 	</div>
+	
 </body>
 </html>
