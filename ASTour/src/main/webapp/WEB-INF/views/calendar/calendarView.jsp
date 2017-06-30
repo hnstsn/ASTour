@@ -24,7 +24,7 @@
 	src='http://arshaw.com/js/fullcalendar-1.6.3/fullcalendar/fullcalendar.min.js'></script>
 
 
-<script src="resources/js/moment.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>	
 
 
@@ -42,6 +42,7 @@
 			},
 			//화면 클릭시 일정 변경가능 true,불가능 false
 			editable : true,
+			eventLimit: true,
 			//<!--한글 설정-->
 			titleFormat : {
 				month : "yyyy년 MMMM",
@@ -75,6 +76,7 @@
  								allDay : false
 							});
 						}); */
+						
 						for(var i=0;i<2;i++){
 							events.push({
  								title : 'aa',
@@ -83,8 +85,8 @@
  								allDay : false
 							});
 						}
-						alert(events[0].title);
-						alert(events[1].title);
+						alert(events[0].start);
+						alert(events[1].end);
 						
 						callback(events);
 						
