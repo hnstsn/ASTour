@@ -43,7 +43,7 @@
             async: false,
             success : function(doc) {
                if(doc.length>0) {
-                  for (var i = 0; i < 1; i++) {
+                  for (var i = 0; i < doc.length; i++) {
                      events1.push({
                     	id : doc[i].cpk,
                     	title : doc[i].ctitle,
@@ -152,11 +152,13 @@
 				var startdate =calEvent.start.getFullYear()+'-'+stmom+'-'+stda+'T'+sthou+':'+stmin;
 				var enddate =calEvent.end.getFullYear()+'-'+enmom+'-'+enda+'T'+enhou+':'+enmin;
 				var ctitle = calEvent.title;
+				var cpk = calEvent.id;
 				var sstr = "<input class='w3-input w3-border w3-margin-bottom' type='text' name='updata_1' id='updata_1' value='ctitle' required>";
 
 				$("#updata_1").val(ctitle);
 				$("#updata_2").val(startdate);
 				$("#updata_3").val(enddate);
+				$("#cpk").val(cpk);
 				document.getElementById('id02').style.display='block';
 				
 			},
@@ -307,34 +309,62 @@
 				var pk = event.id;
 				
 				$.ajax({
-					url : '${path}/calendar/calendarDrop',
+					url : '${path}/calendar/calendarSize',
 					type : "post", //전송방식
 					dataType : "json", //json타입으로 요청
-					data : {"startdate":startdate,"enddate":enddate,"ctitle":ctitle,"id" :pk}
+					data : {"startdate":startdate,"enddate":enddate,"ctitle":ctitle,"id" :pk }
 				});
 		    }
 		});
 	});
 	
 	window.onload = function() {
+		//일정 수정
+		document.getElementById('updata_data').onclick = function() {
+			var loc2 = $("#updata_2").val();
+			var loc3 = $("#updata_3").val();
+			var startDate = new Date(loc2);
+			var endDate = new Date(loc3);
+			var datetime = endDate.getTime() - startDate.getTime();
+			if (datetime == 'NaN') {
+				alert("잘못된 입력 입니다.");
+				return false;
+			} else if (datetime < 1800000) {
+				alert("30분 미만 입니다.");
+				return false;
+			} else if (datetime >= 1800000) {
+				document.getElementById('up').submit();
+				return false;
+			}
+		};
+		//일정 추가
 		document.getElementById('calendar_data').onclick = function() {
-			var loc1 = $("#data_1")
 			var loc2 = $("#data_2").val();
 			var loc3 = $("#data_3").val();
 			var startDate = new Date(loc2);
 			var endDate = new Date(loc3);
 			var datetime = endDate.getTime() - startDate.getTime();
 			if (datetime == 'NaN') {
-				alert("잘못입력");
+				alert("잘못된 입력 입니다.");
+				return false;
 			} else if (datetime < 1800000) {
-				alert("30분 미만 확인");
+				alert("30분 미만 입니다.");
+				return false;
 			} else if (datetime >= 1800000) {
-				alert("30분 이상 확인")
 				document.getElementById('insert').submit();
 				return false;
 			}
 		};
 	};
+	
+	//삭제 
+	function f1(){
+		var cpk = $("#cpk").val();
+		var mpk = $("#mpk").val();
+		
+		location.href="${path}/calendar/cal_delete?mpk="+mpk+"&cpk="+cpk;
+	}
+	
 </script>
 </head>
 <body>
@@ -353,7 +383,7 @@
             </div>
 
                <div class="w3-section w3-container">
-               <form action="${path}/calendar/calendar.do" method="post" id="insert">
+               <form action="${path}/calendar/insert" method="post" id="insert">
                   <label><b>제목:</b></label>
                   <input class="w3-input w3-border w3-margin-bottom" type="text" name="data_1" id="data_1" required> 
                   <label><b>일정 시작</b></label>
@@ -362,9 +392,9 @@
                   <label><b>일정 끝</b></label>
                   <!-- value="2017-06-29T12:00" 이런식으로 데이터  -->
                   <input class="w3-input w3-border" type="datetime-local" name="data_3" id="data_3" required> 
-                  <input type="hidden" value="22" id="mpk" name="mpk">
+                  <input type="hidden" value="${sessionScope.member.mpk}" id="mpk" name="mpk">
                   <input  class="w3-button w3-block w3-green w3-section w3-padding"
-                     type="submit" id="calendar_data" value="작성">
+                     type="submit" id="calendar_data" name="calendar_data" value="작성">
                </form>
                </div>
 
@@ -390,7 +420,7 @@
 				</div>
 				
 				<div class="w3-section w3-container">
-					<form action="#">
+					<form action="${path}/calendar/update" method="post" id="up">
 						<label><b>제목:</b></label>
 						<input class="w3-input w3-border w3-margin-bottom" type="text" name="updata_1" id="updata_1" required> 
 						<label><b>일정 시작</b></label>
@@ -399,16 +429,15 @@
 						<label><b>일정 끝</b></label>
 						<!-- value="2017-06-29T12:00" 이런식으로 데이터  -->
 						<input class="w3-input w3-border" type="datetime-local" name="updata_3" id="updata_3" required> 
-						<label><b>내용</b></label>
-						<input class="w3-input w3-border" type="text" name="updata_4" id="updata_4" required>
+						<input type="hidden" name="cpk" id="cpk">
+						<input type="hidden" name="mpk" id="mpk" value="${sessionScope.member.mpk}">
 						<input  class="w3-button w3-block w3-green w3-section w3-padding"
-							type="submit" id="calendar_data" value="수정">
+							type="submit" name="updata_data" id="updata_data" value="수정">
 					</form>
 					</div>
-				
 				<div class="w3-container w3-border-top w3-padding-16 w3-light-grey" align="right">
 					<button
-						type="button" class="w3-button w3-red">삭제</button>
+						type="button" class="w3-button w3-red" onclick="f1()">삭제</button>
 					<button
 						onclick="document.getElementById('id02').style.display='none'"
 						type="button" class="w3-button w3-red">취소</button>

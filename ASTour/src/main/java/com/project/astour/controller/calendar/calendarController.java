@@ -34,6 +34,7 @@ public class calendarController {
 		return calendarservice.calendarList(mpk);
 	}
 	
+	//사이즈 변경 컨트롤,Drop 컨트롤
 	@RequestMapping("calendarSize")
 	@ResponseBody
 	public void calendarSize(@RequestParam(value="startdate") String startdate,
@@ -49,19 +50,38 @@ public class calendarController {
 		calendarservice.calendarsize(cpk, startdate, enddate, ctitle);
 	}
 	
-	@RequestMapping("calendarDrop")
-	@ResponseBody
-	public void calendarDrop(@RequestParam(value="startdate") String startdate,
-			@RequestParam(value="enddate") String enddate,
-			@RequestParam(value="ctitle") String ctitle,
-			@RequestParam(value="id") int cpk){
+	//일정 추가
+	@RequestMapping("insert")
+	public String insert(@RequestParam(value="mpk") int mpk,
+			@RequestParam(value="data_1") String ctitle,
+			@RequestParam(value="data_2") String startdate,
+			@RequestParam(value="data_3") String enddate){
 		
-		System.out.println("calendarDrop 접속완료");
-		System.out.println(cpk);
-		System.out.println(startdate);
-		System.out.println(enddate);
-		System.out.println(ctitle);
+		calendarservice.calendarInsert(mpk, startdate, enddate, ctitle);
 		
-		
+		return "redirect:/calendar/calendar.do?mpk="+mpk;
 	}
+	
+	//일정 수정
+	@RequestMapping("update")
+	public String up(@RequestParam(value="updata_2") String startdate,
+			@RequestParam(value="updata_3") String enddate,
+			@RequestParam(value="updata_1") String ctitle,
+			@RequestParam(value="cpk") int cpk,
+			@RequestParam(value="mpk") int mpk){
+		
+		calendarservice.calendarsize(cpk, startdate, enddate, ctitle);
+		
+		return "redirect:/calendar/calendar.do?mpk="+mpk;
+	}
+	
+	//일정 삭제
+	@RequestMapping("cal_delete")
+	public String cal_delete(@RequestParam(value="mpk") int mpk,
+			@RequestParam(value="cpk") int cpk){
+		calendarservice.calendarDelete(cpk);
+		return "redirect:/calendar/calendar.do?mpk="+mpk;
+	}
+	
+	
 }

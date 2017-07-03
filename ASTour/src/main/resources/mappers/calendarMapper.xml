@@ -13,5 +13,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="calendarsize">
 		UPDATE calendar_tbl SET ctitle=#{ctitle}, startdate=#{startdate}, enddate=#{enddate} WHERE cpk=#{cpk}
 	</update>
+	
+	<insert id="calendarInsert">
+		insert into calendar_tbl values(calendar_seq.nextval,#{ctitle},#{startdate},#{enddate},#{mpk})
+	</insert>
+	
+	<delete id="calendarDelete">
+		delete calendar_tbl where cpk = #{cpk}
+	</delete>
 
 </mapper>

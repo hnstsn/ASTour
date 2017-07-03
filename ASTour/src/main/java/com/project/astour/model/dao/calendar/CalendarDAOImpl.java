@@ -22,17 +22,22 @@ public class CalendarDAOImpl implements CalendarDAO{
 		return sqlsession.selectList("calendar.calendarselect",mpk);
 	}
 
-	// 캘린더 사이즈 조정
+	// 캘린더 사이즈,이동 조정
 	@Override
-	public void calendarsize(int cpk,String startdate,String enddate,String ctitle) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		map.put("startdate", startdate);
-		map.put("endddate", enddate);
-		map.put("ctitle", ctitle);
-		map.put("cpk", cpk);
-		
+	public void calendarsize(Map<String, Object> map) {
 		sqlsession.update("calendar.calendarsize",map);
+	}
+
+	//캘린더 추가
+	@Override
+	public void calendarInsert(Map<String, Object> map) {
+		sqlsession.insert("calendar.calendarInsert",map);
+	}
+
+	//캘린더 삭제
+	@Override
+	public void calendarDelete(int cpk) {
+		sqlsession.delete("calendar.calendarDelete",cpk);
 	}
 	
 
