@@ -220,19 +220,16 @@
 				var startdate =event.start.getFullYear()+'-'+stmom+'-'+stda+'T'+sthou+':'+stmin;
 				var enddate =event.end.getFullYear()+'-'+enmom+'-'+enda+'T'+enhou+':'+enmin;
 				var ctitle = event.title;
-				alert(startdate);
-				alert(enddate);
-				alert(ctitle);
-				
-				/* $.ajax({
-				    url:"selectBox",
+				/* 				alert(startdate);
+								alert(enddate);
+								alert(ctitle); */
+				$.ajax({
+					url : '${path}/calendar/calendarSize',
 					type : "post", //전송방식
 					dataType : "json", //json타입으로 요청
-					success : function(Data) {  //날라온 데이터를 받아줌
-						alert();
-					}
-				    });    */ 
- 			},
+					data : {"startdate":startdate,"enddate":enddate,"ctitle":ctitle}
+				});
+			},
  
 			//일정 기간 이동시 
 		    eventDrop: function(event, delta, revertFunc) {
@@ -299,20 +296,13 @@
 				var startdate =event.start.getFullYear()+'-'+stmom+'-'+stda+'T'+sthou+':'+stmin;
 				var enddate =event.end.getFullYear()+'-'+enmom+'-'+enda+'T'+enhou+':'+enmin;
 				var ctitle = event.title;
-				alert(startdate);
-				alert(enddate);
-				alert(ctitle);
 				
-				/* 				$.ajax({
-				     type:"post",
-				     url:"../prcs/schd-schd-add/",
-				     data:{"act":act,"schd_idx":schd_idx,"title":title,"content":content,"start":dt_start,"end":dt_end},
-				     success:function(data){
-				      //calendar.fullCalendar('updateEvent',event);
-				      $('#calendar').fullCalendar('unselect');
-				     }
-				    });     */
-				    
+				$.ajax({
+					url : '${path}/calendar/calendarDrop',
+					type : "post", //전송방식
+					dataType : "json", //json타입으로 요청
+					data : {"startdate":startdate,"enddate":enddate,"ctitle":ctitle}
+				});
 		    }
 		});
 	});
