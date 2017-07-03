@@ -36,22 +36,28 @@
 		var m = date.getMonth();
 		var y = date.getFullYear();
 		var events1=[];
-			$.ajax({
-				url : '${path}/calendar/selelctList',
-				data : "mpk="+"${sessionScope.member.mpk}",
-				dataType : 'json',
-				async: false,
-				success : function(doc) {
-					for(var i=0;i<1;i++){
-						events1.push({
-								title : doc[i].ctitle,
-								start : doc[i].startdate,
-								end   : doc[i].enddate,
-								allDay: false
-						});
-					}
-				}
-			});
+		$.ajax({
+            url : '${path}/calendar/selelctList',
+            data : "mpk="+"${sessionScope.member.mpk}",
+            dataType : 'json',
+            async: false,
+            success : function(doc) {
+               if(doc.length>0) {
+                  for (var i = 0; i < 1; i++) {
+                     events1.push({
+                    	id : doc[i].cpk,
+                    	title : doc[i].ctitle,
+                        start : doc[i].startdate,
+                        end : doc[i].enddate,
+                        allDay : false
+                     });
+                  }
+               }else {
+                  events1.push({});
+               }
+            }
+         });
+		
 		$('#calendar').fullCalendar({
 			header : {
 				left : 'prev,next today',
@@ -220,6 +226,8 @@
 				var startdate =event.start.getFullYear()+'-'+stmom+'-'+stda+'T'+sthou+':'+stmin;
 				var enddate =event.end.getFullYear()+'-'+enmom+'-'+enda+'T'+enhou+':'+enmin;
 				var ctitle = event.title;
+				var pk = event.id;
+			
 				/* 				alert(startdate);
 								alert(enddate);
 								alert(ctitle); */
@@ -227,7 +235,7 @@
 					url : '${path}/calendar/calendarSize',
 					type : "post", //전송방식
 					dataType : "json", //json타입으로 요청
-					data : {"startdate":startdate,"enddate":enddate,"ctitle":ctitle}
+					data : {"startdate":startdate,"enddate":enddate,"ctitle":ctitle,"id" :pk }
 				});
 			},
  
@@ -296,76 +304,79 @@
 				var startdate =event.start.getFullYear()+'-'+stmom+'-'+stda+'T'+sthou+':'+stmin;
 				var enddate =event.end.getFullYear()+'-'+enmom+'-'+enda+'T'+enhou+':'+enmin;
 				var ctitle = event.title;
+				var pk = event.id;
 				
 				$.ajax({
 					url : '${path}/calendar/calendarDrop',
 					type : "post", //전송방식
 					dataType : "json", //json타입으로 요청
-					data : {"startdate":startdate,"enddate":enddate,"ctitle":ctitle}
+					data : {"startdate":startdate,"enddate":enddate,"ctitle":ctitle,"id" :pk}
 				});
 		    }
 		});
 	});
 	
-	$(document).ready(function(){
-		$("#calendar_data").click(function(){
-			var loc1= $("#data_1")
+	window.onload = function() {
+		document.getElementById('calendar_data').onclick = function() {
+			var loc1 = $("#data_1")
 			var loc2 = $("#data_2").val();
-			var loc3= $("#data_3").val();
+			var loc3 = $("#data_3").val();
 			var startDate = new Date(loc2);
 			var endDate = new Date(loc3);
-			var datetime = endDate.getTime()-startDate.getTime();
-			if(datetime=='NaN'){
+			var datetime = endDate.getTime() - startDate.getTime();
+			if (datetime == 'NaN') {
 				alert("잘못입력");
-			}else if(datetime<1800000){
+			} else if (datetime < 1800000) {
 				alert("30분 미만 확인");
-			}else if(datetime>=1800000){
+			} else if (datetime >= 1800000) {
 				alert("30분 이상 확인")
+				document.getElementById('insert').submit();
+				return false;
 			}
-		});
-	});
-	
+		};
+	};
 </script>
 </head>
 <body>
 	<div>
 	
 	<!-- modal 일정 추가 -->
-		<div id="id01" class="w3-modal" style="z-index: 10;">
-			<div class="w3-modal-content w3-card-4 w3-animate-zoom"
-				style="max-width: 600px; margin-top: 15%">
+      <div id="id01" class="w3-modal" style="z-index: 10;">
+         <div class="w3-modal-content w3-card-4 w3-animate-zoom"
+            style="max-width: 600px; margin-top: 15%">
 
-				<div class="w3-center">
-					<br> <span
-						onclick="document.getElementById('id01').style.display='none'"
-						class="w3-button w3-xlarge w3-hover-red w3-display-topright"
-						title="Close Modal">&times;</span>
-				</div>
+            <div class="w3-center">
+               <br> <span
+                  onclick="document.getElementById('id01').style.display='none'"
+                  class="w3-button w3-xlarge w3-hover-red w3-display-topright"
+                  title="Close Modal">&times;</span>
+            </div>
 
-					<div class="w3-section w3-container">
-						<label><b>제목:</b></label>
-						<input class="w3-input w3-border w3-margin-bottom" type="text" name="data_1" id="data_1" > 
-						<label><b>일정 시작</b></label>
-						<!-- value="2017-06-29T12:00" 이런식으로 데이터  -->
-						<input class="w3-input w3-border" type="datetime-local" name="data_2" id="data_2" > 
-						<label><b>일정 끝</b></label>
-						<!-- value="2017-06-29T12:00" 이런식으로 데이터  -->
-						<input class="w3-input w3-border" type="datetime-local" name="data_3" id="data_3" > 
-						<label><b>내용</b></label>
-						<input class="w3-input w3-border" type="text" name="data_4" id="data_4" >
-						<input  class="w3-button w3-block w3-green w3-section w3-padding"
-							type="submit" id="calendar_data" value="작성">
-					</div>
+               <div class="w3-section w3-container">
+               <form action="${path}/calendar/calendar.do" method="post" id="insert">
+                  <label><b>제목:</b></label>
+                  <input class="w3-input w3-border w3-margin-bottom" type="text" name="data_1" id="data_1" required> 
+                  <label><b>일정 시작</b></label>
+                  <!-- value="2017-06-29T12:00" 이런식으로 데이터  -->
+                  <input class="w3-input w3-border" type="datetime-local" name="data_2" id="data_2" required> 
+                  <label><b>일정 끝</b></label>
+                  <!-- value="2017-06-29T12:00" 이런식으로 데이터  -->
+                  <input class="w3-input w3-border" type="datetime-local" name="data_3" id="data_3" required> 
+                  <input type="hidden" value="22" id="mpk" name="mpk">
+                  <input  class="w3-button w3-block w3-green w3-section w3-padding"
+                     type="submit" id="calendar_data" value="작성">
+               </form>
+               </div>
 
-				<div class="w3-container w3-border-top w3-padding-16 w3-light-grey" align="right">
-					<button
-						onclick="document.getElementById('id01').style.display='none'"
-						type="button" class="w3-button w3-red">취소</button>
-				</div>
+            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey" align="right">
+               <button
+                  onclick="document.getElementById('id01').style.display='none'"
+                  type="button" class="w3-button w3-red">취소</button>
+            </div>
 
-			</div>
-		</div>
-		<!-- /modal -->
+         </div>
+      </div>
+      <!-- /modal -->
 		
 		<!-- modal 일정 수정 -->
 		<div id="id02" class="w3-modal" style="z-index: 10;">

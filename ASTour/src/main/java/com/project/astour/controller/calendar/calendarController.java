@@ -6,7 +6,6 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,22 +38,30 @@ public class calendarController {
 	@ResponseBody
 	public void calendarSize(@RequestParam(value="startdate") String startdate,
 			@RequestParam(value="enddate") String enddate,
-			@RequestParam(value="ctitle") String ctitle){
+			@RequestParam(value="ctitle") String ctitle,
+			@RequestParam(value="id") int cpk){
 		System.out.println("calendarSize 접속완료");
+		System.out.println(cpk);
 		System.out.println(startdate);
 		System.out.println(enddate);
 		System.out.println(ctitle);
+		
+		calendarservice.calendarsize(cpk, startdate, enddate, ctitle);
 	}
 	
 	@RequestMapping("calendarDrop")
 	@ResponseBody
 	public void calendarDrop(@RequestParam(value="startdate") String startdate,
 			@RequestParam(value="enddate") String enddate,
-			@RequestParam(value="ctitle") String ctitle){
+			@RequestParam(value="ctitle") String ctitle,
+			@RequestParam(value="id") int cpk){
 		
-		System.out.println("calendarSize 접속완료");
+		System.out.println("calendarDrop 접속완료");
+		System.out.println(cpk);
 		System.out.println(startdate);
 		System.out.println(enddate);
 		System.out.println(ctitle);
+		
+		
 	}
 }

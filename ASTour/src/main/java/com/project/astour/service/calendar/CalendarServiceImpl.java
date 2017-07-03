@@ -20,4 +20,9 @@ public class CalendarServiceImpl implements CalendarService{
 		return calendardao.calendarList(mpk);
 	}
 
+	@Override
+	public void calendarsize(int cpk,String startdate,String enddate,String ctitle) {
+		calendardao.calendarsize(cpk, startdate, enddate, ctitle);
+	}
+
 }

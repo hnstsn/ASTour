@@ -9,5 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="com.project.astour.model.dto.calendar.calendarVO">
 		SELECT *FROM calendar_tbl where mpk=#{mpk}
 	</select>
+	
+	<update id="calendarsize">
+		UPDATE calendar_tbl SET ctitle=#{ctitle}, startdate=#{startdate}, enddate=#{enddate} WHERE cpk=#{cpk}
+	</update>
 
 </mapper>
