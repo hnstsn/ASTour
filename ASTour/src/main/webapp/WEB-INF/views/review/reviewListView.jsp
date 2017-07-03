@@ -49,6 +49,8 @@
 				<div class="row">
 					<h2 class="jg">${title} 리뷰가 없습니다</h2>
 				</div>
+				<div style="padding-bottom: 43.8%">
+				</div>
 			</c:when>
 			<c:otherwise>
 				<ul class="nav nav-pills isotope-filter isotope-filter">
@@ -74,7 +76,7 @@
 									</span>
 									</a> <img
 										src="${path}/sns/${list.filename }" width="360" height="260"
-										alt=""> </figure>
+										class="img-rounded"> </figure>
 									<div class="item-box-desc">
 										<h4 class="jg" style="font-size: 23px">${list.mname }(${list.ct })</h4>
 										<span class="jg" style="font-size: 15px">조회수 :${list.shits}</span> 

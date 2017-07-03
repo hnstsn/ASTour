@@ -189,7 +189,7 @@ function searchIdPw() {
                </li>
                <li class="dropdown mega-menu-item mega-menu-fullwidth">
                   <a class="dropdown-toggle" href="${path}/chgPage.do?cpage=20">
-                     추천명소
+                     명소&행사
                   </a>
                </li>
                <li class="dropdown">

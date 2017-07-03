@@ -136,8 +136,14 @@ public class SnsController {
 		List<MemberVO> peopleList = snsService.peopleList(people_id);
 		
 		for(MemberVO vo :peopleList){
+			System.out.println("사람찾기");
 			String fileName=snsDetailsService.replyViewFile(vo.getMpk());
-			vo.setPfile(fileName);
+			System.out.println(fileName);
+			if(fileName!=null){
+				vo.setPfile(fileName);
+			}else{
+				vo.setPfile("mu.jpg");
+			}
 		}
 		
 		model.addAttribute("peopleList", peopleList);
@@ -270,17 +276,6 @@ public class SnsController {
 		List<Profile> profileList = snsService.profileList(mpk);//프로필 파일 리스트 
 
 		Map<String, Object> map = new HashMap<String, Object>();
-		/*List<Profile> test = new ArrayList<Profile>();
-		Profile profile;
-		for(Profile pf : blogList){
-			profile = pf;
-			test.add(profile);
-		}
-		for(Profile pf:profileList){
-			profile = pf;
-			test.add(profile);
-		}
-		*/
 		
 		if(sort.equals("all")){
 			map.put("blog", blogList);

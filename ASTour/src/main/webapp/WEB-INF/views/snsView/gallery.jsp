@@ -7,6 +7,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+.hn {
+	font-family: 'Hanna';
+	font-size: 40px;
+}
+
+.jg {
+	font-family: 'Jeju Gothic';
+	font-size: 30px;
+}
+</style>
 <!-- mobile settings -->
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
@@ -42,14 +55,16 @@
 		<!-- PAGE TITLE -->
 	<header id="page-title">
 		<div class="container">
-			<h1>${map.member.mname}님의 사진첩</h1>
+			<h1 class="hn">${map.member.mname}님의 사진첩</h1>
 		</div>
 	</header>
 
 		<c:choose>
 		<c:when test="${map.blog.size() < 1 && map.profile.size() < 1}">
 			<section id="portfolio" class="container">
-				<h1>사진이없습니다</h1>
+				<h1 class="jg">사진이 없습니다</h1>
+				<div style="padding-bottom: 25%">
+				</div>
 				<!-- CALLOUT -->
 				<div class="bs-callout text-center nomargin-bottom">
 					<h3><a href="${path}/sns/initSns.do?mpk=${map.member.mpk}" class="btn btn-primary btn-lg">돌아가기</a></h3>

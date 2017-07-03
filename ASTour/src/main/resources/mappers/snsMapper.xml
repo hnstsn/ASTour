@@ -195,6 +195,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	where am.mpk=af.mpk(+) and am.mpk=rt.mpk and spk=#{spk} order by rpk desc ) a
 	)WHERE rnum between #{start} and #{end} -->
 	</select>
+	
 	<!-- 댓글 리스트 올른사람 사진 가지고오기  -->
 	<select id="replyViewFile" resultType="String">
 	SELECT nvl(pfile,'mu.jpg')as pfile FROM ASTProfile WHERE MPK = #{mpk} and 

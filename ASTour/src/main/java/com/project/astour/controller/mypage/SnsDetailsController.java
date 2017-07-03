@@ -64,16 +64,17 @@ public class SnsDetailsController {
 		//해당 게시물의 댓글 프로필사진을 가지고 오기 위함
 		for(SnsReplyVO vo : replyView){
 			String fileName=snsDetailsService.replyViewFile(vo.getMpk());
-			vo.setPfile(fileName);
+			if(fileName!=null){
+				vo.setPfile(fileName);
+			}
+			else{
+				vo.setPfile("mu.jpg");
+			}
 		}
 		
-		//model.addAttribute("replyView",replyView);
-		
 		if (snsDetailsService.likeSelect(like) == null) {
-			System.out.println("nononnono");
 			model.addAttribute("likeChk", "no");
 		} else {
-			System.out.println("yeseyseysesyesyeseyseyseysesyesy");
 			model.addAttribute("likeChk", "yes");
 		}
 		
@@ -175,7 +176,11 @@ public class SnsDetailsController {
        //댓글 추가 할때 해당하는 사람의 사진 하나만 가지고오기 
        String fileName=snsDetailsService.replyViewFile(vo.getMpk());
        System.out.println("view 확인"+fileName);
-       model.addAttribute("file",fileName);
+       if(fileName!=null){
+    	   model.addAttribute("file",fileName);
+       }else{
+    	   model.addAttribute("file","mu.jpg");
+       }
        model.addAttribute("rpk",vo.getRpk());
        model.addAttribute("list",snsReplyVO);
        model.addAttribute("mname",vo.getMname());

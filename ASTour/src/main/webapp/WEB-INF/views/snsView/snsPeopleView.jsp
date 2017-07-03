@@ -43,6 +43,8 @@
 				<c:when test="${peopleList.size() < 1}">
 					<h2 class="jg">찾고 계신 사람이 없습니다.</h2>
 					<h2 class="jg">이름을 다시 한번 확인해주세요.</h2>
+				<div style="padding-bottom: 37%">
+				</div>
 				</c:when>
 				<c:otherwise>
 					<c:forEach var="people" items="${peopleList}">
@@ -54,7 +56,7 @@
 										<span class="overlay color3"></span> 
 										<span class="inner"></span>
 									</a>
-									<img src="${path}/profile/${people.pfile}" width="340" height="260" alt="프로필 사진 없음">
+									<img src="${path}/profile/${people.pfile}" width="340" height="260" class="img-rounded">
 								</figure> 
 								<div class="item-box-desc">
 									<h4 class="jg" style="font-size: 23px">${people.mname}님</h4>

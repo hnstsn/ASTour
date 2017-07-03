@@ -224,8 +224,8 @@
 								<div class="comment">
 									<!-- user-avatar -->
 									<span class="user-avatar"> <img
-										class="pull-left media-object"
-										src="${path}/profile/${re.pfile}" width="64" height="64"
+										class="pull-left media-object img-circle"
+										src="${path}/profile/${re.pfile}" width="64" height="64" 
 										alt="">
 									</span>
 
@@ -256,7 +256,7 @@
 									<c:forEach var="num" begin="${pager.blockBegin}"
 										end="${pager.blockEnd}">
 										<c:if test="${num == pager.curPage }">
-											<li><a style="background: red;"
+											<li><a style="background: GREEN;"
 												href="${path}/snsdetails/contentview.do?spk=${pager.spk}&curPage1=${num}">${num }</a></li>
 										</c:if>
 										<c:if test="${num != pager.curPage }">
