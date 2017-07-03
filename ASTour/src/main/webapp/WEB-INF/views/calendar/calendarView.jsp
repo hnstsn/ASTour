@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="../include/bootstap_collect.jsp"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<%@ include file="../include/bootstap_collect.jsp"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel='stylesheet' type='text/css'
 	href='http://arshaw.com/css/main.css?6' />
+<%@ include file="../include/sessionCheck.jsp"%>
 <link rel='stylesheet' type='text/css'
 	href='http://arshaw.com/css/fullcalendar.css?3' />
 
@@ -36,6 +37,7 @@
 		var m = date.getMonth();
 		var y = date.getFullYear();
 		var events1=[];
+		
 		$.ajax({
             url : '${path}/calendar/selelctList',
             data : "mpk="+"${sessionScope.member.mpk}",
@@ -367,10 +369,24 @@
 	
 </script>
 </head>
+
 <body>
+	<div class="wrapper">
+		<!-- AST : 페이지 타이틀 -->
+		<div id="blog">
+		<header id="page-title">
+			<div class="container">
+				<h1 class="hn">일정</h1>
+			</div>
+		</header>
+		<!-- / AST : 페이지 타이틀 -->
+		</div>
+	</div>
+		
+		
 	<div>
-	
-	<!-- modal 일정 추가 -->
+
+		<!-- modal 일정 추가 -->
       <div id="id01" class="w3-modal" style="z-index: 10;">
          <div class="w3-modal-content w3-card-4 w3-animate-zoom"
             style="max-width: 600px; margin-top: 15%">
@@ -449,7 +465,7 @@
 		<!-- 달력 -->
 		<section id="portfolio" class="container">
 		<div id='calendar'
-			style='margin: 3em 0; margin-top: 15%; font-size: 13px;z-index: 1'>
+			style='margin-top: 5%; font-size: 13px;z-index: 1'>
 			<!-- 일정추가 버튼 -->
 			<center>
 				<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-circle w3-teal" style="margin: 1%;"
