@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 게시글 삽입 -->
     <insert id="insBrd">
       INSERT INTO sns_tbl 
-      VALUES (sns_seq.nextval, #{stitle}, #{scontent}, sysdate, #{stag}, #{ssort}, 0, 0, #{mpk})
+      VALUES (sns_seq.nextval, #{stitle}, #{scontent}, sysdate, #{stag}, #{ssort}, 0, #{mpk})
     </insert>
     
     <!-- 게시글 쓸때 파일 테이블의 spk를 사용해야 돼서 -->
