@@ -25,6 +25,7 @@ public class ProfileServiceImpl implements ProfileService {
 		return list.get(0);
 	}
 
+	// 프로필 수정때 사용
 	@Override
 	public void insertPrf(ProfileVO prf) {
 		pDao.insertPrf(prf);
