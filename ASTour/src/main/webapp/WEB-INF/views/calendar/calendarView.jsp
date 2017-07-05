@@ -32,12 +32,10 @@
 
 <script type='text/javascript'>
 	$(document).ready(function() {
-		var date = new Date();
-		var d = date.getDate();
-		var m = date.getMonth();
-		var y = date.getFullYear();
-		var events1=[];
+
+		var events1=[]; // 일정 리스트 받기 위함 배열
 		
+		//일정 리스트 가지고오는 ajax 
 		$.ajax({
             url : '${path}/calendar/selelctList',
             data : "mpk="+"${sessionScope.member.mpk}",
@@ -46,6 +44,7 @@
             success : function(doc) {
                if(doc.length>0) {
                   for (var i = 0; i < doc.length; i++) {
+                	  //배열에 일정리스트 add 
                      events1.push({
                     	id : doc[i].cpk,
                     	title : doc[i].ctitle,
@@ -54,7 +53,7 @@
                         allDay : false
                      });
                   }
-               }else {
+               }else { //일정이 없을 경우
                   events1.push({});
                }
             }
@@ -155,12 +154,13 @@
 				var enddate =calEvent.end.getFullYear()+'-'+enmom+'-'+enda+'T'+enhou+':'+enmin;
 				var ctitle = calEvent.title;
 				var cpk = calEvent.id;
-				var sstr = "<input class='w3-input w3-border w3-margin-bottom' type='text' name='updata_1' id='updata_1' value='ctitle' required>";
 
+				//데이터 넣음 
 				$("#updata_1").val(ctitle);
 				$("#updata_2").val(startdate);
 				$("#updata_3").val(enddate);
 				$("#cpk").val(cpk);
+				//모달 불러옴
 				document.getElementById('id02').style.display='block';
 				
 			},
@@ -232,6 +232,7 @@
 				var ctitle = event.title;
 				var pk = event.id;
 
+				//사이즈 변경시 
 				$.ajax({
 					url : '${path}/calendar/calendarSize',
 					type : "post", //전송방식
@@ -307,6 +308,7 @@
 				var ctitle = event.title;
 				var pk = event.id;
 				
+				//이벤트 이동시 컨트롤 전송후 데이터 저장
 				$.ajax({
 					url : '${path}/calendar/calendarSize',
 					type : "post", //전송방식
@@ -325,13 +327,13 @@
 			var startDate = new Date(loc2);
 			var endDate = new Date(loc3);
 			var datetime = endDate.getTime() - startDate.getTime();
-			if (datetime == 'NaN') {
+			if (datetime == 'NaN') { //오류
 				alert("잘못된 입력 입니다.");
 				return false;
-			} else if (datetime < 1800000) {
+			} else if (datetime < 1800000) { // 일정 시간 30분 차이 안날경우
 				alert("30분 미만 입니다.");
 				return false;
-			} else if (datetime >= 1800000) {
+			} else if (datetime >= 1800000) {  //완료 이벤트 처리
 				document.getElementById('up').submit();
 				return false;
 			}
@@ -343,13 +345,13 @@
 			var startDate = new Date(loc2);
 			var endDate = new Date(loc3);
 			var datetime = endDate.getTime() - startDate.getTime();
-			if (datetime == 'NaN') {
+			if (datetime == 'NaN') { //오류
 				alert("잘못된 입력 입니다.");
 				return false;
-			} else if (datetime < 1800000) {
+			} else if (datetime < 1800000) { //일정 시간 30분 차이 미만경우
 				alert("30분 미만 입니다.");
 				return false;
-			} else if (datetime >= 1800000) {
+			} else if (datetime >= 1800000) { //완료 이벤트
 				document.getElementById('insert').submit();
 				return false;
 			}

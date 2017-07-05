@@ -124,12 +124,12 @@
 	  document.getElementById("img01").src = element.src;
 	  document.getElementById("modal01").style.display = "block";
 	}
-
+	//모바일 판별하기 위함 나도모름
 	var filter = "win16|win32|win64|mac|macintel";
 	if (navigator.platform) {
 		    if (filter.indexOf(navigator.platform.toLowerCase()) < 0) { //mobile 
 		    	$(document).ready(function() {
-		    		$('img').className('img-responsive'); 
+		    		$('img').className('img-responsive');  //클래스 add
 		    		});
 		    } else { //pc
 		    }

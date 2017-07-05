@@ -10,7 +10,9 @@
 <!--<![endif]-->
 
 <head>
+<%@ include file="../include/bootstap_collect.jsp"%>
 <style>
+/* google 폰트*/
 @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
 @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 
@@ -24,7 +26,6 @@
 <meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
 <!-- mobile settings -->
 <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
-<%@ include file="../include/bootstap_collect.jsp"%>
 </head>
 <!-- WRAPPER -->
 <div id="wrapper">

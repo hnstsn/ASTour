@@ -31,12 +31,13 @@ $(document).ready(function() {
             	alert("수정되었습니다.");
             }
          });
-
+          //수정후 부모 윈도우 페이지 이동
           opener.parent.location='${path}/snsdetails/contentview.do?spk='+spk+"&mname="+mname; 
-          window.close();
+          window.close(); //자식 윈도우 close 
       });
 });
 
+//모바일 판별하기위함 (나도모름) - 권기훈
 function f1(){
 	 var filter = "win32|win64|mac|macintel";
 	 if (navigator.platform) {

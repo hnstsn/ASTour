@@ -93,7 +93,10 @@
 		<li><a id="loc_change" class="btn-primary">검색</a></li>
 	</ul>
 
-<c:if test="${list.size()<=0}"><h1>검색결과 없습니다.</h1></c:if>
+	<c:if test="${list.size()<=0}">
+		<h1>검색결과 없습니다.</h1>
+		<div style="padding-bottom: 31%"></div>
+	</c:if>
 	<div class="row">
 		<ul class="sort-destination isotope" data-sort-id="isotope-list">
 			<!-- 수정 -->

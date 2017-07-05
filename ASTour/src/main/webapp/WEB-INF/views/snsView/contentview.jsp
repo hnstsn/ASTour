@@ -95,19 +95,19 @@
 		});
 	}
 
+	//댓글 삭제
 	function f1(rpk, spk) {
 		if (confirm("삭제하시겠습니까?")) {
 			location.href = "${path}/snsdetails/delete.do?rpk=" + rpk + "&spk=" + spk;
 		}
 	}
-	;
 
-	//수정
+	//댓글 수정
 	function f2(rpk, spk, mpk) {
 		window.open("${path}/snsdetails/up.do?rpk=" + rpk + "&spk=" + spk + "&mpk=" + mpk, "댓글", "width=800, height=500");
 	}
-	;
-</script>
+
+	</script>
 </head>
 <!-- WRAPPER -->
 <div id="wrapper">
@@ -132,18 +132,6 @@
 						<header class="blog-post">
 							<h1 class="jg" style="font-size: 35px">
 								<input type="hidden" name="stitle" value="${contenlist.stitle}" />${contenlist.stitle}</h1>
-							
-
-							<%-- <small class="fsize13"> <a href="#"
-								class="label label-default light"> <i
-									class="fa fa-dot-circle-o"></i> <input type="hidden"
-									name="ssort" value="${contenlist.ssort}" />&nbsp;${contenlist.ssort}</a>
-									<span class="label label-default light"> <fmt:formatDate value="${contenlist.sdate}" pattern="yyyy-MM-dd a HH:mm:ss" /></span>
-									<span class="label label-default light">조회수 : ${contenlist.shits}</span>
-									 <a href="${path }/sns/initSns.do?mpk=${contenlist.mpk}">
-									 <span class="label label-default light">HOME</span></a>
-									 
-							</small> --%>
 							
 						</header>
 
