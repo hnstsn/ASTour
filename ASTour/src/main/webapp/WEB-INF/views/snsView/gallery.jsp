@@ -3,9 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <head>
 <style>
 @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
@@ -24,9 +24,7 @@
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 <!-- SHOP CSS -->
-		<link href="${path}/resources/assets/css/portfolio.css" rel="stylesheet" type="text/css" />
-
-
+<link href="${path}/resources/assets/css/portfolio.css" rel="stylesheet" type="text/css" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -36,8 +34,6 @@
 .deFile:hover { cursor:pointer; }
 </style>
 </head>
-
-
 
 <body>
 	<!-- WRAPPER -->
@@ -53,11 +49,11 @@
 		</div>
 
 		<!-- PAGE TITLE -->
-	<header id="page-title">
-		<div class="container">
-			<h1 class="hn">${map.member.mname}님의 사진첩</h1>
-		</div>
-	</header>
+		<header id="page-title">
+			<div class="container">
+				<h1 class="hn">${map.member.mname}님의 사진첩</h1>
+			</div>
+		</header>
 
 		<c:choose>
 		<c:when test="${map.blog.size() < 1 && map.profile.size() < 1}">

@@ -16,6 +16,7 @@
 </style>
 <script type="text/javascript">
 $(document).ready(function() {
+	// 수정 버튼 누르면
       $("#up").click(function() {
           var rcontent = $("#rcontent").val();
           var rpk = $("#rpk").val();

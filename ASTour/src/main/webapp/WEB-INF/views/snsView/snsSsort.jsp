@@ -19,6 +19,7 @@
 <script type="text/javascript" src="assets/plugins/modernizr.min.js"></script>
 <script type="text/javascript">
 $(function(){
+	// 검색버튼 누르면
 	$("#schBtn").click(function() {
 		var people_id = $("#people_id").val();
 		if (people_id == '') {

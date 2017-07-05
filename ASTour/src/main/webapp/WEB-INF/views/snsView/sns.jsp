@@ -30,6 +30,7 @@
 
  
 $(function(){
+	// 검색 버튼 누르면
 	$("#schBtn").click(function() {
 		var people_id = $("#people_id").val();
 		if (people_id == '') {
