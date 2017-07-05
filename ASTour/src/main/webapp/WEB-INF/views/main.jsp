@@ -272,8 +272,6 @@
   <!-- /REVOLUTION SLIDER -->
   
   
-  
-  
   <!-- WELCEOME -->
   <section class="container">
      <h1 class="text-center">
@@ -313,16 +311,8 @@
         </div>
      </div>
      
-     
-     <%-- <div class="col-md-4">
-           <h4><i style="color: #704405;" class="fa fa-trophy"></i>동메달</h4>
-        	<h5>${rankList[2].stag }</h5>
-           <a href="${path}/snsdetails/contentview.do?spk=${rankList[2].spk }"><h3 class="jg"><p>${rankList[2].stitle }</p></h3></a> 
-           <img src="${path}/sns/${rankList[2].sffile}" class="img-rounded" alt="${rankList[2].sffile }" width="300" height="200" />
-     </div> --%>
      <!-- /FEATURED BOXES 4 -->
  
-  
      <hr />
      <div style="width: 100%; text-align: center;">
 		<h2 class="titletext">인기 명소</h2>
@@ -380,7 +370,6 @@
 						</div>
 					</li>
 				</c:forEach>
-<!--  -->
 			</ul>
   
         </div>

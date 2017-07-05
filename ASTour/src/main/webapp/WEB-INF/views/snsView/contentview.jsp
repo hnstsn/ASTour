@@ -8,7 +8,6 @@
 <head>
 <style>
 @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
-
 @import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
 
 .hn {
