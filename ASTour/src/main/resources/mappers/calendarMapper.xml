@@ -5,19 +5,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="calendar">
 
+
+	<!-- 리스트 명령어 -->
 	<select id="calendarselect"
 		resultType="com.project.astour.model.dto.calendar.calendarVO">
 		SELECT *FROM calendar_tbl where mpk=#{mpk}
 	</select>
 	
+	
+	<!-- 업데이트 명령어 -->
 	<update id="calendarsize">
 		UPDATE calendar_tbl SET ctitle=#{ctitle}, startdate=#{startdate}, enddate=#{enddate} WHERE cpk=#{cpk}
 	</update>
 	
+	<!-- 추가 명령어 -->
 	<insert id="calendarInsert">
 		insert into calendar_tbl values(calendar_seq.nextval,#{ctitle},#{startdate},#{enddate},#{mpk})
 	</insert>
 	
+	<!-- 삭제명령어 -->
 	<delete id="calendarDelete">
 		delete calendar_tbl where cpk = #{cpk}
 	</delete>

@@ -231,10 +231,7 @@
 				var enddate =event.end.getFullYear()+'-'+enmom+'-'+enda+'T'+enhou+':'+enmin;
 				var ctitle = event.title;
 				var pk = event.id;
-			
-				/* 				alert(startdate);
-								alert(enddate);
-								alert(ctitle); */
+
 				$.ajax({
 					url : '${path}/calendar/calendarSize',
 					type : "post", //전송방식

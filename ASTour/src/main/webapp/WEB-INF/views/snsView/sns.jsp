@@ -177,7 +177,7 @@ $(function(){
 							<!-- / AST : 타임라인 이미지  -->
 
 							<!-- AST : 타임라인 내용  -->
-							<p class="jg" style="font-size: 17px">${sns.scontent }</p>
+							<p class="jg" style="font-size: 17px">${sns.sct }</p>
 							<!-- / AST : 타임라인 내용  -->
 						</div>
 					</c:forEach>

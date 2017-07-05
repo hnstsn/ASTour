@@ -28,6 +28,7 @@ public class calendarController {
 		return "home";
 	}
 	
+	//일정 리스트 가지고옴
 	@RequestMapping("selelctList")
 	@ResponseBody
 	public List<calendarVO> selelctList(@RequestParam(value="mpk") int mpk){	

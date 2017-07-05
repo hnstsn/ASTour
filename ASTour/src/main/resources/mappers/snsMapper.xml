@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 게시글 삽입 -->
     <insert id="insBrd">
       INSERT INTO sns_tbl 
-      VALUES (sns_seq.nextval, #{stitle}, #{scontent}, sysdate, #{stag}, #{ssort}, 0, #{mpk})
+      VALUES (sns_seq.nextval, #{stitle}, #{scontent}, sysdate, #{stag}, #{ssort},0, 0, #{mpk})
     </insert>
     
     <!-- 게시글 쓸때 파일 테이블의 spk를 사용해야 돼서 -->
@@ -86,11 +86,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM ASTMember m, ASTProfile p WHERE m.mpk=p.mpk(+) and m.mpk=#{mpk}
 		order by ppk desc
 	</select>
-
-		<!-- SELECT m.mpk, m.mid, m.mname, p.ppk, nvl(p.pfile,'mu.jpg') AS pfile,
-			   nvl(p.ppath,'WEB-INF/views/upload/profile') AS ppath
-		FROM ASTMember m, ASTProfile p 
-		WHERE m.mpk=p.mpk(+) AND m.mname LIKE #{mname} -->
 	<!-- 사람검색 -->
 	<select id="peopleList" resultType="MemberVO">
 	SELECT m.mpk, m.mid, m.mname
@@ -168,9 +163,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="replyselect" resultType="SnsReplyVO">
 	   select mem.mname,rt.* from reply_tbl rt,ASTMember mem 
 	   where rt.mpk=mem.mpk and rpk=#{rpk}
-	   <!-- select am.mpk,am.mname,nvl(af.pfile,'mu.jpg') as pfile, rt.* 
-	   from ASTMember am,ASTProfile af, reply_tbl rt
-	   where am.mpk=af.mpk(+) and rt.mpk=am.mpk and rpk=#{rpk} -->
    </select>
    
    <!-- 댓글업데이트 -->
@@ -186,14 +178,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select rt.*,am.mname, am.mid from ASTMember am,reply_tbl rt
 	where am.mpk=rt.mpk and spk=#{spk} order by rpk desc ) a
 	)WHERE rnum between #{start} and ${end}
-	<!-- SELECT * FROM(
-	SELECT rownum rnum, a.*
-	FROM(
-	select rt.*, nvl(af.pfile,'mu.jpg') as pfile ,nvl(af.ppath,'mu.jpg') as
-	ppath,
-	am.mname, am.mid from ASTMember am, ASTProfile af, reply_tbl rt
-	where am.mpk=af.mpk(+) and am.mpk=rt.mpk and spk=#{spk} order by rpk desc ) a
-	)WHERE rnum between #{start} and #{end} -->
 	</select>
 	
 	<!-- 댓글 리스트 올른사람 사진 가지고오기  -->

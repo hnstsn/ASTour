@@ -2,11 +2,11 @@ package com.project.astour.model.dto.calendar;
 
 public class calendarVO {
 	
-	private int cpk;
-	private String ctitle;
-	private String startdate;
-	private String enddate;
-	private int mpk;
+	private int cpk; //기본키
+	private String ctitle; //제목	
+	private String startdate;//시작데이터
+	private String enddate;	//끝 데이터
+	private int mpk;	//참조키
 	
 	
 	public int getCpk() {

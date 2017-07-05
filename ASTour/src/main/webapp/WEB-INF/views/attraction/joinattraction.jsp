@@ -48,7 +48,12 @@
    $(document).ready(function() {
       $("#loc_change").click(function() {
          var loc = $("#loc_txt").val();
-         location.href="${path}/attraction/selectAttr.do?loc="+loc;
+         if(loc!=""){
+	         location.href="${path}/attraction/selectAttr.do?loc="+loc;
+         }
+         else{
+        	 alert("입력하시오");
+         }
       });
    });
    
@@ -88,6 +93,7 @@
 		<li><a id="loc_change" class="btn-primary">검색</a></li>
 	</ul>
 
+<c:if test="${list.size()<=0}"><h1>검색결과 없습니다.</h1></c:if>
 	<div class="row">
 		<ul class="sort-destination isotope" data-sort-id="isotope-list">
 			<!-- 수정 -->
