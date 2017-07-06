@@ -17,6 +17,7 @@ public class CalendarDAOImpl implements CalendarDAO{
 	@Inject
 	SqlSession sqlsession;
 	
+	//켈린더 일정 순위
 	@Override
 	public List<calendarVO> calendarList(int mpk) {
 		return sqlsession.selectList("calendar.calendarselect",mpk);

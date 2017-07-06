@@ -20,12 +20,12 @@ public class AttractionDAOImpl implements AttractionDAO{
 	@Inject
 	SqlSession sqlSession;
 
-	//전부
+	//전부list
 	@Override
 	public List<attraction_tbl> attractionList() {
 		return sqlSession.selectList("attractionmap.attractionselect"); 
 	}
-	//전부 (지영이형이랑 겹처서 새로만듬)
+	//전부list,페이지 처리용 (지영이형이랑 겹처서 새로만듬)
 	@Override
 	public List<attraction_tbl> attractionList2(int start,int end) {
 		Map<String,Integer> map=new HashMap<String, Integer>();
@@ -34,7 +34,7 @@ public class AttractionDAOImpl implements AttractionDAO{
 		return sqlSession.selectList("attractionmap.attractionselect2",map); 
 	}
 
-	//전부 카운트
+	//전부 카운트 (페이지처리용)
 	@Override
 	public int attractionselectCount() {
 		return sqlSession.selectOne("attractionmap.attractionselectCount");
@@ -51,11 +51,13 @@ public class AttractionDAOImpl implements AttractionDAO{
 		map.put("end", end);
 		return sqlSession.selectList("attractionmap.attractionATITLE",map);
 	}
+	
 	//검색후 총 카운트
 	@Override
 	public int attractionAtitleCount(String ATITLE) {
 		return sqlSession.selectOne("attractionmap.attractionAtitleCount",ATITLE);
 	}
+	
 	//행사,명소 구별
 	@Override
 	public List<attraction_tbl> attractionAsort(
@@ -73,7 +75,7 @@ public class AttractionDAOImpl implements AttractionDAO{
 		return sqlSession.selectOne("attractionmap.attractionASORTCount",ASORT);
 	}
 	
-	//리스트 최신순 가지고오기
+	//리뷰 리스트 최신순 가지고오기
 	@Override
 	public List<reViewListVO> reviewattraction(
 			@RequestParam(value="start") int start,
@@ -85,7 +87,7 @@ public class AttractionDAOImpl implements AttractionDAO{
 		map.put("title", title);
 		return sqlSession.selectList("attractionmap.reviewattraction",map);
 	}
-	//리스트 조회순 가지고오기
+	//리뷰 리스트 조회순 가지고오기
 	@Override
 	public List<reViewListVO> reviewattractionhits(
 			@RequestParam(value="start") int start,
@@ -110,12 +112,13 @@ public class AttractionDAOImpl implements AttractionDAO{
 		return sqlSession.selectOne("attractionmap.recount",spk);
 	}
 
-	//전채 댓글수 구하기
+	//전체 댓글수 구하기(main화면)
 	@Override
 	public int allCount(String title) {
 		return sqlSession.selectOne("attractionmap.allcount",title);
 	}
 
+	//랭킹태크 순 (main화면)
 	@Override
 	public List<tagrankVO> tagrank() {
 		return sqlSession.selectList("attractionmap.tagrank");

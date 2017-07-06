@@ -7,6 +7,7 @@ import com.project.astour.model.dto.calendar.calendarVO;
 
 public interface CalendarDAO {
 
+	//켈린더 일정 리스트
 	public List<calendarVO> calendarList(int mpk);
 	//켈린더 사이즈 변경,이동시 
 	public void calendarsize(Map<String, Object> map);

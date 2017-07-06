@@ -10,14 +10,25 @@ import com.project.astour.model.dto.mypage.snsVO;
 
 public interface SnsDAO {
 
+	//게시물 list (페이지처리)
 	public List<snsVO> snsList(int start,int end,int mpk);
+	//게시물 회원정보를 mpk를 보고 찾음
 	public MemberVO memList(int mpk); 
+	//String 으로 받아서 사람 검색
 	public List<MemberVO> peopleList(String mname);
+	
 	public List<snsVO> reviewSelect(Map<String, Object> map);
+	//게시물 해당한 file 정보를 가지고 옴 (controller 에서 for 으로 하나씩 찾음)
 	public SnsFileVO snsFileList(int spk);
+	
+	
+	//게시물 작성
 	public void insBrd(snsVO sns) throws Exception;
+	// 게시글 파일에 필요한 spk
 	public int getSpk();
+	// 해당하는 게시글의 파일 첨부
 	public void insBrdFiles (SnsFileVO sFile);
+	
 	
 	// 게시물 갯수 조회 
 	public int count(int mpk);
