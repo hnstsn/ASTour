@@ -12,9 +12,9 @@ import com.project.astour.model.dto.mypage.snsVO;
 
 public interface SnsDetailsDAO {
 
-	public snsVO contentView(@RequestParam(value="spk") int spk);
-	public void contentDelete(int spk);
-	public void deleteFiles(int spk);
+	public snsVO contentView(@RequestParam(value="spk") int spk);//해당게시물 정보
+	public void contentDelete(int spk); //게시물 삭제
+	public void deleteFiles(int spk);	
 	public void deleteReplys(int spk);
 	public void deletePic(int sfpk);
 	public void upContent(snsVO sns);

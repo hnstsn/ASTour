@@ -192,25 +192,28 @@ function searchIdPw() {
                      명소&행사
                   </a>
                </li>
+
+               <li class="dropdown">
+               		<a href="${path}/chgPage.do?cpage=30">SNS</a>
+               </li>
+
                <li class="dropdown">
                   <a class="dropdown-toggle">
                      <b>마이페이지</b> <i class="fa fa-angle-down"></i>
                   </a>
                   <ul class="dropdown-menu">
-                     <li><a href="${path}/chgPage.do?cpage=30">SNS</a></li>
+                     <li>
+                     <a class="dropdown-toggle" href="${path}/chgPage.do?cpage=60"> 일정 </a>
+					 </li>
                      <li><a href="${path}/chgPage.do?cpage=40">정보수정</a></li>
                   </ul>
                </li>
+
                
                <li class="dropdown">
                   <a class="dropdown-toggle" href="${path}/chgPage.do?cpage=50">
                      고객센터
                   </a>
-               </li>
-               <li class="dropdown">
-               		<a class="dropdown-toggle" href="${path}/chgPage.do?cpage=60">
-               			일정
-               		</a>
                </li>
                
             </ul>

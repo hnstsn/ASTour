@@ -38,6 +38,7 @@ public class SnsController {
 
 	@Inject
 	SnsService snsService;
+	
 	@Inject
 	AttractionService attractionService;
 
@@ -51,44 +52,52 @@ public class SnsController {
 	@RequestMapping("initSns.do")
 	public String initSns(Model model, @RequestParam(value = "mpk") int mpk,
 			@RequestParam(defaultValue = "1") int curPage1) {
-
+		//페이지 처리
 		int count = snsService.count(mpk);
 
 		Pager pager = new Pager(count, curPage1);
 		int start = pager.getPageBegin();
 		int end = pager.getPageEnd();
 		pager.setMpk(mpk);
-				
+		//페이지 처리 끝
+		
 		// 회원정보 가져오기
 		MemberVO member = snsService.memList(mpk);
 		// sns 게시글 가져오기
 		List<snsVO> snsList = snsService.snsList(start, end, mpk);
 		// 게시글에 해당하는 사진 가져오기
 		List<SnsFileVO> snsFileList = new ArrayList<SnsFileVO>();
+		
 		SnsFileVO snsFileVO;
+		
 		for (snsVO vo : snsList) {
-			vo.setReCnt(snsService.replycountList(mpk, vo.getSpk()));;
+			//댓글 수 
+			vo.setReCnt(snsService.replycountList(mpk, vo.getSpk()));
 			// 좋아요 세팅
 			vo.setSlikes(snsDetailsService.likecount(vo.getSpk()));
-			snsFileVO = snsService.snsFileList(vo.getSpk());
+			snsFileVO = snsService.snsFileList(vo.getSpk()); //이미지 파일정보
 			if (snsFileVO != null) {
 				snsFileList.add(snsFileVO);
 			}
 		}
 
-		model.addAttribute("pager", pager);
+		model.addAttribute("controller","initSns.do"); //페이지 처리 할때 controller을 알기위해서 
+		model.addAttribute("pager", pager); //페이지 처리
 		model.addAttribute("member", member); // 회원정보
 		model.addAttribute("list", snsList); // 게시물 리스트
 		model.addAttribute("snsFileList", snsFileList); // 파일 리스트
-		model.addAttribute("curPage", "snsView/sns.jsp");
+		model.addAttribute("curPage", "snsView/sns.jsp"); //페이지 
 		return "home";
 	}
 
 	// 글쓰기 페이지
 	@RequestMapping("writeview.do")
 	public String writeview(Model model, @RequestParam(value = "mpk") int mpk) {
+		//글쓰기 하기위해서 기존 mpk 를가지고 있어야함
 		model.addAttribute("mpk", mpk);
+		//지역 선택하기위해서 사용
 		List<attraction_tbl> attractionList = attractionService.attractionList(); 
+		
 		model.addAttribute("list", attractionList);
 		model.addAttribute("curPage", "snsView/write.jsp");
 		return "home";
@@ -121,6 +130,8 @@ public class SnsController {
 				snsFileList.add(snsFileVO);
 			}
 		}
+		
+		model.addAttribute("controller","initSns.do");
 		model.addAttribute("pager", pager);//페이지처리
 		model.addAttribute("snsFileList", snsFileList); // 파일 리스트
 		model.addAttribute("member", member);
@@ -175,12 +186,13 @@ public class SnsController {
 		for (snsVO vo : snsList) {
 			vo.setReCnt(snsService.replycountList(mpk, vo.getSpk()));;
 			vo.setSlikes(snsDetailsService.likecount(vo.getSpk()));
-			// System.out.println("보내줄 spk : " + vo.getSpk());
 			snsFileVO = snsService.snsFileList(vo.getSpk());
 			if (snsFileVO != null) {
 				snsFileList.add(snsFileVO);
 			}
 		}
+		
+		model.addAttribute("controller","findPepole.do");
 		model.addAttribute("pager", pager);//페이지처리
 		model.addAttribute("member", member);
 		model.addAttribute("list", snsList);
@@ -195,31 +207,36 @@ public class SnsController {
 			@RequestParam(defaultValue = "1") int curPage1,
 			@RequestParam(value = "mpk") int mpk) {
 
+		//페이지 처리
 		int count = snsService.count(mpk);
 
 		Pager pager = new Pager(count, curPage1);
 		int start = pager.getPageBegin();
 		int end = pager.getPageEnd();
 		pager.setMpk(mpk);
-		 
+		//페이지 처리 끝 
+		
+		//게시물 리스트
 		List<snsVO> snsList = snsService.snsList(start,end,mpk);
-		MemberVO member = snsService.memList(mpk);
+		MemberVO member = snsService.memList(mpk);//회원정보 데이터
 
+		//해당 게시물 사진을 가지고 오기 위함
 		List<SnsFileVO> snsFileList = new ArrayList<SnsFileVO>();
 		System.out.println("snsLIst크기 : " + snsList.size());
 		SnsFileVO snsFileVO;
 		for (snsVO vo : snsList) {
-			vo.setReCnt(snsService.replycountList(mpk, vo.getSpk()));
-			vo.setSlikes(snsDetailsService.likecount(vo.getSpk()));
-			System.out.println("보내줄 spk : " + vo.getSpk());
-			snsFileVO = snsService.snsFileList(vo.getSpk());
-			if (snsFileVO != null) {
+			vo.setReCnt(snsService.replycountList(mpk, vo.getSpk()));//댓글 갯수
+			vo.setSlikes(snsDetailsService.likecount(vo.getSpk())); //좋아요 갯수
+			snsFileVO = snsService.snsFileList(vo.getSpk());		//이미지파일 하나 
+			if (snsFileVO != null) { //있을경우 add
 				snsFileList.add(snsFileVO);
 			}
 		}
+		
+		model.addAttribute("controller","snsSelect.do"); //페이지 전환시 기존 controller 알기위함
 		model.addAttribute("pager", pager);//페이지처리 
 		model.addAttribute("snsFileList", snsFileList); // 파일 리스트
-		model.addAttribute("member", member);
+		model.addAttribute("member", member);			//회원정보 
 		model.addAttribute("list", snsList);
 		model.addAttribute("curPage", "snsView/sns.jsp");
 		return "home";
@@ -248,19 +265,19 @@ public class SnsController {
 		for (snsVO vo : snsList) {
 			vo.setReCnt(snsService.replycountList(mpk, vo.getSpk()));;
 			vo.setSlikes(snsDetailsService.likecount(vo.getSpk()));
-			System.out.println("보내줄 spk : " + vo.getSpk());
 			snsFileVO = snsService.snsFileList(vo.getSpk());
 			if (snsFileVO != null) {
 				snsFileList.add(snsFileVO);	
 			}
 		}
 		
+		model.addAttribute("controller","reviewSelect.do");
 		model.addAttribute("pager", pager);
 		model.addAttribute("ssort",ssort);
 		model.addAttribute("snsFileList", snsFileList); // 파일 리스트
 		model.addAttribute("member", member);
 		model.addAttribute("list", snsList);
-		model.addAttribute("curPage", "snsView/snsSsort.jsp");
+		model.addAttribute("curPage", "snsView/sns.jsp");
 
 		return "home";
 	}
@@ -277,12 +294,12 @@ public class SnsController {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		if(sort.equals("all")){
+		if(sort.equals("all")){ //검색 all일경우 
 			map.put("blog", blogList);
 			map.put("profile", profileList);
-		}else if(sort.equals("profile")){
+		}else if(sort.equals("profile")){ //검색 프로필사진일경우
 			map.put("profile", profileList);
-		}else{
+		}else{ 							//게시물 사진일경우
 			map.put("blog", blogList);
 		}
 		

@@ -151,11 +151,7 @@ public class SnsDetailsController {
 			@RequestParam(value="rcontent") String rcontent,
 			@RequestParam(value="mpk") int mpk,
 			@RequestParam(value="spk") int spk){
-		System.out.println("확인용");
-		System.out.println(mpk);
-		System.out.println(spk);
-		System.out.println(rcontent);
-		
+		//댓글 추가
 		snsDetailsService.reply(mpk,spk,rcontent);
 		
 		return "redirect:/snsdetails/contentview.do?spk="+spk;
@@ -176,9 +172,9 @@ public class SnsDetailsController {
        //댓글 추가 할때 해당하는 사람의 사진 하나만 가지고오기 
        String fileName=snsDetailsService.replyViewFile(vo.getMpk());
        System.out.println("view 확인"+fileName);
-       if(fileName!=null){
+       if(fileName!=null){	//사진이 있을 경우 
     	   model.addAttribute("file",fileName);
-       }else{
+       }else{ //사진이 없을 경우
     	   model.addAttribute("file","mu.jpg");
        }
        model.addAttribute("rpk",vo.getRpk());

@@ -42,11 +42,6 @@ public class calendarController {
 			@RequestParam(value="enddate") String enddate,
 			@RequestParam(value="ctitle") String ctitle,
 			@RequestParam(value="id") int cpk){
-		System.out.println("calendarSize 접속완료");
-		System.out.println(cpk);
-		System.out.println(startdate);
-		System.out.println(enddate);
-		System.out.println(ctitle);
 		
 		calendarservice.calendarsize(cpk, startdate, enddate, ctitle);
 	}
