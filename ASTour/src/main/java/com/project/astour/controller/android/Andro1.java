@@ -19,17 +19,23 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.astour.model.dto.attraction.attraction_tbl;
+import com.project.astour.service.android.AndroidService;
 import com.project.astour.service.attraction.AttractionService;
 
 
 
 @Controller
 public class Andro1 {
+	
 	@Inject
 	AttractionService attractionService;
+	
+	@Inject
+	AndroidService androidservice;
 	
 	//안드로이드용
 	//AST : 1. JSON방식
@@ -58,7 +64,7 @@ public class Andro1 {
 		return jsonMain;
 	}
 	
-	//AST : 2. XML 분석방식
+	//AST : 2. XML 분석방식 --현재 안씀
 	
 	@ResponseBody
 	@RequestMapping(value="andro1", 
@@ -99,6 +105,16 @@ public class Andro1 {
 		
 		return result;
 	}
+	
+	//안드로이드 서비스에서 GPS값을 보내준다
+	
+	@ResponseBody
+	@RequestMapping(value="gpsRecord",
+	produces="application/json; charset=utf-8")
+	public void gpsRecording( String latitude_record, String longitude_record){
+		androidservice.gpsRecord(latitude_record,longitude_record);
+	}
+	
 	
 	//tMap 연결
 	@ResponseBody
