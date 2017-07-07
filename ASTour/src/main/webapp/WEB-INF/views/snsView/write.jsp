@@ -210,6 +210,8 @@ $(document).ready(function() {
 					</div>
 
 				</form>
+				<div style="padding-bottom: 12%">
+				</div>
 
 			</div>
 			<!-- /FORM -->

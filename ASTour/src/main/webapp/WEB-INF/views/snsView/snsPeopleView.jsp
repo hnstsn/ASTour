@@ -44,7 +44,7 @@
 				<c:when test="${peopleList.size() < 1}">
 					<h2 class="jg">찾고 계신 사람이 없습니다.</h2>
 					<h2 class="jg">이름을 다시 한번 확인해주세요.</h2>
-				<div style="padding-bottom: 37%">
+				<div style="padding-bottom: 39%">
 				</div>
 				</c:when>
 				<c:otherwise>
@@ -62,6 +62,8 @@
 								<div class="item-box-desc">
 									<h4 class="jg" style="font-size: 23px">${people.mname}님</h4>
 									<h5 class="jg" style="font-size: 15px">${people.mid}</h5>
+								</div>
+								<div style="padding-bottom: 64%">
 								</div>
 							</div>
 						</li>
