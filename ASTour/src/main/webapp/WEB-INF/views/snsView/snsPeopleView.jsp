@@ -49,21 +49,18 @@
 				</c:when>
 				<c:otherwise>
 					<c:forEach var="people" items="${peopleList}">
-						<li class="isotope-item col-sm-6 col-md-4 design">
-							<!-- item 3 -->
+						<li class="isotope-item col-sm-6 col-md-4 development">
 							<div class="item-box">
 								<figure>
-									<a href="${path}/sns/findPepole.do?mpk=${people.mpk}" class="item-hover" >
+									<a class="item-hover" href="${path}/sns/findPepole.do?mpk=${people.mpk}" >
 										<span class="overlay color3"></span> 
 										<span class="inner"></span>
 									</a>
-									<img src="${path}/profile/${people.pfile}" width="340" height="260" class="img-rounded">
+									<img class="img-responsive" src="${path}/profile/${people.pfile}" width="320" height="260">
 								</figure> 
 								<div class="item-box-desc">
 									<h4 class="jg" style="font-size: 23px">${people.mname}님</h4>
 									<h5 class="jg" style="font-size: 15px">${people.mid}</h5>
-								</div>
-								<div style="padding-bottom: 64%">
 								</div>
 							</div>
 						</li>
