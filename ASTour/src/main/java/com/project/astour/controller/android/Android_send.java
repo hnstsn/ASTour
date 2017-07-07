@@ -23,7 +23,6 @@ public class Android_send {
 	@RequestMapping(value="andro_find_attraction",
 produces="application/json; charset=utf-8")
 	public JSONObject andro_send(String atitle, double deviceLatitude, double deviceLongitude){
-		
 		//atitle & deviceLatitude & deviceLongitude 활용 예정
 		
 		//모든 명소 값 - items
@@ -39,8 +38,6 @@ produces="application/json; charset=utf-8")
 			dto = items.get(i);
 			
 			//이름으로 검색 - 미완성
-			
-			
 			//약 7Km 반경으로 위치검색
 			if(Cal.distance(
 					deviceLatitude, deviceLongitude, dto.getAlatitude(), dto.getAlongitude())
@@ -52,17 +49,19 @@ produces="application/json; charset=utf-8")
 			}
 			
 			
-			
 			dto=null;
 			row=null;
 		}
 		jMain.put("send_Data", jArray);
 		
-		
 		return jMain;
 	}
 	
 }
+
+
+
+
 
 //거리계산 클래스
 class Cal{

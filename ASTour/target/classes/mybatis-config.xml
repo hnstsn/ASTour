@@ -20,6 +20,7 @@
 		<mapper resource="mappers/mapMapper.xml"></mapper>
 		<mapper resource="mappers/faqMapper.xml"></mapper>
 		<mapper resource="mappers/calendarMapper.xml"></mapper>
+		<mapper resource="mappers/androidMapper.xml"></mapper>
 	</mappers>
 	
 </configuration>
