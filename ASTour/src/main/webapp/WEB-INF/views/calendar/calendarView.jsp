@@ -29,6 +29,11 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js'></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>	
 
+	
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css"></script>	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css"></script>	 -->
+
 
 <script type='text/javascript'>
 	$(document).ready(function() {
@@ -50,7 +55,7 @@
                     	title : doc[i].ctitle,
                         start : doc[i].startdate,
                         end : doc[i].enddate,
-                        allDay : false
+                        allDay: false,
                      });
                   }
                }else { //일정이 없을 경우
@@ -65,9 +70,12 @@
 				center : 'title',
 				right : 'month,agendaWeek,agendaDay'
 			},
-			//화면 클릭시 일정 변경가능 true,불가능 false
+			/* //화면 클릭시 일정 변경가능 true,불가능 false
 			editable : true,
-			eventLimit: true,
+			//eventLimit: 3,
+			firstday: 1,
+		    eventLimit: 3,
+			eventTextColor: 'white', */
 			//<!--한글 설정-->
 			titleFormat : {
 				month : "yyyy년 MMMM",
@@ -84,8 +92,13 @@
 				week : "주별",
 				day : "일별"
 			},
+			timeFormat: '●', //시간 p 삭제 
 			//<!--/한글 설정-->
 			//일정 내용들
+			//화면 클릭시 일정 변경가능 true,불가능 false
+			editable : true,
+			firstday: 1,
+		    eventLimit: 3,
 			events : events1,
 			//일정 기간 클릭시
 			eventClick :  function(calEvent, jsEvent, view) {

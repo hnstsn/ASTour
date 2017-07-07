@@ -49,7 +49,7 @@
 				<div class="row">
 					<h2 class="jg">${title} 리뷰가 없습니다</h2>
 				</div>
-				<div style="padding-bottom: 43.8%">
+				<div style="padding-bottom: 46%">
 				</div>
 			</c:when>
 			<c:otherwise>
@@ -82,6 +82,9 @@
 										<span class="jg" style="font-size: 15px">조회수 :${list.shits}</span> 
 										<small class="jg" style="font-size: 15px">${list.mid }</small>
 									</div>
+								</div>
+								</div>
+								<div style="padding-bottom: 2%">
 								</div>
 							</li>
 						</c:forEach>
@@ -131,6 +134,7 @@
 		</c:choose>
 		</section>
 	</div>
+	
 	<!-- /WRAPPER -->
 
 </body>
