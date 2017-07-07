@@ -63,6 +63,7 @@
 									<h5 class="jg" style="font-size: 15px">${people.mid}</h5>
 								</div>
 							</div>
+							<div style="padding-bottom: 45%"></div>
 						</li>
 					</c:forEach>
 				</c:otherwise>

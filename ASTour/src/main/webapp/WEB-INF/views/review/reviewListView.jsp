@@ -49,7 +49,7 @@
 				<div class="row">
 					<h2 class="jg">${title} 리뷰가 없습니다</h2>
 				</div>
-				<div style="padding-bottom: 55.3%">
+				<div style="padding-bottom: 46%">
 				</div>
 			</c:when>
 			<c:otherwise>
@@ -84,7 +84,7 @@
 									</div>
 								</div>
 								</div>
-								<div style="padding-bottom: 11.4%">
+								<div style="padding-bottom: 2%">
 								</div>
 							</li>
 						</c:forEach>
@@ -134,6 +134,7 @@
 		</c:choose>
 		</section>
 	</div>
+	
 	<!-- /WRAPPER -->
 
 </body>
