@@ -72,6 +72,13 @@ $(document).ready(function() {
 		// 충족했을 경우 submit
 		} else {
 			$("#writeForm").attr("action", "${path}/sns/insert.do");
+			
+			//엔터처리
+			var br=$('#scontent').val();
+			br = br.replace(/(?:\r\n|\r|\n)/g, '<br />');
+			$('#scontent').val(br);
+			//엔터처리끝
+			
 			$("#writeForm").submit();
 		}
 	});

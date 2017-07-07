@@ -76,7 +76,7 @@
 			url : "${path}/snsdetails/likeinsert.do",
 			data : "mpk=" + mpk + "&spk=" + spk,
 			success : function(data) {
-				$("#likeDiv").html("<div class='titletext' style='width: 9%;' align='center' onclick='canLike(${sessionScope.member.mpk}, ${contenlist.spk})'>"
+				$("#likeDiv").html("<div class='titletext' style='width: 100px;' align='center' onclick='canLike(${sessionScope.member.mpk}, ${contenlist.spk})'>"
 						+"<span class='jg' style='font-size: 120%'>좋아요</span> <i class='fa fa-heart' style='font-size: 110%'></i></div>");
 			}
 		});
@@ -88,7 +88,7 @@
 			url : "${path}/snsdetails/likeDelete.do",
 			data : "mpk=" + mpk + "&spk=" + spk,
 			success : function(data) {
-				$("#likeDiv").html("<div class='titletext' style='width: 9%;'align='center' onclick='chkLike(${sessionScope.member.mpk}, ${contenlist.spk})'>"
+				$("#likeDiv").html("<div class='titletext' style='width: 100px;'align='center' onclick='chkLike(${sessionScope.member.mpk}, ${contenlist.spk})'>"
 						+"<span class='jg' style='font-size: 120%'>좋아요</span> <i class='fa fa-heart-o' style='font-size: 110%''></i></div>");
 			}
 		});
@@ -130,7 +130,7 @@
 						<!-- article title -->
 						<header class="blog-post">
 							<h1 class="jg" style="font-size: 35px">
-								<input type="hidden" name="stitle" value="${contenlist.stitle}" />${contenlist.stitle}</h1>
+								<input type="hidden" name="stitle" value="${contenlist.stitle}" />${contenlist.stitle}</h1><span><a>가이드보기</a></span>
 							
 						</header>
 
@@ -149,14 +149,14 @@
 						<div id="likeDiv" align="right" >
 							<c:choose>
 								<c:when test="${likeChk == 'yes'}">
-									<div class="titletext" style="width: 9%;" align="center"
+									<div class="titletext" style="width: 100px;" align="center"
 										onclick="canLike(${sessionScope.member.mpk}, ${contenlist.spk})">
 										<span class="jg" style="font-size: 120%">좋아요</span>
 										<i class="fa fa-heart" style="font-size: 110%"></i>
 									</div>
 								</c:when>
 								<c:otherwise>
-									<div class="titletext" style="width: 9%;" align="center" 
+									<div class="titletext" style="width: 100px;" align="center" 
 										onclick="chkLike(${sessionScope.member.mpk}, ${contenlist.spk})">
 										<span class="jg" style="font-size: 120%">좋아요</span>
 										<i class="fa fa-heart-o" style="font-size: 110%"></i>
@@ -166,10 +166,10 @@
 							</div>
 						
 						
-							<div class="titletext" style="width: 10%" align="center">
+							<div class="titletext" style="width: 110px" align="center">
 							<span class="jg" style="font-size: 120%">조회수 : ${contenlist.shits}</span>
 							</div>
-							<div class="titletext" style="width: 22%" align="center">
+							<div class="titletext" style="width: 240px" align="center">
 							<span class="jg" style="font-size: 120%"><fmt:formatDate value="${contenlist.sdate}" pattern="yyyy-MM-dd a HH:mm:ss" /></span>
 							</div>
 						

@@ -38,7 +38,7 @@ public class SnsDetailsController {
 
 	// 게시글 상세보기
 	@RequestMapping("contentview.do")
-	public String BlogContent(Model model, @RequestParam(value="spk") int spk,
+	public String BlogContent(Model model, @RequestParam(defaultValue="1") int spk,
 			@RequestParam(defaultValue="1") int curPage1, HttpSession session) {
 		//spk로 조인을 통해서 상세보기 name 하나만 가지고옴
 		String mname=snsDetailsService.nameone(spk);

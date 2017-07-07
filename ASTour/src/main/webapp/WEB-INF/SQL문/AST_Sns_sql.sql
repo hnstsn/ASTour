@@ -11,7 +11,7 @@ create table sns_tbl (
   mpk number,  					-- fk
   constraint sns_fk foreign key (mpk) references ASTMember (mpk)
 );
- 
+ ALTER TABLE sns_tbl MODIFY (stag VARCHAR2(40));
 -- sns TABLE sequence
 create sequence sns_seq start with 1 increment by 1 nocache;
  

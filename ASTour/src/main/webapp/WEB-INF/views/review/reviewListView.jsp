@@ -83,9 +83,6 @@
 										<small class="jg" style="font-size: 15px">${list.mid }</small>
 									</div>
 								</div>
-								</div>
-								<div style="padding-bottom: 2%">
-								</div>
 							</li>
 						</c:forEach>
 						<%-- </c:forEach> --%>
@@ -94,7 +91,7 @@
 				</div>
 				<!-- /.masonry-container -->
 				<!-- AST : 페이지 넘기기 -->
-				<div class="text-center">
+				<div class="text-center" style="margin-bottom: 5%">
 					<ul class="pagination">
 						<c:if test="${pager.curBlock > 1 }">
 							<li><a
