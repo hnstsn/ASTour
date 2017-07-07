@@ -130,8 +130,8 @@
 						<!-- article title -->
 						<header class="blog-post">
 							<h1 class="jg" style="font-size: 35px">
-								<input type="hidden" name="stitle" value="${contenlist.stitle}" />${contenlist.stitle}</h1><span><a>가이드보기</a></span>
-							
+								<input type="hidden" name="stitle" value="${contenlist.stitle}" />${contenlist.stitle}</h1>
+								<span><a class="jg" style="font-size: 15px" href="${path}/attraction/initDetails.do?name=${contenlist.stag}">가이드보기</a></span>
 						</header>
 
 						<!-- carousel -->
@@ -141,7 +141,7 @@
 							<c:forEach var="file" items="${fileList}">
 								<div class="item">
 									<img src="${path}/sns/${file.sffile}" class="img-rounded"
-										width="1100" height="400" alt="img" />
+										width="500" height="400" alt="img" />
 								</div>
 							</c:forEach>
 						</div>

@@ -292,20 +292,20 @@
      <!-- FEATURED BOXES 4 -->
      <div class="row featured-box-minimal margin-bottom30">
         <div class="col-md-4">
-           	<h5 class="jg" style="font-size: 20px">${rankList[0].stag }</h5>
+           	<h5 class="jg" style="font-size: 20px"><a href="${path}/attraction/initDetails.do?name=${rankList[0].stag }" style="color:#949494;">${rankList[0].stag }</a></h5>
           	<h4><i style="color: #D9C91D;" class="fa fa-trophy"></i>
            	<a class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[0].spk }">${rankList[0].stitle }</a></h4>
          	<img src="${path}/sns/${rankList[0].sffile}" class="img-rounded" alt=${rankList[0].sffile } width="300" height="200" />
         </div>
         <div class="col-md-4">
-           <h5 class="jg" style="font-size: 20px">${rankList[1].stag }</h5>
-          	<h4><i style="color: #D9C91D;" class="fa fa-trophy"></i>
+           <h5 class="jg" style="font-size: 20px"><a href="${path}/attraction/initDetails.do?name=${rankList[1].stag }" style="color:#949494;">${rankList[1].stag }</a></h5>
+          	<h4><i style="color: lightgrey;" class="fa fa-trophy"></i>
            	<a class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[1].spk }">${rankList[1].stitle }</a></h4>
          	<img src="${path}/sns/${rankList[1].sffile}" class="img-rounded" alt=${rankList[1].sffile } width="300" height="200" />
         </div>
         <div class="col-md-4">
-           <h5 class="jg" style="font-size: 20px">${rankList[2].stag }</h5>
-          	<h4><i style="color: #D9C91D;" class="fa fa-trophy"></i>
+           <h5 class="jg" style="font-size: 20px"><a href="${path}/attraction/initDetails.do?name=${rankList[2].stag }" style="color:#949494;">${rankList[2].stag }</a></h5>
+          	<h4><i style="color: #704405;" class="fa fa-trophy"></i>
            	<a class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[2].spk }">${rankList[2].stitle }</a></h4>
          	<img src="${path}/sns/${rankList[2].sffile}" class="img-rounded" alt=${rankList[2].sffile } width="300" height="200" />
         </div>
@@ -345,9 +345,9 @@
   <section id="portfolio" class="special-row padding100 margin-top100 margin-footer">
      <div class="container">
      
-	     <div style="width: 100%; text-align: center;">
+	     <!-- <div style="width: 100%; text-align: center;">
 			<h2 class="titletext">명소&행사</h2>
-		</div>
+		</div> -->
         <div class="row">
   
            <ul class="sort-destination isotope" data-sort-id="isotope-list">
