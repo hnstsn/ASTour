@@ -132,4 +132,15 @@ function doChat(from, to) {
 	<!-- /FOOTER -->
 
 </body>
+<script type="text/javascript">
+//모바일 판별하기 위함 
+/* var filter = "win32|win64|mac|macintel";
+if (navigator.platform) {
+	    if (filter.indexOf(navigator.platform.toLowerCase()) < 0) { //mobile경우 센터 정렬
+	    	alert("안드로이드접속");
+	    } else { //pc 
+	    }
+}	 */
+</script>
+
 </html>

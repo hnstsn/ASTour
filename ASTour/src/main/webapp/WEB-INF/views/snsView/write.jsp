@@ -245,13 +245,13 @@ $(document).ready(function() {
 	                        <option value="세종">세종</option>
 	                        <option value="강원">강원</option>
 	                        <option value="경기">경기</option>
-	                        <option value="경남">경남</option>
-	                        <option value="경북">경북</option>
-	                        <option value="전남">전남</option>
-	                        <option value="전북">전북</option>
+	                        <option value="경상남">경상남도</option>
+	                        <option value="경상북">경상북도</option>
+	                        <option value="전라남">전라남도</option>
+	                        <option value="전라북">전라북도</option>
 	                        <option value="제주">제주</option>
-	                        <option value="충청남도">충남</option>
-	                        <option value="충청북도">충북</option>
+	                        <option value="충청남">충청남도</option>
+	                        <option value="충청북">충청북도</option>
 	                     </select>
                   </div>
                   

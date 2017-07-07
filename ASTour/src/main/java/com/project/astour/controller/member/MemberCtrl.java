@@ -27,12 +27,16 @@ public class MemberCtrl {
 	// AST(CSW) : 로그인 체크 
 	@RequestMapping("loginCheck.do")
 	@ResponseBody
-	public boolean login(@ModelAttribute MemberVO vo, HttpSession session) {
+	public int login(@ModelAttribute MemberVO vo, HttpSession session) {
 		logger.info("로그인 확인 컨트롤러 왔음~~~~~~~~~");
 		MemberVO member = mService.loginCheck(vo, session);
+		int member_mpk = 0;
+		if(member!=null){
+		member_mpk = member.getMpk();
+		}
 		// member 객체가 존재하면 로그인에 성공했다는 것.
 		// 객체가 존재하지 않으면 로그인에 실패했다는 것.
-		return (member != null) ? true : false;
+		return member_mpk;
 	}
 	
 	// 로그아웃

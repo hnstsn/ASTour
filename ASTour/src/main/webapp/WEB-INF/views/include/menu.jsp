@@ -24,6 +24,9 @@ $(document).ready(function() {
     });
 });
 
+var filter = "win32|win64|mac|macintel";	//안드로인지 웹인지 확인용
+
+
 // 로그인
 function login() {
    var mid=$("#mid").val();
@@ -53,8 +56,14 @@ function login() {
             url: "${path}/member/loginCheck.do",
             data: "mid="+mid+"&mpw="+mpw,
             success: function(result) {
-               // result가  true이면
-               if (result) {
+               if (result != 0) { // result(mpk)가  0이 아니면
+            	   if (navigator.platform) {
+            		   if (filter.indexOf(navigator.platform.toLowerCase()) < 0) { //mobile 
+            			   sendMessage(result);//안드로이드 브릿지 용
+            		   } else { //pc 
+            		      
+            		   }
+            		}
                   alert("로그인 되었습니다.");
                   // 초기화면으로 보내준다. result 받아온거까지 실행되고 화면 전환이 안되기 때문
                   location.href="${path}";
@@ -66,6 +75,13 @@ function login() {
    }
    
 }
+
+//안드로이드 웹뷰에서 로그인시 실행할 함수
+function sendMessage(result){ // sendMessage(arg)
+	window.HybridApp.sendMessage2(result); // window.HybridApp.sendMessage(msg);
+	
+	}
+
 
 </script>
 

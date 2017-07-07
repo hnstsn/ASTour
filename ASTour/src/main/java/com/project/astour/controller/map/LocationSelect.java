@@ -46,9 +46,7 @@ public class LocationSelect {
 	public List<sigunVO> f1(HttpServletResponse response,
 			@RequestParam(value="name" ) String name,
 			HttpServletRequest re, Model model){
-		System.out.println(name);
-		//List<sigunVO> gunList = mapService.gunList(name);
-		//model.addAttribute("gunList", gunList);
+			
 		return mapService.gunList(name);
 	}	
 	
