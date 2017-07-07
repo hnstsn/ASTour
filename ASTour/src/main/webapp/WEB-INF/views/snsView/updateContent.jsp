@@ -21,6 +21,12 @@
 // AST(CSW) : 게시글 수정 페이지
 $(document).ready(function() {
 	
+	//엔터처리
+	var br=$('#scontent').val();
+	br = br.replace(/<br>/g,'\r\n');
+	$('#scontent').val(br);
+	//엔터처리끝
+	
 	// 파일 추가 누르면
 	$("#addFiles").click(function() {
 		var add = "<input type='file' name='files' class='files'><font class='deFile'>[X]</font><br>";
