@@ -209,8 +209,8 @@ function searchIdPw() {
                   </a>
                </li>
 
-               <li class="dropdown">
-               		<a href="${path}/chgPage.do?cpage=30">SNS</a>
+               <li class="dropdown mega-menu-item mega-menu-fullwidth">
+               		<a class="dropdown-toggle" href="${path}/chgPage.do?cpage=30">SNS</a>
                </li>
 
                <li class="dropdown">

@@ -65,6 +65,13 @@ $(document).ready(function() {
 	
  	// 수정 버튼 누르면
 	$("#upBtn").click(function() {
+		
+		//엔터처리
+		var br=$('#scontent').val();
+		br = br.replace(/(?:\r\n|\r|\n)/g, '<br>');
+		$('#scontent').val(br);
+		//엔터처리끝
+		
 		document.upForm.action="${path}/snsdetails/updateBrd.do?dePics="+dePics;
 		document.upForm.submit();
 	});
