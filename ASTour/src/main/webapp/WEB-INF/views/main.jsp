@@ -40,7 +40,27 @@ function tag(){
 		alert("로그인 후 사용가능합니다.");
 		return false;
 	}
-}
+	
+	}
+	
+	//글자 짜르기용
+$(document).ready(function() {
+	var stitle = ['${rankList[0].stitle }','${rankList[1].stitle }','${rankList[2].stitle }'];
+	var stitlecut = [];
+	
+	for(var i=0;i<3;i++){
+		if(stitle[i].length>9){
+			stitlecut[i]=stitle[i].substring(0, 8)+"...";
+		}else{
+			stitlecut[i]=stitle[i];
+		}
+	}
+	
+	document.getElementById('a1').innerHTML=stitlecut[0]; 
+	document.getElementById('a2').innerHTML=stitlecut[1]; 
+	document.getElementById('a3').innerHTML=stitlecut[2]; 
+	
+});
 </script>
 
 </head>
@@ -48,7 +68,6 @@ function tag(){
 
 <!-- WRAPPER -->
 <div id="wrapper">
-        
   <!-- REVOLUTION SLIDER -->
   <div class="fullwidthbanner-container roundedcorners">
      <div class="fullwidthbanner">
@@ -309,9 +328,10 @@ function tag(){
      <c:if test="${rankList[0]!=null}">
         <div class="col-md-4">
         	<br/>
+
            	<h5 class="jg" style="font-size: 20px"><a href="${path}/attraction/initDetails.do?name=${rankList[0].stag }" style="color:#949494;">${rankList[0].stag }</a></h5>
           	<h4><i style="color: #D9C91D;" class="fa fa-trophy"></i>
-           	<a class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[0].spk }" onclick="return tag();">${rankList[0].stitle }</a></h4>
+           	<a id="a1" class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[0].spk }" onclick="return tag();">${rankList[0].stitle }</a></h4>
          	<img src="${path}/sns/${rankList[0].sffile}" class="img-rounded" alt=${rankList[0].sffile } width="300" height="200" />
         </div>
      </c:if>
@@ -320,7 +340,7 @@ function tag(){
            <br/>
            <h5 class="jg" style="font-size: 20px"><a href="${path}/attraction/initDetails.do?name=${rankList[1].stag }" style="color:#949494;">${rankList[1].stag }</a></h5>
           	<h4><i style="color: lightgrey;" class="fa fa-trophy"></i>
-           	<a class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[1].spk }" onclick="return tag();">${rankList[1].stitle }</a></h4>
+           	<a id="a2" class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[1].spk }" onclick="return tag();">${rankList[1].stitle }</a></h4>
          	<img src="${path}/sns/${rankList[1].sffile}" class="img-rounded" alt=${rankList[1].sffile } width="300" height="200" />
         </div>
     </c:if>
@@ -329,7 +349,7 @@ function tag(){
            <br/>
            <h5 class="jg" style="font-size: 20px"><a href="${path}/attraction/initDetails.do?name=${rankList[2].stag }" style="color:#949494;">${rankList[2].stag }</a></h5>
           	<h4><i style="color: #704405;" class="fa fa-trophy"></i>
-           	<a class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[2].spk }" onclick="return tag();">${rankList[2].stitle }</a></h4>
+           	<a id="a3" class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[2].spk }" onclick="return tag();">${rankList[2].stitle }</a></h4>
          	<img src="${path}/sns/${rankList[2].sffile}" class="img-rounded" alt=${rankList[2].sffile } width="300" height="200" />
         </div>
      </c:if>
@@ -407,3 +427,20 @@ function tag(){
      </div>
   </section>
 </div>
+
+<script>
+/* 
+var stitle = ['${rankList[0].stitle }','${rankList[1].stitle }','${rankList[2].stitle }'];
+var stitlecut = [];
+
+for(var i=0;i<3;i++){
+	if(stitle[i].length>9){
+		stitlecut[i]=stitle[i].substring(0, 8)+"...";
+	}else{
+		stitlecut[i]=stitle[i];
+	}
+}
+
+document.getElementById('a1').innerHTML=stitlecut[0];
+ */
+</script>
