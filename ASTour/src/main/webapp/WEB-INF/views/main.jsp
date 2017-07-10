@@ -427,20 +427,3 @@ $(document).ready(function() {
      </div>
   </section>
 </div>
-
-<script>
-/* 
-var stitle = ['${rankList[0].stitle }','${rankList[1].stitle }','${rankList[2].stitle }'];
-var stitlecut = [];
-
-for(var i=0;i<3;i++){
-	if(stitle[i].length>9){
-		stitlecut[i]=stitle[i].substring(0, 8)+"...";
-	}else{
-		stitlecut[i]=stitle[i];
-	}
-}
-
-document.getElementById('a1').innerHTML=stitlecut[0];
- */
-</script>
