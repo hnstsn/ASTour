@@ -44,7 +44,8 @@ public class HomeController {
 	
 
 	@RequestMapping(value = "/")
-	public String home(Model model) {
+	public String home(Model model,
+			HttpSession session) {
 		logger.info("처음 main화면인 home.jsp 이동 Home Controller");
 		
 		List<snsVO> rankList = snsService.rankList();
@@ -61,7 +62,7 @@ public class HomeController {
 				vo.setSffile(sffile);
 			}
 		}
-			
+		MemberVO member = (MemberVO)session.getAttribute("member");	
 		
 		
 		//랜덤으로 순선 정함

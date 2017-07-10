@@ -29,7 +29,22 @@
 	<!-- AST : bootstrap을 위한 것들을 모아놓은  jsp page -->
 	<%@ include file="include/bootstap_collect.jsp" %>
 
+<script>
+function tag(){
+	
+	var check = '${sessionScope.member}';
+	
+	if(check != ""){
+		return true;
+	}else{
+		alert("로그인 후 사용가능합니다.");
+		return false;
+	}
+}
+</script>
+
 </head>
+
 
 <!-- WRAPPER -->
 <div id="wrapper">
@@ -296,7 +311,7 @@
         	<br/>
            	<h5 class="jg" style="font-size: 20px"><a href="${path}/attraction/initDetails.do?name=${rankList[0].stag }" style="color:#949494;">${rankList[0].stag }</a></h5>
           	<h4><i style="color: #D9C91D;" class="fa fa-trophy"></i>
-           	<a class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[0].spk }">${rankList[0].stitle }</a></h4>
+           	<a class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[0].spk }" onclick="return tag();">${rankList[0].stitle }</a></h4>
          	<img src="${path}/sns/${rankList[0].sffile}" class="img-rounded" alt=${rankList[0].sffile } width="300" height="200" />
         </div>
      </c:if>
@@ -328,18 +343,24 @@
 	</div>
      <!-- FEATURED BOXES 4 -->
      <div class="row featured-box-minimal margin-bottom30">
+     <c:if test="${tagrank[0]!=null}">
         <div class="col-md-4">
            <h4><i style="color: #D9C91D;" class="fa fa-trophy"></i>
            <a class="jg" href="${path}/attraction/initDetails.do?name=${tagrank[0].atitle }">${tagrank[0].atitle }</a></h4>
         </div>
+     </c:if>
+     <c:if test="${tagrank[1]!=null}">
         <div class="col-md-4">
            <h4><i style="color: lightgrey;" class="fa fa-trophy"></i>
            <a class="jg" href="${path}/attraction/initDetails.do?name=${tagrank[1].atitle }">${tagrank[1].atitle }</a></h4>
         </div>
+     </c:if>
+     <c:if test="${tagrank[2]!=null}">
         <div class="col-md-4">
            <h4><i style="color: #704405;" class="fa fa-trophy"></i>
            <a class="jg" href="${path}/attraction/initDetails.do?name=${tagrank[2].atitle }">${tagrank[2].atitle }</a></h4>
         </div>
+     </c:if>
      </div>
      <!-- /FEATURED BOXES 4 -->
      
