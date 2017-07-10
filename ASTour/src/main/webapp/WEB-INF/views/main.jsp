@@ -320,7 +320,7 @@ function tag(){
            <br/>
            <h5 class="jg" style="font-size: 20px"><a href="${path}/attraction/initDetails.do?name=${rankList[1].stag }" style="color:#949494;">${rankList[1].stag }</a></h5>
           	<h4><i style="color: lightgrey;" class="fa fa-trophy"></i>
-           	<a class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[1].spk }">${rankList[1].stitle }</a></h4>
+           	<a class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[1].spk }" onclick="return tag();">${rankList[1].stitle }</a></h4>
          	<img src="${path}/sns/${rankList[1].sffile}" class="img-rounded" alt=${rankList[1].sffile } width="300" height="200" />
         </div>
     </c:if>
@@ -329,7 +329,7 @@ function tag(){
            <br/>
            <h5 class="jg" style="font-size: 20px"><a href="${path}/attraction/initDetails.do?name=${rankList[2].stag }" style="color:#949494;">${rankList[2].stag }</a></h5>
           	<h4><i style="color: #704405;" class="fa fa-trophy"></i>
-           	<a class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[2].spk }">${rankList[2].stitle }</a></h4>
+           	<a class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[2].spk }" onclick="return tag();">${rankList[2].stitle }</a></h4>
          	<img src="${path}/sns/${rankList[2].sffile}" class="img-rounded" alt=${rankList[2].sffile } width="300" height="200" />
         </div>
      </c:if>
