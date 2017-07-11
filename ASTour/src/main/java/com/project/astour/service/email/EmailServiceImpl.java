@@ -35,7 +35,7 @@ public class EmailServiceImpl implements EmailService {
 			// 메일 내용
 			helper.setText(text);
 			// 보내는 사람
-			helper.setFrom("astour1865@gmail.com");
+			helper.setFrom("astour1865@gmail.com"); // ArSnsTour4
 			// 받는 사람
 			helper.setTo(to);
 			// 메일 보내기

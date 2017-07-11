@@ -206,6 +206,10 @@ p.thicker {
 	font-size: 11px;
 	margin-top: 0;
 }
+
+.btn_comm {float:left;display:block;width:70px;height:27px;background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/sample_button_control.png) no-repeat}
+.btn_resetMap {background-position:-69px 0;}
+.screen_out {display:block;overflow:hidden;position:absolute;left:-9999px;width:1px;height:1px;font-size:0;line-height:0;text-indent:-9999px}
 </style>
 
 
@@ -326,9 +330,9 @@ p.thicker {
 						카페</li>
 					<li id="CS2" data-order="5"><span class="category_bg store"></span>
 						편의점</li>
-					<li><span><button onclick="setBounds()">지도 범위
-								재설정 하기</button></span></li>
 				</ul>
+				<a class="btn_comm btn_resetMap" onclick="setBounds()">
+								<span class="screen_out">초기화</span></a>
 			</div>
 			<!-- /맵 카테고리  -->
 			<div style="padding-bottom: 150px"></div>
@@ -479,7 +483,7 @@ p.thicker {
 		var content = '<div class="placeinfo">'
 				+ '   <a class="title" href="' + place.placeUrl + '" target="_blank" title="' + place.title + '">'
 				+ place.title + '</a>';
-
+		
 		if (place.newAddress) {
 			content += '    <span title="' + place.newAddress + '">'
 					+ place.newAddress
@@ -496,6 +500,7 @@ p.thicker {
 		contentNode.innerHTML = content;
 		placeOverlay.setPosition(new daum.maps.LatLng(place.latitude,
 				place.longitude));
+		
 		placeOverlay.setMap(map);
 		
 	}

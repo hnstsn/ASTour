@@ -109,7 +109,7 @@ function doChat(from, to) {
 
 </script>	
 </head>
-<body>
+<body class="boxed transparent" data-background="${path}/resources/assets/images/boxed_background/13.jpg">
 
 	<!-- AST(CSW) : menu부분을 위한 jsp page -->
 	<jsp:include page="include/menu.jsp" />

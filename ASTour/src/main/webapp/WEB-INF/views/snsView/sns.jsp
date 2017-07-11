@@ -146,7 +146,7 @@ $(function(){
 
 							<!-- AST : 타임라인 타이틀  -->
 							<div class="item-title">
-								<h2 class="jg" style="font-size: 30px">
+								<h2 class="jg" style="font-size: 25px">
 									<a href="${path}/snsdetails/contentview.do?spk=${sns.spk}&mname=${member.mname}">${sns.stitle}</a>
 								</h2>
 								<span class="label label-default light">ⓞ${sns.ssort}</span>
