@@ -191,6 +191,7 @@ function searchIdPw() {
       <!-- Logo text or image -->
       <!-- AST(CSW) : Logo를 클릭하면 처음 Main page인 home.jsp로 이동 -->
       <a class="logo" href="${path}">
+      ASTOUR
          <img src="${path}/resources/assets/images/mainlogo.png" alt="Atropos" />
       </a>
 

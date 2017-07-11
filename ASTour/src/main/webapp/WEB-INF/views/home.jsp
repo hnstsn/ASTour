@@ -109,7 +109,11 @@ function doChat(from, to) {
 
 </script>	
 </head>
-<body>
+
+<!--  -->
+<body class="boxed transparent" data-background="${path}/resources/assets/images/boxed_background/13.jpg">
+
+<div> 
 
 	<!-- AST(CSW) : menu부분을 위한 jsp page -->
 	<jsp:include page="include/menu.jsp" />
@@ -130,7 +134,47 @@ function doChat(from, to) {
 		<!-- copyright , scrollTo Top -->
 	</footer>
 	<!-- /FOOTER -->
+	
+	
+	<%-- <!-- test -->
+	<button
+		onclick="background_switch('${path}/resources/assets/images/boxed_background/2.jpg');"
+		class="pointer switcher_thumb">
+		<img
+			src="${path}/resources/assets/images/boxed_background/2_thumb.jpg"
+			width="27" height="27" alt="" />
+	</button>
+	<button
+		onclick="background_switch('${path}/resources/assets/images/boxed_background/10.jpg');"
+		class="pointer switcher_thumb">
+		<img
+			src="${path}/resources/assets/images/boxed_background/2_thumb.jpg"
+			width="27" height="27" alt="" />
+	</button>
+	<button
+		onclick="background_switch('${path}/resources/assets/images/boxed_background/11.jpg');"
+		class="pointer switcher_thumb">
+		<img
+			src="${path}/resources/assets/images/boxed_background/2_thumb.jpg"
+			width="27" height="27" alt="" />
+	</button>
+	<button
+		onclick="background_switch('${path}/resources/assets/images/boxed_background/12.jpg');"
+		class="pointer switcher_thumb">
+		<img
+			src="${path}/resources/assets/images/boxed_background/2_thumb.jpg"
+			width="27" height="27" alt="" />
+	</button>
+	<button
+		onclick="background_switch('${path}/resources/assets/images/boxed_background/13.jpg');"
+		class="pointer switcher_thumb">
+		<img
+			src="${path}/resources/assets/images/boxed_background/2_thumb.jpg"
+			width="27" height="27" alt="" />
+	</button>
+	<!-- /test --> --%>
 
+</div>
 </body>
 <script type="text/javascript">
 //모바일 판별하기 위함 
