@@ -356,7 +356,7 @@
       // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
       // marker.setMap(null); */    
    
-
+/* 
       // AST : 이미지 바꾼 마커 - 사용할까?
       // 마커가 표시될 위치입니다 
       var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
@@ -377,7 +377,7 @@
    
       // 마커가 지도 위에 표시되도록 설정합니다
       marker2.setMap(map);
-
+ */
       // AST : 지도 클릭 이벤트 - 원만들기
       //마커가 클릭된 상태이면 지도클릭이벤트를 막는다. // clickable : true 로 대체 되었다
       
