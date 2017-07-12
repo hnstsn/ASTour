@@ -238,7 +238,7 @@
                      <label>행사</label> <select id="eventSelect" class="form-control" name="re_status">
                         <option value="">모두</option>
                         <option value="행사">행사</option>
-                        <option value="명소">일반</option>
+                        <option value="명소">명소</option>
                      </select>
                   </div>
                </div>
@@ -246,18 +246,12 @@
 
             <div class="row">
                <div class="form-group">
-                  <div class="col-md-2 col-sm-6 col-xs-6">
-                     <label>기타1</label> <select id="test02" class="form-control" name="re_baths">
-                    	<option value="0">미완</option>
-                     </select>
-                  </div>
-
+<!-- 
                   <div class="col-md-2 col-sm-6 col-xs-6">
                      <label>기타2</label> <select class="form-control" name="re_price_to">
                         <option value="0">미완</option>
                      </select>
-                  </div>
-                  
+                  </div> -->
                   <div class="col-md-2 col-sm-6 col-xs-12">
                      <label>관광지명</label> <input type="text" id="attractionName"
                         class="form-control" name="re_id" />
