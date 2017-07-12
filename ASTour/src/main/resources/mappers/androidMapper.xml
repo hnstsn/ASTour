@@ -9,8 +9,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	
 	<select id="gpsRecord" > <!-- //resultType 뺌 -->
-		insert into gpsRecord(latitude, longitude) 
-		values (#{latitude_record}, #{longitude_record})
+		insert into gpsrecord(label_record, latitude_record, longitude_record, time_record, pk_record) values 
+		( #{label_record}, #{latitude_record}, #{longitude_record}, #{time_record}, #{mpk})
 	</select>
 	
 	

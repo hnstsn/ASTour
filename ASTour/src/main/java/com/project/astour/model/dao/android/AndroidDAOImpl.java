@@ -15,11 +15,19 @@ public class AndroidDAOImpl implements AndroidDAO {
 	SqlSession sqlSession;
 	
 	@Override
-	public void gpsRecord(String latitude_record, String longitude_record) {
+	public void gpsRecord(
+			String label_record,
+			String latitude_record, 
+			String longitude_record,
+			String time_record,
+			String mpk) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("label_record", label_record);
 		map.put("latitude_record", latitude_record);
 		map.put("longitude_record", longitude_record);
+		map.put("time_record", time_record);
+		map.put("mpk", mpk);
 		
 		sqlSession.insert("android.gpsRecord",map);
 		

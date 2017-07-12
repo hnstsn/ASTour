@@ -149,7 +149,7 @@ function searchIdPw() {
       
                      </form>
       
-                  </div>
+                 </div>
                
             </div>
             <!-- /LOG IN -->

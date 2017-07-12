@@ -111,8 +111,8 @@ public class Andro1 {
 	@ResponseBody
 	@RequestMapping(value="gpsRecord",
 	produces="application/json; charset=utf-8")
-	public void gpsRecording( String latitude_record, String longitude_record){
-		androidservice.gpsRecord(latitude_record,longitude_record);
+	public void gpsRecording( String label_record, String latitude_record, String longitude_record, String time_record, String mpk){
+		androidservice.gpsRecord( label_record,latitude_record,longitude_record,time_record,mpk);
 	}
 	
 	

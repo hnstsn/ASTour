@@ -14,8 +14,19 @@ public class AndroidServiceImpl implements AndroidService {
 	
 	
 	@Override
-	public void gpsRecord(String latitude_record, String longitude_record) {
-		androidDAO.gpsRecord(latitude_record, longitude_record);
+	public void gpsRecord(
+			String label_record,
+			String latitude_record, 
+			String longitude_record,
+			String time_record,
+			String mpk) {
+		
+		androidDAO.gpsRecord(
+				label_record,
+				latitude_record, 
+				longitude_record,
+				time_record,
+				mpk);
 	}
-	
+
 }
