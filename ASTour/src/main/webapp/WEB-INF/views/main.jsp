@@ -324,32 +324,32 @@ $(document).ready(function() {
      <!-- <hr /><h3 class="hn">조회순</h3> -->
   
      <!-- FEATURED BOXES 4 -->
-     <div class="row featured-box-minimal margin-bottom30">
+     <div class="row featured-box-minimal margin-bottom30" align="center">
      <c:if test="${rankList[0]!=null}">
         <div class="col-md-4">
         	<br/>
 
-           	<h5 class="jg" style="font-size: 20px"><a href="${path}/attraction/initDetails.do?name=${rankList[0].stag }" style="color:#949494;">${rankList[0].stag }</a></h5>
+           	<h5><a class="jg" style="font-size: 15px" href="${path}/attraction/initDetails.do?name=${rankList[0].stag }" style="color:#949494;">${rankList[0].stag }</a></h5>
           	<h4><i style="color: #D9C91D;" class="fa fa-trophy"></i>
-           	<a id="a1" class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[0].spk }" onclick="return tag();">${rankList[0].stitle }</a></h4>
+           	<a id="a1" class="jg" style="font-size: 23px" href="${path}/snsdetails/contentview.do?spk=${rankList[0].spk }" onclick="return tag();">${rankList[0].stitle }</a></h4>
          	<img src="${path}/sns/${rankList[0].sffile}" class="img-rounded" alt=${rankList[0].sffile } width="300" height="200" />
         </div>
      </c:if>
      <c:if test="${rankList[1]!=null}">
         <div class="col-md-4">
            <br/>
-           <h5 class="jg" style="font-size: 20px"><a href="${path}/attraction/initDetails.do?name=${rankList[1].stag }" style="color:#949494;">${rankList[1].stag }</a></h5>
+           <h5><a class="jg" style="font-size: 15px" href="${path}/attraction/initDetails.do?name=${rankList[1].stag }" style="color:#949494;">${rankList[1].stag }</a></h5>
           	<h4><i style="color: lightgrey;" class="fa fa-trophy"></i>
-           	<a id="a2" class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[1].spk }" onclick="return tag();">${rankList[1].stitle }</a></h4>
+           	<a id="a2" class="jg" style="font-size: 23px" href="${path}/snsdetails/contentview.do?spk=${rankList[1].spk }" onclick="return tag();">${rankList[1].stitle }</a></h4>
          	<img src="${path}/sns/${rankList[1].sffile}" class="img-rounded" alt=${rankList[1].sffile } width="300" height="200" />
         </div>
     </c:if>
     <c:if test="${rankList[2]!=null}">
         <div class="col-md-4">
            <br/>
-           <h5 class="jg" style="font-size: 20px"><a href="${path}/attraction/initDetails.do?name=${rankList[2].stag }" style="color:#949494;">${rankList[2].stag }</a></h5>
+           <h5><a class="jg" style="font-size: 15px" href="${path}/attraction/initDetails.do?name=${rankList[2].stag }" style="color:#949494;">${rankList[2].stag }</a></h5>
           	<h4><i style="color: #704405;" class="fa fa-trophy"></i>
-           	<a id="a3" class="jg" href="${path}/snsdetails/contentview.do?spk=${rankList[2].spk }" onclick="return tag();">${rankList[2].stitle }</a></h4>
+           	<a id="a3" class="jg" style="font-size: 23px" href="${path}/snsdetails/contentview.do?spk=${rankList[2].spk }" onclick="return tag();">${rankList[2].stitle }</a></h4>
          	<img src="${path}/sns/${rankList[2].sffile}" class="img-rounded" alt=${rankList[2].sffile } width="300" height="200" />
         </div>
      </c:if>
@@ -362,31 +362,29 @@ $(document).ready(function() {
 		<h2 class="titletext">인기 명소</h2>
 	</div>
      <!-- FEATURED BOXES 4 -->
-     <div class="row featured-box-minimal margin-bottom30">
+     <div class="row featured-box-minimal margin-bottom30" align="center">
      <c:if test="${tagrank[0]!=null}">
         <div class="col-md-4">
            <h4><i style="color: #D9C91D;" class="fa fa-trophy"></i>
-           <a class="jg" href="${path}/attraction/initDetails.do?name=${tagrank[0].atitle }">${tagrank[0].atitle }</a></h4>
+           <a class="jg" style="font-size: 24px" href="${path}/attraction/initDetails.do?name=${tagrank[0].atitle }">${tagrank[0].atitle }</a></h4>
         </div>
      </c:if>
      <c:if test="${tagrank[1]!=null}">
         <div class="col-md-4">
            <h4><i style="color: lightgrey;" class="fa fa-trophy"></i>
-           <a class="jg" href="${path}/attraction/initDetails.do?name=${tagrank[1].atitle }">${tagrank[1].atitle }</a></h4>
+           <a class="jg" style="font-size: 24px" href="${path}/attraction/initDetails.do?name=${tagrank[1].atitle }">${tagrank[1].atitle }</a></h4>
         </div>
      </c:if>
      <c:if test="${tagrank[2]!=null}">
         <div class="col-md-4">
            <h4><i style="color: #704405;" class="fa fa-trophy"></i>
-           <a class="jg" href="${path}/attraction/initDetails.do?name=${tagrank[2].atitle }">${tagrank[2].atitle }</a></h4>
+           <a class="jg" style="font-size: 24px" href="${path}/attraction/initDetails.do?name=${tagrank[2].atitle }">${tagrank[2].atitle }</a></h4>
         </div>
      </c:if>
      </div>
      <!-- /FEATURED BOXES 4 -->
      
-     <div class="divider"><!-- divider -->
-        <i class="fa fa-star"></i>
-     </div>
+     
   
   </section>
   <!-- /WELCOME -->
