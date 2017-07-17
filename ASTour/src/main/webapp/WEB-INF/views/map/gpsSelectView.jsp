@@ -7,6 +7,13 @@
 <html>
 <script language="javascript" src="https://apis.skplanetx.com/tmap/js?version=1&format=javascript&appKey=fd655e71-f3de-3d91-bff1-dc590c5bb30c"></script>
 <head>
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.hn {font-family: 'Hanna';}
+.jg { font-family: 'Jeju Gothic'; font-size: 35px;}
+</style>
 <!-- styleswitcher - demo only -->
 <link href="${path}/resources/${path}/resources/assets/css/color_scheme/orange.css"
 	rel="alternate stylesheet" type="text/css" title="orange" />
@@ -39,7 +46,7 @@
 	<!-- STYLESWITCHER - REMOVE ON PRODUCTION/DEVELOPMENT -->
 	<div id="switcher" style="overflow: auto; height: 500px">
 		<div class="content-switcher">
-			<h4>흔적리스트</h4>
+			<h4 class="jg">흔적리스트</h4>
 			<c:forEach var="list" items="${list }">
 				<p onclick="f1('${list.label_record }')">${list.label_record }</p>
 			</c:forEach>
@@ -62,6 +69,7 @@
 	</header>
 	<div id="test"></div>
 	<div id="map" style="width:100%;height:350px;"></div>
+	<div style="margin-top: 13.6%"></div>
 </div>
 </body>
 

@@ -7,6 +7,13 @@
 <!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
 <!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
 <head>
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+.hn {font-family: 'Hanna';}
+.jg { font-family: 'Jeju Gothic'; font-size: 16px;}
+</style>
 	<meta charset="utf-8" />
 	<title>ASTour 정보수정</title>
 	<meta name="keywords" content="HTML5,CSS3,Template" />
@@ -146,7 +153,7 @@ var openFile = function(event) {
 		<!-- PAGE TITLE -->
 		<header id="page-title"> <!-- style="background-image:url('../assets/images/demo/parallax_bg.jpg')" -->
 			<div class="container">
-				<h1>회원 정보 수정</h1>
+				<h1 class="hn" style="font-size: 35px">회원 정보 수정</h1>
 			</div>
 		</header>
 
@@ -168,27 +175,27 @@ var openFile = function(event) {
 								</div>
 							
 								<div class="col-md-8">
-									<label style="display: block;">아이디(이메일)</label>
+									<label class="jg" style="display: block;">아이디(이메일)</label>
 									<input type="text" class="form-control" name="mid" value="${member.mid}" readonly />									
 								</div>
 								<div class="col-md-8">
-									<label>현재 비밀번호</label>&nbsp;&nbsp;&nbsp;<span id="be_mpwChk_rst"></span>
+									<label class="jg">현재 비밀번호</label>&nbsp;&nbsp;&nbsp;<span id="be_mpwChk_rst"></span>
 									<input type="password" class="form-control" id="be_mpw" placeholder="현재 비밀번호를 입력하세요" />
 								</div>
 								<div class="col-md-8">
-									<label>변경할 비밀번호</label>&nbsp;&nbsp;&nbsp;<span id="af_mpwChk_rst"></span>
+									<label class="jg">변경할 비밀번호</label>&nbsp;&nbsp;&nbsp;<span id="af_mpwChk_rst"></span>
 									<input type="password" class="form-control" name="mpw" id="af_mpw" placeholder="변경할 비밀번호를 입력하세요" disabled />
 								</div>
 								<div class="col-md-8">
-									<label>변경할 비밀번호 확인</label>
+									<label class="jg">변경할 비밀번호 확인</label>
 									<input type="password" class="form-control" id="af_mpwChk" placeholder="변경할 비밀번호를 한번 더 입력하세요" disabled />
 								</div>
 								<div class="col-md-8">
-									<label>이름</label>
+									<label class="jg">이름</label>
 									<input type="text" class="form-control" name="mname" id="mname" value="${member.mname}" />
 								</div>
 								<div class="col-md-8">
-									<label>휴대폰</label>
+									<label class="jg">휴대폰</label>
 									<input type="text" class="form-control" name="mphone" id="mphone" value="${member.mphone}" />
 								</div>
 							</div>
