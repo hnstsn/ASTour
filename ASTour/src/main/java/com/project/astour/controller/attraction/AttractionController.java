@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.astour.model.dto.attraction.AttractionPager;
 import com.project.astour.model.dto.attraction.attraction_tbl;
-import com.project.astour.model.dto.mypage.Pager;
 import com.project.astour.service.attraction.AttractionService;
 import com.project.astour.service.details.DetailsSeration;
 

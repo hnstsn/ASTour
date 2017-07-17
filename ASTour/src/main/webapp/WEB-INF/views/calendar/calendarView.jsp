@@ -97,8 +97,9 @@
 			//일정 내용들
 			//화면 클릭시 일정 변경가능 true,불가능 false
 			editable : true,
-			firstday: 1,
-		    eventLimit: 3,
+			navLinks: true,
+			//firstday: 1,
+		    //eventLimit: 3,
 			events : events1,
 			//일정 기간 클릭시
 			eventClick :  function(calEvent, jsEvent, view) {
@@ -385,19 +386,14 @@
 <body>
 	<div class="wrapper">
 		<!-- AST : 페이지 타이틀 -->
-		<div id="blog">
 		<header id="page-title">
 			<div class="container">
 				<h1 class="hn">일정</h1>
 			</div>
 		</header>
 		<!-- / AST : 페이지 타이틀 -->
-		</div>
-	</div>
 		
-		
-	<div>
-
+	<div style="margin-top: 50px"  >
 		<!-- modal 일정 추가 -->
       <div id="id01" class="w3-modal" style="z-index: 10;">
          <div class="w3-modal-content w3-card-4 w3-animate-zoom"
@@ -477,7 +473,7 @@
 		<!-- 달력 -->
 		<section id="portfolio" class="container">
 		<div id='calendar'
-			style='margin-top: 5%; font-size: 13px;z-index: 1'>
+			style='margin-top: 5%; font-size: 13px;z-index: 1' class="container boxed transparent" data-background="${path}/resources/assets/images/boxed_background/13.jpg" >
 			<!-- 일정추가 버튼 -->
 			<center>
 				<button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-circle w3-teal" style="margin: 1%;"
@@ -488,6 +484,7 @@
 		</section>
 		<!-- /달력 -->
 		
+	</div>
 	</div>
 	
 </body>

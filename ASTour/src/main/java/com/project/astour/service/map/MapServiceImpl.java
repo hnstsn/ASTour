@@ -1,6 +1,8 @@
 package com.project.astour.service.map;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.project.astour.model.dao.map.MapDAO;
 import com.project.astour.model.dto.attraction.attraction_tbl;
+import com.project.astour.model.dto.map.GpsRecord;
 import com.project.astour.model.dto.map.sigunVO;
 
 @Service
@@ -40,7 +43,19 @@ public class MapServiceImpl implements MapService{
 	
 		return mapDAO.searchLocation(vo);
 	}
-	
+
+	@Override
+	public List<GpsRecord> gpsSelectname(int pk) {
+		return mapDAO.gpsSelectname(pk);
+	}
+
+	@Override
+	public List<GpsRecord> gpsSelect(String title, int pk) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pk", pk);
+		map.put("title", title);
+		return mapDAO.gpsSelect(map);
+	}
 	
 	
 

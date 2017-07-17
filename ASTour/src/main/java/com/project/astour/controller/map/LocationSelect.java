@@ -1,10 +1,13 @@
 package com.project.astour.controller.map;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.ListModel;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.astour.model.dto.attraction.attraction_tbl;
+import com.project.astour.model.dto.map.GpsRecord;
 import com.project.astour.model.dto.map.sigunVO;
 import com.project.astour.service.attraction.AttractionService;
 import com.project.astour.service.map.MapService;
@@ -40,7 +44,28 @@ public class LocationSelect {
 		return "home";
 	}
 	
-	
+	//gps 페이지
+	@RequestMapping("gpsSelectname")
+	public String gpsSelete(Model model,
+			@RequestParam(value="mpk") int mpk){
+		List<GpsRecord> list = mapService.gpsSelectname(mpk);
+		model.addAttribute("list",list);
+		model.addAttribute("curPage", "map/gpsSelectView.jsp");
+		return "home";
+	}
+	//gps 길 조회 
+	@RequestMapping("gpsSelect")
+	@ResponseBody
+	public List<GpsRecord> f5(Model model,
+			@RequestParam(value="pk") int pk,
+			@RequestParam(value="title") String title){
+		System.out.println("확인용");
+		System.out.println(title);
+		System.out.println(pk);
+		System.out.println("끝");
+		return mapService.gpsSelect(title, pk);
+	}
+
 	@RequestMapping("selectBox")
 	@ResponseBody
 	public List<sigunVO> f1(HttpServletResponse response,
@@ -63,7 +88,5 @@ public class LocationSelect {
 	public List<attraction_tbl> f3(HttpServletResponse response){
 		return attractionService.attractionList(); 
 	}
-	
-	
 	
 }

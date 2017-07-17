@@ -79,6 +79,15 @@ public class HomeController {
 //		 지역선택 페이지 전환
 		if (cpage == 10)
 			return "redirect:/locationSelect";
+		//흔적보기
+		else if(cpage == 100){
+			MemberVO member = (MemberVO) session.getAttribute("member");
+//			로그인 하지 않았다면(세션이 없다면)
+			if (member == null)
+				return "include/sessionCheck";
+			int mpk = member.getMpk();
+			return "redirect:/gpsSelectname?mpk="+mpk;
+		}
 //		추천명소 페이지 전환 
 		else if (cpage == 20)
 			return "redirect:/attraction/initAttr.do";

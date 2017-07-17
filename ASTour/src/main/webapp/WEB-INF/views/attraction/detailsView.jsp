@@ -317,19 +317,25 @@ p.thicker {
 			<div class="map_wrap">
 				<div id="map"
 					style="width: 100%; height: 150%; position: relative; overflow: hidden;"></div>
-				<ul id="category">
+				<!-- <ul id="category">
 					<li id="BK9" data-order="0"><span class="category_bg bank"></span>
 						은행</li>
 					<li id="MT1" data-order="1"><span class="category_bg mart"></span>
 						마트</li>
-					<li id="PM9" data-order="2"><span class="category_bg pharmacy"></span>
-						약국</li>
-					<li id="OL7" data-order="3"><span class="category_bg oil"></span>
-						주유소</li>
+					<li id="FD6" data-order="1">음식점</li>
+					<li id="AD5" data-order="1">숙박</li>
 					<li id="CE7" data-order="4"><span class="category_bg cafe"></span>
 						카페</li>
 					<li id="CS2" data-order="5"><span class="category_bg store"></span>
 						편의점</li>
+				</ul> -->
+				<ul id="category">
+					<li id="BK9" data-order="0">은행</li>
+					<li id="MT1" data-order="0">마트</li>
+					<li id="FD6" data-order="0">음식점</li>
+					<li id="AD5" data-order="0">숙박</li>
+					<li id="CE7" data-order="0">카페</li>
+					<li id="CS2" data-order="0">편의점</li>
 				</ul>
 				<a class="btn_comm btn_resetMap" onclick="setBounds()">
 								<span class="screen_out">초기화</span></a>
@@ -448,6 +454,37 @@ p.thicker {
 		}
 	}
 
+/*         var imageSrc = 'http://i1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다
+                imageSize = new daum.maps.Size(64, 69), // 마커이미지의 크기입니다
+                imageOption = {offset: new daum.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+ 
+        var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
+        marker.setMap(map); // 지도 위에 마커를 표출합니다
+		markers.push(marker); // 배열에 생성된 마커를 추가합니다
+
+		return marker;
+    } */
+	
+ // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+ 	function addMarker(position, order) {
+ 		var imageSrc = '${path}/resources/image/map/selelct.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+ 		imageSize = new daum.maps.Size(36, 43), // 마커 이미지의 크기
+ 		imgOptions = {
+ 			offset: new daum.maps.Point(27, 69)
+ 		// 마커 좌표에 일치시킬 이미지 내에서의 좌표
+ 		}, markerImage = new daum.maps.MarkerImage(imageSrc, imageSize,
+ 				imgOptions), marker = new daum.maps.Marker({
+ 			position : position, // 마커의 위치
+ 			//image : markerImage
+ 		});
+
+ 		marker.setMap(map); // 지도 위에 마커를 표출합니다
+ 		markers.push(marker); // 배열에 생성된 마커를 추가합니다
+
+ 		return marker;
+ 	}
+/* 
+	
 	// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 	function addMarker(position, order) {
 		var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
@@ -467,7 +504,7 @@ p.thicker {
 		markers.push(marker); // 배열에 생성된 마커를 추가합니다
 
 		return marker;
-	}
+	} */
 
 	// 지도 위에 표시되고 있는 마커를 모두 제거합니다
 	function removeMarker() {

@@ -198,43 +198,32 @@ function searchIdPw() {
       <!-- Top Nav -->
       <div class="navbar-collapse nav-main-collapse collapse pull-right">
          <nav class="nav-main mega-menu">
-            <ul class="nav nav-pills nav-main scroll-menu" id="topMain">
-               <li class="dropdown mega-menu-item mega-menu-two-columns">
-                  <a class="dropdown-toggle" href="${path}/chgPage.do?cpage=10">
-                     지역선택
-                  </a>
-               </li>
-               <li class="dropdown mega-menu-item mega-menu-fullwidth">
-                  <a class="dropdown-toggle" href="${path}/chgPage.do?cpage=20">
-                     명소&행사
-                  </a>
-               </li>
+				<ul class="nav nav-pills nav-main scroll-menu" id="topMain">
+					<li class="dropdown mega-menu-item mega-menu-two-columns"><a
+						class="dropdown-toggle" href="${path}/chgPage.do?cpage=10">
+							지역선택 </a></li>
+					<li class="dropdown mega-menu-item mega-menu-fullwidth"><a
+						class="dropdown-toggle" href="${path}/chgPage.do?cpage=20">
+							명소&행사 </a></li>
+					<li class="dropdown mega-menu-item mega-menu-fullwidth"><a
+						class="dropdown-toggle" href="${path}/chgPage.do?cpage=30">SNS</a>
+					</li>
 
-               <li class="dropdown mega-menu-item mega-menu-fullwidth">
-               		<a class="dropdown-toggle" href="${path}/chgPage.do?cpage=30">SNS</a>
-               </li>
-
-               <li class="dropdown">
-                  <a class="dropdown-toggle">
-                     <b>마이페이지</b> <i class="fa fa-angle-down"></i>
-                  </a>
-                  <ul class="dropdown-menu">
-                     <li>
-                     <a class="dropdown-toggle" href="${path}/chgPage.do?cpage=60"> 일정 </a>
-					 </li>
-                     <li><a href="${path}/chgPage.do?cpage=40">정보수정</a></li>
-                  </ul>
-               </li>
-
-               
-               <li class="dropdown">
-                  <a class="dropdown-toggle" href="${path}/chgPage.do?cpage=50">
-                     고객센터
-                  </a>
-               </li>
-               
-            </ul>
-         </nav>
+					<li class="dropdown"><a class="dropdown-toggle"> <b>마이페이지</b>
+							<i class="fa fa-angle-down"></i>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-toggle"
+								href="${path}/chgPage.do?cpage=60"> 일정 </a></li>
+							<li class="dropdown mega-menu-item mega-menu-two-columns"><a
+								class="dropdown-toggle" href="${path}/chgPage.do?cpage=100">
+									흔적보기 </a></li>
+							<li><a href="${path}/chgPage.do?cpage=40">정보수정</a></li>
+						</ul></li>
+					<li class="dropdown"><a class="dropdown-toggle"
+						href="${path}/chgPage.do?cpage=50"> 고객센터 </a></li>
+				</ul>
+			</nav>
       </div>
       <!-- /Top Nav -->
 
