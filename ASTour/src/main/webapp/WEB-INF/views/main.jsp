@@ -409,7 +409,7 @@ $(document).ready(function() {
 										<span class="block fa fa-plus fsize20"></span> <strong>상세보기</strong>
 								</span>
 								</a>
-								<img class="img-responsive" src="${path}/sns/${list.get(num).aimage}" alt="">
+								<img class="img-responsive" src="${path}/resources/image/culture/${list.get(num).aimage}" alt="">
 							</figure>
 							<div class="item-box-desc">
 								<h4 class="jg" style="font-size: 23px">${list.get(num).atitle}</h4>
