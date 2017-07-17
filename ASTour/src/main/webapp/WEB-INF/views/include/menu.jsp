@@ -215,7 +215,7 @@ function searchIdPw() {
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-toggle"
 								href="${path}/chgPage.do?cpage=60"> 일정 </a></li>
-							<li class="dropdown mega-menu-item mega-menu-two-columns"><a
+							<li><a
 								class="dropdown-toggle" href="${path}/chgPage.do?cpage=100">
 									흔적보기 </a></li>
 							<li><a href="${path}/chgPage.do?cpage=40">정보수정</a></li>

@@ -76,8 +76,10 @@ mapOption = {
 };
 //지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 var map = new daum.maps.Map(mapContainer, mapOption); 
+var polyline=null;
+var linePath=null;
+var ct=0;
 function f1(title){
-	var polyline=null;
 	var pk ='${sessionScope.member.mpk}';
 		$.ajax({
 		url : "${path}/gpsSelect", //접근해야할 아이디 
@@ -85,15 +87,12 @@ function f1(title){
 		dataType : "json", //json타입으로 요청
 		data : {"title":title,"pk":pk},
 		success : function(Data) {  //날라온 데이터를 받아줌
-			var linePath = [];
-//			polyline.setMap(null);
-		/* if(Data[0].label_record=='테스트'){
-			polyline.setMap(null);
-		} */
-			/* if(true){
-				polyline.setMap(null);  
-			} */
-			alert(2);
+			//기존 맵 선 지우기
+				if (ct == 1) {
+					polyline.setMap(null);
+				}
+				ct=1; //처음에 온건지 안온건지 알기 위해서 선언
+			linePath = [];
 			for(var a=0;a<Data.length;a++){
 				linePath.push(new daum.maps.LatLng(Data[a].latitude_record,Data[a].longitude_record));
 			}
@@ -106,7 +105,14 @@ function f1(title){
 			});
 
 			// 지도에 선을 표시합니다 
-			polyline.setMap(map);  
+			polyline.setMap(map);
+			// 표시 된 선 줌 
+			var bounds = new daum.maps.LatLngBounds();    
+			for(var i = 0; i < linePath.length; i++){
+				 bounds.extend(linePath[i]);
+			}
+
+			map.setBounds(bounds);
 			} 
 	});	
 }
