@@ -466,15 +466,15 @@ p.thicker {
 	
  // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
  	function addMarker(position, order) {
- 		var imageSrc = '${path}/resources/image/map/selelct.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
- 		imageSize = new daum.maps.Size(36, 43), // 마커 이미지의 크기
+ 		var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+ 		imageSize = new daum.maps.Size(25, 32), // 마커 이미지의 크기
  		imgOptions = {
  			offset: new daum.maps.Point(27, 69)
  		// 마커 좌표에 일치시킬 이미지 내에서의 좌표
  		}, markerImage = new daum.maps.MarkerImage(imageSrc, imageSize,
  				imgOptions), marker = new daum.maps.Marker({
  			position : position, // 마커의 위치
- 			//image : markerImage
+ 			image : markerImage
  		});
 
  		marker.setMap(map); // 지도 위에 마커를 표출합니다

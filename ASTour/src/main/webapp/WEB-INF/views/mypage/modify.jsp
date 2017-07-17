@@ -170,7 +170,12 @@ var openFile = function(event) {
 							<div class="form-group">
 							
 								<div class="col-md-8" style="margin-left: 15%;">
-									<img src="${path}/profile/${profile.pfile}" class="img-circle" id="prfImg" width="300" height="250" alt="사진없음">
+								<c:if test="${profile.pfile!=null}">
+									<img src="${path}/profile/${profile.pfile}" class="img-circle" id="prfImg" width="300" height="250">
+								</c:if>
+								<c:if test="${profile.pfile==null}">
+									<img src="${path}/profile/mu.jpg" class="img-circle" id="prfImg" width="300" height="250">
+								</c:if>
 									<input type="file" name="prfFile" onChange="openFile(event)" />
 								</div>
 							
