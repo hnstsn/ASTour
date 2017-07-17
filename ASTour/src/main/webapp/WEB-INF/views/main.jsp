@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="include/bootstap_collect.jsp" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <head>
 <style>
@@ -27,7 +28,6 @@
 </style>
 	<meta charset="utf-8" />
 	<!-- AST : bootstrap을 위한 것들을 모아놓은  jsp page -->
-	<%@ include file="include/bootstap_collect.jsp" %>
 
 <script>
 function tag(){
@@ -409,7 +409,7 @@ $(document).ready(function() {
 										<span class="block fa fa-plus fsize20"></span> <strong>상세보기</strong>
 								</span>
 								</a>
-								<img class="img-responsive" src="${path}/sns/${list.get(num).aimage}" alt="">
+								<img class="img-responsive" src="${path}/resources/image/culture/${list.get(num).aimage}" alt="">
 							</figure>
 							<div class="item-box-desc">
 								<h4 class="jg" style="font-size: 23px">${list.get(num).atitle}</h4>

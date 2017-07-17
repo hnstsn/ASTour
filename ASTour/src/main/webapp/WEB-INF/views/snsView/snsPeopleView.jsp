@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="../include/bootstap_collect.jsp"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
@@ -10,7 +11,6 @@
 <!--<![endif]-->
 
 <head>
-<%@ include file="../include/bootstap_collect.jsp"%>
 <style>
 /* google 폰트*/
 @import url(//fonts.googleapis.com/earlyaccess/hanna.css);
