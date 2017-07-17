@@ -40,7 +40,6 @@
 	<div id="switcher" style="overflow: auto; height: 500px">
 		<div class="content-switcher">
 			<h4>흔적리스트</h4>
-			
 			<c:forEach var="list" items="${list }">
 				<p onclick="f1('${list.label_record }')">${list.label_record }</p>
 			</c:forEach>
@@ -58,7 +57,7 @@
 	<div id="wrapper">
 	<header id="page-title">
 			<div class="container">
-				<h1 class="hn" style="font-size: 35px">흔적</h1>
+				<h1 class="hn" style="font-size: 35px">흔적보기</h1>
 			</div>
 	</header>
 	<div id="test"></div>
@@ -111,7 +110,6 @@ function f1(title){
 			for(var i = 0; i < linePath.length; i++){
 				 bounds.extend(linePath[i]);
 			}
-
 			map.setBounds(bounds);
 			} 
 	});	
