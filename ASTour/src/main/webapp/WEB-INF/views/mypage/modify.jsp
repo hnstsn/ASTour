@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../include/bootstap_collect.jsp" %>
+<%@ include file="../include/sessionCheck.jsp" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
@@ -14,8 +16,6 @@
 	<meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
 	<!-- mobile settings -->
 <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
-<%@ include file="../include/bootstap_collect.jsp" %>
-<%@ include file="../include/sessionCheck.jsp" %>
 <script>
 // AST(CSW) : 정보 수정 페이지
 //현재 비밀번호가 맞는지 확인하는 함수

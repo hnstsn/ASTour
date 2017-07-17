@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ include file="../include/bootstap_collect.jsp"%>
+<%@ include file="../include/sessionCheck.jsp"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -28,8 +30,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<%@ include file="../include/bootstap_collect.jsp"%>
-<%@ include file="../include/sessionCheck.jsp"%>
+
 <style type="text/css">
 .deFile:hover { cursor:pointer; }
 </style>

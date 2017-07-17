@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="../include/bootstap_collect.jsp" %>
 <!DOCTYPE html>
 <!--[if IE 8]>         <html class="ie ie8"> <![endif]-->
 <!--[if IE 9]>         <html class="ie ie9"> <![endif]-->
@@ -24,7 +25,6 @@
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
 <!-- AST : bootstrap을 위한 것들을 모아놓은  jsp page -->
-<%@ include file="../include/bootstap_collect.jsp"%>
 
 </head>
 

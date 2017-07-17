@@ -5,7 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<%@ include file="../include/bootstap_collect.jsp"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -213,7 +213,6 @@ p.thicker {
 </style>
 
 
-<%@ include file="../include/bootstap_collect.jsp"%>
 <meta charset="utf-8" />
 <meta name="keywords" content="HTML5,CSS3,Template" />
 <meta name="description" content="" />

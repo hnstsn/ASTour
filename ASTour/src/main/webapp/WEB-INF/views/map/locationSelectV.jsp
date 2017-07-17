@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="../include/bootstap_collect.jsp" %>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <!--[if IE 8]>         <html class="ie ie8"> <![endif]-->
@@ -14,7 +15,6 @@
 
 <!-- AST : bootstrap을 위한 것들을 모아놓은  jsp page -->
 <!--..은 현재에서 한단계 상위  -->
-   <%@ include file="../include/bootstap_collect.jsp" %>
 
    <style>
    /*  AST : 마커클릭후의 오버레이의 스타일을 정의한다   - 부트스트랩과 겹치면 안됨*/
