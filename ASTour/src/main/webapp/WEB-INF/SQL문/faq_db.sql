@@ -3,20 +3,23 @@ Create table faq(anum number primary key, alabel varchar2(100), acontent varchar
 
 CREATE SEQUENCE faq_SEQ START WITH 1 INCREMENT BY 1;
 
-insert into faq values(faq_SEQ.NEXTVAL, 'AStour°¡ ¹«¾ùÀÎ°¡¿ä?','AStour´Â ¿©ÇàÁö Á¤º¸¸¦ À¥°ú ¾Û¿¡¼­ Á¦°øÇÕ´Ï´Ù. </br>
-¿©ÇàÁö¿¡ ´ëÇÑ ±âº»Á¤º¸¿Í »ç¿ëÀÚÀÇ ¸®ºä¸¦ º¼ ¼ö ÀÖ½À´Ï´Ù.');
+insert into faq values(faq_SEQ.NEXTVAL, 'AStourï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½ï¿½ï¿½?','AStourï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Û¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½. </br>
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ä¸¦ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½.');
 
-insert into faq values(faq_SEQ.NEXTVAL, 'ÀÌ¿ë¹æ¹ýÀÌ ¾Ë°í ½Í½À´Ï´Ù.', '·Î±×ÀÎ ÈÄ Áö¿ª¼±ÅÃ Ã¢¿¡¼­ ¿©ÇàÁöµéÀ» º¼ ¼ö ÀÖÀ¸¸ç ´õ ÀÚ¼¼ÇÑ Á¤º¸´Â »ó¼¼º¸±â¸¦ ÅëÇØ °¡´ÉÇÕ´Ï´Ù.</br>
-»ó¼¼º¸±â¸¦ ÅëÇØ¼­ °¡ÀÌµå¿Í ¸®ºä¸¦ º¼ ¼ö ÀÖ½À´Ï´Ù.</br>
-SNSÅëÇØ¼­ ´Ù¸¥ »ç¿ëÀÚµé°ú Á¤º¸°øÀ¯, ¿©Çà±âÀÛ¼ºÀÌ °¡´ÉÇÕ´Ï´Ù.');
+insert into faq values(faq_SEQ.NEXTVAL, 'ï¿½Ì¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë°ï¿½ ï¿½Í½ï¿½ï¿½Ï´ï¿½.', 'ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¢ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ú¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ó¼¼ºï¿½ï¿½â¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.</br>
+ï¿½ó¼¼ºï¿½ï¿½â¸¦ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ï¿½ ï¿½ï¿½ï¿½ä¸¦ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½.</br>
+SNSï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.');
 
 
-insert into faq values(faq_SEQ.NEXTVAL, '¾Ë°í ½ÍÀº ¿©ÇàÁö°¡ Áöµµ¿¡ ¾ø½À´Ï´Ù.', 'AStour´Â Ãß°¡ ¿©ÇàÁö¿¡ ´ëÇÑ Áö¼ÓÀû ¾÷µ¥ÀÌÆ®¸¦ ÇÏ°í ÀÖ½À´Ï´Ù. </br>
-¾Æ·¡ ¸ÞÀÏ·Î ¹®ÀÇ½Ã ´õ ºü¸¥ ¾÷µ¥ÀÌÆ®°¡ °¡´ÉÇÕ´Ï´Ù.');
+insert into faq values(faq_SEQ.NEXTVAL, 'ï¿½Ë°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.', 'AStourï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ï°ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½. </br>
+ï¿½Æ·ï¿½ ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½Ç½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.');
 
-insert into faq values(faq_SEQ.NEXTVAL, 'À¥»çÀÌÆ®¿¡ ¿À·ù°¡ ÀÖ½À´Ï´Ù.', 'Å©·Ò±î¼¼¿ä.');
+insert into faq values(faq_SEQ.NEXTVAL, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö½ï¿½ï¿½Ï´ï¿½.', 'Å©ï¿½Ò±î¼¼ï¿½ï¿½.');
 
-insert into faq values(faq_SEQ.NEXTVAL, '¾ÆÀÌµð, ºñ¹Ð¹øÈ£¸¦ ÀØ¾î¹ö·È½À´Ï´Ù.', '¿ìÃø»ó´Ü¿¡ ·Î±×ÀÎ È­¸é ¼±ÅÃ ÈÄ ¾ÆÀÌµð,ºñ¹Ð¹øÈ£ Ã£±â¸¦ ¼±ÅÃÇØÁÖ¼¼¿ä.');
+insert into faq values(faq_SEQ.NEXTVAL, 'ï¿½ï¿½ï¿½Ìµï¿½, ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½Ø¾ï¿½ï¿½ï¿½È½ï¿½ï¿½Ï´ï¿½.', 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¿ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½,ï¿½ï¿½Ð¹ï¿½È£ Ã£ï¿½â¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.');
 
 select * from faq;
+
+update faq set acontent='í¬ë¡¬ì‚¬ìš© í™˜ê²½ì— ìµœì í™” ë˜ì–´ìžˆìŠµë‹ˆë‹¤. </br>ê·¸ ë°–ì˜ ì´ìƒì‹œ ë©”ì¼ë¡œ ë¬¸ì˜í•´ì£¼ì„¸ìš”.' where anum=4;
+
 commit;

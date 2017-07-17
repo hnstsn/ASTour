@@ -246,16 +246,17 @@
 
             <div class="row">
                <div class="form-group">
-<!-- 
-                  <div class="col-md-2 col-sm-6 col-xs-6">
-                     <label>기타2</label> <select class="form-control" name="re_price_to">
-                        <option value="0">미완</option>
+
+                  <div class="col-md-2 col-sm-6 col-xs-6" style="visibility: hidden;">
+                     <label>기타2</label> <select class="form-control" name="re_price_to" >
+                        <option value="0">안보이징</option>
                      </select>
-                  </div> -->
+                  </div> 
+                  
                   <div class="col-md-2 col-sm-6 col-xs-12">
                      <label>관광지명</label> <input type="text" id="attractionName"
                         class="form-control" name="re_id" />
-                     </div>
+                  </div>
 
                   <div class="col-md-4 col-sm-12 col-xs-12">
                      <label>&nbsp;</label>
