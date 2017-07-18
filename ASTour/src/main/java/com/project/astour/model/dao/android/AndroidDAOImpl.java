@@ -20,7 +20,8 @@ public class AndroidDAOImpl implements AndroidDAO {
 			String latitude_record, 
 			String longitude_record,
 			String time_record,
-			String mpk) {
+			String mpk,
+			String accuracy_record) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("label_record", label_record);
@@ -28,6 +29,8 @@ public class AndroidDAOImpl implements AndroidDAO {
 		map.put("longitude_record", longitude_record);
 		map.put("time_record", time_record);
 		map.put("mpk", mpk);
+		map.put("accuracy_record", accuracy_record);
+		
 		
 		sqlSession.insert("android.gpsRecord",map);
 		

@@ -19,14 +19,16 @@ public class AndroidServiceImpl implements AndroidService {
 			String latitude_record, 
 			String longitude_record,
 			String time_record,
-			String mpk) {
+			String mpk,
+			String accuracy_record) {
 		
 		androidDAO.gpsRecord(
 				label_record,
 				latitude_record, 
 				longitude_record,
 				time_record,
-				mpk);
+				mpk,
+				accuracy_record);
 	}
 
 }

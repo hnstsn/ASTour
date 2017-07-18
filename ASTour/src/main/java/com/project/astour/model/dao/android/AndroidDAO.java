@@ -7,5 +7,6 @@ public interface AndroidDAO {
 			String latitude_record, 
 			String longitude_record,
 			String time_record,
-			String mpk);
+			String mpk,
+			String accuracy_record);
 }

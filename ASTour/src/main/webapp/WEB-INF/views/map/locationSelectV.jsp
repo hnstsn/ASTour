@@ -203,7 +203,13 @@
          <div id="re-filter">
             <div class="row">
                <div class="form-group">
-
+					
+				  <div class="col-md-1 col-sm-3 col-xs-3" style="visibility: hidden;">
+                     <label>기타2</label> <select class="form-control" name="re_price_to" >
+                        <option value="0">안보이징</option>
+                     </select>
+                  </div>
+                   
                   <div class="col-md-4 col-sm-6 col-xs-12">
                      <label>지역</label> <select id="siSelect" class="form-control"
                       name="re_location">
