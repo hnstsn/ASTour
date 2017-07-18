@@ -48,7 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(
 		select time_record, min(accuracy_record)
 		from gpsrecord
-		where pk_record=#{pk} and label_record=#{title}
+		where pk_record=#{pk} and label_record=#{title} and accuracy_record <![CDATA[<]]> 100 
 		group by time_record
 		)
 		order by time_record
