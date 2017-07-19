@@ -44,7 +44,7 @@
 <body>
 
 	<!-- STYLESWITCHER - REMOVE ON PRODUCTION/DEVELOPMENT -->
-	<div id="switcher" style="overflow: auto; height: 500px">
+	<div id="switcher" style="overflow: auto; height: 500px; margin-left: 700px">
 		<div class="content-switcher">
 			<h4 class="jg">흔적리스트</h4>
 			<c:forEach var="list" items="${list }">

@@ -2,7 +2,7 @@ package com.project.astour.model.dto.attraction;
 
 public class AttractionPager {
 	// 페이지당 게시물 수
-	public static final int PAGE_SCALE=12;
+	public static final int PAGE_SCALE=8;
 	// 화면당 페이지 수
 	public static final int BLOCK_SCALE=10;
 	private int curPage; // 현재 페이지
