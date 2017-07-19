@@ -41,7 +41,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- gpsselect -->
 	<select id="gpsSelect" resultType="com.project.astour.model.dto.map.GpsRecord">
-		select * from gpsRecord where pk_record=#{pk} and label_record=#{title}
+		<!-- select * from gpsRecord where pk_record=#{pk} and label_record=#{title} -->
+		select  time_record, latitude_record, longitude_record
+		from gpsrecord
+		where (time_record, accuracy_record) in 
+		(
+		select time_record, min(accuracy_record)
+		from gpsrecord
+		where pk_record=#{pk} and label_record=#{title} and accuracy_record <![CDATA[<]]> 100 
+		group by time_record
+		)
+		order by time_record
 		<!-- select time_record, latitude_record, longitude_record from gpsRecord 
 		where pk_record=#{pk} and label_record=#{title} and rowid in 
 		(select max(rowid) from gpsRecord group by time_record) order by time_record -->
